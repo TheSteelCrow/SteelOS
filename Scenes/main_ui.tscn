@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=13 format=3 uid="uid://cp44wmwlptbkc"]
 
-[ext_resource type="Texture2D" uid="uid://4ayejenfoo1k" path="res://Images/Background1.jpg" id="1_avarr"]
+[ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Taskbar.gd" id="2_0hvxi"]
-[ext_resource type="Texture2D" uid="uid://c0lqj2ns0wpah" path="res://Images/check_square_color.png" id="3_snk6m"]
+[ext_resource type="Texture2D" uid="uid://c7p2rujxnx86f" path="res://Backgrounds/videoframe_16507.png" id="2_n6ini"]
+[ext_resource type="Texture2D" uid="uid://msxx0fhaq81p" path="res://Images/power.png" id="3_ardfw"]
+[ext_resource type="Texture2D" uid="uid://gyrptjh26ekr" path="res://Images/gear.png" id="4_6scnd"]
+[ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="5_facrs"]
+[ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="6_tu0vt"]
+[ext_resource type="Texture2D" uid="uid://ba7k3fpkps6my" path="res://Images/save.png" id="7_18scl"]
+[ext_resource type="Script" path="res://Scenes/SearchEngine.gd" id="8_jd2gf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vrhd"]
 bg_color = Color(0.227451, 0.227451, 0.227451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
 bg_color = Color(0.145098, 0.145098, 0.145098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gaed"]
+bg_color = Color(0.439216, 0.627451, 0.756863, 1)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -20,9 +29,18 @@ grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("1_avarr")
+offset_right = 1600.0
+offset_bottom = 1068.0
+scale = Vector2(0.719997, 0.606739)
+texture = ExtResource("1_pctbs")
+
+[node name="Background2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 1068.0
+scale = Vector2(0.59998, 0.600012)
+texture = ExtResource("2_n6ini")
 
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
@@ -32,14 +50,94 @@ offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4vrhd")
 script = ExtResource("2_0hvxi")
 
-[node name="MenuButton" type="TextureButton" parent="Taskbar"]
+[node name="TimeText" type="RichTextLabel" parent="Taskbar"]
+layout_mode = 0
+offset_left = 1027.0
+offset_right = 1152.0
+offset_bottom = 20.0
+bbcode_enabled = true
+scroll_active = false
+
+[node name="DateText" type="RichTextLabel" parent="Taskbar"]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 20.0
+offset_right = 1152.0
+offset_bottom = 40.0
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="Taskbar"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.625486, 0.622676)
-texture_normal = ExtResource("3_snk6m")
+color = Color(0, 0, 0, 1)
+
+[node name="MenuButton" type="TextureButton" parent="Taskbar/ColorRect"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.401617, 0.401368)
+texture_normal = ExtResource("3_ardfw")
+
+[node name="ColorRect2" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 90.0
+offset_bottom = 40.0
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="TextureButton" type="TextureButton" parent="Taskbar/ColorRect2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+texture_normal = ExtResource("4_6scnd")
+
+[node name="SearchEngineBackdrop" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 99.0
+offset_right = 139.0
+offset_bottom = 40.0
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="SearchEngineButton" type="TextureButton" parent="Taskbar/SearchEngineBackdrop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+texture_normal = ExtResource("5_facrs")
+
+[node name="ColorRect4" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 148.0
+offset_right = 188.0
+offset_bottom = 40.0
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="TextureButton" type="TextureButton" parent="Taskbar/ColorRect4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+texture_normal = ExtResource("6_tu0vt")
+
+[node name="ColorRect5" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 201.0
+offset_right = 241.0
+offset_bottom = 40.0
+color = Color(0.152941, 0.152941, 0.152941, 1)
+
+[node name="TextureButton" type="TextureButton" parent="Taskbar/ColorRect5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+texture_normal = ExtResource("7_18scl")
 
 [node name="Menu" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 153.0
 offset_right = 40.0
@@ -47,4 +145,62 @@ offset_bottom = 193.0
 scale = Vector2(6.42182, 11.379)
 theme_override_styles/panel = SubResource("StyleBoxFlat_3cq8d")
 
-[connection signal="button_up" from="Taskbar/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
+[node name="SearchEngine" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 608.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
+script = ExtResource("8_jd2gf")
+
+[node name="TextEdit" type="TextEdit" parent="SearchEngine"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 320.0
+offset_right = 832.0
+offset_bottom = 355.0
+placeholder_text = "Search Parcourir or type a URL"
+scroll_fit_content_height = true
+
+[node name="TextureRect" type="TextureRect" parent="SearchEngine"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 192.0
+offset_right = 632.0
+offset_bottom = 320.0
+texture = ExtResource("5_facrs")
+
+[node name="Motto" type="RichTextLabel" parent="SearchEngine"]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 1152.0
+offset_bottom = 219.0
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SearchEngine"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 831.0
+offset_bottom = 147.0
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center]Parcourir[/center]
+"
+fit_content = true
+scroll_active = false
+
+[node name="TextureButton" type="TextureButton" parent="SearchEngine"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 320.0
+offset_right = 900.0
+offset_bottom = 420.0
+scale = Vector2(0.320272, 0.320522)
+texture_normal = ExtResource("5_facrs")
+
+[connection signal="button_up" from="Taskbar/ColorRect/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
+[connection signal="button_up" from="Taskbar/SearchEngineBackdrop/SearchEngineButton" to="SearchEngine" method="_on_search_engine_button_button_up"]
