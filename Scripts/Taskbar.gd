@@ -1,4 +1,4 @@
-extends Node
+extends Panel
 
 var MenuPanel
 var MenuOpen = false
@@ -16,6 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	move_to_front()
 	var TimeText = get_node("TimeText")
 	var DateText = get_node("DateText")
 	TimeText.text = ""
