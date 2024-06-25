@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=14 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
+[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_w8amv"]
 [ext_resource type="Script" path="res://Scripts/Taskbar.gd" id="2_0hvxi"]
 [ext_resource type="Texture2D" uid="uid://c7p2rujxnx86f" path="res://Backgrounds/videoframe_16507.png" id="2_n6ini"]
 [ext_resource type="Texture2D" uid="uid://msxx0fhaq81p" path="res://Images/power.png" id="3_ardfw"]
@@ -8,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="5_facrs"]
 [ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="6_tu0vt"]
 [ext_resource type="Texture2D" uid="uid://ba7k3fpkps6my" path="res://Images/save.png" id="7_18scl"]
-[ext_resource type="Script" path="res://Scenes/SearchEngine.gd" id="8_jd2gf"]
+[ext_resource type="Script" path="res://Scripts/SearchEngine.gd" id="9_yyops"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vrhd"]
 bg_color = Color(0.227451, 0.227451, 0.227451, 1)
@@ -26,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_w8amv")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -151,7 +153,7 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 608.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
-script = ExtResource("8_jd2gf")
+script = ExtResource("9_yyops")
 
 [node name="TextEdit" type="TextEdit" parent="SearchEngine"]
 layout_mode = 0

@@ -30,10 +30,10 @@ func ResetSearchBrowserText():
 
 func _on_search_engine_button_button_up():
 	print("Search Engine Button Pressed")
-	if(SearchEngineOpen):
-		SearchEngineOpen = !SearchEngineOpen
+	if(visible):
 		hide()
 	else:
-		SearchEngineOpen = !SearchEngineOpen
+		get_parent().HideAll()
 		show()
+		move_to_front()
 		ResetSearchBrowserText()
