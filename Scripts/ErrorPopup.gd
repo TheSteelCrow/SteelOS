@@ -8,6 +8,9 @@ var ScreenSize
 
 func _ready():
 	ScreenSize = get_viewport_rect().size / get_canvas_transform().get_scale()
+	#position = Vector2(ScreenSize.x/2 - size.x/2, ScreenSize.y/2 - size.y/2)
+	position = Vector2(randf_range(0, ScreenSize.x - size.x), randf_range(0, ScreenSize.y - size.y))
+	print(position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

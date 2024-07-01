@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=18 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://ba7k3fpkps6my" path="res://Images/save.png" id="7_18scl"]
 [ext_resource type="Script" path="res://Scripts/SearchEngine.gd" id="9_yyops"]
 [ext_resource type="Script" path="res://Scripts/FileExplorer.gd" id="11_m1ils"]
-[ext_resource type="PackedScene" uid="uid://chswy4mp6j52b" path="res://Prefabs/error_popup.tscn" id="14_fsygp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
 bg_color = Color(0.321569, 0.321569, 0.321569, 1)
@@ -281,8 +280,8 @@ offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 texture_normal = ExtResource("7_18scl")
 
-[node name="ErrorPopup" parent="." instance=ExtResource("14_fsygp")]
-layout_mode = 0
+[node name="ErrorSpawner" type="Timer" parent="."]
+autostart = true
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="mouse_entered" from="FileExplorer/WindowBar" to="FileExplorer" method="_on_color_rect_mouse_entered"]
@@ -290,3 +289,4 @@ layout_mode = 0
 [connection signal="button_up" from="Taskbar/ColorRect/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="button_up" from="Taskbar/SearchEngineBackdrop/SearchEngineButton" to="SearchEngine" method="_on_search_engine_button_button_up"]
 [connection signal="button_up" from="Taskbar/FileExplorerBackdrop/FileExplorerButton" to="FileExplorer" method="_on_file_explorer_button_button_up"]
+[connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]

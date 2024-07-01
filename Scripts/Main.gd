@@ -22,14 +22,10 @@ func _on_shut_down_button_up():
 	
 func SpawnError():
 	if ErrorPopup:
-		# Create an instance of the Packed Scene
-		var SpawnedError = ErrorPopup.instance()
-		
-		# Add the instance to the scene tree
+		var SpawnedError = ErrorPopup.instantiate()
 		add_child(SpawnedError)
-		
-		# Optionally, you can set properties on the instance here
-		# For example, set the position
-		SpawnedError.position = Vector2(100, 100)
 	else:
 		print("Failed to load prefab!")
+
+func _on_error_spawner_timeout():
+	SpawnError()

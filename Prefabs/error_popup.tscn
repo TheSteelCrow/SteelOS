@@ -64,12 +64,15 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="ErrorPopup" type="Panel"]
-offset_left = 448.0
-offset_top = 256.0
-offset_right = 832.0
-offset_bottom = 448.0
+anchors_preset = -1
+anchor_right = 0.333
+anchor_bottom = 0.296
+offset_right = 0.384003
+offset_bottom = 0.192001
+pivot_offset = Vector2(192, 96)
 theme_override_styles/panel = SubResource("StyleBoxFlat_fj614")
 script = ExtResource("1_q5lg1")
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
