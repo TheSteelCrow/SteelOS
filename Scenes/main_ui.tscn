@@ -43,7 +43,6 @@ scale = Vector2(0.719997, 0.606739)
 texture = ExtResource("1_pctbs")
 
 [node name="Background2" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1600.0
 offset_bottom = 1068.0
@@ -281,6 +280,7 @@ scale = Vector2(0.401586, 0.401254)
 texture_normal = ExtResource("7_18scl")
 
 [node name="ErrorSpawner" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]

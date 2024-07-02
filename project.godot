@@ -14,3 +14,7 @@ config/name="SteelOS"
 run/main_scene="res://Scenes/main_ui.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://Images/icon.svg"
+
+[display]
+
+mouse_cursor/custom_image="res://Images/pointer_b_shaded.png"
