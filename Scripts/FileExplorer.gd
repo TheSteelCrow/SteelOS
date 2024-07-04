@@ -6,29 +6,36 @@ var Dragging = false
 var offset = Vector2(0,0)
 var ScreenSize 
 
-var FileExplorerTree
+var FoldersTree
+var FilesTree
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 	
 	ScreenSize = get_viewport_rect().size / get_canvas_transform().get_scale()
-	FileExplorerTree = get_node("Tree")
+	FoldersTree = get_node("Folders")
 	
-	var root = FileExplorerTree.create_item()
-	root.set_text(0, "My PC")
-	FileExplorerTree.hide_root = false
-	var DownloadsFolder = FileExplorerTree.create_item(root)
+	var FolderRoot = FoldersTree.create_item()
+	FolderRoot.set_text(0, "My PC")
+	FoldersTree.hide_root = false
+	var DownloadsFolder = FoldersTree.create_item(FolderRoot)
 	DownloadsFolder.set_text(0, "Downloads")
 	
-	var DocumentsFolder = FileExplorerTree.create_item(root)
+	var DocumentsFolder = FoldersTree.create_item(FolderRoot)
 	DocumentsFolder.set_text(0, "Documents")
 	
-	var PhotosFolder = FileExplorerTree.create_item(root)
+	var PhotosFolder = FoldersTree.create_item(FolderRoot)
 	PhotosFolder.set_text(0, "Photos")
 	
-	#var subchild1 = FileExplorerTree.create_item(child1)
+	#var subchild1 = FoldersTree.create_item(child1)
 	#subchild1.set_text(0, "Subchild1")
+	
+	FilesTree = get_node("Files")
+	var FileRoot = FilesTree.create_item()
+	FileRoot.set_text(0, "Downloads")
+	var File1 = FilesTree.create_item(FileRoot)
+	File1.set_text(0, "CoolFile1")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

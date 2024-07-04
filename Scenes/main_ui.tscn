@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=24 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ba7k3fpkps6my" path="res://Images/save.png" id="7_18scl"]
 [ext_resource type="Script" path="res://Scripts/SearchEngine.gd" id="9_yyops"]
 [ext_resource type="Script" path="res://Scripts/FileExplorer.gd" id="11_m1ils"]
+[ext_resource type="Script" path="res://Scripts/Battery.gd" id="14_q5ee8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
 bg_color = Color(0.321569, 0.321569, 0.321569, 1)
@@ -25,6 +26,35 @@ bg_color = Color(0.933333, 0.823529, 0.713726, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vrhd"]
 bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kehs5"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onk7q"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fp1k0"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwhvl"]
+bg_color = Color(0.226563, 0.226563, 0.226563, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_golrh"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -43,6 +73,7 @@ scale = Vector2(0.719997, 0.606739)
 texture = ExtResource("1_pctbs")
 
 [node name="Background2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1600.0
 offset_bottom = 1068.0
@@ -160,7 +191,6 @@ scale = Vector2(0.320272, 0.320522)
 texture_normal = ExtResource("5_facrs")
 
 [node name="FileExplorer" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 312.0
 offset_top = 192.0
@@ -175,11 +205,21 @@ offset_right = 584.0
 offset_bottom = 64.0
 color = Color(0.701961, 0.701961, 0.701961, 1)
 
-[node name="Tree" type="Tree" parent="FileExplorer"]
+[node name="Folders" type="Tree" parent="FileExplorer"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 72.0
 offset_right = 136.0
+offset_bottom = 376.0
+theme_override_font_sizes/font_size = 10
+allow_search = false
+scroll_horizontal_enabled = false
+
+[node name="Files" type="Tree" parent="FileExplorer"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 72.0
+offset_right = 576.0
 offset_bottom = 376.0
 theme_override_font_sizes/font_size = 10
 allow_search = false
@@ -192,6 +232,47 @@ offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4vrhd")
 script = ExtResource("2_0hvxi")
+
+[node name="Battery" type="Panel" parent="Taskbar"]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 2.0
+offset_right = 1084.0
+offset_bottom = 50.0
+scale = Vector2(0.75, 0.75)
+theme_override_styles/panel = SubResource("StyleBoxFlat_kehs5")
+script = ExtResource("14_q5ee8")
+metadata/_edit_group_ = true
+
+[node name="Cathode" type="Panel" parent="Taskbar/Battery"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_onk7q")
+
+[node name="Outline" type="Panel" parent="Taskbar/Battery"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fp1k0")
+
+[node name="Inner" type="Panel" parent="Taskbar/Battery/Outline"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 94.0
+offset_bottom = 46.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jwhvl")
+
+[node name="Bar" type="Panel" parent="Taskbar/Battery/Outline/Inner"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_golrh")
 
 [node name="TimeText" type="RichTextLabel" parent="Taskbar"]
 layout_mode = 0
