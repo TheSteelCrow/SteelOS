@@ -2,20 +2,24 @@ extends Panel
 
 var MenuPanel
 var MenuOpen = false
+var MainUI
 
 #var SystemTime = Time.get_time_dict_from_system()
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#SystemTime.hour = 0
 	MenuPanel = get_parent().get_node("Menu")
 	MenuPanel.hide()
+	MainUI = get_parent()
 	#var time = Time.get_time_dict_from_system()
 	#print(time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(MainUI.ShuttingDown == true):
+		return
+	
 	move_to_front()
 	var TimeText = get_node("TimeText")
 	var DateText = get_node("DateText")

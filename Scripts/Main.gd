@@ -10,7 +10,11 @@ var WindowInstanceSelected = false
 var Cursor1 = load("res://Images/pointer_b.png")
 var Cursor2 = load("res://Images/pointer_b_shaded.png")
 
+var ShuttingDown = false
+var ShutDownScreen
+
 func _ready():
+	ShutDownScreen = get_node("ShutDownScreen")
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
 	Input.set_custom_mouse_cursor(Cursor2, Input.CURSOR_POINTING_HAND)
@@ -26,6 +30,10 @@ func HideAll():
 	FileExplorer.hide()
 
 func _on_shut_down_button_up():
+	ShuttingDown = true
+	ShutDownScreen.move_to_front()
+	ShutDownScreen.show()
+	await get_tree().create_timer(3).timeout
 	get_tree().quit()
 	
 func SpawnError():

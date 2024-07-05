@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=31 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -71,6 +71,18 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
+bg_color = Color(0.831373, 0.462745, 0.635294, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv3sn"]
+bg_color = Color(0.662745, 0.305882, 0.482353, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
 [node name="MainUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -82,8 +94,8 @@ script = ExtResource("1_u8qnd")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1600.0
-offset_bottom = 1068.0
+offset_right = 2667.0
+offset_bottom = 1780.0
 scale = Vector2(0.719997, 0.606739)
 texture = ExtResource("1_pctbs")
 
@@ -97,9 +109,9 @@ texture = ExtResource("2_n6ini")
 
 [node name="Menu" type="Panel" parent="."]
 layout_mode = 0
-offset_top = 456.0
+offset_top = 888.0
 offset_right = 256.0
-offset_bottom = 608.0
+offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3cq8d")
 
 [node name="ShutDown" type="Button" parent="Menu"]
@@ -151,33 +163,34 @@ texture = ExtResource("6_lpvn1")
 [node name="SearchEngine" type="Panel" parent="."]
 visible = false
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 608.0
+offset_right = 1920.0
+offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
 script = ExtResource("9_yyops")
 
 [node name="TextEdit" type="TextEdit" parent="SearchEngine"]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 320.0
-offset_right = 832.0
-offset_bottom = 355.0
+offset_left = 704.0
+offset_top = 448.0
+offset_right = 1216.0
+offset_bottom = 483.0
 placeholder_text = "Search Parcourir or type a URL"
 scroll_fit_content_height = true
 
 [node name="TextureRect" type="TextureRect" parent="SearchEngine"]
 layout_mode = 0
-offset_left = 504.0
-offset_top = 192.0
-offset_right = 632.0
-offset_bottom = 320.0
+offset_left = 888.0
+offset_top = 320.0
+offset_right = 1016.0
+offset_bottom = 448.0
 texture = ExtResource("5_facrs")
 
 [node name="Motto" type="RichTextLabel" parent="SearchEngine"]
 layout_mode = 0
-offset_top = 136.0
-offset_right = 1152.0
-offset_bottom = 219.0
+offset_left = 384.0
+offset_top = 264.0
+offset_right = 1536.0
+offset_bottom = 347.0
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 fit_content = true
@@ -185,10 +198,10 @@ scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="SearchEngine"]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 64.0
-offset_right = 831.0
-offset_bottom = 147.0
+offset_left = 704.0
+offset_top = 192.0
+offset_right = 1215.0
+offset_bottom = 275.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[center]Parcourir[/center]
@@ -198,14 +211,15 @@ scroll_active = false
 
 [node name="TextureButton" type="TextureButton" parent="SearchEngine"]
 layout_mode = 0
-offset_left = 800.0
-offset_top = 320.0
-offset_right = 900.0
-offset_bottom = 420.0
+offset_left = 1184.0
+offset_top = 448.0
+offset_right = 1284.0
+offset_bottom = 548.0
 scale = Vector2(0.320272, 0.320522)
 texture_normal = ExtResource("5_facrs")
 
 [node name="FileExplorer" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 312.0
 offset_top = 192.0
@@ -286,17 +300,17 @@ texture_normal = ExtResource("13_rxkv3")
 
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
-offset_top = 608.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_top = 1040.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4vrhd")
 script = ExtResource("2_0hvxi")
 
 [node name="Battery" type="Panel" parent="Taskbar"]
 layout_mode = 0
-offset_left = 984.0
+offset_left = 1752.0
 offset_top = 2.0
-offset_right = 1084.0
+offset_right = 1852.0
 offset_bottom = 50.0
 scale = Vector2(0.75, 0.75)
 theme_override_styles/panel = SubResource("StyleBoxFlat_kehs5")
@@ -335,17 +349,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_golrh")
 
 [node name="TimeText" type="RichTextLabel" parent="Taskbar"]
 layout_mode = 0
-offset_left = 1027.0
-offset_right = 1152.0
+offset_left = 1795.0
+offset_right = 1920.0
 offset_bottom = 20.0
 bbcode_enabled = true
 scroll_active = false
 
 [node name="DateText" type="RichTextLabel" parent="Taskbar"]
 layout_mode = 0
-offset_left = 1027.0
+offset_left = 1795.0
 offset_top = 20.0
-offset_right = 1152.0
+offset_right = 1920.0
 offset_bottom = 40.0
 bbcode_enabled = true
 scroll_active = false
@@ -421,6 +435,51 @@ texture_normal = ExtResource("7_18scl")
 
 [node name="ErrorSpawner" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="StickyNote1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qdpsj")
+
+[node name="Bar" type="Panel" parent="StickyNote1"]
+layout_mode = 0
+offset_right = 304.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kv3sn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StickyNote1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 296.0
+offset_bottom = 352.0
+text = "This game is playable in multiple aspect ratios, but exclusive fullscreen is recomended for immersion.
+
+Hover over any icon or button to see what it does!
+
+Check your emails!
+
+Don't make the boss angry!"
+
+[node name="ShutDownScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="ShuttingDownText" type="RichTextLabel" parent="ShutDownScreen"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 448.0
+offset_right = 1728.0
+offset_bottom = 640.0
+theme_override_font_sizes/normal_font_size = 106
+bbcode_enabled = true
+text = "[center]Shutting Down...[/center]"
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]

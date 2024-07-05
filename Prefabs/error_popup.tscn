@@ -76,14 +76,14 @@ metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 320.0
+offset_right = 576.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hb720")
 
 [node name="XButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 320.0
-offset_right = 384.0
+offset_left = 576.0
+offset_right = 640.0
 offset_bottom = 39.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -114,16 +114,16 @@ text = "ERROR"
 layout_mode = 0
 offset_left = 8.0
 offset_top = 48.0
-offset_right = 376.0
-offset_bottom = 184.0
+offset_right = 631.0
+offset_bottom = 312.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_221k8")
 
 [node name="CloseButton" type="Button" parent="Panel2"]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 88.0
-offset_right = 360.0
-offset_bottom = 127.0
+offset_left = 552.0
+offset_top = 216.0
+offset_right = 616.0
+offset_bottom = 255.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_dvlmm")
@@ -135,8 +135,8 @@ text = "CLOSE"
 [node name="Label" type="Label" parent="Panel2"]
 layout_mode = 0
 offset_left = 8.0
-offset_right = 360.0
-offset_bottom = 128.0
+offset_right = 616.0
+offset_bottom = 248.0
 theme_override_font_sizes/font_size = 26
 text = "Cannot Load: Unknown integer applied to an interactive object"
 autowrap_mode = 2
