@@ -9,9 +9,19 @@ var ScreenSize
 var FoldersTree
 var FilesTree
 
+var Data = {
+	#"Folder" : [["File Name", "FileSize"], ["File Name 2", "FileSize2"]]
+	"Downloads" : [["car.txt", 0], ["bike.txt", 0], ["train.txt", 0]],
+	"Documents" : [["work.txt", 0], ["hardwork.txt", 0], ["easy.txt", 0]],
+	"Photos" : [["cat.gif", 0], ["dog.png", 0], ["fish.jpg", 0]]
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
+	
+	#print(Data)
+	print(Data["Downloads"][2][0])
 	
 	ScreenSize = get_viewport_rect().size / get_canvas_transform().get_scale()
 	FoldersTree = get_node("Folders")
