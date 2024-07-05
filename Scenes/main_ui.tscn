@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=29 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -12,7 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="6_tu0vt"]
 [ext_resource type="Texture2D" uid="uid://ba7k3fpkps6my" path="res://Images/save.png" id="7_18scl"]
 [ext_resource type="Script" path="res://Scripts/SearchEngine.gd" id="9_yyops"]
+[ext_resource type="Texture2D" uid="uid://ba5udg3fneq3w" path="res://Images/open.png" id="10_gw1hn"]
 [ext_resource type="Script" path="res://Scripts/FileExplorer.gd" id="11_m1ils"]
+[ext_resource type="Texture2D" uid="uid://cv16s0rkni660" path="res://Images/wrench.png" id="12_i6o7w"]
+[ext_resource type="Texture2D" uid="uid://ch147g7e5krli" path="res://Images/warning.png" id="13_rxkv3"]
 [ext_resource type="Script" path="res://Scripts/Battery.gd" id="14_q5ee8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
@@ -23,6 +26,18 @@ bg_color = Color(0.439216, 0.627451, 0.756863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y176"]
 bg_color = Color(0.933333, 0.823529, 0.713726, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rnaq"]
+bg_color = Color(0.760784, 0.760784, 0.760784, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keiwu"]
+bg_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vrhd"]
 bg_color = Color(0.227451, 0.227451, 0.227451, 1)
@@ -31,12 +46,12 @@ bg_color = Color(0.227451, 0.227451, 0.227451, 1)
 bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onk7q"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fp1k0"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -50,7 +65,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_golrh"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -199,12 +214,6 @@ offset_bottom = 576.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7y176")
 script = ExtResource("11_m1ils")
 
-[node name="WindowBar" type="ColorRect" parent="FileExplorer"]
-layout_mode = 0
-offset_right = 584.0
-offset_bottom = 64.0
-color = Color(0.701961, 0.701961, 0.701961, 1)
-
 [node name="Folders" type="Tree" parent="FileExplorer"]
 layout_mode = 0
 offset_left = 8.0
@@ -223,7 +232,57 @@ offset_right = 576.0
 offset_bottom = 376.0
 theme_override_font_sizes/font_size = 10
 allow_search = false
+hide_root = true
 scroll_horizontal_enabled = false
+
+[node name="WindowDragBar" type="Panel" parent="FileExplorer"]
+layout_mode = 0
+offset_right = 584.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7rnaq")
+
+[node name="TopBar" type="Panel" parent="FileExplorer"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 584.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_keiwu")
+
+[node name="OpenButton" type="TextureButton" parent="FileExplorer/TopBar"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.320384, 0.320384)
+tooltip_text = "Open"
+texture_normal = ExtResource("10_gw1hn")
+
+[node name="DeleteButton" type="TextureButton" parent="FileExplorer/TopBar"]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 132.0
+offset_bottom = 100.0
+scale = Vector2(0.319793, 0.319793)
+tooltip_text = "Delete
+"
+texture_normal = ExtResource("6_tu0vt")
+
+[node name="PropertiesButton" type="TextureButton" parent="FileExplorer/TopBar"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 164.0
+offset_bottom = 100.0
+scale = Vector2(0.320263, 0.320263)
+tooltip_text = "Properties"
+texture_normal = ExtResource("12_i6o7w")
+
+[node name="PropertiesButton2" type="TextureButton" parent="FileExplorer/TopBar"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 196.0
+offset_bottom = 100.0
+scale = Vector2(0.320263, 0.320263)
+tooltip_text = "Scan"
+texture_normal = ExtResource("13_rxkv3")
 
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
@@ -362,11 +421,11 @@ texture_normal = ExtResource("7_18scl")
 
 [node name="ErrorSpawner" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
-[connection signal="mouse_entered" from="FileExplorer/WindowBar" to="FileExplorer" method="_on_color_rect_mouse_entered"]
-[connection signal="mouse_exited" from="FileExplorer/WindowBar" to="FileExplorer" method="_on_color_rect_mouse_exited"]
+[connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]
+[connection signal="mouse_entered" from="FileExplorer/WindowDragBar" to="FileExplorer" method="_on_window_drag_bar_mouse_entered"]
+[connection signal="mouse_exited" from="FileExplorer/WindowDragBar" to="FileExplorer" method="_on_window_drag_bar_mouse_exited"]
 [connection signal="button_up" from="Taskbar/ColorRect/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="button_up" from="Taskbar/SearchEngineBackdrop/SearchEngineButton" to="SearchEngine" method="_on_search_engine_button_button_up"]
 [connection signal="button_up" from="Taskbar/FileExplorerBackdrop/FileExplorerButton" to="FileExplorer" method="_on_file_explorer_button_button_up"]

@@ -6,8 +6,12 @@ var Dragging = false
 var offset = Vector2(0,0)
 var ScreenSize 
 
+var FileRoot
+var FolderRoot
+
 var FoldersTree
 var FilesTree
+var OpenedFolder = "None"
 
 var Data = {
 	#"Folder" : [["File Name", "FileSize"], ["File Name 2", "FileSize2"]]
@@ -26,9 +30,11 @@ func _ready():
 	ScreenSize = get_viewport_rect().size / get_canvas_transform().get_scale()
 	FoldersTree = get_node("Folders")
 	
-	var FolderRoot = FoldersTree.create_item()
+	FolderRoot = FoldersTree.create_item()
 	FolderRoot.set_text(0, "My PC")
+	
 	FoldersTree.hide_root = false
+	
 	var DownloadsFolder = FoldersTree.create_item(FolderRoot)
 	DownloadsFolder.set_text(0, "Downloads")
 	
@@ -42,10 +48,6 @@ func _ready():
 	#subchild1.set_text(0, "Subchild1")
 	
 	FilesTree = get_node("Files")
-	var FileRoot = FilesTree.create_item()
-	FileRoot.set_text(0, "Downloads")
-	var File1 = FilesTree.create_item(FileRoot)
-	File1.set_text(0, "CoolFile1")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,10 +66,10 @@ func _process(delta):
 			position = get_viewport().get_mouse_position() + offset
 		#MoveWindow
 
-func _on_color_rect_mouse_entered():
+func _on_window_drag_bar_mouse_entered():
 	MouseInZone = true
 	
-func _on_color_rect_mouse_exited():
+func _on_window_drag_bar_mouse_exited():
 	MouseInZone = false
 
 func _on_file_explorer_button_button_up():
@@ -77,3 +79,18 @@ func _on_file_explorer_button_button_up():
 	else:
 		show()
 		move_to_front()
+
+func OpenFolder(FolderToOpen):
+	FilesTree.clear()
+	FileRoot = FilesTree.create_item()
+	FileRoot.set_text(0, "OpenedFolder")
+	for File in Data[FolderToOpen]:
+		var NewFileVisual = FilesTree.create_item(FileRoot)
+		NewFileVisual.set_text(0, File[0])
+
+func _on_folders_cell_selected():
+	var TempOpenedFolder = FoldersTree.get_selected().get_text(0)
+	if(TempOpenedFolder in Data):
+		OpenedFolder = TempOpenedFolder
+		OpenFolder(OpenedFolder)
+
