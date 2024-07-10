@@ -1,5 +1,7 @@
 extends Control
 
+var SHUTDOWN_TIME = 0.5
+
 var SearchEngine
 var Menu
 var FileExplorer
@@ -33,7 +35,7 @@ func _on_shut_down_button_up():
 	ShuttingDown = true
 	ShutDownScreen.move_to_front()
 	ShutDownScreen.show()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(SHUTDOWN_TIME).timeout
 	get_tree().quit()
 	
 func SpawnError():
