@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1o3sn1nwivd5"
-path="res://.godot/imported/pointer_b_shaded.png-2864ea1efd34272801430404a983fc49.ctex"
+uid="uid://sn87whruc5rr"
+path="res://.godot/imported/larger.png-875aa6961581bd187f70bb4b30557962.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/pointer_b_shaded.png"
-dest_files=["res://.godot/imported/pointer_b_shaded.png-2864ea1efd34272801430404a983fc49.ctex"]
+source_file="res://Images/larger.png"
+dest_files=["res://.godot/imported/larger.png-875aa6961581bd187f70bb4b30557962.ctex"]
 
 [params]
 

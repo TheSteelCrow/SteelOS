@@ -9,8 +9,8 @@ var ErrorPopup
 
 var WindowInstanceSelected = false
 
-var Cursor1 = load("res://Images/pointer_b.png")
-var Cursor2 = load("res://Images/pointer_b_shaded.png")
+#var Cursor1 = load("res://Images/pointer_b.png")
+#var Cursor2 = load("res://Images/pointer_b_shaded.png")
 
 var ShuttingDown = false
 var ShutDownScreen
@@ -18,8 +18,8 @@ var ShutDownScreen
 func _ready():
 	ShutDownScreen = get_node("ShutDownScreen")
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-	Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
-	Input.set_custom_mouse_cursor(Cursor2, Input.CURSOR_POINTING_HAND)
+	#Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
+	#Input.set_custom_mouse_cursor(Cursor2, Input.CURSOR_POINTING_HAND)
 	ErrorPopup = preload("res://Prefabs/error_popup.tscn")
 	SpawnError()
 	Menu = get_node("Menu")
