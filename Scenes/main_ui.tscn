@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=67 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -25,12 +25,12 @@
 [ext_resource type="Script" path="res://Scripts/Battery.gd" id="14_q5ee8"]
 [ext_resource type="Script" path="res://Scripts/Mail.gd" id="15_kssng"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="16_16jal"]
-[ext_resource type="Script" path="res://Scripts/InboxLine.gd" id="17_xwtx2"]
-[ext_resource type="Texture2D" uid="uid://2y3iiq1i8k8b" path="res://Images/information.png" id="19_xiujk"]
-[ext_resource type="Texture2D" uid="uid://b3v4745h3u4at" path="res://Images/import.png" id="20_7s6lc"]
 [ext_resource type="Texture2D" uid="uid://m17vmv0sxy43" path="res://Images/massiveMultiplayer.png" id="20_nven0"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
 [ext_resource type="Script" path="res://Scripts/CustomCommandLine.gd" id="30_l4ac3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aggrj"]
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
 bg_color = Color(0.321569, 0.321569, 0.321569, 1)
@@ -96,11 +96,38 @@ bg_color = Color(0.613281, 0.695313, 0.746094, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4eh1n"]
 bg_color = Color(0.152344, 0.214844, 0.300781, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_222l5"]
-bg_color = Color(0.611765, 0.694118, 0.745098, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np6of"]
+bg_color = Color(0.117647, 0.172549, 0.247059, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljk6n"]
-bg_color = Color(0.605469, 0.6875, 0.738281, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m7rj"]
+bg_color = Color(0.0941176, 0.160784, 0.337255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu7af"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u307s"]
+bg_color = Color(0.278431, 0.411765, 0.701961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3beqs"]
+bg_color = Color(0.14902, 0.243137, 0.447059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd5a5"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7y176"]
 bg_color = Color(0.933333, 0.823529, 0.713726, 1)
@@ -204,6 +231,12 @@ offset_bottom = 1068.0
 scale = Vector2(0.59998, 0.600012)
 texture = ExtResource("2_n6ini")
 
+[node name="DesktopShortcuts" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aggrj")
+
 [node name="Menu" type="Panel" parent="."]
 layout_mode = 0
 offset_top = 888.0
@@ -258,6 +291,7 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -266,6 +300,9 @@ script = ExtResource("9_yyops")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="SearchEngine"]
 script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="SearchEngine"]
+script = ExtResource("16_16jal")
 
 [node name="UserSearchInput" type="TextEdit" parent="SearchEngine"]
 layout_mode = 0
@@ -526,70 +563,65 @@ offset_right = 1888.0
 offset_bottom = 1008.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4eh1n")
 
-[node name="InboxLine" type="Button" parent="Mail/Inbox"]
+[node name="EmailViewer" type="Panel" parent="Mail"]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 1888.0
+offset_bottom = 1008.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_np6of")
+
+[node name="Content" type="RichTextLabel" parent="Mail/EmailViewer"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 144.0
 offset_right = 1848.0
-offset_bottom = 72.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_222l5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_222l5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_222l5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_222l5")
-script = ExtResource("17_xwtx2")
+offset_bottom = 896.0
+theme_override_font_sizes/normal_font_size = 30
+text = "CONTENT"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Mail/Inbox/InboxLine"]
+[node name="TopBar" type="Panel" parent="Mail/EmailViewer"]
 layout_mode = 0
-offset_right = 1840.0
-offset_bottom = 64.0
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 41
-theme_override_font_sizes/bold_font_size = 41
-bbcode_enabled = true
-text = "[b] BOSS | URGENT |[/b] Hey where r u, you not responding, do your work, or no job 4 u!"
+offset_right = 1856.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4m7rj")
+
+[node name="SubjectLine" type="RichTextLabel" parent="Mail/EmailViewer/TopBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 1848.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 60
+text = "SUBJECT"
+scroll_active = false
 autowrap_mode = 0
 
-[node name="ButtonsPanel" type="Panel" parent="Mail/Inbox/InboxLine"]
+[node name="SenderLine" type="RichTextLabel" parent="Mail/EmailViewer/TopBar"]
 layout_mode = 0
-offset_left = 1584.0
-offset_right = 1840.0
-offset_bottom = 64.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ljk6n")
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 1848.0
+offset_bottom = 128.0
+theme_override_font_sizes/normal_font_size = 30
+text = "From SENDER"
+scroll_active = false
 
-[node name="Delete" type="TextureButton" parent="Mail/Inbox/InboxLine/ButtonsPanel"]
+[node name="CloseButton" type="Button" parent="Mail/EmailViewer/TopBar"]
 layout_mode = 0
-offset_left = 192.0
-offset_right = 292.0
-offset_bottom = 100.0
-scale = Vector2(0.639963, 0.639963)
-tooltip_text = "Delete"
-texture_normal = ExtResource("6_tu0vt")
-
-[node name="Scan" type="TextureButton" parent="Mail/Inbox/InboxLine/ButtonsPanel"]
-layout_mode = 0
-offset_left = 128.0
-offset_right = 228.0
-offset_bottom = 100.0
-scale = Vector2(0.639963, 0.639963)
-tooltip_text = "Scan"
-texture_normal = ExtResource("13_rxkv3")
-
-[node name="Info" type="TextureButton" parent="Mail/Inbox/InboxLine/ButtonsPanel"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 164.0
-offset_bottom = 100.0
-scale = Vector2(0.639963, 0.639963)
-tooltip_text = "Information"
-texture_normal = ExtResource("19_xiujk")
-
-[node name="MarkAsRead" type="TextureButton" parent="Mail/Inbox/InboxLine/ButtonsPanel"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.639963, 0.639963)
-tooltip_text = "Mark as Read"
-texture_normal = ExtResource("20_7s6lc")
+offset_left = 1568.0
+offset_top = 8.0
+offset_right = 1848.0
+offset_bottom = 68.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_uu7af")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u307s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3beqs")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pd5a5")
+text = "CLOSE"
 
 [node name="FileExplorer" type="Panel" parent="."]
 visible = false
@@ -600,6 +632,12 @@ offset_right = 896.0
 offset_bottom = 576.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7y176")
 script = ExtResource("11_m1ils")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="FileExplorer"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="FileExplorer"]
+script = ExtResource("16_16jal")
 
 [node name="Folders" type="Tree" parent="FileExplorer"]
 layout_mode = 0
@@ -622,13 +660,13 @@ allow_search = false
 hide_root = true
 scroll_horizontal_enabled = false
 
-[node name="WindowDragBar" type="Panel" parent="FileExplorer"]
+[node name="TopPanel" type="Panel" parent="FileExplorer"]
 layout_mode = 0
 offset_right = 584.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7rnaq")
 
-[node name="CloseButton" type="Button" parent="FileExplorer/WindowDragBar"]
+[node name="CloseButton" type="Button" parent="FileExplorer/TopPanel"]
 layout_mode = 0
 offset_left = 528.0
 offset_right = 584.0
@@ -640,7 +678,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_bjgts")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dmhp1")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_8lwji")
 
-[node name="TextureRect" type="TextureRect" parent="FileExplorer/WindowDragBar/CloseButton"]
+[node name="TextureRect" type="TextureRect" parent="FileExplorer/TopPanel/CloseButton"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = -4.0
@@ -649,7 +687,7 @@ offset_bottom = 60.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_hey6d")
 
-[node name="MinimiseButton" type="Button" parent="FileExplorer/WindowDragBar"]
+[node name="MinimiseButton" type="Button" parent="FileExplorer/TopPanel"]
 layout_mode = 0
 offset_left = 456.0
 offset_right = 520.0
@@ -661,7 +699,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mw2dj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cki1x")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_k1xru")
 
-[node name="TextureRect" type="TextureRect" parent="FileExplorer/WindowDragBar/MinimiseButton"]
+[node name="TextureRect" type="TextureRect" parent="FileExplorer/TopPanel/MinimiseButton"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = -4.0
@@ -794,6 +832,7 @@ tooltip_text = "Power"
 texture_normal = ExtResource("3_ardfw")
 
 [node name="SettingsBackdrop" type="ColorRect" parent="Taskbar"]
+visible = false
 layout_mode = 0
 offset_left = 208.0
 offset_right = 248.0
@@ -828,6 +867,7 @@ tooltip_text = "Search Engine"
 texture_normal = ExtResource("5_facrs")
 
 [node name="TrashBackdrop" type="ColorRect" parent="Taskbar"]
+visible = false
 layout_mode = 0
 offset_left = 256.0
 offset_right = 296.0
@@ -846,8 +886,8 @@ texture_normal = ExtResource("6_tu0vt")
 
 [node name="MailBackdrop" type="ColorRect" parent="Taskbar"]
 layout_mode = 0
-offset_left = 160.0
-offset_right = 200.0
+offset_left = 144.0
+offset_right = 184.0
 offset_bottom = 40.0
 tooltip_text = "Email"
 color = Color(0.152941, 0.152941, 0.152941, 1)
@@ -877,13 +917,6 @@ offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 tooltip_text = "File Explorer"
 texture_normal = ExtResource("7_18scl")
-
-[node name="Divider" type="ColorRect" parent="Taskbar"]
-layout_mode = 0
-offset_left = 144.0
-offset_right = 152.0
-offset_bottom = 40.0
-color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 
 [node name="ErrorSpawner" type="Timer" parent="."]
 wait_time = 5.0
@@ -979,19 +1012,14 @@ script = ExtResource("25_ejut0")
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="SearchEngine/SearchButtonOnBar" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
-[connection signal="button_up" from="SearchEngine/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
-[connection signal="button_up" from="SearchEngine/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
 [connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar2" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
 [connection signal="button_up" from="Mail/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
 [connection signal="button_up" from="Mail/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
-[connection signal="mouse_entered" from="Mail/Inbox/InboxLine" to="Mail/Inbox/InboxLine" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Mail/Inbox/InboxLine" to="Mail/Inbox/InboxLine" method="_on_mouse_exited"]
+[connection signal="button_up" from="Mail/EmailViewer/TopBar/CloseButton" to="Mail" method="_on_close_button_button_up"]
 [connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]
-[connection signal="mouse_entered" from="FileExplorer/WindowDragBar" to="FileExplorer" method="_on_window_drag_bar_mouse_entered"]
-[connection signal="mouse_exited" from="FileExplorer/WindowDragBar" to="FileExplorer" method="_on_window_drag_bar_mouse_exited"]
-[connection signal="button_up" from="FileExplorer/WindowDragBar/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
-[connection signal="button_up" from="FileExplorer/WindowDragBar/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
+[connection signal="mouse_entered" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_entered"]
+[connection signal="mouse_exited" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_exited"]
+[connection signal="button_up" from="FileExplorer/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
+[connection signal="button_up" from="FileExplorer/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
-[connection signal="button_up" from="Taskbar/SearchEngineBackdrop/SearchEngineButton" to="SearchEngine" method="_on_search_engine_button_button_up"]
-[connection signal="button_up" from="Taskbar/FileExplorerBackdrop/FileExplorerButton" to="FileExplorer" method="_on_file_explorer_button_button_up"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]

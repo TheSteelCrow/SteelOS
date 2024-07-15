@@ -19,4 +19,5 @@ func UpdatePercentage():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	PowerPercentage -= 0.01
 	UpdatePercentage() # move out of process eventually

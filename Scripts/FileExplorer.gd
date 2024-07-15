@@ -13,12 +13,17 @@ var FoldersTree
 var FilesTree
 var OpenedFolder = "None"
 
+var IsFullscreen = false
+
 var Data = {
 	#"Folder" : [["File Name", "FileSize"], ["File Name 2", "FileSize2"]]
 	"Downloads" : [["car.txt", 0], ["bike.txt", 0], ["train.txt", 0]],
 	"Documents" : [["work.txt", 0], ["hardwork.txt", 0], ["easy.txt", 0]],
 	"Photos" : [["cat.gif", 0], ["dog.png", 0], ["fish.jpg", 0]]
 }
+
+func Reset():
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,14 +77,6 @@ func _on_window_drag_bar_mouse_entered():
 func _on_window_drag_bar_mouse_exited():
 	MouseInZone = false
 
-func _on_file_explorer_button_button_up():
-	print("File Explorer Button Pressed")
-	if(visible):
-		hide()
-	else:
-		show()
-		move_to_front()
-
 func OpenFolder(FolderToOpen):
 	FilesTree.clear()
 	FileRoot = FilesTree.create_item()
@@ -93,4 +90,3 @@ func _on_folders_cell_selected():
 	if(TempOpenedFolder in Data):
 		OpenedFolder = TempOpenedFolder
 		OpenFolder(OpenedFolder)
-

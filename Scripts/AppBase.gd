@@ -11,6 +11,8 @@ var App
 
 var AppVisualTransition
 
+var AppPreviousPosition
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	App = get_parent()
@@ -29,8 +31,12 @@ func _ready():
 	)
 	
 	MinimiseButton.button_up.connect(func():
+		AppPreviousPosition = App.position
 		AppVisible = false
-		AppVisualTransition.Minimise()
+		if(App.IsFullscreen == false):
+			AppVisualTransition.Minimise(AppPreviousPosition)
+		else:
+			AppVisualTransition.Minimise(null)
 	)
 	
 	AppButton.button_up.connect(func():
@@ -39,13 +45,22 @@ func _ready():
 			App.move_to_front()
 		
 			if(AppRunning):
-				AppVisualTransition.Maximise()
+				if(App.IsFullscreen == false):
+					AppVisualTransition.Maximise(AppPreviousPosition)
+				else:
+					AppVisualTransition.Maximise(null)
 			elif(not AppRunning):
+				App.Reset()
 				AppRunning = true
 				App.position = Vector2(0,0)
 				App.scale = Vector2(1,1)
 				App.show()
 		elif(AppVisible):
+			AppPreviousPosition = App.position
 			AppVisible = false
-			AppVisualTransition.Minimise()
+			
+			if(App.IsFullscreen == false):
+				AppVisualTransition.Minimise(AppPreviousPosition)
+			else:
+				AppVisualTransition.Minimise(null)
 	)

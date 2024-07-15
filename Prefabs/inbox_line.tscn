@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://k7372chl66bd"]
+
+[ext_resource type="Script" path="res://Scripts/InboxLine.gd" id="1_wq3ee"]
+[ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="2_yfaav"]
+[ext_resource type="Texture2D" uid="uid://ch147g7e5krli" path="res://Images/warning.png" id="3_ohssc"]
+[ext_resource type="Texture2D" uid="uid://2y3iiq1i8k8b" path="res://Images/information.png" id="4_3ifiv"]
+[ext_resource type="Texture2D" uid="uid://b3v4745h3u4at" path="res://Images/import.png" id="5_uavq0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljk6n"]
+bg_color = Color(0.605469, 0.6875, 0.738281, 1)
+
+[node name="InboxLine" type="Button"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1848.0
+offset_bottom = 72.0
+script = ExtResource("1_wq3ee")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1840.0
+offset_bottom = 64.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 41
+theme_override_font_sizes/bold_font_size = 41
+bbcode_enabled = true
+text = "[b] BOSS | URGENT |[/b] Hey where r u, you not responding, do your work, or no job 4 u!"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ButtonsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1584.0
+offset_right = 1840.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ljk6n")
+
+[node name="Delete" type="TextureButton" parent="ButtonsPanel"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 292.0
+offset_bottom = 100.0
+scale = Vector2(0.639963, 0.639963)
+tooltip_text = "Delete"
+texture_normal = ExtResource("2_yfaav")
+
+[node name="Scan" type="TextureButton" parent="ButtonsPanel"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 228.0
+offset_bottom = 100.0
+scale = Vector2(0.639963, 0.639963)
+tooltip_text = "Scan"
+texture_normal = ExtResource("3_ohssc")
+
+[node name="Info" type="TextureButton" parent="ButtonsPanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 164.0
+offset_bottom = 100.0
+scale = Vector2(0.639963, 0.639963)
+tooltip_text = "Information"
+texture_normal = ExtResource("4_3ifiv")
+
+[node name="MarkAsRead" type="TextureButton" parent="ButtonsPanel"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.639963, 0.639963)
+tooltip_text = "Mark as Read"
+texture_normal = ExtResource("5_uavq0")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
