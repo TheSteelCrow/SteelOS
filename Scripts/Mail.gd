@@ -22,14 +22,14 @@ var LoadedEmails = {
 	
 	2 : [
 	"Congratulations!",
-	"We just fired the other employees so your workload is gonna increase! But good news, you have been promoted! You are now one of my Elite™ Employees! Anyway get back to work! Now!\nPS: I'll be sending you tasks to do.", 
+	"Welcome to the company. I have some good news, you have been promoted! You are now one of my Elite™ Employees! Anyway get back to work! Now!\nPS: I'll be sending you tasks to do.", 
 	"Boss",
 	false
 	],
 	
 	3 : [
 	"Task #1",
-	"Your first task is simple, even a simple flat brained monkey like yourself can do it!",
+	"Your first task is simple, even a simple flat brained monkey like yourself can do it! First open the [Team Manager App Name] app, then choose which employees you will be firing. You have until your computer battery reaches 0%, if you don't finish the task in this time, I won't pay you.",
 	"Boss",
 	false
 	]

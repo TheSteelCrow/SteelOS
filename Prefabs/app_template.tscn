@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://yeiirki8kbt3"]
+
+[ext_resource type="Script" path="res://Scripts/AppVisualTransition.gd" id="1_63kjr"]
+[ext_resource type="Script" path="res://Scripts/AppBase.gd" id="2_0sq7b"]
+[ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="3_lrs3p"]
+[ext_resource type="Texture2D" uid="uid://cy466yisyc6ha" path="res://Images/line_horizontal.png" id="4_x3t7d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orvby"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mlkg"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8pnp"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gd46"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv3e4"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="AppTemplate" type="Panel"]
+offset_right = 1920.0
+offset_bottom = 1040.0
+
+[node name="AppVisualTransitionComponent" type="Node" parent="."]
+script = ExtResource("1_63kjr")
+
+[node name="AppBaseComponent" type="Node" parent="."]
+script = ExtResource("2_0sq7b")
+
+[node name="TopPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+
+[node name="CloseButton" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_orvby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0mlkg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b8pnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0gd46")
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("3_lrs3p")
+
+[node name="MinimiseButton" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_orvby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yv3e4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b8pnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0gd46")
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("4_x3t7d")

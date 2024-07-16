@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=77 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -27,7 +27,10 @@
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="16_16jal"]
 [ext_resource type="Texture2D" uid="uid://m17vmv0sxy43" path="res://Images/massiveMultiplayer.png" id="20_nven0"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
+[ext_resource type="Texture2D" uid="uid://doe2uy8d8vc7r" path="res://Images/multiplayer.png" id="27_ey8ij"]
+[ext_resource type="Script" path="res://Scripts/TeamManager.gd" id="29_pvpks"]
 [ext_resource type="Script" path="res://Scripts/CustomCommandLine.gd" id="30_l4ac3"]
+[ext_resource type="PackedScene" uid="uid://cqav6qdrt5c7h" path="res://Prefabs/new_character_renderer.tscn" id="31_w21jf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aggrj"]
 bg_color = Color(0, 0, 0, 0)
@@ -206,6 +209,35 @@ corner_radius_bottom_left = 15
 bg_color = Color(0.662745, 0.305882, 0.482353, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqyk0"]
+bg_color = Color(0.423529, 0.423529, 0.423529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5e6x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orvby"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mlkg"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8pnp"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gd46"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv3e4"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -624,7 +656,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_pd5a5")
 text = "CLOSE"
 
 [node name="FileExplorer" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 312.0
 offset_top = 192.0
@@ -918,6 +949,23 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "File Explorer"
 texture_normal = ExtResource("7_18scl")
 
+[node name="TeamManagerBackdrop" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 232.0
+offset_bottom = 40.0
+tooltip_text = "Email"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="TeamManagerButton" type="TextureButton" parent="Taskbar/TeamManagerBackdrop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "TeamManager"
+texture_normal = ExtResource("27_ey8ij")
+
 [node name="ErrorSpawner" type="Timer" parent="."]
 wait_time = 5.0
 
@@ -1010,11 +1058,75 @@ offset_right = 284.0
 offset_bottom = 56.0
 script = ExtResource("25_ejut0")
 
+[node name="TeamManager" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xqyk0")
+script = ExtResource("29_pvpks")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="TeamManager"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="TeamManager"]
+script = ExtResource("16_16jal")
+
+[node name="TopPanel" type="Panel" parent="TeamManager"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k5e6x")
+
+[node name="CloseButton" type="Button" parent="TeamManager/TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_orvby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0mlkg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b8pnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0gd46")
+
+[node name="TextureRect" type="TextureRect" parent="TeamManager/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="TeamManager/TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_orvby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yv3e4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b8pnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0gd46")
+
+[node name="TextureRect" type="TextureRect" parent="TeamManager/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
+
+[node name="NewCharacterRenderer" parent="TeamManager" instance=ExtResource("31_w21jf")]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 112.0
+offset_right = 976.0
+offset_bottom = 968.0
+
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="SearchEngine/SearchButtonOnBar" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
 [connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar2" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
-[connection signal="button_up" from="Mail/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
-[connection signal="button_up" from="Mail/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/TopBar/CloseButton" to="Mail" method="_on_close_button_button_up"]
 [connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]
 [connection signal="mouse_entered" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_entered"]
