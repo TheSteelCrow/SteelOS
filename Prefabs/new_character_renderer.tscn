@@ -549,13 +549,13 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("54_2va1d")
+}, {
+"duration": 1.0,
 "texture": ExtResource("52_7stxn")
 }, {
 "duration": 1.0,
 "texture": ExtResource("53_m8tn5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("54_2va1d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("55_hprvp")
@@ -665,9 +665,6 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("80_lt0nl")
-}, {
-"duration": 1.0,
 "texture": ExtResource("81_oxf8q")
 }, {
 "duration": 1.0,
@@ -699,6 +696,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("91_or5as")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_lt0nl")
 }],
 "loop": true,
 "name": &"PantsLong",
@@ -708,9 +708,6 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_a0tej"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("92_8mrh1")
-}, {
 "duration": 1.0,
 "texture": ExtResource("93_5h2k7")
 }, {
@@ -743,6 +740,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("103_uxwny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_8mrh1")
 }],
 "loop": true,
 "name": &"PantsMedium",
@@ -752,9 +752,6 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_rfukt"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("104_7jj31")
-}, {
 "duration": 1.0,
 "texture": ExtResource("105_faxeu")
 }, {
@@ -787,6 +784,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("115_ah5oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_7jj31")
 }],
 "loop": true,
 "name": &"PantsShort",
@@ -1669,24 +1669,6 @@ animations = [{
 "texture": ExtResource("339_y3ve7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("340_v11od")
-}, {
-"duration": 1.0,
-"texture": ExtResource("341_m0yac")
-}, {
-"duration": 1.0,
-"texture": ExtResource("342_dtx25")
-}, {
-"duration": 1.0,
-"texture": ExtResource("343_btxh7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("344_ignoh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("345_p7rq2")
-}, {
-"duration": 1.0,
 "texture": ExtResource("346_urlng")
 }, {
 "duration": 1.0,
@@ -1703,6 +1685,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("351_hccpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("340_v11od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("341_m0yac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("342_dtx25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("343_btxh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("344_ignoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("345_p7rq2")
 }, {
 "duration": 1.0,
 "texture": ExtResource("352_dabkf")
@@ -1870,7 +1870,7 @@ flip_h = true
 
 [node name="ShirtMediumRight" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(481, 355)
+position = Vector2(489, 354)
 sprite_frames = SubResource("SpriteFrames_y28qb")
 animation = &"ShirtMedium"
 
