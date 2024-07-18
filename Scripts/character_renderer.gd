@@ -7,21 +7,49 @@ var MINIMUM_AGE = 18
 
 var random = RandomNumberGenerator.new()
 
+var ManNames = ["Liam", "Noah", "Oliver", "Elijah", "William", "James", "Benjamin", "Lucas", "Henry", "Alexander", "Mason", "Michael", "Ethan", "Daniel", "Jacob", "Logan", "Jackson", "Levi", "Sebastian", "Mateo", "Jack", "Owen", "Theodore", "Aiden", "Samuel", "Joseph", "John", "David", "Wyatt", "Matthew", "Luke", "Asher", "Carter", "Julian", "Grayson", "Leo", "Jayden", "Gabriel", "Isaac", "Lincoln", "Anthony", "Hudson", "Dylan", "Ezra", "Thomas", "Charles", "Christopher", "Jaxon", "Maverick", "Josiah"]
+var WomanNames = ["Olivia", "Emma", "Ava", "Sophia", "Isabella", "Mia", "Amelia", "Harper", "Evelyn", "Abigail", "Emily", "Ella", "Elizabeth", "Camila", "Luna", "Sofia", "Avery", "Mila", "Aria", "Scarlett", "Penelope", "Layla", "Chloe", "Victoria", "Madison", "Eleanor", "Grace", "Nora", "Riley", "Zoey", "Hannah", "Hazel", "Lily", "Ellie", "Violet", "Lillian", "Zoe", "Stella", "Aurora", "Natalie", "Emilia", "Everly", "Leah", "Aubrey", "Willow", "Addison", "Lucy", "Audrey", "Bella", "Nova"]
+
+var Age
+var YearsOfWork
+var SexName
+var CharacterName
+var NumberOfChildren
+
 @onready var Info = $Info
 
-func _on_button_button_up():
+func Generate():
 	Info.text = ""
 	random.randomize()
-	var Age = random.randi_range(MINIMUM_AGE, MAXIMUM_AGE)
+	Age = random.randi_range(MINIMUM_AGE, MAXIMUM_AGE)
+	
+	random.randomize()
+	YearsOfWork = int((Age/25) + (random.randi_range(1, 3)))
+	
+	var RandomPercentage = random.randi_range(1, 100)
+	if(RandomPercentage < 31):
+		NumberOfChildren = 0
+	elif(RandomPercentage > 31 and RandomPercentage < 45):
+		NumberOfChildren = 1
+	elif(RandomPercentage > 45 and RandomPercentage < 73):
+		NumberOfChildren = 2
+	elif(RandomPercentage > 73 and RandomPercentage < 88):
+		NumberOfChildren = 3
+	elif(RandomPercentage > 88 and RandomPercentage < 95):
+		NumberOfChildren = 4
+	elif(RandomPercentage > 95 and RandomPercentage < 100):
+		NumberOfChildren = 5
 	
 	random.randomize()
 	var SexBinary = random.randi_range(0, 1) # it was pretty hard to find a variable name for this one
-	var SexName
 	
+	random.randomize()
 	if(SexBinary == 0):
 		SexName = "Man"
+		CharacterName = ManNames[random.randi_range(0, ManNames.size()-1)]
 	elif(SexBinary == 1):
 		SexName = "Woman"
+		CharacterName = WomanNames[random.randi_range(0, WomanNames.size()-1)]
 		
 	Info.text += "\nSex: " + SexName
 	

@@ -37,6 +37,9 @@ var LoadedEmails = {
 }
 
 func Reset():
+	pass
+
+func Open():
 	print("Reseting " + AppName)
 	for InboxLine in Inbox.get_children():
 		Inbox.remove_child(InboxLine)

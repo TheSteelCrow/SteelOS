@@ -23,6 +23,9 @@ var Mottos = [
 	"Parcourir: Your Window to the Web, Our Door to Your Data."
 ]
 
+func Open():
+	pass
+
 func Reset():
 	ResetSearchBrowserText()
 

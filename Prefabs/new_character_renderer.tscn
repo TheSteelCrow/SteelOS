@@ -1,7 +1,8 @@
-[gd_scene load_steps=384 format=3 uid="uid://cqav6qdrt5c7h"]
+[gd_scene load_steps=387 format=3 uid="uid://cqav6qdrt5c7h"]
 
 [ext_resource type="Script" path="res://Scripts/character_renderer.gd" id="1_8wal5"]
 [ext_resource type="Texture2D" uid="uid://v71dihd0bwtw" path="res://Images/CharacterReady/Leg/tint1_leg.png" id="1_pfaih"]
+[ext_resource type="Texture2D" uid="uid://c23v2uw8wg7hj" path="res://Images/360_F_251990861_KIcXHkkQqT8jwLMZA5Gl8VwYbOt5yZH9.jpg" id="2_sra4j"]
 [ext_resource type="Texture2D" uid="uid://cj5c73oqcr8ag" path="res://Images/CharacterReady/Leg/tint2_leg.png" id="2_xauqi"]
 [ext_resource type="Texture2D" uid="uid://dt4qypmy2f7op" path="res://Images/CharacterReady/Leg/tint3_leg.png" id="3_4lbb8"]
 [ext_resource type="Texture2D" uid="uid://chrsylceyv5cm" path="res://Images/CharacterReady/Leg/tint4_leg.png" id="4_w88lg"]
@@ -364,9 +365,11 @@
 [ext_resource type="Texture2D" uid="uid://decwqe5w8kcha" path="res://Images/CharacterReady/HairWoman/whiteWoman4.png" id="361_go6sc"]
 [ext_resource type="Texture2D" uid="uid://rhd218i1t548" path="res://Images/CharacterReady/HairWoman/whiteWoman5.png" id="362_n3y5k"]
 [ext_resource type="Texture2D" uid="uid://dsl0xph617e1g" path="res://Images/CharacterReady/HairWoman/whiteWoman6.png" id="363_uudbh"]
+[ext_resource type="Texture2D" uid="uid://dlpppm8vlu8im" path="res://Images/Buttons/FIRED.png" id="366_vhdw2"]
+[ext_resource type="Texture2D" uid="uid://daxdp16xgw22f" path="res://Images/Buttons/HIRED.png" id="367_1lxxh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3ciu"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.290196, 0.290196, 0.564706, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_105u6"]
 animations = [{
@@ -1746,189 +1749,197 @@ animations = [{
 }]
 
 [node name="NewCharacterRenderer" type="Panel"]
+clip_contents = true
 offset_left = 64.0
-offset_top = 120.0
-offset_right = 824.0
-offset_bottom = 976.0
+offset_top = 384.0
+offset_right = 928.0
+offset_bottom = 1024.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c3ciu")
 script = ExtResource("1_8wal5")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -144.0
+offset_top = -96.0
+offset_right = 1224.0
+offset_bottom = 640.0
+texture = ExtResource("2_sra4j")
+
 [node name="LegRight" type="AnimatedSprite2D" parent="."]
-position = Vector2(438.5, 562.5)
+position = Vector2(494.5, 508)
 rotation = 0.000781324
 sprite_frames = SubResource("SpriteFrames_105u6")
 animation = &"Leg"
 
 [node name="LegLeft" type="AnimatedSprite2D" parent="."]
-position = Vector2(326.5, 562.5)
+position = Vector2(382.5, 508)
 sprite_frames = SubResource("SpriteFrames_105u6")
 animation = &"Leg"
 flip_h = true
 
 [node name="ShoeRight" type="AnimatedSprite2D" parent="."]
-position = Vector2(469.5, 653.5)
+position = Vector2(525.5, 599)
 sprite_frames = SubResource("SpriteFrames_6gxmm")
 
 [node name="ShoeLeft" type="AnimatedSprite2D" parent="."]
-position = Vector2(296.5, 653.5)
+position = Vector2(352.5, 599)
 sprite_frames = SubResource("SpriteFrames_6gxmm")
 flip_h = true
 
 [node name="Neck" type="AnimatedSprite2D" parent="."]
-position = Vector2(382.5, 322.5)
+position = Vector2(438.5, 268)
 sprite_frames = SubResource("SpriteFrames_olfxr")
 animation = &"Neck"
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
-position = Vector2(382.5, 234.5)
+position = Vector2(438.5, 180)
 sprite_frames = SubResource("SpriteFrames_ep8ug")
 animation = &"Head"
 
 [node name="Face" type="AnimatedSprite2D" parent="."]
-position = Vector2(382.5, 240.5)
+position = Vector2(438.5, 186)
 sprite_frames = SubResource("SpriteFrames_uhjoj")
 animation = &"Face"
 
 [node name="ArmRight" type="AnimatedSprite2D" parent="."]
-position = Vector2(518.5, 378.5)
+position = Vector2(574.5, 324)
 sprite_frames = SubResource("SpriteFrames_i76pn")
 animation = &"Arm"
 
 [node name="ArmLeft" type="AnimatedSprite2D" parent="."]
-position = Vector2(246.5, 378.5)
+position = Vector2(302.5, 324)
 sprite_frames = SubResource("SpriteFrames_i76pn")
 animation = &"Arm"
 flip_h = true
 
 [node name="HandRight" type="AnimatedSprite2D" parent="."]
-position = Vector2(590.5, 442.5)
+position = Vector2(646.5, 388)
 sprite_frames = SubResource("SpriteFrames_raurk")
 animation = &"Hand"
 
 [node name="HandLeft" type="AnimatedSprite2D" parent="."]
-position = Vector2(174.5, 442.5)
+position = Vector2(230.5, 388)
 sprite_frames = SubResource("SpriteFrames_raurk")
 animation = &"Hand"
 flip_h = true
 
 [node name="PantsLongRight" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(433.5, 570.5)
+position = Vector2(489.5, 516)
 sprite_frames = SubResource("SpriteFrames_elg10")
 animation = &"PantsLong"
 
 [node name="PantsLongLeft" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(331.5, 570.5)
+position = Vector2(387.5, 516)
 sprite_frames = SubResource("SpriteFrames_elg10")
 animation = &"PantsLong"
 flip_h = true
 
 [node name="PantsMediumRight" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(431.5, 556.5)
+position = Vector2(487.5, 502)
 sprite_frames = SubResource("SpriteFrames_a0tej")
 animation = &"PantsMedium"
 
 [node name="PantsMediumLeft" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(329.5, 556.5)
+position = Vector2(385.5, 502)
 sprite_frames = SubResource("SpriteFrames_a0tej")
 animation = &"PantsMedium"
 flip_h = true
 
 [node name="PantsShortRight" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(430.5, 548.5)
+position = Vector2(486.5, 494)
 sprite_frames = SubResource("SpriteFrames_rfukt")
 animation = &"PantsShort"
 
 [node name="PantsShortLeft" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(330.5, 548.5)
+position = Vector2(386.5, 494)
 sprite_frames = SubResource("SpriteFrames_rfukt")
 animation = &"PantsShort"
 flip_h = true
 
 [node name="PantsMiddle" type="AnimatedSprite2D" parent="."]
-position = Vector2(382.5, 498.5)
+position = Vector2(438.5, 444)
 sprite_frames = SubResource("SpriteFrames_jyppq")
 animation = &"PantsMiddle"
 
 [node name="ShirtLongRight" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(518.5, 378.5)
+position = Vector2(574.5, 324)
 sprite_frames = SubResource("SpriteFrames_2cvqk")
 animation = &"ShirtLong"
 
 [node name="ShirtLongLeft" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(246.5, 378.5)
+position = Vector2(302.5, 324)
 sprite_frames = SubResource("SpriteFrames_2cvqk")
 animation = &"ShirtLong"
 flip_h = true
 
 [node name="ShirtMediumRight" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(489, 354)
+position = Vector2(545, 299.5)
 sprite_frames = SubResource("SpriteFrames_y28qb")
 animation = &"ShirtMedium"
 
 [node name="ShirtMediumLeft" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(274, 355)
+position = Vector2(330, 300.5)
 sprite_frames = SubResource("SpriteFrames_y28qb")
 animation = &"ShirtMedium"
 flip_h = true
 
 [node name="ShirtShortRight" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(461, 347)
+position = Vector2(517, 292.5)
 sprite_frames = SubResource("SpriteFrames_3h7bq")
 animation = &"ShirtShort"
 
 [node name="ShirtShortLeft" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(298, 347)
+position = Vector2(354, 292.5)
 sprite_frames = SubResource("SpriteFrames_3h7bq")
 animation = &"ShirtShort"
 flip_h = true
 
 [node name="ShirtMiddleMan" type="AnimatedSprite2D" parent="."]
-position = Vector2(382.5, 394.5)
+position = Vector2(438.5, 340)
 sprite_frames = SubResource("SpriteFrames_dgjyn")
 animation = &"ShirtMiddle"
 
 [node name="ShirtMiddleWoman" type="AnimatedSprite2D" parent="."]
-position = Vector2(382.5, 394.5)
+position = Vector2(438.5, 340)
 sprite_frames = SubResource("SpriteFrames_6tnnj")
 animation = &"ShirtMiddle"
 
 [node name="HairMan" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(382.5, 194.5)
+position = Vector2(438.5, 140)
 sprite_frames = SubResource("SpriteFrames_3yiic")
 animation = &"HairMan"
 
 [node name="HairWoman" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(384, 240)
+position = Vector2(440, 185.5)
 sprite_frames = SubResource("SpriteFrames_8itc6")
 animation = &"HairWoman"
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 214.5
-offset_top = 706.5
-offset_right = 534.5
-offset_bottom = 770.5
-text = "GENERATE"
-
 [node name="Info" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 72.0
 text = "Age:
 IsOld = "
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[node name="Fired" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 218.0
+offset_top = 120.0
+offset_right = 518.0
+offset_bottom = 270.0
+rotation = 0.349066
+scale = Vector2(2, 2)
+texture = ExtResource("366_vhdw2")
+
+[node name="Hired" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 112.0
+offset_top = 312.0
+offset_right = 412.0
+offset_bottom = 462.0
+rotation = -0.349066
+scale = Vector2(2, 2)
+texture = ExtResource("367_1lxxh")

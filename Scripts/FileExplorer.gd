@@ -22,6 +22,9 @@ var Data = {
 	"Photos" : [["cat.gif", 0], ["dog.png", 0], ["fish.jpg", 0]]
 }
 
+func Open():
+	pass
+
 func Reset():
 	pass
 

@@ -50,7 +50,7 @@ func _ready():
 				else:
 					AppVisualTransition.Maximise(null)
 			elif(not AppRunning):
-				App.Reset()
+				App.Open()
 				AppRunning = true
 				App.position = Vector2(0,0)
 				App.scale = Vector2(1,1)
