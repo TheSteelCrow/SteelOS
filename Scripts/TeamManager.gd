@@ -16,6 +16,8 @@ var random = RandomNumberGenerator.new()
 
 var CanInteract = true
 
+var Taskbar
+
 func SetupRound():
 	RemoveOldCharacters()
 	CanInteract = true
@@ -53,15 +55,16 @@ func GenerateInfo(CharacterNumber):
 	var InfoOutput = get_node("BottomPanel" + CharacterNumber).get_node("Info")
 	var InfoInput = get_node("Character" + CharacterNumber)
 	
-	var InfoUnformated = "%s is a%s %s employee who has worked at the company for %s %s year%s. %s is %s and has %s child%s."
+	var InfoUnformated = "%s is a%s %s employee who has worked at the company for %s %s year%s. %s is %s and %s %s child%s."
 	
 	var Pronoun
 	var IncludeS = ""
 	var MakeChildrenPlural = "ren"
-	var NumberOfChildrenText
+	var NumberOfChildrenText = ""
 	random.randomize()
 	var RandomQualityWord = QualityWords[random.randi_range(0, QualityWords.size()-1)]
 	var IncludeN = ""
+	var ParentalStatusText
 	
 	if(InfoInput.SexName == "Man"):
 		Pronoun = "He"
@@ -73,8 +76,13 @@ func GenerateInfo(CharacterNumber):
 	
 	if(InfoInput.NumberOfChildren == 0):
 		NumberOfChildrenText = "no"
+		ParentalStatusText = "has"
 	else:
 		NumberOfChildrenText = str(InfoInput.NumberOfChildren)
+		if(InfoInput.SexName == "Man"):
+			ParentalStatusText = "is a father to"
+		elif(InfoInput.SexName == "Woman"):
+			ParentalStatusText = "is a mother to"
 		
 	if(InfoInput.NumberOfChildren == 1):
 		MakeChildrenPlural = ""
@@ -83,7 +91,7 @@ func GenerateInfo(CharacterNumber):
 		IncludeN = "n"
 	
 	random.randomize()
-	InfoOutput.text = InfoUnformated % [InfoInput.CharacterName, IncludeN, RandomQualityWord, ApproximationWords[random.randi_range(0, ApproximationWords.size()-1)], str(InfoInput.YearsOfWork), IncludeS, Pronoun, str(InfoInput.Age), NumberOfChildrenText, MakeChildrenPlural]
+	InfoOutput.text = InfoUnformated % [InfoInput.CharacterName, IncludeN, RandomQualityWord, ApproximationWords[random.randi_range(0, ApproximationWords.size()-1)], str(InfoInput.YearsOfWork), IncludeS, Pronoun, str(InfoInput.Age), ParentalStatusText, NumberOfChildrenText, MakeChildrenPlural]
 
 	#generate something good and something bad about them, eg they steal office supplies
 
@@ -102,16 +110,21 @@ func Open():
 	SetupRound()
 
 func _ready():
+	Taskbar = get_parent().get_node("Taskbar")
+	
 	var HireFireButtons = get_node("BottomPanel1").get_children()
 	HireFireButtons.append_array(get_node("BottomPanel2").get_children())
 	
 	for HireFireButton in HireFireButtons:
 		if(HireFireButton.name.contains("Button")):
-			HireFireButton.button_up.connect(func():
-				if(CanInteract == true):
-					CanInteract = false
-					get_node("Character" + str(HireFireButton.name)[0]).get_node(ActivityType + "d").show()
-					print(HireFireButton.name)
-					await get_tree().create_timer(2).timeout
-					SetupRound()
-			)
+			HireFireButton.button_up.connect(func():HireFireButtonUp(HireFireButton))
+
+func HireFireButtonUp(HireFireButton):
+	if(CanInteract == true):
+		Taskbar.TaskProgress += 1
+		
+		CanInteract = false
+		get_node("Character" + str(HireFireButton.name)[0]).get_node(ActivityType + "d").show()
+		print(HireFireButton.name)
+		await get_tree().create_timer(2).timeout
+		SetupRound()

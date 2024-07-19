@@ -39,6 +39,8 @@ func Generate():
 		NumberOfChildren = 4
 	elif(RandomPercentage > 95 and RandomPercentage < 100):
 		NumberOfChildren = 5
+	else:
+		NumberOfChildren = 0
 	
 	random.randomize()
 	var SexBinary = random.randi_range(0, 1) # it was pretty hard to find a variable name for this one

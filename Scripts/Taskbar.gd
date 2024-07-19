@@ -6,6 +6,15 @@ var MainUI
 
 #var SystemTime = Time.get_time_dict_from_system()
 
+var TaskProgress = 0
+var TaskQuota = 10
+
+var ProgressText = "[center]%s/%s[/center]"
+
+@onready var Progress = $Progress
+
+var TaskActive = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#SystemTime.hour = 0
@@ -19,6 +28,12 @@ func _ready():
 func _process(delta):
 	if(MainUI.ShuttingDown == true):
 		return
+	if(TaskActive == true):
+		Progress.show()
+		Progress.text = ProgressText % [TaskProgress, TaskQuota]
+	
+	if(TaskProgress >= TaskQuota):
+		TaskActive = false
 	
 	move_to_front()
 	var TimeText = get_node("TimeText")
