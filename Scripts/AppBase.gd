@@ -16,6 +16,13 @@ var AppVisualTransition
 var AppPreviousPosition
 
 # Called when the node enters the scene tree for the first time.
+
+func Close():
+	AppRunning = false
+	AppVisible = false
+	App.hide()
+	App.Reset()
+
 func _ready():
 	Main = get_tree().root.get_child(0)
 	
@@ -27,12 +34,7 @@ func _ready():
 	MinimiseButton = App.get_node("TopPanel").get_node("MinimiseButton")
 	AppButton = App.get_parent().get_node("Taskbar").get_node(AppName + "Backdrop").get_node(AppName + "Button")
 	
-	CloseButton.button_up.connect(func():
-		AppRunning = false
-		AppVisible = false
-		App.hide()
-		App.Reset()
-	)
+	CloseButton.button_up.connect(Close)
 	
 	MinimiseButton.button_up.connect(func():
 		AppPreviousPosition = App.position

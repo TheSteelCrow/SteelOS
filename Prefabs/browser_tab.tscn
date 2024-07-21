@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://blqmq172cp80y"]
+
+[ext_resource type="Script" path="res://Scripts/BrowserTab.gd" id="1_ywg53"]
+[ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="2_awt58"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2ewh"]
+bg_color = Color(0.376471, 0.376471, 0.376471, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_747qa"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n5x0"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[node name="BrowserTab" type="Button"]
+offset_right = 328.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2ewh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_747qa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0n5x0")
+text = "Parcourir"
+text_overrun_behavior = 3
+script = ExtResource("1_ywg53")
+
+[node name="CloseTabButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = 7.0
+offset_right = 31.0
+offset_bottom = 71.0
+grow_horizontal = 0
+scale = Vector2(0.519743, 0.519743)
+texture_normal = ExtResource("2_awt58")

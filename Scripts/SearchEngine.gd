@@ -27,15 +27,62 @@ func OnAppVisible():
 	pass
 
 func Open():
-	pass
+	InsertNewTab()
 
 func Reset():
+	for Tab in TabsLine.get_children():
+		Tab.queue_free()
 	ResetSearchBrowserText()
 
 var Websites = ["OurChube", "TotallyNotScam", "Microsoft"]
 
+var BrowserTabPrefab
+
+var TabsLine
+
+var MinimumTabLength = 180
+var MaximumTabLength = 300-8
+var MaxNumberOfTabs = 14
+
+var OpenedTab
+
+func OpenTab(TabToOpen):
+	OpenedTab = TabToOpen
+	for Tab in TabsLine.get_children():
+		Tab.Deselect()
+	OpenedTab.Select()
+
+func InsertNewTab():
+	var NewTab = BrowserTabPrefab.instantiate()
+	TabsLine.add_child(NewTab)
+	NewTab.text = "Parcourir"
+	AlignTabs()
+	OpenedTab = NewTab
+	OpenTab(NewTab)
+
+func AlignTabs():
+	var TabsInTabsLine = TabsLine.get_children()
+	#TabsInTabsLine.reverse()
+	
+	for Tab in TabsInTabsLine:
+		Tab.size.x = (TabsLine.size.x - (8 * TabsInTabsLine.size())) / TabsInTabsLine.size()
+
+	for i in range(TabsInTabsLine.size()):
+		TabsInTabsLine[i].position = (Vector2(8 + ((TabsInTabsLine[0].size.x + 8) * i), 0))
+
+	#if(TabsInTabsLine.size() > 6):
+		#for Tab in TabsInTabsLine:
+			#Tab.size.x = MaximumTabLength - (16 * TabsInTabsLine.size())
+		
+	#for i in range(TabsInTabsLine.size()):
+		#TabsInTabsLine[i].position = (Vector2(8 + ((TabsInTabsLine[0].size.x + 8) * i), 0))
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	BrowserTabPrefab = preload("res://Prefabs/browser_tab.tscn")
+	
+	get_node("LineTwo/NewTabButton").button_up.connect(InsertNewTab)
+	TabsLine = get_node("TopPanel/Tabs")
 	AppVisualTransition = get_node("AppVisualTransitionComponent")
 	UserSearchInput = get_node("UserSearchInput")
 	hide()
