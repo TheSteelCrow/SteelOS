@@ -14,8 +14,11 @@ var Taskbar
 
 var StartTaskButton
 var CancelTaskButton
+var CompleteTaskButton
 
-#	1 : ["Subject", "Content", "Sender", HasBeenRead, IsTask],
+var OpenedEmailCode
+
+#	1 : ["Subject", "Content", "Sender", HasBeenRead, IsTask, [TaskName, IsTaskCompleted]],
 var LoadedEmails = {
 	
 	1 : [
@@ -23,7 +26,8 @@ var LoadedEmails = {
 	"Welcome to the game! The game is in the early stages of development. Remember to read your emails, good luck!",
 	"CrowOS",
 	false,
-	false
+	false,
+	null
 	],
 	
 	2 : [
@@ -31,18 +35,30 @@ var LoadedEmails = {
 	"Welcome to the company. I have some good news, you have been promoted! You are now one of my Elite™ Employees! Anyway get back to work! Now!\nPS: I'll be sending you tasks to do.", 
 	"Boss",
 	false,
-	false
+	false,
+	null
 	],
 	
 	3 : [
 	"Task #1",
-	"Your first task is simple, even a simple flat brained monkey like yourself can do it! First open the [Team Manager App Name] app, then choose which employees you will be firing. You have until your computer battery reaches 0%, if you don't finish the task in this time, I won't pay you.",
+	"Your first task is simple, even a simple flat brained monkey like yourself can do it! First open the Team Manager app, then choose which employees you will be firing. You have until your computer battery reaches 0%, if you don't finish the task in this time, I won't pay you. You will see a progress counter on the bottom right of your taskbar.",
 	"Boss",
 	false,
-	true
+	true,
+	["Fire", false]
+	],
+	4 : [
+	"Task #4",
+	"It turns out, we ended up needing those ten employees that your fired earlier. So we will have to hire some replacements. Again, open the team manager app, beware of your battery, and get cracking!",
+	"Boss",
+	false,
+	true,
+	["Hire", false]
 	]
-	
 }
+
+func OnAppVisible():
+	pass
 
 func Reset():
 	pass
@@ -67,15 +83,28 @@ func CreateInboxLines():
 	AlignInboxLines()
 
 func OpenEmail(Code):
-	if(LoadedEmails[Code][4] == true):
-		if(Taskbar.TaskActive == true):
-			StartTaskButton.hide()
-			CancelTaskButton.show()
-		elif(Taskbar.TaskActive == false):
+	OpenedEmailCode = Code
+	
+	if(LoadedEmails[Code][4] == true):#If Email is task
+		if(Taskbar.TaskActive == true and Taskbar.TaskName == LoadedEmails[Code][5][0]):
+			if(Taskbar.TaskProgress == Taskbar.TaskQuota):
+				StartTaskButton.hide()
+				CancelTaskButton.hide()
+				CompleteTaskButton.show()
+			else:
+				CompleteTaskButton.hide()
+				StartTaskButton.hide()
+				CancelTaskButton.show()
+		elif(Taskbar.TaskName == "None"):
+			CompleteTaskButton.hide()
 			StartTaskButton.show()
 			CancelTaskButton.hide()
-		get_node("EmailViewer/StartTaskButton").show()
+		else:
+			CompleteTaskButton.hide()
+			StartTaskButton.hide()
+			CancelTaskButton.hide()
 	else:
+		CompleteTaskButton.hide()
 		StartTaskButton.hide()
 		CancelTaskButton.hide()
 	
@@ -86,14 +115,19 @@ func OpenEmail(Code):
 	Inbox.hide()
 	
 func _on_start_task_button_button_up():
-	Taskbar.TaskActive = true
+	Taskbar.StartTask(LoadedEmails[OpenedEmailCode][5][0])
 	StartTaskButton.hide()
 	CancelTaskButton.show()
 
 func _on_cancel_task_button_button_up():
-	Taskbar.TaskActive = false
+	Taskbar.CancelTask()
 	StartTaskButton.show()
 	CancelTaskButton.hide()
+
+func _on_complete_task_button_button_up():
+	Taskbar.CompleteTask()
+	LoadedEmails[OpenedEmailCode][5][1] = true
+	CompleteTaskButton.hide()
 	
 func _on_close_button_button_up():
 	EmailViewer.hide()
@@ -102,6 +136,7 @@ func _on_close_button_button_up():
 func _ready():
 	StartTaskButton = get_node("EmailViewer/StartTaskButton")
 	CancelTaskButton = get_node("EmailViewer/CancelTaskButton")
+	CompleteTaskButton = get_node("EmailViewer/CompleteTaskButton")
 	Taskbar = get_parent().get_node("Taskbar")
 	InboxLinePrefab = preload("res://Prefabs/inbox_line.tscn")
 

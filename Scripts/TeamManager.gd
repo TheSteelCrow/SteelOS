@@ -22,12 +22,12 @@ func SetupRound():
 	RemoveOldCharacters()
 	CanInteract = true
 	
-	if(ActivityType == "Fire"):
+	if(Taskbar.TaskName == "Fire"):
 		get_node("BottomPanel1").get_node("1FireButton").show()
 		get_node("BottomPanel2").get_node("2FireButton").show()
 		get_node("BottomPanel1").get_node("1HireButton").hide()
 		get_node("BottomPanel2").get_node("2HireButton").hide()
-	elif(ActivityType == "Hire"):
+	elif(Taskbar.TaskName == "Hire"):
 		get_node("BottomPanel1").get_node("1HireButton").show()
 		get_node("BottomPanel2").get_node("2HireButton").show()
 		get_node("BottomPanel1").get_node("1FireButton").hide()
@@ -38,6 +38,7 @@ func SetupRound():
 	Character1 = NewCharacterRenderer.instantiate()
 	Character1.name = "Character1"
 	add_child(Character1)
+	move_child(Character1, 1)
 	Character1.position = Vector2(64,64)
 	Character1.Generate()
 	GenerateInfo("1")
@@ -46,6 +47,7 @@ func SetupRound():
 	Character2 = NewCharacterRenderer.instantiate()
 	Character2.name = "Character2"
 	add_child(Character2)
+	move_child(Character2, 1)
 	Character2.position = Vector2(992,64)
 	Character2.Generate()
 	GenerateInfo("2")
@@ -96,7 +98,7 @@ func GenerateInfo(CharacterNumber):
 	#generate something good and something bad about them, eg they steal office supplies
 
 func Reset():
-	pass
+	SetupRound()
 
 func RemoveOldCharacters():
 	if(Character1):
@@ -110,6 +112,8 @@ func Open():
 	SetupRound()
 
 func _ready():
+	get_node("Warning").show()
+	
 	Taskbar = get_parent().get_node("Taskbar")
 	
 	var HireFireButtons = get_node("BottomPanel1").get_children()
@@ -119,12 +123,23 @@ func _ready():
 		if(HireFireButton.name.contains("Button")):
 			HireFireButton.button_up.connect(func():HireFireButtonUp(HireFireButton))
 
+func OnAppVisible():
+	Reset()
+	
+	if((Taskbar.TaskActive == true) && (Taskbar.TaskName == "Hire" or Taskbar.TaskName == "Fire") && Taskbar.TaskQuota != Taskbar.TaskProgress):
+		get_node("Warning").hide()
+	else:
+		get_node("Warning").show()
+
 func HireFireButtonUp(HireFireButton):
 	if(CanInteract == true):
-		Taskbar.TaskProgress += 1
+		if((Taskbar.TaskActive == true) && (Taskbar.TaskName == "Hire" or Taskbar.TaskName == "Fire")):
+			Taskbar.TaskProgress += 1
 		
 		CanInteract = false
-		get_node("Character" + str(HireFireButton.name)[0]).get_node(ActivityType + "d").show()
+		get_node("Character" + str(HireFireButton.name)[0]).get_node(Taskbar.TaskName + "d").show()
 		print(HireFireButton.name)
 		await get_tree().create_timer(2).timeout
 		SetupRound()
+		if(Taskbar.TaskProgress == Taskbar.TaskQuota):
+			get_node("Warning").show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=89 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://Scripts/CustomCommandLine.gd" id="30_l4ac3"]
 [ext_resource type="Texture2D" uid="uid://b13qtpupt6j1o" path="res://Images/Buttons/HIRE.png" id="31_n03qj"]
 [ext_resource type="Texture2D" uid="uid://c62bjw81ne4od" path="res://Images/Buttons/FIRE.png" id="32_lcj4x"]
+[ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="33_7y27u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aggrj"]
 bg_color = Color(0, 0, 0, 0)
@@ -125,6 +126,28 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd5a5"]
+bg_color = Color(0.572549, 0.243137, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22sm6"]
+bg_color = Color(0.894118, 0.396078, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1r10n"]
+bg_color = Color(1, 0.533333, 0.27451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsib1"]
+bg_color = Color(0.619608, 0.266667, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -281,6 +304,9 @@ corner_radius_bottom_left = 5
 bg_color = Color(0.370364, 0.370364, 0.370364, 1)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up2t0"]
+bg_color = Color(0.423529, 0.423529, 0.423529, 1)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -672,6 +698,21 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7yu27")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pd5a5")
 text = "START"
 
+[node name="CompleteTaskButton" type="Button" parent="Mail/EmailViewer"]
+visible = false
+layout_mode = 0
+offset_left = 1568.0
+offset_top = 848.0
+offset_right = 1848.0
+offset_bottom = 912.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_22sm6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1r10n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dsib1")
+text = "COMPLETE"
+
 [node name="CancelTaskButton" type="Button" parent="Mail/EmailViewer"]
 visible = false
 layout_mode = 0
@@ -1043,11 +1084,13 @@ tooltip_text = "TeamManager"
 texture_normal = ExtResource("27_ey8ij")
 
 [node name="Progress" type="RichTextLabel" parent="Taskbar"]
+visible = false
 layout_mode = 0
 offset_left = 1648.0
 offset_top = 2.0
 offset_right = 1744.0
 offset_bottom = 38.0
+theme_override_colors/default_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
 text = "[center]0/10[/center]"
@@ -1159,13 +1202,6 @@ script = ExtResource("8_iymbk")
 [node name="AppBaseComponent" type="Node" parent="TeamManager"]
 script = ExtResource("16_16jal")
 
-[node name="Placeholder1" type="Panel" parent="TeamManager"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 928.0
-offset_bottom = 704.0
-
 [node name="BottomPanel1" type="Panel" parent="TeamManager"]
 layout_mode = 0
 offset_left = 64.0
@@ -1232,13 +1268,6 @@ offset_right = 616.0
 offset_bottom = 312.0
 theme_override_font_sizes/normal_font_size = 30
 
-[node name="Placeholder2" type="Panel" parent="TeamManager"]
-layout_mode = 0
-offset_left = 992.0
-offset_top = 64.0
-offset_right = 1856.0
-offset_bottom = 704.0
-
 [node name="TopPanel" type="Panel" parent="TeamManager"]
 layout_mode = 0
 offset_right = 1920.0
@@ -1285,10 +1314,40 @@ offset_bottom = 64.0
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
+[node name="Warning" type="Panel" parent="TeamManager"]
+visible = false
+layout_mode = 0
+offset_top = 56.0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_up2t0")
+
+[node name="WarningImage" type="TextureRect" parent="TeamManager/Warning"]
+layout_mode = 0
+offset_left = 820.0
+offset_top = 152.0
+offset_right = 1332.0
+offset_bottom = 664.0
+scale = Vector2(0.57, 0.456)
+texture = ExtResource("33_7y27u")
+
+[node name="WarningText" type="RichTextLabel" parent="TeamManager/Warning"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 408.0
+offset_right = 1859.0
+offset_bottom = 792.0
+theme_override_font_sizes/normal_font_size = 121
+bbcode_enabled = true
+text = "[center]There is currently no team management needed."
+fit_content = true
+scroll_active = false
+
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="SearchEngine/SearchButtonOnBar" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
 [connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar2" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/StartTaskButton" to="Mail" method="_on_start_task_button_button_up"]
+[connection signal="button_up" from="Mail/EmailViewer/CompleteTaskButton" to="Mail" method="_on_complete_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/CancelTaskButton" to="Mail" method="_on_cancel_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/TopBar/CloseButton" to="Mail" method="_on_close_button_button_up"]
 [connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]

@@ -14,6 +14,24 @@ var ProgressText = "[center]%s/%s[/center]"
 @onready var Progress = $Progress
 
 var TaskActive = false
+var TaskName = "None"
+
+func StartTask(TaskToStart):
+	TaskActive = true
+	TaskName = TaskToStart
+	Progress.show()
+
+func CancelTask():
+	TaskActive = false
+	TaskName = "None"
+	TaskProgress = 0
+	Progress.hide()
+
+func CompleteTask():
+	Progress.hide()
+	TaskActive = false
+	TaskName = "None"
+	TaskProgress = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,8 +50,10 @@ func _process(delta):
 		Progress.show()
 		Progress.text = ProgressText % [TaskProgress, TaskQuota]
 	
-	if(TaskProgress >= TaskQuota):
-		TaskActive = false
+	if(TaskProgress == TaskQuota):
+		Progress.add_theme_color_override("default_color", Color("00ff00"))
+	else:
+		Progress.add_theme_color_override("default_color", Color("ffffff"))
 	
 	move_to_front()
 	var TimeText = get_node("TimeText")

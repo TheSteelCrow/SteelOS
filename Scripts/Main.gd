@@ -9,6 +9,8 @@ var ErrorPopup
 
 var WindowInstanceSelected = false
 
+var OpenedApp
+
 #var Cursor1 = load("res://Images/pointer_b.png")
 #var Cursor2 = load("res://Images/pointer_b_shaded.png")
 
@@ -21,15 +23,15 @@ func _ready():
 	#Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
 	#Input.set_custom_mouse_cursor(Cursor2, Input.CURSOR_POINTING_HAND)
 	ErrorPopup = preload("res://Prefabs/error_popup.tscn")
-	SpawnError()
+	#SpawnError()
 	Menu = get_node("Menu")
 	SearchEngine = get_node("SearchEngine")
 	FileExplorer = get_node("FileExplorer")
 
-func HideAll():
-	Menu.hide()
-	SearchEngine.hide()
-	FileExplorer.hide()
+#func HideAll():
+#	Menu.hide()
+#	SearchEngine.hide()
+#	FileExplorer.hide()
 
 func _on_shut_down_button_up():
 	ShuttingDown = true
