@@ -41,27 +41,28 @@ var LoadedEmails = {
 	
 	3 : [
 	"Task #1",
-	"Your first task is simple, even a simple flat brained monkey like yourself can do it! First open the Team Manager app, then choose which employees you will be firing. You have until your computer battery reaches 0%, if you don't finish the task in this time, I won't pay you. You will see a progress counter on the bottom right of your taskbar.",
+	"Your first task is simple, even a simple flat brained monkey like yourself can do it! First open the Team Manager app, then choose which employees you will be firing. You have until your computer battery reaches 0%, if you don't finish the task in this time, I won't pay you. You will see a progress counter on the bottom right of your taskbar once you start the task.",
 	"Boss",
 	false,
 	true,
 	["Fire", false]
-	],
-	4 : [
-	"Task #4",
-	"It turns out, we ended up needing those ten employees that your fired earlier. So we will have to hire some replacements. Again, open the team manager app, beware of your battery, and get cracking!",
-	"Boss",
-	false,
-	true,
-	["Hire", false]
 	]
+	#4 : [
+	#"Task #4",
+	#"It turns out, we ended up needing those ten employees that your fired earlier. So we will have to hire some replacements. Again, open the team manager app, beware of your battery, and get cracking!",
+	#"Boss",
+	#false,
+	#true,
+	#["Hire", false]
+	#]
 }
 
 func OnAppVisible():
-	pass
+	if(OpenedEmailCode != null):
+		OpenEmail(OpenedEmailCode)
 
 func Reset():
-	pass
+	OpenedEmailCode = null
 
 func Open():
 	print("Reseting " + AppName)
@@ -130,6 +131,7 @@ func _on_complete_task_button_button_up():
 	CompleteTaskButton.hide()
 	
 func _on_close_button_button_up():
+	OpenedEmailCode = null
 	EmailViewer.hide()
 	Inbox.show()
 
@@ -142,6 +144,6 @@ func _ready():
 
 func AlignInboxLines():
 	var LoadedInboxLines = Inbox.get_children()
-	LoadedInboxLines.reverse()
+	#LoadedInboxLines.reverse()
 	for i in range(LoadedInboxLines.size()):
 		LoadedInboxLines[i].position = (Vector2(8, 8 + 72*i))
