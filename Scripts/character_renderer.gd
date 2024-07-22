@@ -12,7 +12,7 @@ var WomanNames = ["Olivia", "Emma", "Ava", "Sophia", "Isabella", "Mia", "Amelia"
 
 var Age
 var YearsOfWork
-var SexName
+var AWZName
 var CharacterName
 var NumberOfChildren
 
@@ -43,17 +43,17 @@ func Generate():
 		NumberOfChildren = 0
 	
 	random.randomize()
-	var SexBinary = random.randi_range(0, 1) # it was pretty hard to find a variable name for this one
+	var AWZBinary = random.randi_range(0, 1) # it was pretty hard to find a variable name for this one
 	
 	random.randomize()
-	if(SexBinary == 0):
-		SexName = "Man"
+	if(AWZBinary == 0):
+		AWZName = "Man"
 		CharacterName = ManNames[random.randi_range(0, ManNames.size()-1)]
-	elif(SexBinary == 1):
-		SexName = "Woman"
+	elif(AWZBinary == 1):
+		AWZName = "Woman"
 		CharacterName = WomanNames[random.randi_range(0, WomanNames.size()-1)]
 		
-	Info.text += "\nSex: " + SexName
+	Info.text += "\nAWZ: " + AWZName
 	
 	for BodyPart in get_children():
 		if(BodyPart.name.contains("Shirt") or BodyPart.name.contains("Hair") or BodyPart.name.contains("Pant")):
@@ -148,10 +148,10 @@ func Generate():
 		Info.text += "\nIsOld: yes"
 		random.randomize()
 		
-		if(SexName == "Man"):
+		if(AWZName == "Man"):
 			Hair = get_node("HairMan")
 			Hair.frame = random.randi_range(49, 63)
-		elif(SexName == "Woman"):
+		elif(AWZName == "Woman"):
 			Hair = get_node("HairWoman")
 			Hair.frame = random.randi_range(30, 47)
 			
@@ -162,10 +162,10 @@ func Generate():
 		Info.text += "\nIsOld: no"
 		random.randomize()
 		
-		if(SexName == "Man"):
+		if(AWZName == "Man"):
 			Hair = get_node("HairMan")
 			Hair.frame = random.randi_range(0, 48)
-		elif(SexName == "Woman"):
+		elif(AWZName == "Woman"):
 			Hair = get_node("HairWoman")
 			Hair.frame = random.randi_range(0, 29)
 		

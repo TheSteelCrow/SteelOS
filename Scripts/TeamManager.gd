@@ -68,9 +68,9 @@ func GenerateInfo(CharacterNumber):
 	var IncludeN = ""
 	var ParentalStatusText
 	
-	if(InfoInput.SexName == "Man"):
+	if(InfoInput.AWZName == "Man"):
 		Pronoun = "He"
-	elif(InfoInput.SexName == "Woman"):
+	elif(InfoInput.AWZName == "Woman"):
 		Pronoun = "She"
 	
 	if(InfoInput.YearsOfWork > 1):
@@ -81,9 +81,9 @@ func GenerateInfo(CharacterNumber):
 		ParentalStatusText = "has"
 	else:
 		NumberOfChildrenText = str(InfoInput.NumberOfChildren)
-		if(InfoInput.SexName == "Man"):
+		if(InfoInput.AWZName == "Man"):
 			ParentalStatusText = "is a father to"
-		elif(InfoInput.SexName == "Woman"):
+		elif(InfoInput.AWZName == "Woman"):
 			ParentalStatusText = "is a mother to"
 		
 	if(InfoInput.NumberOfChildren == 1):
