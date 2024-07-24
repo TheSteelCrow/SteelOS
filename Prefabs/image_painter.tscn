@@ -13,10 +13,10 @@ script = ExtResource("1_admhn")
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 layout_mode = 0
-offset_left = 488.0
-offset_top = 40.0
-offset_right = 738.0
-offset_bottom = 608.0
+offset_left = 512.0
+offset_top = 52.0
+offset_right = 750.0
+offset_bottom = 620.0
 
 [node name="Tools" type="Panel" parent="."]
 layout_mode = 0

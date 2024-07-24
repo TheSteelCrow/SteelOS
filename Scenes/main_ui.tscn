@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=97 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -33,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://b13qtpupt6j1o" path="res://Images/Buttons/HIRE.png" id="31_n03qj"]
 [ext_resource type="Texture2D" uid="uid://c62bjw81ne4od" path="res://Images/Buttons/FIRE.png" id="32_lcj4x"]
 [ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="33_7y27u"]
+[ext_resource type="Texture2D" uid="uid://bw303nllwcych" path="res://Images/drawing_brush.png" id="34_3ubu8"]
+[ext_resource type="Script" path="res://Scripts/ImagePainterApp.gd" id="34_i2ygh"]
+[ext_resource type="Script" path="res://Scripts/image_painter.gd" id="34_v3so4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -259,6 +262,39 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up2t0"]
 bg_color = Color(0.423529, 0.423529, 0.423529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5ywe"]
+bg_color = Color(0.191406, 0.207031, 0.320313, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20ygb"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3ldy"]
+bg_color = Color(0.71875, 0.25, 0.367188, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joegs"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxldo"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0e35"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4odpd"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av2mn"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vrhd"]
 bg_color = Color(0.227451, 0.227451, 0.227451, 1)
@@ -1033,6 +1069,135 @@ text = "[center]There is currently no team management needed."
 fit_content = true
 scroll_active = false
 
+[node name="ImagePainterApp" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v5ywe")
+script = ExtResource("34_i2ygh")
+
+[node name="EasterEgg" type="RichTextLabel" parent="ImagePainterApp"]
+visible = false
+layout_mode = 0
+offset_left = 280.0
+offset_top = 446.0
+offset_right = 1302.0
+offset_bottom = 702.0
+theme_override_font_sizes/normal_font_size = 76
+text = "You have found a secret easter egg!"
+
+[node name="AppVisualTransitionComponent" type="Node" parent="ImagePainterApp"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="ImagePainterApp"]
+script = ExtResource("16_16jal")
+
+[node name="ImagePainter" type="Panel" parent="ImagePainterApp"]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 1504.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_20ygb")
+script = ExtResource("34_v3so4")
+
+[node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
+layout_mode = 0
+offset_left = 1512.0
+offset_top = 77.0
+offset_right = 1898.0
+offset_bottom = 645.0
+
+[node name="Tools" type="Panel" parent="ImagePainterApp"]
+layout_mode = 0
+offset_left = 1512.0
+offset_top = 800.0
+offset_right = 1912.0
+offset_bottom = 888.0
+
+[node name="Brush" type="Button" parent="ImagePainterApp/Tools"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 39.0
+text = "Brush"
+
+[node name="Rectangle" type="Button" parent="ImagePainterApp/Tools"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 168.0
+offset_bottom = 79.0
+text = "Rectangle"
+
+[node name="Panel" type="Panel" parent="ImagePainterApp"]
+layout_mode = 0
+offset_left = 1512.0
+offset_top = 896.0
+offset_right = 1912.0
+offset_bottom = 1032.0
+
+[node name="GridThickness" type="HSlider" parent="ImagePainterApp/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 352.0
+offset_bottom = 32.0
+max_value = 2.0
+step = 0.1
+
+[node name="GridToggle" type="CheckButton" parent="ImagePainterApp/Panel"]
+layout_mode = 0
+offset_left = 352.0
+offset_right = 400.0
+offset_bottom = 32.0
+
+[node name="TopPanel" type="Panel" parent="ImagePainterApp"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3ldy")
+
+[node name="CloseButton" type="Button" parent="ImagePainterApp/TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_joegs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxldo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o0e35")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4odpd")
+
+[node name="TextureRect" type="TextureRect" parent="ImagePainterApp/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="ImagePainterApp/TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_joegs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_av2mn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o0e35")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4odpd")
+
+[node name="TextureRect" type="TextureRect" parent="ImagePainterApp/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
+
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
 offset_top = 1040.0
@@ -1205,7 +1370,7 @@ layout_mode = 0
 offset_left = 192.0
 offset_right = 232.0
 offset_bottom = 40.0
-tooltip_text = "Email"
+tooltip_text = "Team Manager"
 color = Color(0.152941, 0.152941, 0.152941, 1)
 metadata/_edit_group_ = true
 
@@ -1214,8 +1379,25 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
-tooltip_text = "TeamManager"
+tooltip_text = "Team Manager"
 texture_normal = ExtResource("27_ey8ij")
+
+[node name="ImagePainterAppBackdrop" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 280.0
+offset_bottom = 40.0
+tooltip_text = "Painter"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="ImagePainterAppButton" type="TextureButton" parent="Taskbar/ImagePainterAppBackdrop"]
+layout_mode = 0
+offset_right = 66.0
+offset_bottom = 66.0
+scale = Vector2(0.606877, 0.606376)
+tooltip_text = "Painter"
+texture_normal = ExtResource("34_3ubu8")
 
 [node name="Progress" type="RichTextLabel" parent="Taskbar"]
 visible = false
@@ -1305,5 +1487,7 @@ wait_time = 5.0
 [connection signal="mouse_exited" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_exited"]
 [connection signal="button_up" from="FileExplorer/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
 [connection signal="button_up" from="FileExplorer/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
+[connection signal="value_changed" from="ImagePainterApp/Panel/GridThickness" to="ImagePainterApp/ImagePainter" method="_on_grid_thickness_value_changed" flags=18]
+[connection signal="toggled" from="ImagePainterApp/Panel/GridToggle" to="ImagePainterApp/ImagePainter" method="_on_grid_toggle_toggled" flags=18]
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]

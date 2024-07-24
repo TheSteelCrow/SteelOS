@@ -20,7 +20,6 @@ config/icon="res://Images/icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
-window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 mouse_cursor/custom_image="res://Images/CustomCursor.png"

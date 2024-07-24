@@ -1,8 +1,8 @@
 extends Panel
 
-var ImageSize = Vector2(400,300)
+var ImageSize = Vector2(1400,1000)
 var CompressionRate = 10
-var Resolution
+var NumberOfPixels
 
 #var Pixels = {Vector2(1,1) : "red", Vector2(1,2) : "blue"}
 
@@ -20,8 +20,11 @@ var EndPixel
 var GridEnabled = false
 var GridThickness = 0
 
+var App
+
 func SetupPixels():
-	Resolution = ImageSize.x * ImageSize.y / CompressionRate
+	NumberOfPixels = (ImageSize.x / CompressionRate) * (ImageSize.y / CompressionRate)
+	print(NumberOfPixels)
 	
 	for x in range(0,ImageSize.x / CompressionRate):
 		for y in range(0,ImageSize.y / CompressionRate):
@@ -33,7 +36,7 @@ func SetupPixels():
 			Pixels[Vector2(x, y)] = Pixel
 			Pixel.mouse_entered.connect(func():
 				TargetPixel = Pixel
-				if(SelectedTool == "Brush" and IsHoldingMouse1):
+				if(SelectedTool == "Brush" and IsHoldingMouse1 and StartPixel != null):
 					BrushTool(TargetPixel)
 			)
 			
@@ -49,6 +52,8 @@ func _input(event):
 			IsHoldingMouse1 = event.is_pressed()
 			
 			if(TargetPixel == null):
+				StartPixel = null
+				EndPixel = null
 				return
 			
 			if(IsHoldingMouse1 == true):
@@ -63,36 +68,38 @@ func _input(event):
 					RectangleTool()
 
 func RectangleTool():
-	var XRange
-	var YRange
-	
-	print("Start: " + str(StartPixel))
-	print("End: " + str(EndPixel))
+	if(EndPixel == null):
+		return
+	elif(StartPixel == null):
+		return
 	
 	if(EndPixel.x <= StartPixel.x+1 and EndPixel.y <= StartPixel.y+1): #Top left
 		for x in range(EndPixel.x, StartPixel.x+1):
 			for y in range(EndPixel.y, StartPixel.y+1):
-				Pixels[Vector2(x, y)].color = get_node("ColorPicker").color
+				Pixels[Vector2(x, y)].color = App.get_node("ColorPicker").color
 	elif(EndPixel.x >= StartPixel.x and EndPixel.y <= StartPixel.y): #Top right
 		for x in range(StartPixel.x, EndPixel.x+1):
 			for y in range(EndPixel.y, StartPixel.y+1):
-				Pixels[Vector2(x, y)].color = get_node("ColorPicker").color
+				Pixels[Vector2(x, y)].color = App.get_node("ColorPicker").color
 	elif(EndPixel.x <= StartPixel.x+1 and EndPixel.y >= StartPixel.y+1): #Bottom left
 		for x in range(EndPixel.x, StartPixel.x+1):
 			for y in range(StartPixel.y, EndPixel.y+1):
-				Pixels[Vector2(x, y)].color = get_node("ColorPicker").color
+				Pixels[Vector2(x, y)].color = App.get_node("ColorPicker").color
 	elif(EndPixel.x+1 >= StartPixel.x and EndPixel.y+1 >= StartPixel.y): #Bottom right
 		for x in range(StartPixel.x, EndPixel.x+1):
 			for y in range(StartPixel.y, EndPixel.y+1):
-				Pixels[Vector2(x, y)].color = get_node("ColorPicker").color
+				Pixels[Vector2(x, y)].color = App.get_node("ColorPicker").color
 
 func BrushTool(PixelToBrush):
-	PixelToBrush.color = get_node("ColorPicker").color
+	PixelToBrush.color = App.get_node("ColorPicker").color
 
 func _ready():
+	ImageSize = size
+	App = get_parent()
+	
 	SetupPixels()
 	
-	for ToolButton in get_node("Tools").get_children():
+	for ToolButton in App.get_node("Tools").get_children():
 		ToolButton.button_up.connect(func():
 			SelectedTool = ToolButton.name
 		)

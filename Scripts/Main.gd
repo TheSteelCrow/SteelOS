@@ -19,9 +19,9 @@ var ShutDownScreen
 
 func _ready():
 	var ImageRendererPrefab = preload("res://Prefabs/image_painter.tscn")
-	var ImageRenderer = ImageRendererPrefab.instantiate()
+	#var ImageRenderer = ImageRendererPrefab.instantiate()
 	#ImageRenderer.position = Vector2(300, 300)
-	add_child(ImageRenderer)
+	#add_child(ImageRenderer)
 	ShutDownScreen = get_node("ShutDownScreen")
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	#Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
