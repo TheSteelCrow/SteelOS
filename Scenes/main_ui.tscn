@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=111 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -26,12 +26,19 @@
 [ext_resource type="Script" path="res://Scripts/Mail.gd" id="15_kssng"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="16_16jal"]
 [ext_resource type="Texture2D" uid="uid://m17vmv0sxy43" path="res://Images/massiveMultiplayer.png" id="20_nven0"]
+[ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
+[ext_resource type="Texture2D" uid="uid://cbgmhpecdkcr5" path="res://Images/Folder Art Png.png" id="26_1qffm"]
+[ext_resource type="Texture2D" uid="uid://c8yub5maxfog" path="res://Images/Buttons/stamp bottom.png" id="26_cng40"]
+[ext_resource type="Texture2D" uid="uid://d21gurkgx4qb3" path="res://Images/Buttons/stamp fire.png" id="27_bm6l6"]
 [ext_resource type="Texture2D" uid="uid://doe2uy8d8vc7r" path="res://Images/multiplayer.png" id="27_ey8ij"]
+[ext_resource type="Texture2D" uid="uid://cs4twd7rtugfo" path="res://Images/lines.png" id="27_l7krj"]
+[ext_resource type="Texture2D" uid="uid://d18ny2s118saj" path="res://Images/Buttons/stamp hire.png" id="28_3bath"]
+[ext_resource type="AudioStream" uid="uid://bt4o6pfnmwefi" path="res://Sounds/Stamp.wav" id="29_kwy85"]
 [ext_resource type="Script" path="res://Scripts/TeamManager.gd" id="29_pvpks"]
 [ext_resource type="Script" path="res://Scripts/CustomCommandLine.gd" id="30_l4ac3"]
-[ext_resource type="Texture2D" uid="uid://b13qtpupt6j1o" path="res://Images/Buttons/HIRE.png" id="31_n03qj"]
-[ext_resource type="Texture2D" uid="uid://c62bjw81ne4od" path="res://Images/Buttons/FIRE.png" id="32_lcj4x"]
+[ext_resource type="Texture2D" uid="uid://dlpppm8vlu8im" path="res://Images/Buttons/FIRED.png" id="31_nnqte"]
+[ext_resource type="Texture2D" uid="uid://daxdp16xgw22f" path="res://Images/Buttons/HIRED.png" id="32_orf5c"]
 [ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="33_7y27u"]
 [ext_resource type="Texture2D" uid="uid://bw303nllwcych" path="res://Images/drawing_brush.png" id="34_3ubu8"]
 [ext_resource type="Script" path="res://Scripts/ImagePainterApp.gd" id="34_i2ygh"]
@@ -232,9 +239,10 @@ corner_radius_bottom_right = 5
 bg_color = Color(0.615686, 0.615686, 0.615686, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqyk0"]
-bg_color = Color(0.423529, 0.423529, 0.423529, 1)
+bg_color = Color(0.458824, 0.521569, 0.576471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5e6x"]
+bg_color = Color(0.25, 0.363281, 0.445313, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orvby"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
@@ -260,8 +268,29 @@ bg_color = Color(0.370364, 0.370364, 0.370364, 1)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_517o4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bshx"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p78f"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83lsw"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3y2p"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6mkd"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icflk"]
+bg_color = Color(0, 0, 0, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up2t0"]
-bg_color = Color(0.423529, 0.423529, 0.423529, 1)
+bg_color = Color(0.458824, 0.521569, 0.576471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5ywe"]
 bg_color = Color(0.191406, 0.207031, 0.320313, 1)
@@ -928,72 +957,6 @@ script = ExtResource("8_iymbk")
 [node name="AppBaseComponent" type="Node" parent="TeamManager"]
 script = ExtResource("16_16jal")
 
-[node name="BottomPanel1" type="Panel" parent="TeamManager"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 712.0
-offset_right = 928.0
-offset_bottom = 1032.0
-
-[node name="1HireButton" type="TextureButton" parent="TeamManager/BottomPanel1"]
-layout_mode = 0
-offset_left = 624.0
-offset_top = 16.0
-offset_right = 924.0
-offset_bottom = 166.0
-scale = Vector2(0.75, 0.75)
-texture_normal = ExtResource("31_n03qj")
-
-[node name="1FireButton" type="TextureButton" parent="TeamManager/BottomPanel1"]
-layout_mode = 0
-offset_left = 624.0
-offset_top = 16.0
-offset_right = 924.0
-offset_bottom = 166.0
-scale = Vector2(0.75, 0.75)
-texture_normal = ExtResource("32_lcj4x")
-
-[node name="Info" type="RichTextLabel" parent="TeamManager/BottomPanel1"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 312.0
-theme_override_font_sizes/normal_font_size = 30
-
-[node name="BottomPanel2" type="Panel" parent="TeamManager"]
-layout_mode = 0
-offset_left = 992.0
-offset_top = 712.0
-offset_right = 1856.0
-offset_bottom = 1032.0
-
-[node name="2HireButton" type="TextureButton" parent="TeamManager/BottomPanel2"]
-layout_mode = 0
-offset_left = 624.0
-offset_top = 16.0
-offset_right = 924.0
-offset_bottom = 166.0
-scale = Vector2(0.75, 0.75)
-texture_normal = ExtResource("31_n03qj")
-
-[node name="2FireButton" type="TextureButton" parent="TeamManager/BottomPanel2"]
-layout_mode = 0
-offset_left = 624.0
-offset_top = 16.0
-offset_right = 924.0
-offset_bottom = 166.0
-scale = Vector2(0.75, 0.75)
-texture_normal = ExtResource("32_lcj4x")
-
-[node name="Info" type="RichTextLabel" parent="TeamManager/BottomPanel2"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 616.0
-offset_bottom = 312.0
-theme_override_font_sizes/normal_font_size = 30
-
 [node name="TopPanel" type="Panel" parent="TeamManager"]
 layout_mode = 0
 offset_right = 1920.0
@@ -1040,6 +1003,181 @@ offset_bottom = 64.0
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
+[node name="Employee1" type="Panel" parent="TeamManager"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 72.0
+offset_right = 774.0
+offset_bottom = 1022.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_517o4")
+metadata/_edit_group_ = true
+
+[node name="Background" type="TextureRect" parent="TeamManager/Employee1"]
+layout_mode = 0
+offset_right = 750.0
+offset_bottom = 950.0
+texture = ExtResource("26_1qffm")
+
+[node name="Info" type="RichTextLabel" parent="TeamManager/Employee1"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 635.0
+offset_right = 696.0
+offset_bottom = 925.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("24_sfbee")
+theme_override_font_sizes/normal_font_size = 30
+text = "Employee Info will be here..."
+
+[node name="Lines" type="TextureRect" parent="TeamManager/Employee1"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 16.0
+offset_right = 691.0
+offset_bottom = 302.0
+texture = ExtResource("27_l7krj")
+
+[node name="EmployeeID" type="RichTextLabel" parent="TeamManager/Employee1"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 276.0
+offset_right = 688.0
+offset_bottom = 308.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("24_sfbee")
+theme_override_font_sizes/normal_font_size = 21
+text = "Employee ID: 000 000 000"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Employee2" type="Panel" parent="TeamManager"]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 72.0
+offset_right = 1902.0
+offset_bottom = 1022.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_517o4")
+metadata/_edit_group_ = true
+
+[node name="Background" type="TextureRect" parent="TeamManager/Employee2"]
+layout_mode = 0
+offset_right = 750.0
+offset_bottom = 950.0
+texture = ExtResource("26_1qffm")
+
+[node name="Info" type="RichTextLabel" parent="TeamManager/Employee2"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 635.0
+offset_right = 696.0
+offset_bottom = 925.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("24_sfbee")
+theme_override_font_sizes/normal_font_size = 30
+text = "Employee Info will be here..."
+
+[node name="Lines" type="TextureRect" parent="TeamManager/Employee2"]
+layout_mode = 0
+offset_left = 405.0
+offset_top = 16.0
+offset_right = 691.0
+offset_bottom = 302.0
+texture = ExtResource("27_l7krj")
+
+[node name="EmployeeID" type="RichTextLabel" parent="TeamManager/Employee2"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 275.0
+offset_right = 689.0
+offset_bottom = 307.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("24_sfbee")
+theme_override_font_sizes/normal_font_size = 21
+text = "Employee ID: 000 000 000"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="StampOrigin" type="Panel" parent="TeamManager"]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 72.0
+offset_right = 1144.0
+offset_bottom = 512.0
+
+[node name="StampInk" type="Panel" parent="TeamManager/StampOrigin"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 379.0
+offset_bottom = 426.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3bshx")
+
+[node name="Stamp" type="Panel" parent="TeamManager"]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 84.0
+offset_right = 1131.0
+offset_bottom = 498.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3bshx")
+
+[node name="Bottom" type="TextureRect" parent="TeamManager/Stamp"]
+layout_mode = 0
+offset_left = 6.10352e-05
+offset_top = 20.0
+offset_right = 1200.0
+offset_bottom = 1220.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("26_cng40")
+
+[node name="Fire" type="TextureRect" parent="TeamManager/Stamp"]
+visible = false
+layout_mode = 0
+offset_left = 6.10352e-05
+offset_top = 20.0
+offset_right = 1200.0
+offset_bottom = 1220.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("27_bm6l6")
+
+[node name="Hire" type="TextureRect" parent="TeamManager/Stamp"]
+visible = false
+layout_mode = 0
+offset_top = 20.0
+offset_right = 1200.0
+offset_bottom = 1220.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("28_3bath")
+
+[node name="Button" type="Button" parent="TeamManager/Stamp"]
+layout_mode = 0
+offset_right = 366.0
+offset_bottom = 414.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3p78f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_83lsw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q3y2p")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_u6mkd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_icflk")
+
+[node name="StampSFX" type="AudioStreamPlayer2D" parent="TeamManager/Stamp"]
+stream = ExtResource("29_kwy85")
+
+[node name="Guide" type="Panel" parent="TeamManager"]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 543.0
+offset_right = 1144.0
+offset_bottom = 736.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TeamManager/Guide"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 388.0
+offset_bottom = 193.0
+theme_override_font_sizes/normal_font_size = 31
+text = "You must fire one of the two employees. To fire an employee, drag the stamp onto their file."
+scroll_active = false
+
 [node name="Warning" type="Panel" parent="TeamManager"]
 visible = false
 layout_mode = 0
@@ -1069,6 +1207,36 @@ text = "[center]There is currently no team management needed."
 fit_content = true
 scroll_active = false
 
+[node name="Fired" type="TextureRect" parent="TeamManager"]
+visible = false
+offset_left = 1278.0
+offset_top = 304.0
+offset_right = 1578.0
+offset_bottom = 454.0
+rotation = 0.349066
+scale = Vector2(2, 2)
+texture = ExtResource("31_nnqte")
+
+[node name="Hired" type="TextureRect" parent="TeamManager"]
+visible = false
+offset_left = 56.0
+offset_top = 512.0
+offset_right = 356.0
+offset_bottom = 662.0
+rotation = 0.349066
+scale = Vector2(2, 2)
+texture = ExtResource("32_orf5c")
+
+[node name="NextButton" type="Button" parent="TeamManager"]
+visible = false
+layout_mode = 0
+offset_left = 800.0
+offset_top = 800.0
+offset_right = 1096.0
+offset_bottom = 954.0
+theme_override_font_sizes/font_size = 106
+text = "NEXT"
+
 [node name="ImagePainterApp" type="Panel" parent="."]
 visible = false
 layout_mode = 0
@@ -1076,16 +1244,6 @@ offset_right = 1920.0
 offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_v5ywe")
 script = ExtResource("34_i2ygh")
-
-[node name="EasterEgg" type="RichTextLabel" parent="ImagePainterApp"]
-visible = false
-layout_mode = 0
-offset_left = 280.0
-offset_top = 446.0
-offset_right = 1302.0
-offset_bottom = 702.0
-theme_override_font_sizes/normal_font_size = 76
-text = "You have found a secret easter egg!"
 
 [node name="AppVisualTransitionComponent" type="Node" parent="ImagePainterApp"]
 script = ExtResource("8_iymbk")
@@ -1103,10 +1261,11 @@ script = ExtResource("34_v3so4")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1512.0
-offset_top = 77.0
-offset_right = 1898.0
-offset_bottom = 645.0
+offset_left = 1560.0
+offset_top = 101.0
+offset_right = 1922.0
+offset_bottom = 669.0
+color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
 layout_mode = 0
