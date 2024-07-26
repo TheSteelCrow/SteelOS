@@ -4,8 +4,6 @@ var MenuPanel
 var MenuOpen = false
 var MainUI
 
-#var SystemTime = Time.get_time_dict_from_system()
-
 var TaskProgress = 0
 var TaskQuota = 10
 
@@ -35,12 +33,9 @@ func CompleteTask():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#SystemTime.hour = 0
 	MenuPanel = get_parent().get_node("Menu")
 	MenuPanel.hide()
 	MainUI = get_parent()
-	#var time = Time.get_time_dict_from_system()
-	#print(time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -87,12 +82,6 @@ func _process(delta):
 		DateText.text = "[right]" + str(SystemDate.day) + "/0" + str(SystemDate.month) + "/" + str(SystemDate.year) + "[/right]"
 	else:
 		DateText.text = "[right]" + str(SystemDate.day) + "/" + str(SystemDate.month) + "/" + str(SystemDate.year) + "[/right]"
-
-#func _physics_process(delta):
-#	if Input.is_action_pressed("ui_right"):
-#		SystemTime.hour += 1
-#	elif Input.is_action_pressed("ui_left"):
-#		SystemTime.hour -= 1
 
 func _on_menu_button_button_up():
 	print("Menu Button Pressed")

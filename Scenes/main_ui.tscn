@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=112 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scripts/Battery.gd" id="14_q5ee8"]
 [ext_resource type="Script" path="res://Scripts/Mail.gd" id="15_kssng"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="16_16jal"]
+[ext_resource type="Script" path="res://Scripts/MailData.gd" id="17_it2np"]
 [ext_resource type="Texture2D" uid="uid://m17vmv0sxy43" path="res://Images/massiveMultiplayer.png" id="20_nven0"]
 [ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
@@ -648,6 +649,9 @@ offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fllwo")
 script = ExtResource("15_kssng")
 
+[node name="MailData" type="Node" parent="Mail"]
+script = ExtResource("17_it2np")
+
 [node name="AppVisualTransitionComponent" type="Node" parent="Mail"]
 script = ExtResource("8_iymbk")
 
@@ -944,6 +948,7 @@ tooltip_text = "Scan"
 texture_normal = ExtResource("13_rxkv3")
 
 [node name="TeamManager" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1235,7 +1240,7 @@ offset_left = 800.0
 offset_top = 800.0
 offset_right = 1096.0
 offset_bottom = 954.0
-theme_override_font_sizes/font_size = 106
+theme_override_font_sizes/font_size = 80
 text = "NEXT"
 
 [node name="ImagePainterApp" type="Panel" parent="."]
@@ -1262,10 +1267,10 @@ script = ExtResource("34_v3so4")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1576.0
-offset_top = 109.0
-offset_right = 1930.0
-offset_bottom = 677.0
+offset_left = 1592.0
+offset_top = 117.0
+offset_right = 1938.0
+offset_bottom = 685.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]

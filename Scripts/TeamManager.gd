@@ -22,11 +22,21 @@ var StampOffSetFromMouse
 var Stamp
 var StampTimeUntilReturn = 1
 
+func StartTask():
+	Stamp.get_node("Button").disabled = false
+	get_node("Warning").hide()
+	SetupRound()
+	get_node("NextButton").text = "NEXT"
+
+func StopTask():
+	get_node("Warning").show()
+	get_node("NextButton").hide()
+	get_node("Hired").hide()
+	get_node("Fired").hide()
+
 func SetupRound():
 	RemoveOldCharacters()
 	CanInteract = true
-	
-	
 	
 	if(Taskbar.TaskName == "Fire"):
 		get_node("Stamp/Fire").show()
@@ -175,29 +185,19 @@ func _process(delta):
 		Stamp.move_to_front()
 		get_node("Warning").move_to_front()
 
-func OnAppVisible():	
-	if((Taskbar.TaskActive == true) && (Taskbar.TaskName == "Hire" or Taskbar.TaskName == "Fire") && Taskbar.TaskQuota != Taskbar.TaskProgress):
-		get_node("Warning").hide()
-	else:
-		get_node("Warning").show()
-
-func HireFireButtonUp(HireFireButton):
-	if(CanInteract == true):
-		if((Taskbar.TaskActive == true) && (Taskbar.TaskName == "Hire" or Taskbar.TaskName == "Fire")):
-			Taskbar.TaskProgress += 1
-		
-		CanInteract = false
-		get_node("Character" + str(HireFireButton.name)[0]).get_node(Taskbar.TaskName + "d").show()
-		print(HireFireButton.name)
-		await get_tree().create_timer(2).timeout
-		SetupRound()
-		if(Taskbar.TaskProgress == Taskbar.TaskQuota):
-			get_node("Warning").show()
-
-
+func OnAppVisible():
+	pass
 
 func _on_next_button_button_up():
+	get_node("NextButton").hide()
 	Stamp.get_node("Button").disabled = false
 	get_node("Hired").hide()
 	get_node("Fired").hide()
-	SetupRound()
+	if((Taskbar.TaskActive == true) && (Taskbar.TaskName == "Hire" or Taskbar.TaskName == "Fire")):
+		Taskbar.TaskProgress += 1
+	if(Taskbar.TaskProgress == Taskbar.TaskQuota):
+		get_node("Warning").show()
+	elif(Taskbar.TaskProgress == Taskbar.TaskQuota-1):
+		get_node("NextButton").text = "FINISH"
+	else:
+		SetupRound()

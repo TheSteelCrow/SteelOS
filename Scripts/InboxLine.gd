@@ -34,14 +34,14 @@ func _ready():
 	add_theme_stylebox_override("focus", new_style)
 	ButtonsPanel.add_theme_stylebox_override("panel", new_style)
 	
-	if(Mail.LoadedEmails[Code][3] == true):
+	if(Mail.get_node("MailData").LoadedEmails[Code][3] == true):
 		new_style.bg_color = Color("495b65")
 	
 	button_up.connect(func():
 		Mail.OpenEmail(Code)
 		new_style.bg_color = Color("495b65")
 		ShouldShowButtons = false
-		Mail.LoadedEmails[Code][3] = true
+		Mail.get_node("MailData").LoadedEmails[Code][3] = true
 	)
 	
 	for ButtonNode in Buttons:

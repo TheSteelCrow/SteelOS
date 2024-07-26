@@ -1,0 +1,40 @@
+extends Node
+
+#	1 : ["Subject", "Content", "Sender", HasBeenRead, IsTask, [TaskName, IsTaskCompleted]],
+var LoadedEmails = {
+	
+	1 : [
+	"Welcome",
+	"Welcome to the game! The game is in the early stages of development. Remember to read your emails, good luck!",
+	"CrowOS",
+	false,
+	false,
+	null
+	],
+	
+	2 : [
+	"Congratulations!",
+	"Welcome to the company. I have some good news, you have been promoted! You are now one of my Elite™ Employees! Anyway get back to work! Now!\nPS: I'll be sending you tasks to do.", 
+	"Boss",
+	false,
+	false,
+	null
+	],
+	
+	3 : [
+	"Task #1",
+	"Your first task is simple, even a simple flat brained monkey like yourself can do it! First open the Team Manager app, then choose which employees you will be firing. You have until your computer battery reaches 0%, if you don't finish the task in this time, I won't pay you. You will see a progress counter on the bottom right of your taskbar once you start the task.",
+	"Boss",
+	false,
+	true,
+	["Fire", false, "TeamManager", 5]
+	],
+	4 : [
+	"Task #4",
+	"It turns out, we ended up needing those ten employees that your fired earlier. So we will have to hire some replacements. Again, open the team manager app, beware of your battery, and get cracking!",
+	"Boss",
+	false,
+	true,
+	["Hire", false, "TeamManager", 5]
+	]
+}
