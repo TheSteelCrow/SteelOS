@@ -944,7 +944,6 @@ tooltip_text = "Scan"
 texture_normal = ExtResource("13_rxkv3")
 
 [node name="TeamManager" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1209,6 +1208,7 @@ scroll_active = false
 
 [node name="Fired" type="TextureRect" parent="TeamManager"]
 visible = false
+layout_mode = 0
 offset_left = 1278.0
 offset_top = 304.0
 offset_right = 1578.0
@@ -1219,6 +1219,7 @@ texture = ExtResource("31_nnqte")
 
 [node name="Hired" type="TextureRect" parent="TeamManager"]
 visible = false
+layout_mode = 0
 offset_left = 56.0
 offset_top = 512.0
 offset_right = 356.0
@@ -1261,10 +1262,10 @@ script = ExtResource("34_v3so4")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1560.0
-offset_top = 101.0
-offset_right = 1922.0
-offset_bottom = 669.0
+offset_left = 1576.0
+offset_top = 109.0
+offset_right = 1930.0
+offset_bottom = 677.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1646,6 +1647,7 @@ wait_time = 5.0
 [connection signal="mouse_exited" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_exited"]
 [connection signal="button_up" from="FileExplorer/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
 [connection signal="button_up" from="FileExplorer/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
+[connection signal="button_up" from="TeamManager/NextButton" to="TeamManager" method="_on_next_button_button_up"]
 [connection signal="value_changed" from="ImagePainterApp/Panel/GridThickness" to="ImagePainterApp/ImagePainter" method="_on_grid_thickness_value_changed" flags=18]
 [connection signal="toggled" from="ImagePainterApp/Panel/GridToggle" to="ImagePainterApp/ImagePainter" method="_on_grid_toggle_toggled" flags=18]
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]

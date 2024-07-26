@@ -102,7 +102,7 @@ func GenerateInfo(CharacterNumber):
 	#generate something good and something bad about them, eg they steal office supplies
 
 func Reset():
-	SetupRound()
+	pass
 
 func RemoveOldCharacters():
 	if(Character1):
@@ -113,7 +113,7 @@ func RemoveOldCharacters():
 		Character2.queue_free()
 
 func Open():
-	SetupRound()
+	pass
 
 func _ready():
 	get_node("Warning").show()
@@ -130,26 +130,44 @@ func _ready():
 	)
 	Stamp.get_node("Button").button_up.connect(func():
 		DraggingStamp = false
-		Stamp.get_node("StampSFX").play()
 		
-		Stamp.get_node("Button").disabled = true
-		var StampMovingPart = Stamp.get_node(Taskbar.TaskName)
-		var tween = create_tween()
-		tween.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y + 50), 0.1)
-		await tween.finished
-		var StampImageInk = get_node(Taskbar.TaskName + "d")
-		StampImageInk.position = Vector2(148,329)
-		StampImageInk.show()
-		StampImageInk.move_to_front()
-		Stamp.move_to_front()
-		get_node("Warning").move_to_front()
-		var tween2 = create_tween()
-		tween2.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y - 50), 0.25)
-		await tween2.finished
-		await get_tree().create_timer(StampTimeUntilReturn).timeout
-		get_node("NextButton").show()
-		Stamp.position = StampOriginPosition
+		if(Stamp.position.x <= 459):
+			RunSequence(1)
+		elif(Stamp.position.x >= 1093):
+			RunSequence(2)
+		else:
+			Stamp.position = StampOriginPosition
 	)
+		
+func RunSequence(EmployeeToFire):
+	#Starting Stamping
+	Stamp.get_node("StampSFX").play()
+	Stamp.get_node("Button").disabled = true
+	var StampMovingPart = Stamp.get_node(Taskbar.TaskName)
+	var tween = create_tween()
+	tween.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y + 50), 0.1)
+	await tween.finished
+	var StampImageInk = get_node(Taskbar.TaskName + "d")
+	
+	#During Stamping
+	if(EmployeeToFire == 1):
+		StampImageInk.position = Vector2(148,329)
+	elif(EmployeeToFire == 2):
+		StampImageInk.position = Vector2(1278,329)
+	StampImageInk.show()
+	StampImageInk.move_to_front()
+	Stamp.move_to_front()
+	get_node("Warning").move_to_front()
+	
+	#Finishing Stamping
+	var tween2 = create_tween()
+	tween2.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y - 50), 0.25)
+	await tween2.finished
+	
+	#After Stamping
+	await get_tree().create_timer(StampTimeUntilReturn).timeout
+	get_node("NextButton").show()
+	Stamp.position = StampOriginPosition
 
 func _process(delta):
 	if(DraggingStamp):
@@ -157,9 +175,7 @@ func _process(delta):
 		Stamp.move_to_front()
 		get_node("Warning").move_to_front()
 
-func OnAppVisible():
-	Reset()
-	
+func OnAppVisible():	
 	if((Taskbar.TaskActive == true) && (Taskbar.TaskName == "Hire" or Taskbar.TaskName == "Fire") && Taskbar.TaskQuota != Taskbar.TaskProgress):
 		get_node("Warning").hide()
 	else:
@@ -177,3 +193,11 @@ func HireFireButtonUp(HireFireButton):
 		SetupRound()
 		if(Taskbar.TaskProgress == Taskbar.TaskQuota):
 			get_node("Warning").show()
+
+
+
+func _on_next_button_button_up():
+	Stamp.get_node("Button").disabled = false
+	get_node("Hired").hide()
+	get_node("Fired").hide()
+	SetupRound()
