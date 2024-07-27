@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=122 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://bw303nllwcych" path="res://Images/drawing_brush.png" id="34_3ubu8"]
 [ext_resource type="Script" path="res://Scripts/ImagePainterApp.gd" id="34_i2ygh"]
 [ext_resource type="Script" path="res://Scripts/image_painter.gd" id="34_v3so4"]
+[ext_resource type="Script" path="res://Scripts/PhotosApp.gd" id="36_gy6aq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -297,7 +298,7 @@ bg_color = Color(0.458824, 0.521569, 0.576471, 1)
 bg_color = Color(0.191406, 0.207031, 0.320313, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20ygb"]
-bg_color = Color(0, 0, 0, 0)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3ldy"]
 bg_color = Color(0.71875, 0.25, 0.367188, 1)
@@ -322,6 +323,50 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av2mn"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xavgy"]
+bg_color = Color(0.180392, 0.686275, 0.521569, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxsw4"]
+bg_color = Color(0.211765, 0.811765, 0.619608, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_todwy"]
+bg_color = Color(0.0705882, 0.329412, 0.247059, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv0d4"]
+bg_color = Color(0.180392, 0.686275, 0.521569, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6mnm"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh7pl"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddp8y"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q55or"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi00h"]
 bg_color = Color(0.370364, 0.370364, 0.370364, 1)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
@@ -373,14 +418,6 @@ offset_right = 2667.0
 offset_bottom = 1780.0
 scale = Vector2(0.719997, 0.606739)
 texture = ExtResource("1_pctbs")
-
-[node name="Background2" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1600.0
-offset_bottom = 1068.0
-scale = Vector2(0.59998, 0.600012)
-texture = ExtResource("2_n6ini")
 
 [node name="StickyNote1" type="Panel" parent="."]
 layout_mode = 0
@@ -829,6 +866,8 @@ offset_bottom = 576.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7y176")
 script = ExtResource("11_m1ils")
 
+[node name="FileExplorerData" type="Node" parent="FileExplorer"]
+
 [node name="AppVisualTransitionComponent" type="Node" parent="FileExplorer"]
 script = ExtResource("8_iymbk")
 
@@ -1251,26 +1290,37 @@ offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_v5ywe")
 script = ExtResource("34_i2ygh")
 
-[node name="AppVisualTransitionComponent" type="Node" parent="ImagePainterApp"]
-script = ExtResource("8_iymbk")
-
-[node name="AppBaseComponent" type="Node" parent="ImagePainterApp"]
-script = ExtResource("16_16jal")
-
 [node name="ImagePainter" type="Panel" parent="ImagePainterApp"]
-layout_mode = 0
 offset_top = 56.0
 offset_right = 1504.0
 offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_20ygb")
 script = ExtResource("34_v3so4")
 
+[node name="SubViewport" type="SubViewport" parent="ImagePainterApp"]
+disable_3d = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="Background2" type="TextureRect" parent="ImagePainterApp/SubViewport"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.59998, 0.600012)
+texture = ExtResource("2_n6ini")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="ImagePainterApp"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="ImagePainterApp"]
+script = ExtResource("16_16jal")
+
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1592.0
-offset_top = 117.0
-offset_right = 1938.0
-offset_bottom = 685.0
+offset_left = 1560.0
+offset_top = 136.0
+offset_right = 1878.0
+offset_bottom = 704.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1362,6 +1412,109 @@ offset_right = 78.0
 offset_bottom = 64.0
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
+
+[node name="Button" type="Button" parent="ImagePainterApp/TopPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xavgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxsw4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
+text = "Save"
+
+[node name="Button2" type="Button" parent="ImagePainterApp/TopPanel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xavgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxsw4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
+text = "Open"
+
+[node name="Button3" type="Button" parent="ImagePainterApp/TopPanel"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 8.0
+offset_right = 576.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xavgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxsw4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
+text = "New"
+
+[node name="PhotosApp" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+script = ExtResource("36_gy6aq")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="PhotosApp"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="PhotosApp"]
+script = ExtResource("16_16jal")
+
+[node name="TopPanel" type="Panel" parent="PhotosApp"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+
+[node name="CloseButton" type="Button" parent="PhotosApp/TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6mnm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qh7pl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ddp8y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_q55or")
+
+[node name="TextureRect" type="TextureRect" parent="PhotosApp/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="PhotosApp/TopPanel"]
+visible = false
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6mnm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fi00h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ddp8y")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_q55or")
+
+[node name="TextureRect" type="TextureRect" parent="PhotosApp/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
+
+[node name="ImageRenderer" type="TextureRect" parent="PhotosApp"]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 1920.0
+offset_bottom = 1042.0
 
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
@@ -1632,6 +1785,7 @@ text = "Running Command Now...
 doing this and that..."
 
 [node name="FPS" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 284.0
 offset_bottom = 56.0
