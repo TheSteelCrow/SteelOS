@@ -31,19 +31,22 @@ func ExportImage():
 	
 	await RenderingServer.frame_post_draw
 	
-	SubViewportObj = get_parent().get_node("ImagePainterApp/SubViewport")
 	SubViewportObj.render_target_update_mode = 1
-	if(ImageRenderer.texture == null):
-		ImageRenderer.texture = SubViewportObj.get_texture()
-	get_parent().get_node("Background").texture = SubViewportObj.get_texture()
 	
 	await RenderingServer.frame_post_draw
 	
+	var newtexture = ImageTexture.new()
+	var test = newtexture.create_from_image(SubViewportObj.get_texture().get_image())
+	ImageRenderer.texture = test
+	ImageRenderer.position = Vector2((size.x-ImagePainter.size.x)/2, ImageRenderer.position.y)
+	get_parent().get_node("Background").texture = test
+	
 	SubViewportObj.remove_child(ImagePainter)
 	ImagePainterApp.add_child(ImagePainter)
+
+	ImagePainter.SelectedTool = "Brush"
+
 	ImagePainter.position = PreviousPosition
-	
-	get_parent().get_node("ImagePainterApp/SubViewport")
 
 func _input(Event):
 	if Event is InputEventKey:

@@ -1,9 +1,8 @@
-[gd_scene load_steps=122 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=124 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
 [ext_resource type="Script" path="res://Scripts/Taskbar.gd" id="2_0hvxi"]
-[ext_resource type="Texture2D" uid="uid://c7p2rujxnx86f" path="res://Backgrounds/videoframe_16507.png" id="2_n6ini"]
 [ext_resource type="Texture2D" uid="uid://msxx0fhaq81p" path="res://Images/power.png" id="3_ardfw"]
 [ext_resource type="Texture2D" uid="uid://gyrptjh26ekr" path="res://Images/gear.png" id="4_6scnd"]
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="5_facrs"]
@@ -44,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://bw303nllwcych" path="res://Images/drawing_brush.png" id="34_3ubu8"]
 [ext_resource type="Script" path="res://Scripts/ImagePainterApp.gd" id="34_i2ygh"]
 [ext_resource type="Script" path="res://Scripts/image_painter.gd" id="34_v3so4"]
+[ext_resource type="Texture2D" uid="uid://crd4wkmysw7ph" path="res://Backgrounds/videoframe_23859.png" id="35_4f3gh"]
 [ext_resource type="Script" path="res://Scripts/PhotosApp.gd" id="36_gy6aq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
@@ -346,6 +346,12 @@ corner_radius_top_right = 15
 bg_color = Color(0.180392, 0.686275, 0.521569, 0)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4umi8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8nwk"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6mnm"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
@@ -1291,6 +1297,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_v5ywe")
 script = ExtResource("34_i2ygh")
 
 [node name="ImagePainter" type="Panel" parent="ImagePainterApp"]
+layout_mode = 0
 offset_top = 56.0
 offset_right = 1504.0
 offset_bottom = 1040.0
@@ -1303,11 +1310,10 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 0
 
 [node name="Background2" type="TextureRect" parent="ImagePainterApp/SubViewport"]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.59998, 0.600012)
-texture = ExtResource("2_n6ini")
+texture = ExtResource("35_4f3gh")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="ImagePainterApp"]
 script = ExtResource("8_iymbk")
@@ -1317,10 +1323,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1560.0
-offset_top = 136.0
-offset_right = 1878.0
-offset_bottom = 704.0
+offset_left = 1592.0
+offset_top = 152.0
+offset_right = 1894.0
+offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1453,9 +1459,11 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
 text = "New"
 
 [node name="PhotosApp" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4umi8")
 script = ExtResource("36_gy6aq")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="PhotosApp"]
@@ -1468,6 +1476,7 @@ script = ExtResource("16_16jal")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s8nwk")
 
 [node name="CloseButton" type="Button" parent="PhotosApp/TopPanel"]
 layout_mode = 0
@@ -1511,10 +1520,16 @@ scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
 [node name="ImageRenderer" type="TextureRect" parent="PhotosApp"]
-layout_mode = 0
-offset_top = 56.0
-offset_right = 1920.0
-offset_bottom = 1042.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.054
+anchor_right = 0.5
+anchor_bottom = 0.054
+offset_left = -960.0
+offset_top = -0.16
+offset_right = 960.0
+offset_bottom = 985.84
 
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
