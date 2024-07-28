@@ -1,7 +1,6 @@
 extends Panel
 
 var SearchEngineOpen = false
-var UserSearchInput
 
 var AppRunning = false
 var AppVisible = false
@@ -37,6 +36,7 @@ func Reset():
 var Websites = ["OurChube", "TotallyNotScam", "Microsoft"]
 
 var BrowserTabPrefab
+var ParcourirWebsitePrefab
 
 var TabsLine
 
@@ -46,16 +46,43 @@ var MaxNumberOfTabs = 14
 
 var OpenedTab
 
+var WebsiteIndex = 0
+
+@onready var WebsitesHolder = $WebsitesHolder
+
+var GlobalUserSearchInput
+
+var OpenedWebsite
+
+func HideAllWebsites():
+	for Website in WebsitesHolder.get_children():
+		Website.hide()
+
 func OpenTab(TabToOpen):
+	HideAllWebsites()
 	OpenedTab = TabToOpen
 	for Tab in TabsLine.get_children():
 		Tab.Deselect()
 	OpenedTab.Select()
+	
+	for Website in WebsitesHolder.get_children():
+		if(Website.get_meta("LinkedWebsite") == TabToOpen.get_meta("LinkedWebsite")):
+			OpenedWebsite = Website
+			Website.show()
+			GlobalUserSearchInput.text = Website.get_meta("UserSearchInput")
 
 func InsertNewTab():
 	var NewTab = BrowserTabPrefab.instantiate()
+	NewTab.set_meta("LinkedWebsite", WebsiteIndex)
+	var NewParcourirWebsite = ParcourirWebsitePrefab.instantiate()
+	NewParcourirWebsite.set_meta("LinkedWebsite", WebsiteIndex)
+	NewParcourirWebsite.get_node("Title").text = "[center]" + str(WebsiteIndex) + "[/center]"
+	WebsiteIndex += 1
+	
+	WebsitesHolder.add_child(NewParcourirWebsite)
 	TabsLine.add_child(NewTab)
 	NewTab.text = "Parcourir"
+	
 	AlignTabs()
 	OpenedTab = NewTab
 	OpenTab(NewTab)
@@ -70,21 +97,15 @@ func AlignTabs():
 	for i in range(TabsInTabsLine.size()):
 		TabsInTabsLine[i].position = (Vector2(8 + ((TabsInTabsLine[0].size.x + 8) * i), 0))
 
-	#if(TabsInTabsLine.size() > 6):
-		#for Tab in TabsInTabsLine:
-			#Tab.size.x = MaximumTabLength - (16 * TabsInTabsLine.size())
-		
-	#for i in range(TabsInTabsLine.size()):
-		#TabsInTabsLine[i].position = (Vector2(8 + ((TabsInTabsLine[0].size.x + 8) * i), 0))
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	BrowserTabPrefab = preload("res://Prefabs/browser_tab.tscn")
+	ParcourirWebsitePrefab = preload("res://Websites/parcourir.tscn")
 	
+	GlobalUserSearchInput = get_node("LineTwo/GlobalUserSearchInput")
 	get_node("LineTwo/NewTabButton").button_up.connect(InsertNewTab)
 	TabsLine = get_node("TopPanel/Tabs")
 	AppVisualTransition = get_node("AppVisualTransitionComponent")
-	UserSearchInput = get_node("UserSearchInput")
 	hide()
 
 func ResetSearchBrowserText():
@@ -97,16 +118,22 @@ func OpenWebsite(WebsiteToOpen):
 		print("No website with name: " + WebsiteToOpen )
 
 func _on_search_button_on_bar_button_up():
-	if(UserSearchInput.text.substr(0,4) == "www."):
+	if(GlobalUserSearchInput.text.substr(0,4) == "www."):
 		print("Contains www.")
-		if(UserSearchInput.text.substr(UserSearchInput.text.length() - 4, UserSearchInput.text.length()) == ".com"):
+		if(GlobalUserSearchInput.text.substr(GlobalUserSearchInput.text.length() - 4, GlobalUserSearchInput.text.length()) == ".com"):
 			print("Contains .com")
 			print("Opening website directly")
-			print(UserSearchInput.text.substr(4, UserSearchInput.text.length() - 8))
+			print(GlobalUserSearchInput.text.substr(4, GlobalUserSearchInput.text.length() - 8))
 			#www.OurChube.com
-			OpenWebsite(UserSearchInput.text.substr(4, UserSearchInput.text.length() - 8))
+			OpenWebsite(GlobalUserSearchInput.text.substr(4, GlobalUserSearchInput.text.length() - 8))
 		else:
 			print("Doesn't contain .com")
 	else:
 		print("Doesn't contain www.")
-		OpenWebsite(UserSearchInput.text)
+		OpenWebsite(GlobalUserSearchInput.text)
+
+
+
+func _on_global_user_search_input_text_changed(NewText):
+	print("test")
+	OpenedWebsite.set_meta("UserSearchInput", NewText)

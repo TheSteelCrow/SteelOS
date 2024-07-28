@@ -28,6 +28,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_0n5x0")
 text = "Parcourir"
 text_overrun_behavior = 3
 script = ExtResource("1_ywg53")
+metadata/LinkedWebsite = 0
 
 [node name="CloseTabButton" type="TextureButton" parent="."]
 layout_mode = 1

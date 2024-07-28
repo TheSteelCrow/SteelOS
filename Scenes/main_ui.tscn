@@ -64,9 +64,6 @@ bg_color = Color(0, 0, 0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
 bg_color = Color(0.321569, 0.321569, 0.321569, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gaed"]
-bg_color = Color(0.439216, 0.627451, 0.756863, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n65cn"]
 bg_color = Color(0.290196, 0.290196, 0.290196, 1)
 
@@ -99,6 +96,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyra3"]
 bg_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu20e"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fllwo"]
 bg_color = Color(0.320313, 0.425781, 0.507813, 1)
@@ -511,11 +511,9 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
 script = ExtResource("9_yyops")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="SearchEngine"]
@@ -523,56 +521,6 @@ script = ExtResource("8_iymbk")
 
 [node name="AppBaseComponent" type="Node" parent="SearchEngine"]
 script = ExtResource("16_16jal")
-
-[node name="UserSearchInput" type="TextEdit" parent="SearchEngine"]
-layout_mode = 0
-offset_left = 704.0
-offset_top = 448.0
-offset_right = 1216.0
-offset_bottom = 483.0
-placeholder_text = "Search Parcourir or type a URL"
-scroll_fit_content_height = true
-
-[node name="TextureRect" type="TextureRect" parent="SearchEngine"]
-layout_mode = 0
-offset_left = 888.0
-offset_top = 320.0
-offset_right = 1016.0
-offset_bottom = 448.0
-texture = ExtResource("5_facrs")
-
-[node name="Motto" type="RichTextLabel" parent="SearchEngine"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 264.0
-offset_right = 1536.0
-offset_bottom = 347.0
-theme_override_font_sizes/normal_font_size = 25
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="SearchEngine"]
-layout_mode = 0
-offset_left = 704.0
-offset_top = 192.0
-offset_right = 1215.0
-offset_bottom = 275.0
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[center]Parcourir[/center]
-"
-fit_content = true
-scroll_active = false
-
-[node name="SearchButtonOnBar" type="TextureButton" parent="SearchEngine"]
-layout_mode = 0
-offset_left = 1184.0
-offset_top = 448.0
-offset_right = 1284.0
-offset_bottom = 548.0
-scale = Vector2(0.320272, 0.320522)
-texture_normal = ExtResource("5_facrs")
 
 [node name="TopPanel" type="Panel" parent="SearchEngine"]
 layout_mode = 0
@@ -634,14 +582,13 @@ offset_right = 1920.0
 offset_bottom = 112.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nyra3")
 
-[node name="UserSearchInput2" type="TextEdit" parent="SearchEngine/LineTwo"]
+[node name="GlobalUserSearchInput" type="LineEdit" parent="SearchEngine/LineTwo"]
 layout_mode = 0
 offset_left = 232.0
 offset_top = 8.0
 offset_right = 1912.0
 offset_bottom = 48.0
 placeholder_text = "Search Parcourir or type a URL"
-scroll_fit_content_height = true
 
 [node name="SearchButtonOnBar2" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
@@ -683,6 +630,13 @@ offset_right = 156.0
 offset_bottom = 100.0
 scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("11_csaug")
+
+[node name="WebsitesHolder" type="Panel" parent="SearchEngine"]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uu20e")
 
 [node name="Mail" type="Panel" parent="."]
 visible = false
@@ -1323,10 +1277,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1592.0
-offset_top = 152.0
-offset_right = 1894.0
-offset_bottom = 720.0
+offset_left = 1712.0
+offset_top = 212.0
+offset_right = 1954.0
+offset_bottom = 780.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1810,7 +1764,7 @@ script = ExtResource("25_ejut0")
 wait_time = 5.0
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
-[connection signal="button_up" from="SearchEngine/SearchButtonOnBar" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
+[connection signal="text_changed" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_changed"]
 [connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar2" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/StartTaskButton" to="Mail" method="_on_start_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/CompleteTaskButton" to="Mail" method="_on_complete_task_button_button_up"]
