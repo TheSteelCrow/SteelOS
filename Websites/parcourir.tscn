@@ -69,7 +69,6 @@ scale = Vector2(0.320272, 0.320522)
 texture_normal = ExtResource("1_mglvn")
 
 [node name="SearchResults" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 928.0
@@ -143,5 +142,4 @@ theme_override_constants/separation = 200
 layout_mode = 2
 
 [connection signal="text_submitted" from="LocalUserSearchInput" to="." method="_on_local_user_search_input_text_submitted"]
-[connection signal="button_up" from="SearchButtonOnBar" to="." method="_on_search_button_on_bar_button_up"]
 [connection signal="pressed" from="SearchButtonOnBar" to="." method="_on_search_button_on_bar_pressed"]

@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://6y8tq4ub3fnk"]
+
+[ext_resource type="FontFile" uid="uid://cdfa4emafiofo" path="res://Fonts/Unispace Rg.otf" id="1_o3bq3"]
+[ext_resource type="Texture2D" uid="uid://l00bxjne5tdj" path="res://Images/Aloftia Flag.png" id="2_ebgpr"]
+
+[sub_resource type="Gradient" id="Gradient_hheq8"]
+colors = PackedColorArray(0.422028, 0.23213, 0.748016, 1, 0.650349, 0, 0.300397, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_22o0g"]
+gradient = SubResource("Gradient_hheq8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r4xwi"]
+texture = SubResource("GradientTexture2D_22o0g")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoe4r"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Government" type="Panel"]
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_r4xwi")
+metadata/UserSearchInput = "www.aloftia.govt"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -1.0
+offset_right = 1930.0
+offset_bottom = 207.0
+theme_override_fonts/normal_font = ExtResource("1_o3bq3")
+theme_override_font_sizes/normal_font_size = 170
+bbcode_enabled = true
+text = "[center]Aloftia Government[/center]"
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 213.0
+offset_right = 1504.0
+offset_bottom = 421.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 110
+bbcode_enabled = true
+text = "[b][i]UNITY IS STRENGTH"
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 208.0
+offset_right = 1498.0
+offset_bottom = 416.0
+theme_override_font_sizes/bold_italics_font_size = 110
+bbcode_enabled = true
+text = "[b][i]UNITY IS STRENGTH"
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 176.0
+offset_right = 1882.0
+offset_bottom = 186.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 896.0
+offset_right = 1883.0
+offset_bottom = 906.0
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 648.0
+offset_right = 1392.0
+offset_bottom = 656.0
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 400.0
+offset_right = 1392.0
+offset_bottom = 648.0
+color = Color(0.796078, 0.796078, 0.796078, 1)
+
+[node name="LineEdit2" type="LineEdit" parent="ColorRect5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 848.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.337255, 0.337255, 0.337255, 1)
+theme_override_colors/font_placeholder_color = Color(0.67451, 0.67451, 0.67451, 1)
+theme_override_constants/minimum_character_width = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_uoe4r")
+placeholder_text = "Username"
+
+[node name="LineEdit3" type="LineEdit" parent="ColorRect5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 848.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.337255, 0.337255, 0.337255, 1)
+theme_override_colors/font_placeholder_color = Color(0.67451, 0.67451, 0.67451, 1)
+theme_override_constants/minimum_character_width = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_uoe4r")
+placeholder_text = "Password"
+secret = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 392.0
+offset_right = 1392.0
+offset_bottom = 400.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1392.0
+offset_top = 392.0
+offset_right = 1992.0
+offset_bottom = 692.0
+scale = Vector2(0.879996, 0.879996)
+texture = ExtResource("2_ebgpr")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 392.0
+offset_right = 600.0
+offset_bottom = 692.0
+scale = Vector2(0.879996, 0.879996)
+texture = ExtResource("2_ebgpr")

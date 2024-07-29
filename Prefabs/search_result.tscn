@@ -23,7 +23,7 @@ offset_right = 456.0
 offset_bottom = 48.0
 text = "www.parcourir.com"
 
-[node name="Subname" type="RichTextLabel" parent="."]
+[node name="FormalName" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 48.0
