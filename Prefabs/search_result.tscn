@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cntlwiowm2qgp"]
+
+[ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="1_uycra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lumpb"]
+bg_color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="SearchResult" type="Button"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_lumpb")
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 456.0
+offset_bottom = 24.0
+text = "ParCourir"
+
+[node name="Link" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 24.0
+offset_right = 456.0
+offset_bottom = 48.0
+text = "www.parcourir.com"
+
+[node name="Subname" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 392.0
+offset_bottom = 88.0
+theme_override_colors/default_color = Color(0.398438, 0.710938, 0.996094, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Parcourir"
+scroll_active = false
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 88.0
+offset_right = 392.0
+offset_bottom = 160.0
+text = "Parcourir is a search engine designed to search the web. Parcourir means browse or search."
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 164.0
+offset_bottom = 100.0
+scale = Vector2(0.558789, 0.558789)
+texture = ExtResource("1_uycra")
