@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0rqf14k7gjgn"]
+[gd_scene load_steps=5 format=3 uid="uid://b0rqf14k7gjgn"]
 
 [ext_resource type="Script" path="res://scripts/parcourir.gd" id="1_b4oke"]
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="1_mglvn"]
@@ -8,16 +8,13 @@ bg_color = Color(0.439216, 0.627451, 0.756863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2ig1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35bjr"]
-bg_color = Color(0.431373, 0.431373, 0.431373, 1)
-
 [node name="Parcourir" type="Panel"]
 offset_right = 1920.0
 offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
 script = ExtResource("1_b4oke")
 metadata/LinkedWebsite = 0
-metadata/UserSearchInput = "www.courir.com"
+metadata/UserSearchInput = "www.parcourir.com"
 
 [node name="LocalUserSearchInput" type="LineEdit" parent="."]
 layout_mode = 0
@@ -69,61 +66,11 @@ scale = Vector2(0.320272, 0.320522)
 texture_normal = ExtResource("1_mglvn")
 
 [node name="SearchResults" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_f2ig1")
-
-[node name="Panel" type="Panel" parent="SearchResults"]
-visible = false
-layout_mode = 0
-offset_top = 64.0
-offset_right = 1912.0
-offset_bottom = 224.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_35bjr")
-metadata/_edit_group_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="SearchResults/Panel"]
-layout_mode = 0
-offset_left = 128.0
-offset_right = 456.0
-offset_bottom = 24.0
-text = "ParCourir"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="SearchResults/Panel"]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 24.0
-offset_right = 456.0
-offset_bottom = 48.0
-text = "www.parcourir.com"
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="SearchResults/Panel"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 48.0
-offset_right = 392.0
-offset_bottom = 88.0
-theme_override_colors/default_color = Color(0.398438, 0.710938, 0.996094, 1)
-theme_override_font_sizes/normal_font_size = 30
-text = "Parcourir"
-scroll_active = false
-
-[node name="RichTextLabel4" type="RichTextLabel" parent="SearchResults/Panel"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 88.0
-offset_right = 392.0
-offset_bottom = 160.0
-text = "Parcourir is a search engine designed to search the web. Parcourir means browse or search."
-
-[node name="TextureRect" type="TextureRect" parent="SearchResults/Panel"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 164.0
-offset_bottom = 100.0
-scale = Vector2(0.558789, 0.558789)
-texture = ExtResource("1_mglvn")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SearchResults"]
 layout_mode = 0

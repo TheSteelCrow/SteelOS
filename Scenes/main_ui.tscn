@@ -590,7 +590,7 @@ offset_right = 1912.0
 offset_bottom = 48.0
 placeholder_text = "Search Parcourir or type a URL"
 
-[node name="SearchButtonOnBar2" type="TextureButton" parent="SearchEngine/LineTwo"]
+[node name="SearchButtonOnBar" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
 offset_left = 1880.0
 offset_top = 12.0
@@ -1277,10 +1277,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1840.0
-offset_top = 276.0
-offset_right = 2018.0
-offset_bottom = 844.0
+offset_left = 1936.0
+offset_top = 324.0
+offset_right = 2066.0
+offset_bottom = 892.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1765,7 +1765,8 @@ wait_time = 5.0
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="text_changed" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_changed"]
-[connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar2" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
+[connection signal="text_submitted" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_submitted"]
+[connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/StartTaskButton" to="Mail" method="_on_start_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/CompleteTaskButton" to="Mail" method="_on_complete_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/CancelTaskButton" to="Mail" method="_on_cancel_task_button_button_up"]

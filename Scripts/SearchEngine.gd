@@ -9,40 +9,19 @@ var AppVisualTransition
 
 var IsFullscreen = false
 
-var Mottos = [
-	"Parcourir: Where Your Data Finds a New Home.",
-	"Parcourir: Your Privacy? What Privacy?",
-	"Parcourir: Surf and Surrender Your Secrets.",
-	"Parcourir: We Know What You Did Last Session.",
-	"Parcourir: The Browser That Keeps a Little for Itself.",
-	"Parcourir: Trust Us... Maybe You Shouldn't.",
-	"Parcourir: Because Your Data is Our Business.",
-	"Parcourir: Browse Boldly, Share Unknowingly.",
-	"Parcourir: The Browser with a Hidden Agenda.",
-	"Parcourir: Your Window to the Web, Our Door to Your Data."
-]
+#Name : Link, FormalName, Description
 
-func OnAppVisible():
-	pass
-
-func Open():
-	InsertNewTab()
-
-func Reset():
-	for Tab in TabsLine.get_children():
-		Tab.queue_free()
-	ResetSearchBrowserText()
-
-var Websites = ["OurChube", "TotallyNotScam", "Microsoft"]
+var WebDomains = {
+	
+	"parcourir" : ["www.parcourir.com", "Parcourir - Search Engine", "Parcourir is a search engine designed to search the web. Parcourir means browse or search."],
+	"government" : ["www.aloftia.govt", "Aloftia - Government Login", "Login terminal for the Aloftia Government"]
+	
+}
 
 var BrowserTabPrefab
 var ParcourirWebsitePrefab
 
 var TabsLine
-
-var MinimumTabLength = 180
-var MaximumTabLength = 300-8
-var MaxNumberOfTabs = 14
 
 var OpenedTab
 
@@ -53,6 +32,27 @@ var WebsiteIndex = 0
 var GlobalUserSearchInput
 
 var OpenedWebsite
+
+func OnAppVisible():
+	pass
+
+func Open():
+	InsertNewTab()
+
+func Reset():
+	for Tab in TabsLine.get_children():
+		Tab.queue_free()
+
+func ReplaceOpenedWebsite(Domain):
+	OpenedWebsite.queue_free()
+	OpenedTab.text = Domain
+	var ReplacementWebsitePrefab = load("res://Websites/" + Domain + ".tscn")
+	var ReplacementWebsite = ReplacementWebsitePrefab.instantiate()
+	WebsitesHolder.add_child(ReplacementWebsite)
+	ReplacementWebsite.set_meta("LinkedWebsite", OpenedTab.get_meta("LinkedWebsite"))
+	ReplacementWebsite.move_to_front()
+	OpenedWebsite = ReplacementWebsite
+	GlobalUserSearchInput.text = WebDomains[Domain][0]
 
 func HideAllWebsites():
 	for Website in WebsitesHolder.get_children():
@@ -76,12 +76,11 @@ func InsertNewTab():
 	NewTab.set_meta("LinkedWebsite", WebsiteIndex)
 	var NewParcourirWebsite = ParcourirWebsitePrefab.instantiate()
 	NewParcourirWebsite.set_meta("LinkedWebsite", WebsiteIndex)
-	NewParcourirWebsite.get_node("Title").text = "[center]" + str(WebsiteIndex) + "[/center]"
 	WebsiteIndex += 1
 	
 	WebsitesHolder.add_child(NewParcourirWebsite)
 	TabsLine.add_child(NewTab)
-	NewTab.text = "Parcourir"
+	NewTab.text = "parcourir"
 	
 	AlignTabs()
 	OpenedTab = NewTab
@@ -108,32 +107,16 @@ func _ready():
 	AppVisualTransition = get_node("AppVisualTransitionComponent")
 	hide()
 
-func ResetSearchBrowserText():
-	get_node("Motto").text = "[center]" + Mottos[randf_range(0, Mottos.size())] + "[/center]"
-
-func OpenWebsite(WebsiteToOpen):
-	if(WebsiteToOpen in Websites):
-		print("Opening website: " + WebsiteToOpen)
-	else:
-		print("No website with name: " + WebsiteToOpen )
-
-func _on_search_button_on_bar_button_up():
-	if(GlobalUserSearchInput.text.substr(0,4) == "www."):
-		print("Contains www.")
-		if(GlobalUserSearchInput.text.substr(GlobalUserSearchInput.text.length() - 4, GlobalUserSearchInput.text.length()) == ".com"):
-			print("Contains .com")
-			print("Opening website directly")
-			print(GlobalUserSearchInput.text.substr(4, GlobalUserSearchInput.text.length() - 8))
-			#www.OurChube.com
-			OpenWebsite(GlobalUserSearchInput.text.substr(4, GlobalUserSearchInput.text.length() - 8))
-		else:
-			print("Doesn't contain .com")
-	else:
-		print("Doesn't contain www.")
-		OpenWebsite(GlobalUserSearchInput.text)
-
-
+func OpenLink(Link):
+	for Domain in WebDomains:
+		if(WebDomains[Domain][0] == Link):
+			ReplaceOpenedWebsite(Domain)
 
 func _on_global_user_search_input_text_changed(NewText):
-	print("test")
 	OpenedWebsite.set_meta("UserSearchInput", NewText)
+
+func _on_global_user_search_input_text_submitted(NewText):
+	OpenLink(NewText)
+
+func _on_search_button_on_bar_button_up():
+	OpenLink(GlobalUserSearchInput.text)

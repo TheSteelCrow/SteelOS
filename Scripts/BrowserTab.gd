@@ -52,6 +52,11 @@ func _ready():
 			SearchEngine.get_node("AppBaseComponent").Close()
 		get_parent().remove_child(self)
 		SearchEngine.AlignTabs()
+		
+		for Website in SearchEngine.WebsitesHolder.get_children():
+			if(Website.get_meta("LinkedWebsite") == get_meta("LinkedWebsite")):
+				Website.queue_free()
+		
 		queue_free()
 	)
 	
