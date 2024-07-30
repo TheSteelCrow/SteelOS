@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=141 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -49,6 +49,9 @@
 [ext_resource type="Script" path="res://Scripts/PhotosApp.gd" id="36_gy6aq"]
 [ext_resource type="Texture2D" uid="uid://cgxgkb2t6wmr" path="res://Images/NewestMailicon.png" id="40_0vkh3"]
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="49_jeuf6"]
+[ext_resource type="Script" path="res://Scripts/BootUpSequence.gd" id="50_v4o84"]
+[ext_resource type="Texture2D" uid="uid://co7sw5f4earnb" path="res://Images/crow os text.png" id="51_luo0p"]
+[ext_resource type="Texture2D" uid="uid://b2253rh40p47f" path="res://Images/DE Lott Productions Banner.png" id="52_q2h5l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -452,6 +455,9 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5npgj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ky0"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -1348,10 +1354,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1738.0
-offset_top = 226.0
-offset_right = 1944.0
-offset_bottom = 794.0
+offset_left = 1770.0
+offset_top = 242.0
+offset_right = 1960.0
+offset_bottom = 810.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1769,23 +1775,6 @@ bbcode_enabled = true
 text = "[center]0/10[/center]"
 scroll_active = false
 
-[node name="SystemLoadingScreen" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
-
-[node name="Text" type="RichTextLabel" parent="SystemLoadingScreen"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 448.0
-offset_right = 1728.0
-offset_bottom = 640.0
-theme_override_font_sizes/normal_font_size = 106
-bbcode_enabled = true
-text = "[center]Shutting Down...[/center]"
-
 [node name="CustomCommandLine" type="Panel" parent="."]
 visible = false
 layout_mode = 0
@@ -1968,6 +1957,50 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "Disable Animations"
 scroll_active = false
+
+[node name="SystemLoadingScreen" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="BootUpScreen" type="Panel" parent="SystemLoadingScreen"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3ky0")
+script = ExtResource("50_v4o84")
+
+[node name="1" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("51_luo0p")
+
+[node name="2" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("52_q2h5l")
+
+[node name="ShutDownRestartScreen" type="Panel" parent="SystemLoadingScreen"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3ky0")
+
+[node name="Text" type="RichTextLabel" parent="SystemLoadingScreen/ShutDownRestartScreen"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 448.0
+offset_right = 1728.0
+offset_bottom = 640.0
+theme_override_font_sizes/normal_font_size = 106
+bbcode_enabled = true
+text = "[center]Shutting Down...[/center]"
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
