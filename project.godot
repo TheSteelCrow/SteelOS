@@ -14,6 +14,8 @@ config/name="SteelOS"
 run/main_scene="res://Scenes/main_ui.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=60
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Images/Banner.jpg"
 config/icon="res://Images/icon.svg"
 
 [display]

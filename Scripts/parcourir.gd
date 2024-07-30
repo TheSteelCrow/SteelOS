@@ -43,6 +43,7 @@ func DisplaySearchResults():
 		NewSearchResult.get_node("Link").text = SearchEngine.WebDomains[Domain][0]
 		NewSearchResult.get_node("FormalName").text = SearchEngine.WebDomains[Domain][1]
 		NewSearchResult.get_node("Description").text = SearchEngine.WebDomains[Domain][2]
+		NewSearchResult.get_node("Logo").texture = load("res://Images/WebsiteIcons/" + SearchEngine.WebDomains[Domain][3])
 		
 	SearchResultsHolder.move_child(SearchResultsHolder.get_node("EndingSeperator"), SearchResultsHolder.get_children().size())
 

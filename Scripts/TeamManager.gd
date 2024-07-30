@@ -22,6 +22,8 @@ var StampOffSetFromMouse
 var Stamp
 var StampTimeUntilReturn = 1
 
+var Main
+
 func StartTask():
 	Stamp.get_node("Button").disabled = false
 	get_node("Warning").hide()
@@ -126,6 +128,7 @@ func Open():
 	pass
 
 func _ready():
+	Main = get_parent()
 	get_node("Warning").show()
 	get_node("Warning").move_to_front()
 	Taskbar = get_parent().get_node("Taskbar")
@@ -155,7 +158,7 @@ func RunSequence(EmployeeToFire):
 	Stamp.get_node("Button").disabled = true
 	var StampMovingPart = Stamp.get_node(Taskbar.TaskName)
 	var tween = create_tween()
-	tween.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y + 50), 0.1)
+	tween.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y + 50), 0.1 * Main.AnimationsMultiplier)
 	await tween.finished
 	var StampImageInk = get_node(Taskbar.TaskName + "d")
 	
@@ -171,7 +174,7 @@ func RunSequence(EmployeeToFire):
 	
 	#Finishing Stamping
 	var tween2 = create_tween()
-	tween2.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y - 50), 0.25)
+	tween2.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y - 50), 0.25 * Main.AnimationsMultiplier)
 	await tween2.finished
 	
 	#After Stamping
@@ -199,5 +202,6 @@ func _on_next_button_button_up():
 		get_node("Warning").show()
 	elif(Taskbar.TaskProgress == Taskbar.TaskQuota-1):
 		get_node("NextButton").text = "FINISH"
+		SetupRound()
 	else:
 		SetupRound()

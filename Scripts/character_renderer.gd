@@ -16,6 +16,8 @@ var AWZName
 var CharacterName
 var NumberOfChildren
 
+var FloatingHair = [1,3,6,8,12,14,18,20,24,26,30,32,36,39,42,44]
+
 @onready var Info = $Info
 
 func Generate():
@@ -154,8 +156,6 @@ func Generate():
 		elif(AWZName == "Woman"):
 			Hair = get_node("HairWoman")
 			Hair.frame = random.randi_range(30, 47)
-			
-		Hair.show()
 	elif(Age < 50):
 		
 		Old = false
@@ -169,7 +169,10 @@ func Generate():
 			Hair = get_node("HairWoman")
 			Hair.frame = random.randi_range(0, 29)
 		
-		Hair.show()
+	Hair.show()
+	
+	if(Hair.frame in FloatingHair and AWZName == "Woman"):
+		Hair.position = Vector2(Hair.position.x, Hair.position.y+30.5)
 	
 	var ShoeLeft = get_node("ShoeLeft")
 	var ShoeRight = get_node("ShoeRight")

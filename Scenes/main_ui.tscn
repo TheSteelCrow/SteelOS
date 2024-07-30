@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=137 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://crd4wkmysw7ph" path="res://Backgrounds/videoframe_23859.png" id="35_4f3gh"]
 [ext_resource type="Script" path="res://Scripts/PhotosApp.gd" id="36_gy6aq"]
 [ext_resource type="Texture2D" uid="uid://cgxgkb2t6wmr" path="res://Images/NewestMailicon.png" id="40_0vkh3"]
+[ext_resource type="Script" path="res://Scripts/Settings.gd" id="49_jeuf6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -418,6 +419,39 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5lbq"]
+bg_color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlu3p"]
+bg_color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60l4g"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mlf0"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wi4h"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdsnb"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e68s7"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5npgj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -1314,10 +1348,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1634.0
-offset_top = 174.0
-offset_right = 1892.0
-offset_bottom = 742.0
+offset_left = 1722.0
+offset_top = 218.0
+offset_right = 1936.0
+offset_bottom = 786.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1603,16 +1637,15 @@ tooltip_text = "Power"
 texture_normal = ExtResource("3_ardfw")
 
 [node name="SettingsBackdrop" type="ColorRect" parent="Taskbar"]
-visible = false
 layout_mode = 0
-offset_left = 208.0
-offset_right = 248.0
+offset_left = 288.0
+offset_right = 328.0
 offset_bottom = 40.0
 tooltip_text = "Settings"
 color = Color(0.152941, 0.152941, 0.152941, 1)
 metadata/_edit_group_ = true
 
-[node name="TextureButton" type="TextureButton" parent="Taskbar/SettingsBackdrop"]
+[node name="SettingsButton" type="TextureButton" parent="Taskbar/SettingsBackdrop"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1800,7 +1833,144 @@ script = ExtResource("25_ejut0")
 [node name="ErrorSpawner" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="Settings" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r5lbq")
+script = ExtResource("49_jeuf6")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="Settings"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="Settings"]
+script = ExtResource("16_16jal")
+
+[node name="TopPanel" type="Panel" parent="Settings"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xlu3p")
+
+[node name="CloseButton" type="Button" parent="Settings/TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_60l4g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6mlf0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6wi4h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_gdsnb")
+
+[node name="TextureRect" type="TextureRect" parent="Settings/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="Settings/TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_60l4g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e68s7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6wi4h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_gdsnb")
+
+[node name="TextureRect" type="TextureRect" parent="Settings/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
+
+[node name="RunFactoryReset" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Run Factory Reset"
+
+[node name="ResetBackground" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 208.0
+offset_right = 384.0
+offset_bottom = 272.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Reset Background"
+
+[node name="ApplyBackground" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 384.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Apply Background"
+
+[node name="DisableAnimations" type="Panel" parent="Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 280.0
+offset_right = 512.0
+offset_bottom = 344.0
+
+[node name="DisableAnimationsToggle" type="CheckButton" parent="Settings/DisableAnimations"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = -3.0
+offset_right = 420.0
+offset_bottom = 21.0
+scale = Vector2(3, 3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_5npgj")
+
+[node name="Text" type="RichTextLabel" parent="Settings/DisableAnimations"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 392.0
+offset_bottom = 69.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Disable Animations"
+scroll_active = false
+
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
+[connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
 [connection signal="text_changed" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_changed"]
 [connection signal="text_submitted" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_submitted"]
 [connection signal="button_up" from="SearchEngine/LineTwo/SearchButtonOnBar" to="SearchEngine" method="_on_search_button_on_bar_button_up"]
@@ -1818,3 +1988,4 @@ wait_time = 5.0
 [connection signal="toggled" from="ImagePainterApp/Panel/GridToggle" to="ImagePainterApp/ImagePainter" method="_on_grid_toggle_toggled" flags=18]
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]
+[connection signal="toggled" from="Settings/DisableAnimations/DisableAnimationsToggle" to="Settings" method="_on_disable_animations_toggle_toggled"]

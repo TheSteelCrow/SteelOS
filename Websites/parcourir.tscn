@@ -22,9 +22,9 @@ offset_left = 704.0
 offset_top = 336.0
 offset_right = 1215.0
 offset_bottom = 371.0
-placeholder_text = "Search Parcourir or type a URL"
+placeholder_text = "Search Parcourir"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 888.0
 offset_top = 208.0

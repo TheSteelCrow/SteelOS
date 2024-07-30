@@ -49,9 +49,10 @@ text = "Parcourir is a search engine designed to search the web. Parcourir means
 
 [node name="Logo" type="TextureRect" parent="Button"]
 layout_mode = 0
-offset_left = 64.0
-offset_right = 164.0
-offset_bottom = 100.0
-scale = Vector2(0.558789, 0.558789)
+offset_left = 84.0
+offset_top = 4.0
+offset_right = 184.0
+offset_bottom = 104.0
+scale = Vector2(0.412738, 0.412738)
 mouse_filter = 2
 texture = ExtResource("1_uycra")

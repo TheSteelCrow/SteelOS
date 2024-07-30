@@ -1743,7 +1743,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"HairWoman",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [node name="NewCharacterRenderer" type="Panel"]
@@ -1903,6 +1903,7 @@ sprite_frames = SubResource("SpriteFrames_6tnnj")
 animation = &"ShirtMiddle"
 
 [node name="HairMan" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(198.5, 108)
 sprite_frames = SubResource("SpriteFrames_3yiic")
 animation = &"HairMan"

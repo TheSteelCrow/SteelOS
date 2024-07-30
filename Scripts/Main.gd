@@ -1,6 +1,7 @@
 extends Control
 
 var SHUTDOWN_TIME = 0.5
+var RESTART_TIME = 2
 
 var SearchEngine
 var Menu
@@ -11,18 +12,19 @@ var WindowInstanceSelected = false
 
 var OpenedApp
 
+var AnimationsMultiplier = 1
+
 #var Cursor1 = load("res://Images/pointer_b.png")
 #var Cursor2 = load("res://Images/pointer_b_shaded.png")
 
 var ShuttingDown = false
-var SystemLoadingScreen
+@onready var SystemLoadingScreen = $SystemLoadingScreen
 
 func _ready():
 	var ImageRendererPrefab = preload("res://Prefabs/image_painter.tscn")
 	#var ImageRenderer = ImageRendererPrefab.instantiate()
 	#ImageRenderer.position = Vector2(300, 300)
 	#add_child(ImageRenderer)
-	SystemLoadingScreen = get_node("ShutDownScreen")
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	#Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
 	#Input.set_custom_mouse_cursor(Cursor2, Input.CURSOR_POINTING_HAND)
@@ -39,7 +41,15 @@ func _on_shut_down_button_up():
 	SystemLoadingScreen.get_node("Text").text = "[center]Shutting Down...[/center]"
 	await get_tree().create_timer(SHUTDOWN_TIME).timeout
 	get_tree().quit()
-	
+
+func _on_restart_button_up():
+	ShuttingDown = true
+	SystemLoadingScreen.move_to_front()
+	SystemLoadingScreen.show()
+	SystemLoadingScreen.get_node("Text").text = "[center]Restarting...[/center]"
+	await get_tree().create_timer(SHUTDOWN_TIME).timeout
+	get_tree().reload_current_scene()
+
 func SpawnError():
 	if ErrorPopup:
 		var SpawnedError = ErrorPopup.instantiate()
