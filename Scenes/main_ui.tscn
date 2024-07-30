@@ -1,10 +1,13 @@
-[gd_scene load_steps=124 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=128 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
 [ext_resource type="Script" path="res://Scripts/Taskbar.gd" id="2_0hvxi"]
+[ext_resource type="Script" path="res://Scripts/StickyNote.gd" id="3_4xqhj"]
 [ext_resource type="Texture2D" uid="uid://msxx0fhaq81p" path="res://Images/power.png" id="3_ardfw"]
+[ext_resource type="FontFile" uid="uid://e1r807bn3v02" path="res://Fonts/Gontserrat-Light.ttf" id="4_0ht5n"]
 [ext_resource type="Texture2D" uid="uid://gyrptjh26ekr" path="res://Images/gear.png" id="4_6scnd"]
+[ext_resource type="FontFile" uid="uid://br828ekc2gdat" path="res://Fonts/ConsolaMono-Book.ttf" id="5_1lsih"]
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="5_facrs"]
 [ext_resource type="Texture2D" uid="uid://bwja64pffjomh" path="res://Images/return.png" id="5_jb3v0"]
 [ext_resource type="Texture2D" uid="uid://dkauuwd354mfn" path="res://Images/singleplayer.png" id="6_lpvn1"]
@@ -25,7 +28,6 @@
 [ext_resource type="Script" path="res://Scripts/Mail.gd" id="15_kssng"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="16_16jal"]
 [ext_resource type="Script" path="res://Scripts/MailData.gd" id="17_it2np"]
-[ext_resource type="Texture2D" uid="uid://m17vmv0sxy43" path="res://Images/massiveMultiplayer.png" id="20_nven0"]
 [ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
 [ext_resource type="Texture2D" uid="uid://cbgmhpecdkcr5" path="res://Images/Folder Art Png.png" id="26_1qffm"]
@@ -45,6 +47,7 @@
 [ext_resource type="Script" path="res://Scripts/image_painter.gd" id="34_v3so4"]
 [ext_resource type="Texture2D" uid="uid://crd4wkmysw7ph" path="res://Backgrounds/videoframe_23859.png" id="35_4f3gh"]
 [ext_resource type="Script" path="res://Scripts/PhotosApp.gd" id="36_gy6aq"]
+[ext_resource type="Texture2D" uid="uid://cgxgkb2t6wmr" path="res://Images/NewestMailicon.png" id="40_0vkh3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -57,6 +60,13 @@ corner_radius_bottom_left = 15
 bg_color = Color(0.662745, 0.305882, 0.482353, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ec50j"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aggrj"]
 bg_color = Color(0, 0, 0, 0)
@@ -425,32 +435,58 @@ offset_bottom = 1780.0
 scale = Vector2(0.719997, 0.606739)
 texture = ExtResource("1_pctbs")
 
-[node name="StickyNote1" type="Panel" parent="."]
+[node name="StickyNote" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 320.0
 offset_bottom = 384.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qdpsj")
+script = ExtResource("3_4xqhj")
 
-[node name="Bar" type="Panel" parent="StickyNote1"]
+[node name="Bar" type="Panel" parent="StickyNote"]
 layout_mode = 0
 offset_right = 304.0
 offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kv3sn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="StickyNote1"]
+[node name="Button" type="Button" parent="StickyNote/Bar"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_0ht5n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ec50j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ec50j")
+text = "Close"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StickyNote/Bar"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 176.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 36
+text = "READ ME"
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StickyNote"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
 offset_right = 296.0
 offset_bottom = 352.0
+theme_override_fonts/normal_font = ExtResource("5_1lsih")
 text = "Hover over any icon or button to see what it does! Start by finding a task by checking your emails. The Mail app can be opened via the taskbar.
 
 *This game is playable in multiple aspect ratios, but exclusive fullscreen is recomended for immersion, in as close to 16:9 as possible.*
 *Currently file explorer and search engine are not operational*"
 
 [node name="DesktopShortcuts" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -511,6 +547,7 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1277,10 +1314,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1602.0
-offset_top = 158.0
-offset_right = 1876.0
-offset_bottom = 726.0
+offset_left = 1634.0
+offset_top = 174.0
+offset_right = 1892.0
+offset_bottom = 742.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1633,7 +1670,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Mail"
-texture_normal = ExtResource("20_nven0")
+texture_normal = ExtResource("40_0vkh3")
 
 [node name="FileExplorerBackdrop" type="ColorRect" parent="Taskbar"]
 layout_mode = 0
@@ -1699,14 +1736,14 @@ bbcode_enabled = true
 text = "[center]0/10[/center]"
 scroll_active = false
 
-[node name="ShutDownScreen" type="ColorRect" parent="."]
+[node name="SystemLoadingScreen" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="ShuttingDownText" type="RichTextLabel" parent="ShutDownScreen"]
+[node name="Text" type="RichTextLabel" parent="SystemLoadingScreen"]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 448.0

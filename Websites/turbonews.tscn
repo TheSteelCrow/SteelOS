@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8gl4mgwv3bpl"]
+[gd_scene load_steps=9 format=3 uid="uid://c8gl4mgwv3bpl"]
+
+[ext_resource type="FontFile" uid="uid://e1r807bn3v02" path="res://Fonts/Gontserrat-Light.ttf" id="1_brxdb"]
+[ext_resource type="Script" path="res://Scripts/turbonews.gd" id="1_hfmru"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51wfj"]
 bg_color = Color(1, 1, 1, 1)
@@ -6,24 +9,273 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urtqw"]
 bg_color = Color(0.886275, 0.886275, 0.886275, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ronkf"]
+bg_color = Color(0.592157, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecin7"]
+bg_color = Color(0.870588, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na2tn"]
+bg_color = Color(0.403922, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0iqy"]
+bg_color = Color(0.996094, 0.996094, 0.996094, 1)
+
 [node name="turbonews" type="Panel"]
 offset_right = 1920.0
 offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_51wfj")
+script = ExtResource("1_hfmru")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.turbonews.com"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TopPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 112.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_urtqw")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="PageTitle" type="RichTextLabel" parent="TopPanel"]
 layout_mode = 0
 offset_left = 24.0
-offset_right = 1920.0
+offset_right = 560.0
 offset_bottom = 112.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 81
 text = "TURBO NEWS"
+scroll_active = false
+
+[node name="WorldNews" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 568.0
+offset_right = 776.0
+offset_bottom = 112.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ronkf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ecin7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_na2tn")
+
+[node name="Cover" type="ColorRect" parent="TopPanel/WorldNews"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+color = Color(0.882813, 0.882813, 0.882813, 1)
+
+[node name="Text" type="RichTextLabel" parent="TopPanel/WorldNews/Cover"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center]WORLD NEWS"
+scroll_active = false
+
+[node name="AloftiaNews" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 816.0
+offset_right = 1024.0
+offset_bottom = 112.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ronkf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ecin7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_na2tn")
+
+[node name="Cover" type="ColorRect" parent="TopPanel/AloftiaNews"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+color = Color(0.882813, 0.882813, 0.882813, 1)
+
+[node name="Text" type="RichTextLabel" parent="TopPanel/AloftiaNews/Cover"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center]ALOFTIA NEWS"
+scroll_active = false
+
+[node name="SprintNews" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 1056.0
+offset_right = 1264.0
+offset_bottom = 112.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ronkf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ecin7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_na2tn")
+
+[node name="Cover" type="ColorRect" parent="TopPanel/SprintNews"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+color = Color(0.882813, 0.882813, 0.882813, 1)
+
+[node name="Text" type="RichTextLabel" parent="TopPanel/SprintNews/Cover"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center]SPRINT NEWS"
+scroll_active = false
+
+[node name="OtherNews" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 1296.0
+offset_right = 1504.0
+offset_bottom = 112.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ronkf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ecin7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_na2tn")
+
+[node name="Cover" type="ColorRect" parent="TopPanel/OtherNews"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+color = Color(0.882813, 0.882813, 0.882813, 1)
+
+[node name="Text" type="RichTextLabel" parent="TopPanel/OtherNews/Cover"]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 104.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center]OTHER NEWS"
+scroll_active = false
+
+[node name="WorldNews" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0iqy")
+
+[node name="Headline" type="RichTextLabel" parent="WorldNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 1920.0
+offset_bottom = 96.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 56
+text = "World News - First Issue- 15|01|98:"
+
+[node name="Text" type="RichTextLabel" parent="WorldNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 1896.0
+offset_bottom = 792.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 34
+text = "Many of the world's nations have come together for the first conference on the subject of Aloftia's involvement in international trade. Many are opposed to the lifting of the unlawful restrictions placed apon Aloftia, they are undoubtedly under pressure from Selivanov, the president of Jorgal. The Aloftian government has yet to make a statement about the conference. A statement is expected to be made within the week. Glory to Aloftia!"
+
+[node name="SprintNews" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0iqy")
+
+[node name="Headline" type="RichTextLabel" parent="SprintNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 1920.0
+offset_bottom = 96.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 56
+text = "Sprint News - Sprint 2 Finished! - 18|07|24:"
+
+[node name="Text" type="RichTextLabel" parent="SprintNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 1896.0
+offset_bottom = 792.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 34
+text = "This will be written in once sprint 2 is finished!"
+
+[node name="AloftiaNews" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0iqy")
+
+[node name="Headline" type="RichTextLabel" parent="AloftiaNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 1920.0
+offset_bottom = 96.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 56
+text = "Aloftia News - First Issue - 15|01|98:"
+
+[node name="Text" type="RichTextLabel" parent="AloftiaNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 1896.0
+offset_bottom = 792.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 34
+text = "Today in the Glorious Democratic Republic of Aloftia, a group of 'Freedom' terrorists were apprehended by police. The group gathered on the steps of Albrine Cathedrale, demanding an end to Aloftia's domestic freedom efforts. The event ended with the terrorists realising that they had it all wrong all along. The terrorists dispersed with some chanting \"Glory to Aloftia!\" Truly a great day for our nation."
+
+[node name="OtherNews" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0iqy")
+
+[node name="Headline" type="RichTextLabel" parent="OtherNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 1920.0
+offset_bottom = 96.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 56
+text = "Other News"
+
+[node name="Text" type="RichTextLabel" parent="OtherNews"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 96.0
+offset_right = 1896.0
+offset_bottom = 792.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_brxdb")
+theme_override_font_sizes/normal_font_size = 34
+text = "There is no other news to display."

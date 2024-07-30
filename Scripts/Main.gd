@@ -15,14 +15,14 @@ var OpenedApp
 #var Cursor2 = load("res://Images/pointer_b_shaded.png")
 
 var ShuttingDown = false
-var ShutDownScreen
+var SystemLoadingScreen
 
 func _ready():
 	var ImageRendererPrefab = preload("res://Prefabs/image_painter.tscn")
 	#var ImageRenderer = ImageRendererPrefab.instantiate()
 	#ImageRenderer.position = Vector2(300, 300)
 	#add_child(ImageRenderer)
-	ShutDownScreen = get_node("ShutDownScreen")
+	SystemLoadingScreen = get_node("ShutDownScreen")
 	#OS.shell_open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 	#Input.set_custom_mouse_cursor(Cursor1, Input.CURSOR_ARROW)
 	#Input.set_custom_mouse_cursor(Cursor2, Input.CURSOR_POINTING_HAND)
@@ -32,15 +32,11 @@ func _ready():
 	SearchEngine = get_node("SearchEngine")
 	FileExplorer = get_node("FileExplorer")
 
-#func HideAll():
-#	Menu.hide()
-#	SearchEngine.hide()
-#	FileExplorer.hide()
-
 func _on_shut_down_button_up():
 	ShuttingDown = true
-	ShutDownScreen.move_to_front()
-	ShutDownScreen.show()
+	SystemLoadingScreen.move_to_front()
+	SystemLoadingScreen.show()
+	SystemLoadingScreen.get_node("Text").text = "[center]Shutting Down...[/center]"
 	await get_tree().create_timer(SHUTDOWN_TIME).timeout
 	get_tree().quit()
 	
