@@ -14,8 +14,8 @@ var IsFullscreen = false
 var WebDomains = {
 	
 	"parcourir" : ["www.parcourir.com", "Parcourir - Search Engine", "Parcourir is a search engine designed to search the web. Parcourir means browse or search."],
-	"government" : ["www.aloftia.govt", "Aloftia - Government Login", "Login terminal for the Aloftia Government"]
-	
+	"government" : ["www.aloftia.govt", "Aloftia - Government Login", "Login terminal for the Aloftia Government"],
+	"turbonews" : ["www.turbonews.com", "Turbo News - News you can trust", "News website for information on game updates as well as current events in Aloftia."]
 }
 
 var BrowserTabPrefab

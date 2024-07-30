@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8gl4mgwv3bpl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51wfj"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urtqw"]
+bg_color = Color(0.886275, 0.886275, 0.886275, 1)
+
+[node name="turbonews" type="Panel"]
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_51wfj")
+metadata/LinkedWebsite = 0
+metadata/UserSearchInput = "www.turbonews.com"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_urtqw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 1920.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 81
+text = "TURBO NEWS"

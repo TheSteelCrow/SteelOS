@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0rqf14k7gjgn"]
 
-[ext_resource type="Script" path="res://scripts/parcourir.gd" id="1_b4oke"]
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="1_mglvn"]
+[ext_resource type="Script" path="res://Scripts/parcourir.gd" id="1_qydyl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gaed"]
 bg_color = Color(0.439216, 0.627451, 0.756863, 1)
@@ -12,7 +12,7 @@ bg_color = Color(0.439216, 0.627451, 0.756863, 1)
 offset_right = 1920.0
 offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
-script = ExtResource("1_b4oke")
+script = ExtResource("1_qydyl")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.parcourir.com"
 

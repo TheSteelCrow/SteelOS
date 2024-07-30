@@ -97,7 +97,7 @@ func _ready():
 	ImageSize = size
 	App = get_parent()
 	
-	#SetupPixels()
+	SetupPixels()
 	
 	for ToolButton in App.get_node("Tools").get_children():
 		ToolButton.button_up.connect(func():

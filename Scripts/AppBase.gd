@@ -24,6 +24,7 @@ func Close():
 	App.Reset()
 
 func _ready():
+	print("Main Running")
 	Main = get_tree().root.get_child(0)
 	
 	App = get_parent()

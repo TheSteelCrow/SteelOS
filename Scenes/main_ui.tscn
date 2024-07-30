@@ -1277,10 +1277,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1936.0
-offset_top = 324.0
-offset_right = 2066.0
-offset_bottom = 892.0
+offset_left = 1602.0
+offset_top = 158.0
+offset_right = 1876.0
+offset_bottom = 726.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
