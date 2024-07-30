@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c32wswyr8p3st"
-path="res://.godot/imported/test_image.png-766335652dc2c2de5b8cec86a2845a37.ctex"
+uid="uid://b2253rh40p47f"
+path="res://.godot/imported/DE Lott Productions Banner.png-0e0c19d911950ec897f7bda64d5c606d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test_image.png"
-dest_files=["res://.godot/imported/test_image.png-766335652dc2c2de5b8cec86a2845a37.ctex"]
+source_file="res://Images/DE Lott Productions Banner.png"
+dest_files=["res://.godot/imported/DE Lott Productions Banner.png-0e0c19d911950ec897f7bda64d5c606d.ctex"]
 
 [params]
 
