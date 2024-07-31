@@ -50,7 +50,7 @@ func _process(delta):
 	else:
 		Progress.add_theme_color_override("default_color", Color("ffffff"))
 	
-	move_to_front()
+	#move_to_front()
 	var TimeText = get_node("TimeText")
 	var DateText = get_node("DateText")
 	TimeText.text = ""
