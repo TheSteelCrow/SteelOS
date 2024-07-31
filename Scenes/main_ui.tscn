@@ -1354,10 +1354,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1770.0
-offset_top = 242.0
-offset_right = 1960.0
-offset_bottom = 810.0
+offset_left = 1590.0
+offset_top = 174.0
+offset_right = 1868.0
+offset_bottom = 742.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1958,11 +1958,10 @@ theme_override_font_sizes/normal_font_size = 40
 text = "Disable Animations"
 scroll_active = false
 
-[node name="SystemLoadingScreen" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="SystemLoadingScreen" type="Control" parent="."]
+anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
 
 [node name="BootUpScreen" type="Panel" parent="SystemLoadingScreen"]
 layout_mode = 0
@@ -1972,7 +1971,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u3ky0")
 script = ExtResource("50_v4o84")
 
 [node name="1" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen"]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0

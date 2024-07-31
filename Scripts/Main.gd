@@ -38,7 +38,7 @@ func _on_shut_down_button_up():
 	ShuttingDown = true
 	SystemLoadingScreen.move_to_front()
 	SystemLoadingScreen.show()
-	SystemLoadingScreen.get_node("Text").text = "[center]Shutting Down...[/center]"
+	SystemLoadingScreen.get_node("ShutDownRestartScreen/Text").text = "[center]Shutting Down...[/center]"
 	await get_tree().create_timer(SHUTDOWN_TIME).timeout
 	get_tree().quit()
 
@@ -46,7 +46,7 @@ func _on_restart_button_up():
 	ShuttingDown = true
 	SystemLoadingScreen.move_to_front()
 	SystemLoadingScreen.show()
-	SystemLoadingScreen.get_node("Text").text = "[center]Restarting...[/center]"
+	SystemLoadingScreen.get_node("ShutDownRestartScreen/Text").text = "[center]Restarting...[/center]"
 	await get_tree().create_timer(SHUTDOWN_TIME).timeout
 	get_tree().reload_current_scene()
 

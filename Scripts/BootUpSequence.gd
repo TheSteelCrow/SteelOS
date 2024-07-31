@@ -1,11 +1,22 @@
 extends Panel
 
+var Frames
+var Main
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Main = get_tree().root.get_child(0)
+	Frames = get_children()
+	RunSequence()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func RunSequence():
+	for Frame in Frames:
+		Frame.modulate = Vector4(255, 255, 255, 0)
+	
+	for Frame in Frames:
+		var FadeIn = create_tween()
+		FadeIn.tween_property(Frame, "modulate", Vector4(255, 255, 255, 255), 1 * Main.AnimationsMultiplier)
+		await FadeIn.finished
+		
+		var FadeOut = create_tween()
+		FadeIn.tween_property(Frame, "modulate", Vector4(255, 255, 255, 0), 1 * Main.AnimationsMultiplier)
+		await FadeIn.finished
