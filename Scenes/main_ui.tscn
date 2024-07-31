@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=148 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://crd4wkmysw7ph" path="res://Backgrounds/videoframe_23859.png" id="35_4f3gh"]
 [ext_resource type="Script" path="res://Scripts/PhotosApp.gd" id="36_gy6aq"]
 [ext_resource type="Texture2D" uid="uid://cgxgkb2t6wmr" path="res://Images/NewestMailicon.png" id="40_0vkh3"]
+[ext_resource type="Script" path="res://Scripts/DragComponent.gd" id="49_a6mew"]
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="49_jeuf6"]
 [ext_resource type="Script" path="res://Scripts/BootUpSequence.gd" id="50_v4o84"]
 [ext_resource type="Texture2D" uid="uid://co7sw5f4earnb" path="res://Images/crow os text.png" id="51_luo0p"]
@@ -56,6 +57,7 @@
 [ext_resource type="AudioStream" uid="uid://cp3cyv5odo4sy" path="res://Sounds/StartUp.wav" id="53_iyfxd"]
 [ext_resource type="Texture2D" uid="uid://sn87whruc5rr" path="res://Images/larger.png" id="54_c1n25"]
 [ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="55_nf6wa"]
+[ext_resource type="Texture2D" uid="uid://bghfxrbf61pxf" path="res://Images/fastForward.png" id="56_hnjtj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -427,6 +429,13 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvll1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5lbq"]
 bg_color = Color(0.827451, 0.827451, 0.827451, 1)
 
@@ -488,13 +497,16 @@ offset_bottom = 384.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qdpsj")
 script = ExtResource("3_4xqhj")
 
-[node name="Bar" type="Panel" parent="StickyNote"]
+[node name="DragComponent" type="Node" parent="StickyNote"]
+script = ExtResource("49_a6mew")
+
+[node name="TopPanel" type="Panel" parent="StickyNote"]
 layout_mode = 0
 offset_right = 304.0
 offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kv3sn")
 
-[node name="Button" type="Button" parent="StickyNote/Bar"]
+[node name="Button" type="Button" parent="StickyNote/TopPanel"]
 layout_mode = 0
 offset_left = 176.0
 offset_top = 8.0
@@ -508,11 +520,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ec50j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ec50j")
 text = "Close"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="StickyNote/Bar"]
+[node name="RichTextLabel" type="RichTextLabel" parent="StickyNote/TopPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_right = 176.0
 offset_bottom = 48.0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 36
 text = "READ ME"
 scroll_active = false
@@ -906,6 +919,9 @@ offset_right = 896.0
 offset_bottom = 576.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7y176")
 script = ExtResource("11_m1ils")
+
+[node name="DragComponent" type="Node" parent="FileExplorer"]
+script = ExtResource("49_a6mew")
 
 [node name="FileExplorerData" type="Node" parent="FileExplorer"]
 
@@ -1358,10 +1374,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1606.0
-offset_top = 182.0
-offset_right = 1876.0
-offset_bottom = 750.0
+offset_left = 1622.0
+offset_top = 190.0
+offset_right = 1884.0
+offset_bottom = 758.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1663,6 +1679,36 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Settings"
 texture_normal = ExtResource("4_6scnd")
 
+[node name="TerminalBackdrop" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 336.0
+offset_right = 376.0
+offset_bottom = 40.0
+tooltip_text = "Settings"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="TerminalButton" type="TextureButton" parent="Taskbar/TerminalBackdrop"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "Settings"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Taskbar/TerminalBackdrop/TerminalButton"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.152344, 0.152344, 0.152344, 1)
+theme_override_fonts/normal_font = ExtResource("55_nf6wa")
+theme_override_font_sizes/normal_font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_gvll1")
+text = ">_"
+scroll_active = false
+
 [node name="SearchEngineBackdrop" type="ColorRect" parent="Taskbar"]
 layout_mode = 0
 offset_left = 96.0
@@ -1779,7 +1825,7 @@ bbcode_enabled = true
 text = "[center]0/10[/center]"
 scroll_active = false
 
-[node name="CustomCommandLine" type="Panel" parent="."]
+[node name="Terminal" type="Panel" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 64.0
@@ -1788,26 +1834,66 @@ offset_right = 720.0
 offset_bottom = 512.0
 script = ExtResource("30_l4ac3")
 
-[node name="TopBar" type="Panel" parent="CustomCommandLine"]
+[node name="AppBaseComponent" type="Node" parent="Terminal"]
+script = ExtResource("16_16jal")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="Terminal"]
+script = ExtResource("8_iymbk")
+
+[node name="DragComponent" type="Node" parent="Terminal"]
+script = ExtResource("49_a6mew")
+
+[node name="TopPanel" type="Panel" parent="Terminal"]
 layout_mode = 0
 offset_right = 656.0
 offset_bottom = 48.0
 
-[node name="TextEdit" type="TextEdit" parent="CustomCommandLine"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 400.0
-offset_right = 648.0
-offset_bottom = 440.0
+[node name="CloseButton" type="Button" parent="Terminal/TopPanel"]
+offset_left = 584.0
+offset_right = 656.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_orvby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0mlkg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b8pnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0gd46")
 
-[node name="TextPanel" type="Panel" parent="CustomCommandLine"]
+[node name="TextureRect" type="TextureRect" parent="Terminal/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="Terminal/TopPanel"]
+offset_left = 504.0
+offset_right = 576.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_orvby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yv3e4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b8pnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0gd46")
+
+[node name="TextureRect" type="TextureRect" parent="Terminal/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
+
+[node name="TextDisplayPanel" type="Panel" parent="Terminal"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 56.0
 offset_right = 648.0
 offset_bottom = 392.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CustomCommandLine/TextPanel"]
+[node name="TextDisplay" type="RichTextLabel" parent="Terminal/TextDisplayPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -1815,6 +1901,14 @@ offset_right = 632.0
 offset_bottom = 328.0
 text = "Running Command Now...
 doing this and that..."
+scroll_following = true
+
+[node name="UserInput" type="LineEdit" parent="Terminal"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 400.0
+offset_right = 648.0
+offset_bottom = 440.0
 
 [node name="FPS" type="Label" parent="."]
 visible = false
@@ -1963,6 +2057,7 @@ text = "Disable Animations"
 scroll_active = false
 
 [node name="SystemLoadingScreen" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -1991,22 +2086,35 @@ offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u3ky0")
 script = ExtResource("50_v4o84")
 
+[node name="Skip" type="TextureButton" parent="SystemLoadingScreen/BootUpScreen"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1017.0
+offset_right = 105.0
+offset_bottom = 1117.0
+scale = Vector2(0.599592, 0.599592)
+tooltip_text = "Skip Bootup Sequence"
+texture_normal = ExtResource("56_hnjtj")
+
 [node name="3" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("52_q2h5l")
 
 [node name="4" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("51_luo0p")
 
 [node name="Reminders" type="Control" parent="SystemLoadingScreen/BootUpScreen"]
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="Audio" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen/Reminders"]
 layout_mode = 0
@@ -2014,6 +2122,7 @@ offset_left = 243.0
 offset_top = 247.0
 offset_right = 755.0
 offset_bottom = 759.0
+mouse_filter = 2
 texture = ExtResource("53_eev3g")
 
 [node name="Fullscreen" type="TextureRect" parent="SystemLoadingScreen/BootUpScreen/Reminders"]
@@ -2022,6 +2131,7 @@ offset_left = 1137.0
 offset_top = 271.0
 offset_right = 1649.0
 offset_bottom = 783.0
+mouse_filter = 2
 texture = ExtResource("54_c1n25")
 
 [node name="FullscreenText" type="Label" parent="SystemLoadingScreen/BootUpScreen/Reminders"]
@@ -2048,7 +2158,6 @@ autowrap_mode = 2
 
 [node name="StartUpSound" type="AudioStreamPlayer" parent="SystemLoadingScreen"]
 stream = ExtResource("53_iyfxd")
-volume_db = 15.0
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
@@ -2060,13 +2169,13 @@ volume_db = 15.0
 [connection signal="button_up" from="Mail/EmailViewer/CancelTaskButton" to="Mail" method="_on_cancel_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/TopBar/CloseButton" to="Mail" method="_on_close_button_button_up"]
 [connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]
-[connection signal="mouse_entered" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_entered"]
-[connection signal="mouse_exited" from="FileExplorer/TopPanel" to="FileExplorer" method="_on_window_drag_bar_mouse_exited"]
 [connection signal="button_up" from="FileExplorer/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
 [connection signal="button_up" from="FileExplorer/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
 [connection signal="button_up" from="TeamManager/NextButton" to="TeamManager" method="_on_next_button_button_up"]
 [connection signal="value_changed" from="ImagePainterApp/Panel/GridThickness" to="ImagePainterApp/ImagePainter" method="_on_grid_thickness_value_changed" flags=18]
 [connection signal="toggled" from="ImagePainterApp/Panel/GridToggle" to="ImagePainterApp/ImagePainter" method="_on_grid_toggle_toggled" flags=18]
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
+[connection signal="text_submitted" from="Terminal/UserInput" to="Terminal" method="_on_user_input_text_submitted"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]
 [connection signal="toggled" from="Settings/DisableAnimations/DisableAnimationsToggle" to="Settings" method="_on_disable_animations_toggle_toggled"]
+[connection signal="button_up" from="SystemLoadingScreen/BootUpScreen/Skip" to="SystemLoadingScreen/BootUpScreen" method="_on_skip_button_up"]

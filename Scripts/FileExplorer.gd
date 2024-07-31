@@ -60,29 +60,6 @@ func _ready():
 	
 	FilesTree = get_node("Files")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	MouseButton1Down = Input.is_mouse_button_pressed(1)
-	var MousePosition = get_viewport().get_mouse_position()
-	
-	if(MouseInZone && MouseButton1Down && Dragging == false):
-		Dragging = true
-		offset = position - MousePosition
-		#Set Offset
-	elif(MouseButton1Down == false && Dragging == true):
-		Dragging = false
-	elif(Dragging == true):
-		if(not (MousePosition.x > ScreenSize.x || MousePosition.x < 0 || MousePosition.y > ScreenSize.y || MousePosition.y < 0 )):
-			position = get_viewport().get_mouse_position() + offset
-		#MoveWindow
-
-func _on_window_drag_bar_mouse_entered():
-	MouseInZone = true
-	
-func _on_window_drag_bar_mouse_exited():
-	MouseInZone = false
-
 func OpenFolder(FolderToOpen):
 	FilesTree.clear()
 	FileRoot = FilesTree.create_item()

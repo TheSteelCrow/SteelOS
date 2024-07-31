@@ -1,4 +1,6 @@
 extends Panel
 
 func _ready():
-	get_node("Bar/Button").button_down.connect(func():queue_free())
+	get_node("TopPanel/Button").button_down.connect(func():
+		queue_free()
+	)

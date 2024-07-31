@@ -13,6 +13,7 @@ func _ready():
 	StartUpSound = get_parent().get_node("StartUpSound")
 	Main = get_tree().root.get_child(0)
 	Frames = get_children()
+	Frames.remove_at(0)
 	RunSequence()
 
 func RunSequence():
@@ -46,3 +47,13 @@ func RunSequence():
 	
 	await FadeOutMusic.finished
 	StartUpSound.stop()
+	
+	StartUpSound.queue_free()
+	self.queue_free()
+
+
+
+func _on_skip_button_up():
+	get_parent().hide()
+	StartUpSound.queue_free()
+	self.queue_free()

@@ -1,20 +1,29 @@
 extends Panel
 
-@onready var UserInput = $TextEdit
+@onready var UserInput = $UserInput
 var Output
+
+var IsFullscreen = false
+
+var Commands = ["/hack"]
+var DevCommands = ["/example"]
+
+func OnAppVisible():
+	pass
+
+func Open():
+	pass
+
+func Reset():
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Output = get_node("TextPanel").get_node("RichTextLabel")
+	Output = get_node("TextDisplayPanel/TextDisplay")
+	Output.text = "Welcome to Command Panel!"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if(Input.is_key_pressed(KEY_ENTER) && visible):
-		UserInput.text = ""
-		Output.text = "Command Run"
-	elif(Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_S)):
-		Output.text = "Welcome to Command Panel!"
-		show()
-	elif(Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_H)):
-		Output.text = ""
-		hide()
+func _on_user_input_text_submitted(Command):
+	if(Command in Commands):
+		Output.text += "\nRunning Command " + Command
+	elif(Command in DevCommands and OS.is_debug_build()):
+		Output.text += "\nRunning DevCommand " + Command
