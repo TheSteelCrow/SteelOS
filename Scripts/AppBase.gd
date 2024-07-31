@@ -23,6 +23,14 @@ func Close():
 	App.hide()
 	App.Reset()
 
+func Open():
+	App.Open()
+	AppRunning = true
+	App.position = Vector2(0,0)
+	App.scale = Vector2(1,1)
+	App.show()
+	App.OnAppVisible()
+	
 func _ready():
 	print("Main Running")
 	Main = get_tree().root.get_child(0)

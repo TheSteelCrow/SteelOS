@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=154 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://sn87whruc5rr" path="res://Images/larger.png" id="54_c1n25"]
 [ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="55_nf6wa"]
 [ext_resource type="Texture2D" uid="uid://bghfxrbf61pxf" path="res://Images/fastForward.png" id="56_hnjtj"]
+[ext_resource type="Script" path="res://Scripts/HackTask.gd" id="59_atj43"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -471,6 +472,30 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ky0"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gmtd"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_js26a"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqnl2"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50edq"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc5b5"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -1374,10 +1399,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1622.0
-offset_top = 190.0
-offset_right = 1884.0
-offset_bottom = 758.0
+offset_left = 1638.0
+offset_top = 198.0
+offset_right = 1892.0
+offset_bottom = 766.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1849,6 +1874,7 @@ offset_right = 656.0
 offset_bottom = 48.0
 
 [node name="CloseButton" type="Button" parent="Terminal/TopPanel"]
+layout_mode = 0
 offset_left = 584.0
 offset_right = 656.0
 offset_bottom = 48.0
@@ -1868,6 +1894,7 @@ scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("9_hey6d")
 
 [node name="MinimiseButton" type="Button" parent="Terminal/TopPanel"]
+layout_mode = 0
 offset_left = 504.0
 offset_right = 576.0
 offset_bottom = 48.0
@@ -2158,6 +2185,64 @@ autowrap_mode = 2
 
 [node name="StartUpSound" type="AudioStreamPlayer" parent="SystemLoadingScreen"]
 stream = ExtResource("53_iyfxd")
+
+[node name="HackTask" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+script = ExtResource("59_atj43")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="HackTask"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="HackTask"]
+script = ExtResource("16_16jal")
+
+[node name="TopPanel" type="Panel" parent="HackTask"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+
+[node name="CloseButton" type="Button" parent="HackTask/TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_6gmtd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_js26a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oqnl2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_50edq")
+
+[node name="TextureRect" type="TextureRect" parent="HackTask/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="HackTask/TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_6gmtd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fc5b5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oqnl2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_50edq")
+
+[node name="TextureRect" type="TextureRect" parent="HackTask/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
