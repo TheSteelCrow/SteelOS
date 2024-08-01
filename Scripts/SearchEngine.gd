@@ -103,6 +103,7 @@ func _ready():
 	
 	GlobalUserSearchInput = get_node("LineTwo/GlobalUserSearchInput")
 	get_node("LineTwo/NewTabButton").button_up.connect(InsertNewTab)
+	get_node("LineTwo/CopyURLButton").button_up.connect(func():DisplayServer.clipboard_set(GlobalUserSearchInput.text))
 	TabsLine = get_node("TopPanel/Tabs")
 	AppVisualTransition = get_node("AppVisualTransitionComponent")
 	hide()
