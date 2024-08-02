@@ -19,6 +19,8 @@ var Wins = 0
 
 var TaskActive = false
 
+@onready var Pipelines = [$DataPipelineRed, $DataPipelineGreen, $DataPipelineBlue]
+
 func _process(Delta):
 	if(TaskActive):
 		if(CurrentInterceptor.position.y <= StartingHeight): #If below starting height
@@ -30,30 +32,53 @@ func _process(Delta):
 		else:
 			return
 
-func _ready():
-	Interceptors = InterceptorsHolder.get_children()
+func StartTask():
+	SetPipelineColor("Blue")
 	
 	for i in range(0,Interceptors.size()):
 		CurrentInterceptor = Interceptors[i]
 		CurrentMaximumY = InterceptorsMaximumY[i]
+		
 		await InterceptorsHolder.button_down
+		print("button")
 		
 		if(CurrentInterceptor.position.y <= TopHit and CurrentInterceptor.position.y >= BottomHit[i]):
-			print("WIN!")
 			Wins+=1
 		else:
-			print("LOSE!")
+			TaskActive = false
+			SetPipelineColor("Red")
+			return
 		if(i == Interceptors.size()-1):
 			TaskDone = true
 			if(Wins == 5):
-				get_node("DataPipelineGreen").show()
-				get_node("DataPipelineRed").hide()
+				TaskActive = false
+				SetPipelineColor("Green")
+				await get_tree().create_timer(2).timeout
+				get_node("StealFiles").Start()
+				return
 
+func SetPipelineColor(CurrentPipeline):
+	for Pipeline in Pipelines:
+		Pipeline.hide()
+	get_node("DataPipeline" + CurrentPipeline).show()
+	
 func OnAppVisible():
 	pass
 
+func _ready():
+	Interceptors = InterceptorsHolder.get_children()
+
 func Open():
+	Direction = 1
+	
+	for Interceptor in Interceptors:
+		Interceptor.position.y = StartingHeight
+	
+	StartTask()
+	
+	TaskDone = false
 	TaskActive = true
+	Wins = 0
 
 func Reset():
 	pass

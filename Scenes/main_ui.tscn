@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=174 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -52,7 +52,7 @@
 [ext_resource type="Script" path="res://Scripts/DragComponent.gd" id="49_a6mew"]
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="49_jeuf6"]
 [ext_resource type="Script" path="res://Scripts/BootUpSequence.gd" id="50_v4o84"]
-[ext_resource type="Texture2D" uid="uid://dvnx54gwimq8b" path="res://PasteIcon1.png" id="51_a2dkv"]
+[ext_resource type="Texture2D" uid="uid://dvnx54gwimq8b" path="res://Images/PasteIcon1.png" id="51_c3t5u"]
 [ext_resource type="Texture2D" uid="uid://co7sw5f4earnb" path="res://Images/crow os text.png" id="51_luo0p"]
 [ext_resource type="Texture2D" uid="uid://b2253rh40p47f" path="res://Images/DE Lott Productions Banner.png" id="52_q2h5l"]
 [ext_resource type="Texture2D" uid="uid://8gtal1ijuoy7" path="res://Images/audioOn.png" id="53_eev3g"]
@@ -63,6 +63,7 @@
 [ext_resource type="Script" path="res://Scripts/HackTask.gd" id="59_atj43"]
 [ext_resource type="Texture2D" uid="uid://c3x8srm2wj7qq" path="res://Images/monitor.png" id="60_h1kqg"]
 [ext_resource type="Texture2D" uid="uid://b7kns6qbtwmic" path="res://Images/Custom server icon.png" id="61_ixdv1"]
+[ext_resource type="Script" path="res://Scripts/StealFiles.gd" id="63_41qlj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -402,8 +403,14 @@ bg_color = Color(0.370364, 0.370364, 0.370364, 1)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vrhd"]
-bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+[sub_resource type="Gradient" id="Gradient_istym"]
+colors = PackedColorArray(0.129558, 0.129558, 0.129558, 1, 0.273873, 0.273873, 0.273873, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_chb43"]
+gradient = SubResource("Gradient_istym")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrops"]
+texture = SubResource("GradientTexture2D_chb43")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kehs5"]
 bg_color = Color(0, 0, 0, 0)
@@ -524,12 +531,24 @@ gradient = SubResource("Gradient_nlukk")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2dc0n"]
 texture = SubResource("GradientTexture1D_6bejo")
 
+[sub_resource type="Gradient" id="Gradient_6o607"]
+colors = PackedColorArray(0, 0, 0.501961, 1, 0, 0.301961, 0.8, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_421dj"]
+gradient = SubResource("Gradient_6o607")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5yk2j"]
+texture = SubResource("GradientTexture1D_421dj")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6sa84"]
 bg_color = Color(0.235294, 0.235294, 0.235294, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adhxf"]
+bg_color = Color(0.360784, 0.360784, 0.360784, 1)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -1441,10 +1460,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1576.0
-offset_top = 116.0
-offset_right = 1862.0
-offset_bottom = 684.0
+offset_left = 1640.0
+offset_top = 148.0
+offset_right = 1894.0
+offset_bottom = 716.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1654,7 +1673,7 @@ layout_mode = 0
 offset_top = 1040.0
 offset_right = 1920.0
 offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4vrhd")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qrops")
 script = ExtResource("2_0hvxi")
 
 [node name="Battery" type="Panel" parent="Taskbar"]
@@ -1978,6 +1997,7 @@ offset_left = 8.0
 offset_top = 400.0
 offset_right = 600.0
 offset_bottom = 440.0
+focus_mode = 1
 
 [node name="PasteButton" type="TextureButton" parent="Terminal/UserInput"]
 layout_mode = 0
@@ -1985,7 +2005,7 @@ offset_left = 600.0
 offset_right = 700.0
 offset_bottom = 100.0
 scale = Vector2(0.400011, 0.400011)
-texture_normal = ExtResource("51_a2dkv")
+texture_normal = ExtResource("51_c3t5u")
 
 [node name="ErrorSpawner" type="Timer" parent="."]
 wait_time = 5.0
@@ -2290,6 +2310,7 @@ scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
 [node name="DataPipelineRed" type="Panel" parent="HackTask"]
+visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 496.0
@@ -2307,6 +2328,16 @@ offset_right = 1654.0
 offset_bottom = 512.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2dc0n")
+
+[node name="DataPipelineBlue" type="Panel" parent="HackTask"]
+visible = false
+layout_mode = 0
+offset_left = 340.0
+offset_top = 496.0
+offset_right = 1654.0
+offset_bottom = 512.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5yk2j")
 
 [node name="ComputerIcon" type="TextureRect" parent="HackTask"]
 layout_mode = 0
@@ -2410,6 +2441,15 @@ offset_right = 1408.0
 offset_bottom = 145.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6sa84")
+
+[node name="StealFiles" type="Panel" parent="HackTask"]
+visible = false
+layout_mode = 0
+offset_top = 56.0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_adhxf")
+script = ExtResource("63_41qlj")
 
 [node name="FPS" type="Label" parent="."]
 layout_mode = 0

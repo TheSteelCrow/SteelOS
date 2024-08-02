@@ -1,0 +1,510 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmdgfv7a3sbec"]
+
+[ext_resource type="Script" path="res://Scripts/StealFiles.gd" id="1_uyx2j"]
+[ext_resource type="PackedScene" uid="uid://blj1cfjdmy4ng" path="res://Prefabs/steal_file_download_prefab.tscn" id="2_1mw10"]
+[ext_resource type="Texture2D" uid="uid://c8uoswaysm66g" path="res://Images/Progress/progress_empty.png" id="2_dgm84"]
+[ext_resource type="Texture2D" uid="uid://cbxtbhyxe5opr" path="res://Images/Progress/import.png" id="3_kpq4u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adhxf"]
+bg_color = Color(0.360784, 0.360784, 0.360784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heq8r"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="StealFiles" type="Panel"]
+offset_top = 56.0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_adhxf")
+script = ExtResource("1_uyx2j")
+
+[node name="StealFile_FileDownload_Prefab" parent="." instance=ExtResource("2_1mw10")]
+layout_mode = 0
+
+[node name="File2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 268.0
+offset_right = 672.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File2"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File2"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File2"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File2"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 524.0
+offset_right = 672.0
+offset_bottom = 716.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File3"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File3"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File3"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File3"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 780.0
+offset_right = 672.0
+offset_bottom = 972.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File4"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File4"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File4"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File4"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 12.0
+offset_right = 1184.0
+offset_bottom = 204.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File5"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File5"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File5"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File5"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 268.0
+offset_right = 1184.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File6"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File6"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File6"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File6"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File7" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 524.0
+offset_right = 1184.0
+offset_bottom = 716.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File7"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File7"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File7"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File7"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File8" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 780.0
+offset_right = 1184.0
+offset_bottom = 972.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File8"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File8"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File8"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File8"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File9" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 12.0
+offset_right = 1696.0
+offset_bottom = 204.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File9"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File9"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File9"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File9"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File10" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 268.0
+offset_right = 1696.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File10"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File10"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File10"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File10"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File11" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 524.0
+offset_right = 1696.0
+offset_bottom = 716.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File11"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File11"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File11"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File11"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="File12" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1248.0
+offset_top = 780.0
+offset_right = 1696.0
+offset_bottom = 972.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="Progress" type="TextureRect" parent="File12"]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 448.0
+offset_bottom = 124.0
+texture = ExtResource("2_dgm84")
+
+[node name="Download" type="Button" parent="File12"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("3_kpq4u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="File12"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="File12"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"

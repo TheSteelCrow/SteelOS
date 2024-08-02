@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvnx54gwimq8b"
-path="res://.godot/imported/PasteIcon1.png-031f6f8bb6dce6e7a8cbd39f69e1a18b.ctex"
+uid="uid://c6l7w2gg8ddqi"
+path="res://.godot/imported/checkmark.png-2b953ad76bc793001ec4957472ed5f27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PasteIcon1.png"
-dest_files=["res://.godot/imported/PasteIcon1.png-031f6f8bb6dce6e7a8cbd39f69e1a18b.ctex"]
+source_file="res://Images/Progress/checkmark.png"
+dest_files=["res://.godot/imported/checkmark.png-2b953ad76bc793001ec4957472ed5f27.ctex"]
 
 [params]
 

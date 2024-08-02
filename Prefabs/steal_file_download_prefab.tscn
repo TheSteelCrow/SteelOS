@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://blj1cfjdmy4ng"]
+
+[ext_resource type="Texture2D" uid="uid://cbxtbhyxe5opr" path="res://Images/Progress/import.png" id="1_ukvs2"]
+[ext_resource type="Texture2D" uid="uid://c8uoswaysm66g" path="res://Images/Progress/progress_empty.png" id="2_6yarv"]
+[ext_resource type="Texture2D" uid="uid://br5ud1fvpm8yd" path="res://Images/Progress/progress_CW_25.png" id="3_uuvj7"]
+[ext_resource type="Texture2D" uid="uid://bmfvyqghvrfm" path="res://Images/Progress/progress_CW_50.png" id="4_721pe"]
+[ext_resource type="Texture2D" uid="uid://gukwvcas6jcm" path="res://Images/Progress/progress_CW_75.png" id="5_7o1gl"]
+[ext_resource type="Texture2D" uid="uid://hnhexq7d5tgj" path="res://Images/Progress/progress_full.png" id="6_tchc6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heq8r"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e7mu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6yarv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uuvj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_721pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7o1gl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tchc6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="StealFile_FileDownload_Prefab" type="Panel"]
+offset_left = 224.0
+offset_top = 12.0
+offset_right = 672.0
+offset_bottom = 204.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_heq8r")
+
+[node name="DownloadButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 60.0
+offset_right = 492.0
+offset_bottom = 168.0
+scale = Vector2(0.592554, 0.592554)
+icon = ExtResource("1_ukvs2")
+
+[node name="FileName" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Confidential Files"
+
+[node name="FileSize" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 184.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="ProgressAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(416, 92)
+sprite_frames = SubResource("SpriteFrames_6e7mu")
+frame_progress = 0.585302
