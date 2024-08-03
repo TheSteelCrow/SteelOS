@@ -21,8 +21,14 @@ var GridEnabled = false
 var GridThickness = 0
 
 var App
+var Main
+
 
 func SetupPixels():
+	if(get_child_count() > 0):
+		for Pixel in get_children():
+			Pixel.queue_free()
+	
 	NumberOfPixels = (ImageSize.x / CompressionRate) * (ImageSize.y / CompressionRate)
 	print(NumberOfPixels)
 	
@@ -44,7 +50,7 @@ func SetupPixels():
 				if(TargetPixel == Pixel):
 					TargetPixel = null
 			)
-			#await get_tree().process_frame
+		await get_tree().create_timer(0.01).timeout
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -94,6 +100,7 @@ func BrushTool(PixelToBrush):
 	PixelToBrush.color = App.get_node("ColorPicker").color
 
 func _ready():
+	Main = get_tree().root.get_child(0)
 	ImageSize = size
 	App = get_parent()
 	

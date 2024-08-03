@@ -558,6 +558,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u8qnd")
+metadata/_edit_horizontal_guides_ = []
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -682,7 +683,6 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1460,10 +1460,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1640.0
-offset_top = 148.0
-offset_right = 1894.0
-offset_bottom = 716.0
+offset_left = 1696.0
+offset_top = 176.0
+offset_right = 1922.0
+offset_bottom = 744.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1556,7 +1556,7 @@ offset_bottom = 64.0
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
-[node name="Button" type="Button" parent="ImagePainterApp/TopPanel"]
+[node name="Save" type="Button" parent="ImagePainterApp/TopPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -1569,7 +1569,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
 theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
 text = "Save"
 
-[node name="Button2" type="Button" parent="ImagePainterApp/TopPanel"]
+[node name="Open" type="Button" parent="ImagePainterApp/TopPanel"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 8.0
@@ -1582,7 +1582,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
 theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
 text = "Open"
 
-[node name="Button3" type="Button" parent="ImagePainterApp/TopPanel"]
+[node name="New" type="Button" parent="ImagePainterApp/TopPanel"]
 layout_mode = 0
 offset_left = 392.0
 offset_top = 8.0
@@ -2474,6 +2474,9 @@ script = ExtResource("25_ejut0")
 [connection signal="button_up" from="TeamManager/NextButton" to="TeamManager" method="_on_next_button_button_up"]
 [connection signal="value_changed" from="ImagePainterApp/Panel/GridThickness" to="ImagePainterApp/ImagePainter" method="_on_grid_thickness_value_changed" flags=18]
 [connection signal="toggled" from="ImagePainterApp/Panel/GridToggle" to="ImagePainterApp/ImagePainter" method="_on_grid_toggle_toggled" flags=18]
+[connection signal="button_up" from="ImagePainterApp/TopPanel/Save" to="ImagePainterApp" method="_on_save_button_up"]
+[connection signal="button_up" from="ImagePainterApp/TopPanel/Open" to="ImagePainterApp" method="_on_open_button_up"]
+[connection signal="button_up" from="ImagePainterApp/TopPanel/New" to="ImagePainterApp" method="_on_new_button_up"]
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="text_submitted" from="Terminal/UserInput" to="Terminal" method="_on_user_input_text_submitted"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]

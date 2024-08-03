@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://chswy4mp6j52b"]
+[gd_scene load_steps=15 format=3 uid="uid://chswy4mp6j52b"]
 
-[ext_resource type="Script" path="res://Scripts/ErrorPopup.gd" id="1_q5lg1"]
-[ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="2_xng05"]
+[ext_resource type="Script" path="res://Scripts/CustomPopup.gd" id="1_qjb8o"]
+[ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="2_2rrs8"]
+[ext_resource type="Script" path="res://Scripts/DragComponent.gd" id="2_77muw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj614"]
 bg_color = Color(0.226563, 0.226563, 0.226563, 1)
@@ -63,24 +64,27 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="ErrorPopup" type="Panel"]
+[node name="Popup" type="Panel"]
 anchors_preset = -1
 anchor_right = 0.333
 anchor_bottom = 0.296
-offset_right = 0.384003
-offset_bottom = 0.192001
+offset_right = 0.384155
+offset_bottom = 0.192444
 pivot_offset = Vector2(192, 96)
 theme_override_styles/panel = SubResource("StyleBoxFlat_fj614")
-script = ExtResource("1_q5lg1")
+script = ExtResource("1_qjb8o")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="."]
+[node name="DragComponent" type="Node" parent="."]
+script = ExtResource("2_77muw")
+
+[node name="TopPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 576.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hb720")
 
-[node name="XButton" type="Button" parent="Panel"]
+[node name="CloseButton" type="Button" parent="TopPanel"]
 layout_mode = 0
 offset_left = 576.0
 offset_right = 640.0
@@ -93,16 +97,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_dvmru")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_eih5p")
 text = "X"
 
-[node name="TextureRect" type="TextureRect" parent="Panel/XButton"]
+[node name="Texture" type="TextureRect" parent="TopPanel/CloseButton"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = -3.0
 offset_right = 73.0
 offset_bottom = 61.0
 scale = Vector2(0.714445, 0.714445)
-texture = ExtResource("2_xng05")
+texture = ExtResource("2_2rrs8")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="TypeLabel" type="Label" parent="TopPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_right = 320.0
@@ -110,7 +114,7 @@ offset_bottom = 39.0
 theme_override_font_sizes/font_size = 26
 text = "ERROR"
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="MainPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 48.0
@@ -118,21 +122,35 @@ offset_right = 631.0
 offset_bottom = 312.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_221k8")
 
-[node name="CloseButton" type="Button" parent="Panel2"]
+[node name="NegativeResponseButton" type="Button" parent="MainPanel"]
 layout_mode = 0
 offset_left = 552.0
 offset_top = 216.0
 offset_right = 616.0
-offset_bottom = 255.0
+offset_bottom = 256.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_dvlmm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xs3re")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8ccti")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_tlkex")
-text = "CLOSE"
+text = "CANCEL"
 
-[node name="Label" type="Label" parent="Panel2"]
+[node name="PositiveResponseButton" type="Button" parent="MainPanel"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 216.0
+offset_right = 544.0
+offset_bottom = 256.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dvlmm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xs3re")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8ccti")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tlkex")
+text = "OK"
+
+[node name="DescriptionLabel" type="Label" parent="MainPanel"]
 layout_mode = 0
 offset_left = 8.0
 offset_right = 616.0
@@ -141,7 +159,6 @@ theme_override_font_sizes/font_size = 26
 text = "Cannot Load: Unknown integer applied to an interactive object"
 autowrap_mode = 2
 
-[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
-[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]
-[connection signal="button_up" from="Panel/XButton" to="." method="_on_x_button_button_up"]
-[connection signal="button_up" from="Panel2/CloseButton" to="." method="_on_close_button_button_up"]
+[connection signal="button_up" from="TopPanel/CloseButton" to="." method="_on_close_button_button_up"]
+[connection signal="button_up" from="MainPanel/NegativeResponseButton" to="." method="_on_negative_response_button_button_up"]
+[connection signal="button_up" from="MainPanel/PositiveResponseButton" to="." method="_on_positive_response_button_button_up"]

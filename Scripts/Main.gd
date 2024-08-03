@@ -6,7 +6,7 @@ var RESTART_TIME = 2
 var SearchEngine
 var Menu
 var FileExplorer
-var ErrorPopup
+var CustomPopup
 
 var WindowInstanceSelected = false
 
@@ -17,10 +17,23 @@ var AnimationsMultiplier = 1
 var ShuttingDown = false
 @onready var SystemLoadingScreen = $SystemLoadingScreen
 
+func GeneratePopup(PopupCreatorName, Description, Type, PopupPosition):
+	var NewPopup = CustomPopup.instantiate()
+	add_child(NewPopup)
+	NewPopup.move_to_front()
+	
+	NewPopup.PopupCreatorName = PopupCreatorName
+	NewPopup.Description = Description
+	NewPopup.Type = Type
+	NewPopup.position = PopupPosition
+	NewPopup.Setup()
+	
+	return NewPopup
+
 func _ready():
 	SystemLoadingScreen.show()
 	var ImageRendererPrefab = preload("res://Prefabs/image_painter.tscn")
-	ErrorPopup = preload("res://Prefabs/error_popup.tscn")
+	CustomPopup = preload("res://Prefabs/popup.tscn")
 	Menu = get_node("Menu")
 	SearchEngine = get_node("SearchEngine")
 	FileExplorer = get_node("FileExplorer")
@@ -42,16 +55,6 @@ func _on_restart_button_up():
 	SystemLoadingScreen.get_node("ShutDownRestartScreen/Text").text = "[center]Restarting...[/center]"
 	await get_tree().create_timer(SHUTDOWN_TIME).timeout
 	get_tree().reload_current_scene()
-
-func SpawnError():
-	if ErrorPopup:
-		var SpawnedError = ErrorPopup.instantiate()
-		add_child(SpawnedError)
-	else:
-		print("Failed to load prefab!")
-
-func _on_error_spawner_timeout():
-	SpawnError()
 	
 func WindowSelected():
 	if(WindowInstanceSelected == false):

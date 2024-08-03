@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://dytbcuji84p12"]
+
+[ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="1_wdlo8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4icj"]
+bg_color = Color(0.402344, 0.488281, 0.414063, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gqyr"]
+bg_color = Color(0.25, 0.324219, 0.296875, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfh7f"]
+bg_color = Color(0.101563, 0.210938, 0.210938, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oegux"]
+bg_color = Color(0.835938, 0.738281, 0.59375, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lq66"]
+bg_color = Color(0.909804, 0.843137, 0.74902, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exsb8"]
+bg_color = Color(0.545098, 0.45098, 0.305882, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihlxa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[node name="crowosmanual" type="Panel"]
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4icj")
+metadata/LinkedWebsite = 0
+metadata/UserSearchInput = "www.crowosmanual.com"
+
+[node name="Welcome" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 192.0
+theme_override_fonts/normal_font = ExtResource("1_wdlo8")
+theme_override_font_sizes/normal_font_size = 61
+theme_override_styles/normal = SubResource("StyleBoxFlat_1gqyr")
+bbcode_enabled = true
+text = "[center]Welcome to the official manual for CrowOS. 
+Use the links below to find specific information."
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wfh7f")
+
+[node name="General" type="Button" parent="Panel"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 248.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("1_wdlo8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_oegux")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6lq66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
+text = "General"
+
+[node name="Settings" type="Button" parent="Panel"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 248.0
+offset_bottom = 144.0
+theme_override_fonts/font = ExtResource("1_wdlo8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_oegux")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6lq66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
+text = "Settings"
+
+[node name="Hacking" type="Button" parent="Panel"]
+layout_mode = 0
+offset_top = 152.0
+offset_right = 248.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("1_wdlo8")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_oegux")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6lq66")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
+text = "Hacking"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 256.0
+offset_right = 1856.0
+offset_bottom = 896.0
+theme_override_fonts/normal_font = ExtResource("1_wdlo8")
+theme_override_font_sizes/normal_font_size = 80
+text = "This website is not operational."

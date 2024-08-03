@@ -15,7 +15,8 @@ var WebDomains = {
 	
 	"parcourir" : ["www.parcourir.com", "Parcourir - Search Engine", "Parcourir is a search engine designed to search the web. Parcourir means browse or search.", "Parcourir_WebIcon.png"],
 	"government" : ["www.aloftia.govt", "Aloftia - Government Login", "Login terminal for the Aloftia Government", "AloftiaGovt_WebIcon.png"],
-	"turbonews" : ["www.turbonews.com", "Turbo News - News you can trust", "News website for information on game updates as well as current events in Aloftia.", "TurboNews_WebIcon.png"]
+	"turbonews" : ["www.turbonews.com", "Turbo News - News you can trust", "News website for information on game updates as well as current events in Aloftia.", "TurboNews_WebIcon.png"],
+	"crowosmanual" : ["www.crowosmanual.com", "CrowOS Manual - Trusty computer guide", "Need help using your computer? This is the guide for you!", "CrowOSManual_WebIcon.png"]
 }
 
 var BrowserTabPrefab
