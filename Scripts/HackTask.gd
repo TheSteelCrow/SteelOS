@@ -13,7 +13,7 @@ var StartingHeight = 16
 var CurrentMaximumY
 var Direction = 1
 var TaskDone = false
-var Speed = 1000
+var Speed = 2000
 
 var Wins = 0
 

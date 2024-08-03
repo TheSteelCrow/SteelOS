@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dytbcuji84p12"]
+[gd_scene load_steps=10 format=3 uid="uid://dytbcuji84p12"]
 
 [ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="1_wdlo8"]
+[ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="2_emgo6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4icj"]
 bg_color = Color(0.402344, 0.488281, 0.414063, 1)
@@ -94,12 +95,21 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
 text = "Hacking"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Notice" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 320.0
-offset_top = 256.0
+offset_top = 384.0
 offset_right = 1856.0
-offset_bottom = 896.0
+offset_bottom = 512.0
 theme_override_fonts/normal_font = ExtResource("1_wdlo8")
-theme_override_font_sizes/normal_font_size = 80
-text = "This website is not operational."
+theme_override_font_sizes/normal_font_size = 70
+text = "This website is under construction."
+
+[node name="NoticeIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 216.0
+offset_right = 1424.0
+offset_bottom = 728.0
+scale = Vector2(0.478574, 0.364552)
+texture = ExtResource("2_emgo6")

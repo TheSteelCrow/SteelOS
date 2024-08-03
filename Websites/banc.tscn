@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://55n6u5cnyy4q"]
+
+[ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="1_f2d0q"]
+[ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="2_qdp7b"]
+
+[node name="banc" type="Panel"]
+offset_right = 1920.0
+offset_bottom = 928.0
+metadata/LinkedWebsite = 0
+metadata/UserSearchInput = "www.banc.com"
+
+[node name="Notice" type="RichTextLabel" parent="."]
+offset_left = 232.0
+offset_top = 472.0
+offset_right = 1768.0
+offset_bottom = 600.0
+theme_override_fonts/normal_font = ExtResource("1_f2d0q")
+theme_override_font_sizes/normal_font_size = 70
+text = "This website is under construction."
+
+[node name="NoticeIcon" type="TextureRect" parent="."]
+offset_left = 824.0
+offset_top = 304.0
+offset_right = 1336.0
+offset_bottom = 816.0
+scale = Vector2(0.478574, 0.364552)
+texture = ExtResource("2_qdp7b")

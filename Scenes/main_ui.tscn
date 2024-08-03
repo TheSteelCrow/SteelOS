@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=178 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -481,6 +481,21 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5npgj"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gl4f"]
+bg_color = Color(0.386719, 0.386719, 0.386719, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er1do"]
+bg_color = Color(0.290196, 0.290196, 0.290196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1o0ew"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_vm5iy"]
+spacing_top = -8
+spacing_bottom = -10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ky0"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -683,6 +698,7 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1460,10 +1476,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 1696.0
-offset_top = 176.0
-offset_right = 1922.0
-offset_bottom = 744.0
+offset_left = 1784.0
+offset_top = 220.0
+offset_right = 1966.0
+offset_bottom = 788.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -2070,28 +2086,18 @@ offset_bottom = 64.0
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
-[node name="RunFactoryReset" type="Button" parent="Settings"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 64.0
-offset_right = 384.0
-offset_bottom = 128.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 40
-text = "Run Factory Reset"
+[node name="Visual" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_top = 56.0
+offset_right = 520.0
+offset_bottom = 352.0
 
-[node name="ResetBackground" type="Button" parent="Settings"]
+[node name="ResetBackground" type="Button" parent="Settings/Visual"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 208.0
-offset_right = 384.0
-offset_bottom = 272.0
+offset_top = 152.0
+offset_right = 512.0
+offset_bottom = 216.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -2101,13 +2107,14 @@ theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Reset Background"
+alignment = 0
 
-[node name="ApplyBackground" type="Button" parent="Settings"]
+[node name="ApplyBackground" type="Button" parent="Settings/Visual"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 136.0
-offset_right = 384.0
-offset_bottom = 200.0
+offset_top = 80.0
+offset_right = 512.0
+offset_bottom = 144.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -2117,15 +2124,16 @@ theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Apply Background"
+alignment = 0
 
-[node name="DisableAnimations" type="Panel" parent="Settings"]
+[node name="DisableAnimations" type="Panel" parent="Settings/Visual"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 280.0
+offset_top = 224.0
 offset_right = 512.0
-offset_bottom = 344.0
+offset_bottom = 288.0
 
-[node name="DisableAnimationsToggle" type="CheckButton" parent="Settings/DisableAnimations"]
+[node name="DisableAnimationsToggle" type="CheckButton" parent="Settings/Visual/DisableAnimations"]
 layout_mode = 0
 offset_left = 376.0
 offset_top = -3.0
@@ -2135,7 +2143,7 @@ scale = Vector2(3, 3)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxFlat_5npgj")
 
-[node name="Text" type="RichTextLabel" parent="Settings/DisableAnimations"]
+[node name="Text" type="RichTextLabel" parent="Settings/Visual/DisableAnimations"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 5.0
@@ -2145,6 +2153,347 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "Disable Animations"
 scroll_active = false
+
+[node name="ToggleVsync" type="Panel" parent="Settings/Visual"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 368.0
+offset_right = 512.0
+offset_bottom = 432.0
+
+[node name="ToggleVsync" type="CheckButton" parent="Settings/Visual/ToggleVsync"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = -3.0
+offset_right = 420.0
+offset_bottom = 21.0
+scale = Vector2(3, 3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_5npgj")
+button_pressed = true
+
+[node name="Text" type="RichTextLabel" parent="Settings/Visual/ToggleVsync"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 392.0
+offset_bottom = 69.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "VSYNC"
+scroll_active = false
+
+[node name="HeadingVisual" type="Panel" parent="Settings/Visual"]
+layout_mode = 0
+offset_right = 520.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gl4f")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Visual/HeadingVisual"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Visual"
+scroll_active = false
+
+[node name="Reset" type="TextureButton" parent="Settings/Visual/HeadingVisual"]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 548.0
+offset_bottom = 100.0
+scale = Vector2(0.720103, 0.720103)
+texture_normal = ExtResource("5_jb3v0")
+
+[node name="Gameplay" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 56.0
+offset_right = 1040.0
+offset_bottom = 352.0
+
+[node name="RunFactoryReset" type="Button" parent="Settings/Gameplay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 512.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Run Factory Reset"
+alignment = 0
+
+[node name="Difficulty" type="Panel" parent="Settings/Gameplay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 512.0
+offset_bottom = 216.0
+
+[node name="Text" type="RichTextLabel" parent="Settings/Gameplay/Difficulty"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 296.0
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Easy"
+scroll_active = false
+
+[node name="HSlider" type="HSlider" parent="Settings/Gameplay/Difficulty"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 19.0
+offset_right = 496.0
+offset_bottom = 43.0
+min_value = -2.0
+max_value = 2.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[node name="TargetFPS" type="Panel" parent="Settings/Gameplay"]
+layout_mode = 0
+offset_left = -512.0
+offset_top = 296.0
+offset_right = -8.0
+offset_bottom = 360.0
+
+[node name="Text" type="RichTextLabel" parent="Settings/Gameplay/TargetFPS"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 296.0
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Target FPS"
+scroll_active = false
+
+[node name="SpinBox" type="SpinBox" parent="Settings/Gameplay/TargetFPS"]
+layout_mode = 0
+offset_left = 376.0
+offset_right = 504.0
+offset_bottom = 64.0
+min_value = 10.0
+max_value = 300.0
+step = 5.0
+value = 60.0
+rounded = true
+suffix = "fps"
+select_all_on_focus = true
+
+[node name="HeadingGameplay" type="Panel" parent="Settings/Gameplay"]
+layout_mode = 0
+offset_right = 520.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_er1do")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Gameplay/HeadingGameplay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Gameplay"
+scroll_active = false
+
+[node name="Reset" type="TextureButton" parent="Settings/Gameplay/HeadingGameplay"]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 548.0
+offset_bottom = 100.0
+scale = Vector2(0.720103, 0.720103)
+texture_normal = ExtResource("5_jb3v0")
+
+[node name="Keybinds" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_left = 1040.0
+offset_top = 56.0
+offset_right = 1920.0
+offset_bottom = 424.0
+
+[node name="KB1" type="Panel" parent="Settings/Keybinds"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 880.0
+offset_bottom = 144.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1o0ew")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Keybinds/KB1"]
+layout_mode = 0
+offset_right = 616.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
+theme_override_font_sizes/normal_font_size = 30
+text = "Send Email"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="Settings/Keybinds/KB1"]
+layout_mode = 0
+offset_left = 616.0
+offset_right = 872.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
+text = "Enter"
+text_overrun_behavior = 1
+
+[node name="KB2" type="Panel" parent="Settings/Keybinds"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 880.0
+offset_bottom = 216.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1o0ew")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Keybinds/KB2"]
+layout_mode = 0
+offset_right = 616.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
+theme_override_font_sizes/normal_font_size = 30
+text = "Return"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="Settings/Keybinds/KB2"]
+layout_mode = 0
+offset_left = 616.0
+offset_right = 872.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
+text = "Backspace"
+text_overrun_behavior = 1
+
+[node name="KB3" type="Panel" parent="Settings/Keybinds"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 224.0
+offset_right = 880.0
+offset_bottom = 288.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1o0ew")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Keybinds/KB3"]
+layout_mode = 0
+offset_right = 616.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
+theme_override_font_sizes/normal_font_size = 30
+text = "Close App"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="Settings/Keybinds/KB3"]
+layout_mode = 0
+offset_left = 616.0
+offset_right = 872.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
+text = "Alt+F4"
+text_overrun_behavior = 1
+
+[node name="KB4" type="Panel" parent="Settings/Keybinds"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 296.0
+offset_right = 880.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1o0ew")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Keybinds/KB4"]
+layout_mode = 0
+offset_right = 616.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
+theme_override_font_sizes/normal_font_size = 30
+text = "Shut Down"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="Settings/Keybinds/KB4"]
+layout_mode = 0
+offset_left = 616.0
+offset_right = 872.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
+text = "None"
+text_overrun_behavior = 1
+
+[node name="HeadingKeybinds" type="Panel" parent="Settings/Keybinds"]
+layout_mode = 0
+offset_right = 880.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gl4f")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Keybinds/HeadingKeybinds"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Keybinds"
+scroll_active = false
+
+[node name="Reset" type="TextureButton" parent="Settings/Keybinds/HeadingKeybinds"]
+layout_mode = 0
+offset_left = 808.0
+offset_top = -1.0
+offset_right = 908.0
+offset_bottom = 99.0
+scale = Vector2(0.720103, 0.720103)
+texture_normal = ExtResource("5_jb3v0")
+
+[node name="Sound" type="Control" parent="Settings"]
+anchors_preset = 0
+offset_top = 568.0
+offset_right = 1040.0
+offset_bottom = 1040.0
+
+[node name="HeadingSound" type="Panel" parent="Settings/Sound"]
+layout_mode = 0
+offset_right = 1040.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gl4f")
+
+[node name="Visual" type="RichTextLabel" parent="Settings/Sound/HeadingSound"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Sound"
+scroll_active = false
+
+[node name="Reset" type="TextureButton" parent="Settings/Sound/HeadingSound"]
+layout_mode = 0
+offset_left = 968.0
+offset_top = -3.05176e-05
+offset_right = 1068.0
+offset_bottom = 100.0
+scale = Vector2(0.720103, 0.720103)
+texture_normal = ExtResource("5_jb3v0")
 
 [node name="SystemLoadingScreen" type="Control" parent="."]
 visible = false
@@ -2459,6 +2808,8 @@ text = "
 "
 script = ExtResource("25_ejut0")
 
+[node name="Line2D" type="Line2D" parent="."]
+
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
 [connection signal="text_changed" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_changed"]
@@ -2480,5 +2831,9 @@ script = ExtResource("25_ejut0")
 [connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="text_submitted" from="Terminal/UserInput" to="Terminal" method="_on_user_input_text_submitted"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]
-[connection signal="toggled" from="Settings/DisableAnimations/DisableAnimationsToggle" to="Settings" method="_on_disable_animations_toggle_toggled"]
+[connection signal="toggled" from="Settings/Visual/DisableAnimations/DisableAnimationsToggle" to="Settings" method="_on_disable_animations_toggle_toggled"]
+[connection signal="toggled" from="Settings/Visual/ToggleVsync/ToggleVsync" to="Settings" method="_on_toggle_vsync_toggled"]
+[connection signal="button_up" from="Settings/Gameplay/RunFactoryReset" to="Settings" method="_on_run_factory_reset_button_up"]
+[connection signal="value_changed" from="Settings/Gameplay/Difficulty/HSlider" to="Settings" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/Gameplay/TargetFPS/SpinBox" to="Settings" method="_on_spin_box_value_changed"]
 [connection signal="button_up" from="SystemLoadingScreen/BootUpScreen/Skip" to="SystemLoadingScreen/BootUpScreen" method="_on_skip_button_up"]
