@@ -25,12 +25,32 @@ var SelectedTool = "Brush"
 
 var CheckedPixels = []
 
+var FillCooldown
+
+var BackgroundColour = "ffffff"
+
+@onready var Buttons = $Buttons
+@onready var SideWindow = $SideWindow
+
 func Fill(Location, ReplacementColor):
+	if(FillCooldown != null):
+		if(FillCooldown.time_left > 0):
+			print("Cooldown")
+			return
+	
+	FillCooldown = Timer.new()
+	add_child(FillCooldown)
+	FillCooldown.one_shot = true
+	#FillCooldown.wait_time = 1
+	FillCooldown.start(1)
+	
+	print("No Cooldown")
+	
 	CheckedPixels.clear()
 	var ColorToFill = CurrentImage.get_pixel(Location.x, Location.y)
 	if(ColorToFill.to_html() != ReplacementColor.to_html()):
 		CheckNeighbouringPixels(Location, ColorToFill, ReplacementColor)
-		print("Done!")
+		print("Starting")
 		Render()
 	else:
 		print("No can do buckaroo")
@@ -43,6 +63,7 @@ func CheckNeighbouringPixels(Location, ColorToFill, ReplacementColor):
 
 	#Delay to give a satisfying effect and to not crash XD
 	await get_tree().process_frame
+	FillCooldown.start(1)
 	
 	#Check the neighbors
 	CheckPixel(Vector2(Location.x + 1, Location.y), ColorToFill, ReplacementColor) # Left
@@ -53,7 +74,10 @@ func CheckNeighbouringPixels(Location, ColorToFill, ReplacementColor):
 	Render()
 
 func CheckPixel(Location, ColorToFill, ReplacementColor):
+	
+	
 	if(CurrentImage.get_pixel(Location.x, Location.y) == ColorToFill and Location not in CheckedPixels):
+		CheckedPixels.append(Location)
 		CurrentImage.set_pixel(Location.x, Location.y, ReplacementColor)
 		CheckNeighbouringPixels(Location, ColorToFill, ReplacementColor)
 
@@ -110,10 +134,19 @@ func _process(delta):
 	var MouseButton1Down = Input.is_mouse_button_pressed(1)
 	MousePosition = get_viewport().get_mouse_position()
 
-	if(MouseButton1Down and MouseOnCanvas and SelectedTool == "Brush"):
-		var LocationToPaint = ConvertToCanvasSpace()
-		PaintLocation(LocationToPaint.x, LocationToPaint.y, SelectedColor)
-		Render()
+	if(MouseButton1Down and MouseOnCanvas):
+		if(SelectedTool == "Brush"):
+			var LocationToPaint = ConvertToCanvasSpace()
+			PaintLocation(LocationToPaint.x, LocationToPaint.y, SelectedColor)
+			Render()
+		if(SelectedTool == "Eraser"):
+			var LocationToPaint = ConvertToCanvasSpace()
+			PaintLocation(LocationToPaint.x, LocationToPaint.y, BackgroundColour)
+			Render()
+		elif(SelectedTool == "Picker"):
+			var LocationToPaint = ConvertToCanvasSpace()
+			SelectedColor = CurrentImage.get_pixel(LocationToPaint.x, LocationToPaint.y)
+			SideWindow.Pages[0].get_node("ColorPicker").color = SelectedColor
 		
 	if(MoveCanvas):
 		ArtCanvas.position = MousePosition + MouseOffsetFromCanvas
