@@ -21,27 +21,55 @@ var EndPixel
 
 #Variables set by SideWindow
 var ZoomByTopLeft = false
-
 var SelectedTool = "Brush"
 
-func Fill(Location, PaintColor):
+var CheckedPixels = []
+
+func Fill(Location):
+	CheckedPixels.clear()
 	var ColorToFill = CurrentImage.get_pixel(Location.x, Location.y)
-	CheckNeighbouringPixels(Location, ColorToFill)
-		
+	if(ColorToFill.to_html() != SelectedColor.to_html()):
+		CheckNeighbouringPixels(Location, ColorToFill)
+		print("Done!")
+		Render()
+	else:
+		print("No can do buckaroo")
+
 func CheckNeighbouringPixels(Location, ColorToFill):
-	await get_tree().create_timer(0.01).timeout
-	if(CurrentImage.get_pixel(Location.x + 1, Location.y) == ColorToFill): # left
-		CurrentImage.set_pixel(Location.x + 1, Location.y, SelectedColor)
-		CheckNeighbouringPixels(Vector2(Location.x + 1, Location.y), ColorToFill)
-	if(CurrentImage.get_pixel(Location.x - 1, Location.y) == ColorToFill): # right
-		CurrentImage.set_pixel(Location.x - 1, Location.y, SelectedColor)
-		CheckNeighbouringPixels(Vector2(Location.x - 1, Location.y), ColorToFill)
-	if(CurrentImage.get_pixel(Location.x, Location.y + 1) == ColorToFill): # down
-		CurrentImage.set_pixel(Location.x, Location.y + 1, SelectedColor)
-		CheckNeighbouringPixels(Vector2(Location.x, Location.y + 1), ColorToFill)
-	if(CurrentImage.get_pixel(Location.x, Location.y - 1) == ColorToFill): # up
-		CurrentImage.set_pixel(Location.x, Location.y - 1, SelectedColor)
-		CheckNeighbouringPixels(Vector2(Location.x, Location.y - 1), ColorToFill)
+	var pos
+	
+	if(Location.y < 0 or Location.y > CurrentImage.get_height() or Location.x < 0 or Location.x > CurrentImage.get_width()):
+		return
+	
+	await get_tree().process_frame
+	pos = Vector2(Location.x + 1, Location.y)
+	if(CurrentImage.get_pixel(pos.x, pos.y) == ColorToFill and pos not in CheckedPixels): # left
+		CheckedPixels.append(pos)
+		CheckPixel(pos, ColorToFill)
+
+	#await get_tree().process_frame
+	pos = Vector2(Location.x - 1, Location.y)
+	if(CurrentImage.get_pixel(pos.x, pos.y) == ColorToFill and pos not in CheckedPixels): # left
+		CheckedPixels.append(pos)
+		CheckPixel(pos, ColorToFill)
+
+	#await get_tree().process_frame
+	pos = Vector2(Location.x, Location.y + 1)
+	if(CurrentImage.get_pixel(pos.x, pos.y) == ColorToFill and pos not in CheckedPixels): # left
+		CheckedPixels.append(pos)
+		CheckPixel(pos, ColorToFill)
+	
+	#await get_tree().process_frame
+	pos = Vector2(Location.x, Location.y - 1)
+	if(CurrentImage.get_pixel(pos.x, pos.y) == ColorToFill and pos not in CheckedPixels): # left
+		CheckedPixels.append(pos)
+		CheckPixel(pos, ColorToFill)
+	Render()
+
+func CheckPixel(Location, ColorToFill):
+	CurrentImage.set_pixel(Location.x, Location.y, SelectedColor)
+	#await get_tree().process_frame
+	CheckNeighbouringPixels(Location, ColorToFill)
 
 func PaintRectangle(StartLocation, EndLocation, PaintColor):
 	if(EndLocation.x <= StartLocation.x+1 and EndLocation.y <= StartLocation.y+1): #Top left
@@ -131,7 +159,7 @@ func _input(event):
 				if(MouseOnCanvas and SelectedTool == "Rectangle"):
 					StartPixel = ConvertToCanvasSpace()
 				if(MouseOnCanvas and SelectedTool == "Fill"):
-					Fill(ConvertToCanvasSpace(), SelectedColor)
+					Fill(ConvertToCanvasSpace())
 		elif(event.is_released()):
 			if(event.button_index == MOUSE_BUTTON_MIDDLE):
 				MoveCanvas = false
