@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://gh1ic6bscaja"]
+[gd_scene load_steps=4 format=3 uid="uid://gh1ic6bscaja"]
 
 [ext_resource type="Script" path="res://Scripts/StockMarketGraph.gd" id="1_m51f2"]
+[ext_resource type="Script" path="res://Scripts/GraphSettingsPanel.gd" id="2_tlf0s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we023"]
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+corner_radius_top_right = 20
 
 [node name="ExperimentalStockMarket" type="Control"]
 layout_mode = 3
@@ -21,3 +26,110 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="Settings" type="Panel" parent="StockMarketManager"]
+layout_mode = 0
+offset_top = 648.0
+offset_right = 232.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_we023")
+script = ExtResource("2_tlf0s")
+
+[node name="GenerateGraph" type="Button" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 376.0
+offset_right = 224.0
+offset_bottom = 424.0
+text = "Generate Graph"
+
+[node name="ResolutionY" type="SpinBox" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 24.0
+offset_right = 224.0
+offset_bottom = 64.0
+min_value = 100.0
+max_value = 1080.0
+value = 100.0
+suffix = "y"
+
+[node name="ResolutionX" type="SpinBox" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 112.0
+offset_bottom = 64.0
+min_value = 100.0
+max_value = 1920.0
+value = 100.0
+suffix = "x"
+
+[node name="Rows" type="SpinBox" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 88.0
+offset_right = 224.0
+offset_bottom = 128.0
+min_value = 1.0
+max_value = 20.0
+value = 2.0
+
+[node name="Columns" type="SpinBox" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 88.0
+offset_right = 112.0
+offset_bottom = 128.0
+min_value = 1.0
+max_value = 20.0
+value = 2.0
+
+[node name="LineThickness" type="SpinBox" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 224.0
+offset_bottom = 192.0
+min_value = 1.0
+max_value = 20.0
+value = 2.0
+suffix = "px * Each Side"
+
+[node name="ResolutionLabel" type="RichTextLabel" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 24.0
+bbcode_enabled = true
+text = "[center]Resolution"
+scroll_active = false
+
+[node name="ColumnsLabel" type="RichTextLabel" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 88.0
+bbcode_enabled = true
+text = "[center]Columns"
+scroll_active = false
+
+[node name="LineThicknessLabel" type="RichTextLabel" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 128.0
+offset_right = 224.0
+offset_bottom = 152.0
+bbcode_enabled = true
+text = "[center]Line Thickness"
+scroll_active = false
+
+[node name="RowsLabel" type="RichTextLabel" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 64.0
+offset_right = 208.0
+offset_bottom = 88.0
+bbcode_enabled = true
+text = "[center]Rows"
+scroll_active = false
