@@ -9,18 +9,36 @@ func _ready():
 	$GenerateGraph.pressed.connect(func():
 		StockMarketManager.GenerateGraph()
 	)
-	$ResolutionX.value_changed(func(value):
+	$LineColor.pressed.connect(func():
+		StockMarketManager.GraphLineColor = $ColorPicker.color
+	)
+	$GridColor.pressed.connect(func():
+		StockMarketManager.GraphGridColor = $ColorPicker.color
+	)
+	$Background.pressed.connect(func():
+		StockMarketManager.GraphBackground = $ColorPicker.color
+	)
+	
+	$ResolutionX.value_changed.connect(func(value):
 		StockMarketManager.GraphResolution.x = value
 	)
-	$ResolutionY.value_changed(func(value):
+	$ResolutionY.value_changed.connect(func(value):
 		StockMarketManager.GraphResolution.y = value
 	)
-	$Columns.value_changed(func(value):
+	$Columns.value_changed.connect(func(value):
 		StockMarketManager.GraphXGaps = value
 	)
-	$Rows.value_changed(func(value):
+	$Rows.value_changed.connect(func(value):
 		StockMarketManager.GraphYGaps = value
 	)
-	$LineThickness.value_changed(func(value):
+	$LineThickness.value_changed.connect(func(value):
 		StockMarketManager.LineThickness = value
+	)
+	$ToggleSettings.toggled.connect(func(button_pressed):
+		$ColorPicker.visible = button_pressed
+	)
+	
+	
+	get_parent().get_node("ToggleSettings").toggled.connect(func(button_pressed):
+		visible = button_pressed
 	)

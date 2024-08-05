@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://rmqpw32tjwg7"]
+[gd_scene load_steps=25 format=3 uid="uid://rmqpw32tjwg7"]
 
 [ext_resource type="Script" path="res://Scripts/ImageTesting.gd" id="1_a30fk"]
 [ext_resource type="Script" path="res://Scripts/ArtAppSideWindow.gd" id="2_0o57q"]
 [ext_resource type="Texture2D" uid="uid://b7thb5ovhjmfl" path="res://Images/PaintAppIcons/drawing_brush.png" id="2_sciie"]
+[ext_resource type="Script" path="res://Scripts/PaintAppGrid.gd" id="2_sk3ux"]
 [ext_resource type="Script" path="res://Scripts/ArtAppButtons.gd" id="2_yghp4"]
 [ext_resource type="Texture2D" uid="uid://b3rqc13ffwi85" path="res://Images/PaintAppIcons/drawing_bucket.png" id="3_q2kxw"]
 [ext_resource type="Texture2D" uid="uid://cjmfu02n6qg7a" path="res://Images/tracking_horizontal_up.png" id="3_ys8p0"]
@@ -68,6 +69,15 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 expand_mode = 1
 
+[node name="Grid" type="TextureRect" parent="ImageTesting"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+expand_mode = 1
+script = ExtResource("2_sk3ux")
+
 [node name="Buttons" type="Panel" parent="ImageTesting"]
 layout_mode = 0
 offset_top = 128.0
@@ -115,20 +125,18 @@ offset_right = 64.0
 offset_bottom = 192.0
 texture_normal = ExtResource("4_ua03u")
 
-[node name="TextureButton4" type="TextureButton" parent="ImageTesting/Buttons"]
+[node name="BigBrush" type="TextureButton" parent="ImageTesting/Buttons"]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 64.0
 offset_bottom = 256.0
-disabled = true
 texture_normal = ExtResource("5_ii6u1")
 
-[node name="TextureButton5" type="TextureButton" parent="ImageTesting/Buttons"]
+[node name="VeryBigBrush" type="TextureButton" parent="ImageTesting/Buttons"]
 layout_mode = 0
 offset_top = 256.0
 offset_right = 64.0
 offset_bottom = 320.0
-disabled = true
 texture_normal = ExtResource("6_mpwuc")
 
 [node name="Picker" type="TextureButton" parent="ImageTesting/Buttons"]
@@ -213,10 +221,10 @@ offset_bottom = 640.0
 
 [node name="ColorPicker" type="ColorPicker" parent="ImageTesting/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 72.0
-offset_right = 362.0
-offset_bottom = 640.0
+offset_left = 192.0
+offset_top = 100.0
+offset_right = 390.0
+offset_bottom = 668.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="ImageTesting/SideWindow"]

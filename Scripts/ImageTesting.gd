@@ -147,6 +147,33 @@ func _process(delta):
 			var LocationToPaint = ConvertToCanvasSpace()
 			SelectedColor = CurrentImage.get_pixel(LocationToPaint.x, LocationToPaint.y)
 			SideWindow.Pages[0].get_node("ColorPicker").color = SelectedColor
+		elif(SelectedTool == "BigBrush"):
+			var LocationToPaint = ConvertToCanvasSpace()
+			PaintLocation(LocationToPaint.x, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x+1, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x-1, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x, LocationToPaint.y+1, SelectedColor)
+			PaintLocation(LocationToPaint.x, LocationToPaint.y-1, SelectedColor)
+			Render()
+		elif(SelectedTool == "VeryBigBrush"):
+			var LocationToPaint = ConvertToCanvasSpace()
+			PaintLocation(LocationToPaint.x, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x+1, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x+2, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x-1, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x-2, LocationToPaint.y, SelectedColor)
+			PaintLocation(LocationToPaint.x, LocationToPaint.y+1, SelectedColor)
+			PaintLocation(LocationToPaint.x, LocationToPaint.y+2, SelectedColor)
+			PaintLocation(LocationToPaint.x, LocationToPaint.y-1, SelectedColor)
+			PaintLocation(LocationToPaint.x, LocationToPaint.y-2, SelectedColor)
+			
+			PaintLocation(LocationToPaint.x+1, LocationToPaint.y+1, SelectedColor)
+			PaintLocation(LocationToPaint.x-1, LocationToPaint.y-1, SelectedColor)
+			PaintLocation(LocationToPaint.x+1, LocationToPaint.y-1, SelectedColor)
+			PaintLocation(LocationToPaint.x-1, LocationToPaint.y+1, SelectedColor)
+			
+			
+			Render()
 		
 	if(MoveCanvas):
 		ArtCanvas.position = MousePosition + MouseOffsetFromCanvas

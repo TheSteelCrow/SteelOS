@@ -21,11 +21,18 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_m51f2")
 
+[node name="TextDisplay" type="Control" parent="StockMarketManager"]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="GraphRenderer" type="TextureRect" parent="StockMarketManager"]
 texture_filter = 1
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1024.0
 
 [node name="Settings" type="Panel" parent="StockMarketManager"]
 layout_mode = 0
@@ -42,6 +49,30 @@ offset_top = 376.0
 offset_right = 224.0
 offset_bottom = 424.0
 text = "Generate Graph"
+
+[node name="Background" type="Button" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 336.0
+offset_right = 224.0
+offset_bottom = 368.0
+text = "Set Background Color"
+
+[node name="LineColor" type="Button" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 296.0
+offset_right = 224.0
+offset_bottom = 327.0
+text = "Set Line Color"
+
+[node name="GridColor" type="Button" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 256.0
+offset_right = 224.0
+offset_bottom = 287.0
+text = "Set Grid Color"
 
 [node name="ResolutionY" type="SpinBox" parent="StockMarketManager/Settings"]
 layout_mode = 0
@@ -72,7 +103,7 @@ offset_top = 88.0
 offset_right = 224.0
 offset_bottom = 128.0
 min_value = 1.0
-max_value = 20.0
+max_value = 50.0
 value = 2.0
 
 [node name="Columns" type="SpinBox" parent="StockMarketManager/Settings"]
@@ -82,7 +113,7 @@ offset_top = 88.0
 offset_right = 112.0
 offset_bottom = 128.0
 min_value = 1.0
-max_value = 20.0
+max_value = 50.0
 value = 2.0
 
 [node name="LineThickness" type="SpinBox" parent="StockMarketManager/Settings"]
@@ -102,6 +133,16 @@ offset_right = 232.0
 offset_bottom = 24.0
 bbcode_enabled = true
 text = "[center]Resolution"
+scroll_active = false
+
+[node name="ColorPickerLabel" type="RichTextLabel" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 232.0
+offset_bottom = 216.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]ColorPicker"
 scroll_active = false
 
 [node name="ColumnsLabel" type="RichTextLabel" parent="StockMarketManager/Settings"]
@@ -133,3 +174,25 @@ offset_bottom = 88.0
 bbcode_enabled = true
 text = "[center]Rows"
 scroll_active = false
+
+[node name="ToggleSettings" type="CheckButton" parent="StockMarketManager/Settings"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 192.0
+offset_right = 220.0
+offset_bottom = 216.0
+
+[node name="ColorPicker" type="ColorPicker" parent="StockMarketManager/Settings"]
+visible = false
+layout_mode = 0
+offset_left = 288.0
+offset_top = -120.0
+offset_right = 554.0
+offset_bottom = 448.0
+
+[node name="ToggleSettings" type="CheckButton" parent="StockMarketManager"]
+layout_mode = 0
+offset_top = 648.0
+offset_right = 44.0
+offset_bottom = 672.0
+button_pressed = true
