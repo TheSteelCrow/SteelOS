@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://gh1ic6bscaja"]
+
+[ext_resource type="Script" path="res://Scripts/StockMarketGraph.gd" id="1_m51f2"]
+
+[node name="ExperimentalStockMarket" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StockMarketManager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_m51f2")
+
+[node name="GraphRenderer" type="TextureRect" parent="StockMarketManager"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0

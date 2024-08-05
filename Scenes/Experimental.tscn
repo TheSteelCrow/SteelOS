@@ -213,10 +213,10 @@ offset_bottom = 640.0
 
 [node name="ColorPicker" type="ColorPicker" parent="ImageTesting/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 104.0
-offset_top = 56.0
-offset_right = 346.0
-offset_bottom = 624.0
+offset_left = 136.0
+offset_top = 72.0
+offset_right = 362.0
+offset_bottom = 640.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="ImageTesting/SideWindow"]
