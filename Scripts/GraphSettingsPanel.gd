@@ -37,6 +37,9 @@ func _ready():
 	$ToggleSettings.toggled.connect(func(button_pressed):
 		$ColorPicker.visible = button_pressed
 	)
+	$ToggleData.toggled.connect(func(button_pressed):
+		$DataPanel.visible = button_pressed
+	)
 	
 	
 	get_parent().get_node("ToggleSettings").toggled.connect(func(button_pressed):

@@ -178,12 +178,11 @@ offset_bottom = 704.0
 disabled = true
 texture_normal = ExtResource("11_5e1oh")
 
-[node name="TextureButton10" type="TextureButton" parent="ImageTesting/Buttons"]
+[node name="Circle" type="TextureButton" parent="ImageTesting/Buttons"]
 layout_mode = 0
 offset_top = 768.0
 offset_right = 64.0
 offset_bottom = 832.0
-disabled = true
 texture_normal = ExtResource("12_x0mok")
 
 [node name="Line" type="TextureButton" parent="ImageTesting/Buttons"]
@@ -191,14 +190,14 @@ layout_mode = 0
 offset_top = 832.0
 offset_right = 64.0
 offset_bottom = 896.0
+disabled = true
 texture_normal = ExtResource("15_jxrfl")
 
-[node name="TextureButton11" type="TextureButton" parent="ImageTesting/Buttons"]
+[node name="CircleFilled" type="TextureButton" parent="ImageTesting/Buttons"]
 layout_mode = 0
 offset_top = 704.0
 offset_right = 64.0
 offset_bottom = 768.0
-disabled = true
 texture_normal = ExtResource("13_214w4")
 
 [node name="SideWindow" type="Panel" parent="ImageTesting"]
@@ -229,10 +228,10 @@ offset_bottom = 640.0
 
 [node name="ColorPicker" type="ColorPicker" parent="ImageTesting/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 116.0
-offset_right = 406.0
-offset_bottom = 684.0
+offset_left = 304.0
+offset_top = 156.0
+offset_right = 446.0
+offset_bottom = 724.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="ImageTesting/SideWindow"]

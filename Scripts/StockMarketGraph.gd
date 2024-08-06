@@ -33,6 +33,15 @@ var Data = [
 var MaximumX =  GraphXGaps
 var MaximumY = GraphYGaps
 
+func ConvertUserInputToData(UserInput):
+	var UserInputSplit = UserInput.split("\n")
+	for RawVector2 in UserInputSplit:
+		var x = int(RawVector2.split(",")[0])
+		print(RawVector2.split(","))
+		var y = int(RawVector2.split(",")[1])
+		Data.append(Vector2(x,y))
+	print("Loaded Data: " + str(Data))
+
 func GenerateGraphLine():
 	MaximumX =  GraphXGaps
 	MaximumY = GraphYGaps
@@ -51,6 +60,8 @@ func GenerateGraphLine():
 			GraphLine.add_point(Vector2(DataPysicalPositionX, DataPysicalPositionY))
 
 func GenerateGraph():
+	Data.clear()
+	ConvertUserInputToData($Settings/DataPanel/TextEdit.text)
 	print("Generating Graph.")
 	GraphImage = null
 	GraphResolution = GraphRenderer.size

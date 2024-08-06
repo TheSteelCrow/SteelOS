@@ -6,7 +6,7 @@ var SelectedColor = Color("000000")
 var MousePosition
 @onready var ArtCanvas = $ArtCanvas
 #var CompressionRate = 10
-var ScaleBy = 8
+var ScaleBy = 4 # 8 works
 #var ImageResolution = Vector2(1920, 1080)
 var ImageResolution = Vector2(1920/ScaleBy, 1080/ScaleBy)
 #var ImageSize = Vector2(500, 400)
@@ -82,35 +82,42 @@ func CheckPixel(Location, ColorToFill, ReplacementColor):
 
 func PaintLine(StartLocation, EndLocation, PaintColor):
 	if(EndLocation.x <= StartLocation.x+1 and EndLocation.y <= StartLocation.y+1): #Top left
-		print("Drawing Line") # If its not working try rounding
-		var NumberOfSegments = StartLocation.x - EndLocation.x
-		var PixelsPerSegment = (StartLocation.y - EndLocation.y) / NumberOfSegments
-		
-		print(NumberOfSegments)
-		print(PixelsPerSegment)
-		
-		var PixelNumber = 1
-		var SegmentNumber = 1
-		
-		while SegmentNumber <= NumberOfSegments:
-			PixelNumber = 1
-			SegmentNumber += 1
-			while PixelNumber <= PixelsPerSegment:
-				CurrentImage.set_pixel(StartLocation.x - SegmentNumber, StartLocation.y - PixelNumber, PaintColor)
-				PixelNumber += 1
-		
-		#for HorizontalOffset in range(1, NumberOfSegments):
-		#	for VerticalOffset in range(1, PixelsPerSegment+1):
-		#		print(HorizontalOffset)
-		#		print(VerticalOffset)
-		#		CurrentImage.set_pixel(StartLocation.x + HorizontalOffset, StartLocation.y + VerticalOffset, PaintColor)
-		Render()
+		print("Line in this direction not yet supported")
 	elif(EndLocation.x >= StartLocation.x and EndLocation.y <= StartLocation.y): #Top right
 		print("Line in this direction not yet supported")
 	elif(EndLocation.x <= StartLocation.x+1 and EndLocation.y >= StartLocation.y+1): #Bottom left
 		print("Line in this direction not yet supported")
 	elif(EndLocation.x+1 >= StartLocation.x and EndLocation.y+1 >= StartLocation.y): #Bottom right
 		print("Line in this direction not yet supported")
+
+func IsPixelOutsideBounds(PixelPosition):
+	if(PixelPosition.x < 0 or PixelPosition.x > CurrentImage.get_width()):
+		return true
+	if(PixelPosition.y < 0 or PixelPosition.y > CurrentImage.get_height()):
+		return true
+	return false
+
+func PaintCircle(StartLocation, EndLocation, PaintColor, Fill):
+	var Radius =  StartLocation.y - EndLocation.y
+	#var Radius =  snapped(StartLocation.y - EndLocation.y, 1)
+	if (Radius < 0):
+		Radius = -Radius
+	print(Radius)
+	
+	for x in range(-Radius, Radius):
+		for y in range(-Radius, Radius):
+			if(IsPixelOutsideBounds(Vector2(StartLocation.x+x, StartLocation.y+y))):
+				continue
+			
+			var PixelDistanceFromCenter = StartLocation.distance_to(Vector2(StartLocation.x+x,StartLocation.y+y))
+			if(Fill == true):
+				if(PixelDistanceFromCenter <= Radius):
+					CurrentImage.set_pixel(StartLocation.x+x, StartLocation.y+y, PaintColor)
+			elif(Fill == false):
+				if(PixelDistanceFromCenter <= Radius and PixelDistanceFromCenter >= Radius-BrushSize):
+					CurrentImage.set_pixel(StartLocation.x+x, StartLocation.y+y, PaintColor)
+	Render()
+	
 
 func PaintRectangle(StartLocation, EndLocation, PaintColor):
 	if(EndLocation.x <= StartLocation.x+1 and EndLocation.y <= StartLocation.y+1): #Top left
@@ -157,10 +164,11 @@ func ConvertToCanvasSpace():
 	var y = NewMouseY/ArtCanvas.size.y
 	
 	return Vector2(ImageResolution.x*x, ImageResolution.y*y)
-	
+
 func PaintLocation(x, y, color):
-	CurrentImage.set_pixel(x, y, color)
-	
+	if(IsPixelOutsideBounds(Vector2(x, y)) == false):
+		CurrentImage.set_pixel(x, y, color)
+
 func _process(delta):
 	var MouseButton1Down = Input.is_mouse_button_pressed(1)
 	MousePosition = get_viewport().get_mouse_position()
@@ -221,12 +229,10 @@ func _input(event):
 			elif(event.button_index == MOUSE_BUTTON_MIDDLE):
 				MoveCanvas = true
 			elif(event.button_index == MOUSE_BUTTON_LEFT):
-				if(MouseOnCanvas and SelectedTool == "Rectangle"):
-					StartPixel = ConvertToCanvasSpace()
-				elif(MouseOnCanvas and SelectedTool == "Line"):
-					StartPixel = ConvertToCanvasSpace()
-				elif(MouseOnCanvas and SelectedTool == "Fill"):
+				if(MouseOnCanvas and SelectedTool == "Fill"):
 					Fill(ConvertToCanvasSpace(), SelectedColor)
+				else:
+					StartPixel = ConvertToCanvasSpace()
 		elif(event.is_released()):
 			if(event.button_index == MOUSE_BUTTON_MIDDLE):
 				MoveCanvas = false
@@ -234,9 +240,16 @@ func _input(event):
 				if(MouseOnCanvas and SelectedTool == "Rectangle"):
 					EndPixel = ConvertToCanvasSpace()
 					PaintRectangle(StartPixel, EndPixel, SelectedColor)
+				if(MouseOnCanvas and SelectedTool == "CircleFilled"):
+					EndPixel = ConvertToCanvasSpace()
+					PaintCircle(StartPixel, EndPixel, SelectedColor, true)
+				if(MouseOnCanvas and SelectedTool == "Circle"):
+					EndPixel = ConvertToCanvasSpace()
+					PaintCircle(StartPixel, EndPixel, SelectedColor, false)
 				elif(MouseOnCanvas and SelectedTool == "Line"):
 					EndPixel = ConvertToCanvasSpace()
 					PaintLine(StartPixel, EndPixel, SelectedColor)
+
 func LocateCanvas():
 	ArtCanvas.size = Vector2(ImageResolution.x*ScaleBy, ImageResolution.y*ScaleBy)
 	ArtCanvas.position = Vector2.ZERO
