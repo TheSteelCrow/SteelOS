@@ -185,10 +185,10 @@ offset_bottom = 216.0
 [node name="ColorPicker" type="ColorPicker" parent="StockMarketManager/Settings"]
 visible = false
 layout_mode = 0
-offset_left = 288.0
-offset_top = -120.0
-offset_right = 554.0
-offset_bottom = 448.0
+offset_left = 312.0
+offset_top = -108.0
+offset_right = 566.0
+offset_bottom = 460.0
 
 [node name="ToggleSettings" type="CheckButton" parent="StockMarketManager"]
 layout_mode = 0
