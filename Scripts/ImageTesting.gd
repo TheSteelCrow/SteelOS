@@ -89,11 +89,21 @@ func PaintLine(StartLocation, EndLocation, PaintColor):
 		print(NumberOfSegments)
 		print(PixelsPerSegment)
 		
-		for HorizontalOffset in range(0, NumberOfSegments):
-			for VerticalOffset in range(0, PixelsPerSegment):
-				print(HorizontalOffset)
-				print(VerticalOffset)
-				CurrentImage.set_pixel(StartLocation.x + HorizontalOffset, StartLocation.x + VerticalOffset, PaintColor)
+		var PixelNumber = 1
+		var SegmentNumber = 1
+		
+		while SegmentNumber <= NumberOfSegments:
+			PixelNumber = 1
+			SegmentNumber += 1
+			while PixelNumber <= PixelsPerSegment:
+				CurrentImage.set_pixel(StartLocation.x - SegmentNumber, StartLocation.y - PixelNumber, PaintColor)
+				PixelNumber += 1
+		
+		#for HorizontalOffset in range(1, NumberOfSegments):
+		#	for VerticalOffset in range(1, PixelsPerSegment+1):
+		#		print(HorizontalOffset)
+		#		print(VerticalOffset)
+		#		CurrentImage.set_pixel(StartLocation.x + HorizontalOffset, StartLocation.y + VerticalOffset, PaintColor)
 		Render()
 	elif(EndLocation.x >= StartLocation.x and EndLocation.y <= StartLocation.y): #Top right
 		print("Line in this direction not yet supported")
@@ -101,6 +111,7 @@ func PaintLine(StartLocation, EndLocation, PaintColor):
 		print("Line in this direction not yet supported")
 	elif(EndLocation.x+1 >= StartLocation.x and EndLocation.y+1 >= StartLocation.y): #Bottom right
 		print("Line in this direction not yet supported")
+
 func PaintRectangle(StartLocation, EndLocation, PaintColor):
 	if(EndLocation.x <= StartLocation.x+1 and EndLocation.y <= StartLocation.y+1): #Top left
 		for x in range(EndLocation.x, StartLocation.x+1):
