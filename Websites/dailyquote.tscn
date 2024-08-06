@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7sk1aa4iryjs"]
+
+[ext_resource type="Script" path="res://Scripts/DailyQuote.gd" id="1_1ogle"]
+[ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="2_7kbls"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a10i"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="DailyQuote" type="Panel"]
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0a10i")
+script = ExtResource("1_1ogle")
+metadata/LinkedWebsite = 0
+metadata/UserSearchInput = "www.dailyquote.com"
+
+[node name="Quote" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 272.0
+offset_right = 1728.0
+offset_bottom = 848.0
+theme_override_fonts/normal_font = ExtResource("2_7kbls")
+theme_override_font_sizes/normal_font_size = 70

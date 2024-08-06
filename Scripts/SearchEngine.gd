@@ -18,7 +18,8 @@ var WebDomains = {
 	"turbonews" : ["www.turbonews.com", "Turbo News - News you can trust", "News website for information on game updates as well as current events in Aloftia.", "TurboNews_WebIcon.png"],
 	"crowosmanual" : ["www.crowosmanual.com", "CrowOS Manual - Trusty computer guide", "Need help using your computer? This is the guide for you!", "CrowOSManual_WebIcon.png"],
 	"banc" : ["www.banc.com", "Banc - International banking", "Banc is the #1 Banking Website, keep your money safe with us!", "Banc_WebIcon.png"],
-	"tenir" : ["www.tenirinvesting.com", "Tenir Investing - Stock trading company", "Tenir is a stock trading company with many investment opportunites. Invest your money today, to have something for tomorrow.", "Tenir_WebIcon.png"]
+	"tenir" : ["www.tenirinvesting.com", "Tenir Investing - Stock trading company", "Tenir is a stock trading company with many investment opportunites. Invest your money today, to have something for tomorrow.", "Tenir_WebIcon.png"],
+	"dailyquote" : ["www.dailyquote.com", "Daily Quote - Your daily dose of quotes", "Daily quote is a website which gives you a random quote from Dan Quayle. Remember, don't forget the 'e' on potatoe!", "DailyQuote_WebIcon.png"]
 }
 
 var BrowserTabPrefab

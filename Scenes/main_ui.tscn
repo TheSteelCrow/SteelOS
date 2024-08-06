@@ -740,7 +740,6 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1518,10 +1517,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 2080.0
-offset_top = 368.0
-offset_right = 2114.0
-offset_bottom = 936.0
+offset_left = 2120.0
+offset_top = 388.0
+offset_right = 2134.0
+offset_bottom = 956.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -2095,6 +2094,7 @@ texture_normal = ExtResource("51_c3t5u")
 wait_time = 5.0
 
 [node name="Settings" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -3184,10 +3184,10 @@ offset_bottom = 248.0
 [node name="ColorPicker" type="ColorPicker" parent="SteelGrapher/Grapher/Settings"]
 visible = false
 layout_mode = 0
-offset_left = 243.0
-offset_top = -144.0
-offset_right = 533.0
-offset_bottom = 424.0
+offset_left = 283.0
+offset_top = -124.0
+offset_right = 553.0
+offset_bottom = 444.0
 
 [node name="DataPanel" type="Panel" parent="SteelGrapher/Grapher/Settings"]
 visible = false
