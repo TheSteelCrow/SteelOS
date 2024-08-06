@@ -42,3 +42,6 @@ func _on_toggle_vsync_toggled(button_pressed):
 func _on_run_factory_reset_button_up():
 	get_parent().get_node("Menu/Restart").button_up.emit()
 	get_parent().get_node("SystemLoadingScreen/ShutDownRestartScreen/Text").text = "[center]Factory Reset..."
+
+func _on_toggle_fps_label_toggled(button_pressed):
+	get_parent().get_node("FPS").visible = button_pressed

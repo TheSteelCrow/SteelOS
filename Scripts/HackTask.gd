@@ -33,6 +33,7 @@ func _process(Delta):
 			return
 
 func StartTask():
+	$Info.text = "Hack the website by clicking while the interceptor is fully covering the data pipeline."
 	SetPipelineColor("Blue")
 	
 	for i in range(0,Interceptors.size()):
@@ -55,6 +56,7 @@ func StartTask():
 				SetPipelineColor("Green")
 				await get_tree().create_timer(2).timeout
 				get_node("StealFiles").Start()
+				$Info.text = "Download the website's files by clicking on the download buttons!"
 				return
 
 func SetPipelineColor(CurrentPipeline):

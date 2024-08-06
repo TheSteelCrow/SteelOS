@@ -38,7 +38,7 @@ func Reset():
 func _ready():
 	Main = get_parent()
 	Output = get_node("TextDisplayPanel/TextDisplay")
-	Output.text = "Welcome to Command Panel!"
+	Output.text = "Welcome to Command Panel!\nUse '/help' for a list of commands."
 	get_node("UserInput/PasteButton").button_up.connect(func():UserInput.text += DisplayServer.clipboard_get())
 
 func RemoveAndSaveInput():
