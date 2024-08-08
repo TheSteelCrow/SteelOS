@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=234 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cgxgkb2t6wmr" path="res://Images/NewestMailicon.png" id="40_0vkh3"]
 [ext_resource type="Texture2D" uid="uid://tncto6ggupj0" path="res://Images/shoppingCart.png" id="45_30doi"]
 [ext_resource type="Texture2D" uid="uid://b45q5j5ncgthc" path="res://Images/GrapherIconCustom.png" id="45_cl6xc"]
+[ext_resource type="Texture2D" uid="uid://bse6c0bccgj8u" path="res://Images/menuList.png" id="46_bmmsi"]
 [ext_resource type="Script" path="res://Scripts/DragComponent.gd" id="49_a6mew"]
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="49_jeuf6"]
 [ext_resource type="Script" path="res://Scripts/BootUpSequence.gd" id="50_v4o84"]
@@ -81,6 +82,7 @@
 [ext_resource type="Texture2D" uid="uid://hnhexq7d5tgj" path="res://Images/Progress/progress_full.png" id="78_s7dk6"]
 [ext_resource type="Texture2D" uid="uid://ls7io0o4r65n" path="res://Images/painter thumbnail.png" id="79_gjclw"]
 [ext_resource type="Texture2D" uid="uid://nt4jay7apk3r" path="res://Images/steelgrapher final.png" id="81_5h86j"]
+[ext_resource type="Script" path="res://Scripts/Calculator.gd" id="82_rng58"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -344,7 +346,6 @@ bg_color = Color(0.191406, 0.207031, 0.320313, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nqds3"]
-load_path = "res://.godot/imported/videoframe_23859.png-43de924d9d714fb20e606237add98c89.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3ldy"]
 bg_color = Color(0.71875, 0.25, 0.367188, 1)
@@ -702,6 +703,119 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7gyp"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpl1o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q6hl"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.372549)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn6bd"]
+bg_color = Color(0.745098, 0.745098, 0.745098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltvyl"]
+bg_color = Color(0.337255, 0.337255, 0.337255, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vmf6"]
+bg_color = Color(0.356863, 0.564706, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.355469, 0.5625, 0.28125, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on3wc"]
+bg_color = Color(0.577714, 0.299359, 0.346963, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.372549)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54gtc"]
+bg_color = Color(0.784314, 0.47451, 0.521569, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6e6f"]
+bg_color = Color(0.407843, 0.2, 0.235294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd6qb"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.372549)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qybvf"]
+bg_color = Color(0.294118, 0.294118, 0.294118, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.372549)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6mpu"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.372549)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8ol4"]
+bg_color = Color(0.941406, 0.351563, 0.164063, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.372549)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwij7"]
+bg_color = Color(0.984314, 0.537255, 0.403922, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8usq3"]
+bg_color = Color(0.658824, 0.223529, 0.0745098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="MainUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -831,6 +945,7 @@ scale = Vector2(0.401237, 0.401358)
 texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1608,10 +1723,10 @@ script = ExtResource("16_16jal")
 
 [node name="ColorPicker" type="ColorPicker" parent="ImagePainterApp"]
 layout_mode = 0
-offset_left = 2240.0
-offset_top = 448.0
-offset_right = 2194.0
-offset_bottom = 1016.0
+offset_left = 2256.0
+offset_top = 456.0
+offset_right = 2202.0
+offset_bottom = 1024.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="ImagePainterApp"]
@@ -1946,6 +2061,23 @@ offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 tooltip_text = "CrowStoreApp"
 texture_normal = ExtResource("45_30doi")
+
+[node name="CalculatorBackdrop" type="ColorRect" parent="Taskbar"]
+layout_mode = 0
+offset_left = 440.0
+offset_right = 480.0
+offset_bottom = 40.0
+tooltip_text = "Calculator"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="CalculatorButton" type="TextureButton" parent="Taskbar/CalculatorBackdrop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "Calculator"
+texture_normal = ExtResource("46_bmmsi")
 
 [node name="TerminalBackdrop" type="ColorRect" parent="Taskbar"]
 layout_mode = 0
@@ -3292,10 +3424,10 @@ offset_bottom = 248.0
 [node name="ColorPicker" type="ColorPicker" parent="SteelGrapher/Grapher/Settings"]
 visible = false
 layout_mode = 0
-offset_left = 403.0
-offset_top = -64.0
-offset_right = 613.0
-offset_bottom = 504.0
+offset_left = 419.0
+offset_top = -56.0
+offset_right = 621.0
+offset_bottom = 512.0
 
 [node name="DataPanel" type="Panel" parent="SteelGrapher/Grapher/Settings"]
 visible = false
@@ -3564,6 +3696,428 @@ offset_right = 1927.0
 offset_bottom = 1126.0
 scale = Vector2(0.31683, 0.318806)
 texture = ExtResource("81_5h86j")
+
+[node name="Calculator" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 112.0
+offset_right = 1088.0
+offset_bottom = 832.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7gyp")
+script = ExtResource("82_rng58")
+
+[node name="TopPanel" type="Panel" parent="Calculator"]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gpl1o")
+
+[node name="CloseButton" type="Button" parent="Calculator/TopPanel"]
+offset_left = 274.0
+offset_top = 200.0
+offset_right = 432.0
+offset_bottom = 272.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "CLOSE"
+
+[node name="DragComponent" type="Node" parent="Calculator"]
+script = ExtResource("49_a6mew")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="Calculator"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="Calculator"]
+script = ExtResource("16_16jal")
+
+[node name="Screen" type="Panel" parent="Calculator"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 57.0
+offset_right = 432.0
+offset_bottom = 184.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vmf6")
+
+[node name="GridContainer" type="GridContainer" parent="Calculator"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 201.0
+offset_right = 432.0
+offset_bottom = 703.0
+mouse_filter = 2
+theme_override_constants/h_separation = 86
+theme_override_constants/v_separation = 86
+columns = 5
+
+[node name="Control" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "("
+
+[node name="Control2" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control2"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = ")"
+
+[node name="Control3" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control3"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "%"
+
+[node name="Control4" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Control6" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control6"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "sin"
+
+[node name="Control7" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control7"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "cos"
+
+[node name="Control8" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control8"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "tan"
+
+[node name="Control9" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control9"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_on3wc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_54gtc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i6e6f")
+text = "C"
+
+[node name="Control10" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control10"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "÷"
+
+[node name="Control11" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control11"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "7"
+
+[node name="Control12" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Calculator/GridContainer/Control12"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "8"
+
+[node name="Control13" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control13"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "9"
+
+[node name="Control14" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control14"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "^"
+
+[node name="Control15" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control15"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "√"
+
+[node name="Control16" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control16"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "4"
+
+[node name="Control17" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control17"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "5"
+
+[node name="Control18" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control18"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "6"
+
+[node name="Control19" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control19"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "×"
+
+[node name="Control20" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control20"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "÷"
+
+[node name="Control21" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control21"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "1"
+
+[node name="Control22" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control22"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "2"
+
+[node name="Control23" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control23"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "3"
+
+[node name="Control24" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control24"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "+"
+
+[node name="Control25" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control25"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 158.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_n8ol4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pwij7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8usq3")
+text = "="
+
+[node name="Control26" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control26"]
+offset_right = 158.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "0"
+
+[node name="Control27" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Control28" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control28"]
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_dd6qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qybvf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mpu")
+text = "."
+
+[node name="Control29" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Calculator/GridContainer/Control29"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_2q6hl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn6bd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ltvyl")
+text = "-"
+
+[node name="Control30" type="Control" parent="Calculator/GridContainer"]
+layout_mode = 2
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]

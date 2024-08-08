@@ -45,15 +45,15 @@ func _ready():
 		AppButton = App.get_parent().get_node("Taskbar/" + AppName + "Backdrop/" + AppName + "Button")
 	
 	CloseButton.button_up.connect(Close)
-	
-	MinimiseButton.button_up.connect(func():
-		AppPreviousPosition = App.position
-		AppVisible = false
-		if(App.IsFullscreen == false):
-			AppVisualTransition.Minimise(AppPreviousPosition)
-		else:
-			AppVisualTransition.Minimise(null)
-	)
+	if(MinimiseButton != null):
+		MinimiseButton.button_up.connect(func():
+			AppPreviousPosition = App.position
+			AppVisible = false
+			if(App.IsFullscreen == false):
+				AppVisualTransition.Minimise(AppPreviousPosition)
+			else:
+				AppVisualTransition.Minimise(null)
+		)
 	if(AppButton != null):
 		AppButton.button_up.connect(func():
 			if(not AppVisible): # If app is not visible
