@@ -25,6 +25,7 @@ offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_r4xwi")
 metadata/UserSearchInput = "www.aloftia.govt"
 metadata/LinkedWebsite = 0
+metadata/Domain = "government"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

@@ -13,6 +13,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0a10i")
 script = ExtResource("1_1ogle")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.dailyquote.com"
+metadata/Domain = "dailyquote"
 
 [node name="Quote" type="RichTextLabel" parent="."]
 layout_mode = 0

@@ -15,6 +15,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3gaed")
 script = ExtResource("1_qydyl")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.parcourir.com"
+metadata/Domain = "parcourir"
 
 [node name="LocalUserSearchInput" type="LineEdit" parent="."]
 layout_mode = 0

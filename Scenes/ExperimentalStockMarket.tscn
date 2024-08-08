@@ -207,10 +207,10 @@ offset_bottom = 248.0
 [node name="ColorPicker" type="ColorPicker" parent="StockMarketManager/Settings"]
 visible = false
 layout_mode = 0
-offset_left = 424.0
-offset_top = -52.0
-offset_right = 622.0
-offset_bottom = 516.0
+offset_left = 448.0
+offset_top = -40.0
+offset_right = 634.0
+offset_bottom = 528.0
 
 [node name="DataPanel" type="Panel" parent="StockMarketManager/Settings"]
 visible = false

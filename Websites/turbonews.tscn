@@ -28,6 +28,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_51wfj")
 script = ExtResource("1_hfmru")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.turbonews.com"
+metadata/turbonews = ""
 
 [node name="TopPanel" type="Panel" parent="."]
 layout_mode = 0

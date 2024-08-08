@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tncto6ggupj0"
-path="res://.godot/imported/shoppingCart.png-b7a1f495d622f6467988c281dfea3576.ctex"
+uid="uid://ctkullndylu7f"
+path="res://.godot/imported/newbarsHorizontal.png-480e9e2bf566d57b85a0b4c262f3969e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prefabs/shoppingCart.png"
-dest_files=["res://.godot/imported/shoppingCart.png-b7a1f495d622f6467988c281dfea3576.ctex"]
+source_file="res://Images/newbarsHorizontal.png"
+dest_files=["res://.godot/imported/newbarsHorizontal.png-480e9e2bf566d57b85a0b4c262f3969e.ctex"]
 
 [params]
 

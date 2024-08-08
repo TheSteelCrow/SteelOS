@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwvfb3wx5whs4"
-path="res://.godot/imported/signal3.png-dbc3c4319f7b9ac2896d1747002db45f.ctex"
+uid="uid://vb406o868a2i"
+path="res://.godot/imported/SteelGrapher.png-3072992cbf994974c47ed82e11fb1d0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prefabs/signal3.png"
-dest_files=["res://.godot/imported/signal3.png-dbc3c4319f7b9ac2896d1747002db45f.ctex"]
+source_file="res://Images/SteelGrapher.png"
+dest_files=["res://.godot/imported/SteelGrapher.png-3072992cbf994974c47ed82e11fb1d0c.ctex"]
 
 [params]
 

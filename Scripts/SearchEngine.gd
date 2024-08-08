@@ -125,3 +125,6 @@ func _on_global_user_search_input_text_submitted(NewText):
 
 func _on_search_button_on_bar_button_up():
 	OpenLink(GlobalUserSearchInput.text)
+
+func _on_refresh_button_button_up():
+	ReplaceOpenedWebsite(OpenedWebsite.get_meta("Domain"))

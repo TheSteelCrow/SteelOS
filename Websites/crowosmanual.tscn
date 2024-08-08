@@ -37,6 +37,7 @@ offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_a4icj")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.crowosmanual.com"
+metadata/Domain = "crowosmanual"
 
 [node name="Welcome" type="RichTextLabel" parent="."]
 layout_mode = 0

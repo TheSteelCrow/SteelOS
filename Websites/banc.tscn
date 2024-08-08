@@ -8,8 +8,10 @@ offset_right = 1920.0
 offset_bottom = 928.0
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.banc.com"
+metadata/Domain = "banc"
 
 [node name="Notice" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 232.0
 offset_top = 472.0
 offset_right = 1768.0
@@ -19,6 +21,7 @@ theme_override_font_sizes/normal_font_size = 70
 text = "This website is under construction."
 
 [node name="NoticeIcon" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 824.0
 offset_top = 304.0
 offset_right = 1336.0

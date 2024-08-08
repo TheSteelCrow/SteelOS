@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bir1cymn2lk87"
-path="res://.godot/imported/videoframe_59802.png-becc7599de98472058f6de1c3061fb87.ctex"
+uid="uid://nt4jay7apk3r"
+path="res://.godot/imported/steelgrapher final.png-6e69b6bec4446292fa1d949001dc42cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Backgrounds/videoframe_59802.png"
-dest_files=["res://.godot/imported/videoframe_59802.png-becc7599de98472058f6de1c3061fb87.ctex"]
+source_file="res://Images/steelgrapher final.png"
+dest_files=["res://.godot/imported/steelgrapher final.png-6e69b6bec4446292fa1d949001dc42cc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsrvuk1qg4yme"
-path="res://.godot/imported/videoframe_54628.png-141f02cd0784b441225e4c70575857af.ctex"
+uid="uid://bc2no8rivcrv7"
+path="res://.godot/imported/barsHorizontal.png-18641b7d15d1486cb6eb4709cc1b562b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Backgrounds/videoframe_54628.png"
-dest_files=["res://.godot/imported/videoframe_54628.png-141f02cd0784b441225e4c70575857af.ctex"]
+source_file="res://Images/barsHorizontal.png"
+dest_files=["res://.godot/imported/barsHorizontal.png-18641b7d15d1486cb6eb4709cc1b562b.ctex"]
 
 [params]
 
