@@ -16,6 +16,16 @@ var AnimationsMultiplier = 1
 
 var ShuttingDown = false
 @onready var SystemLoadingScreen = $SystemLoadingScreen
+@onready var Taskbar = $Taskbar
+
+func InstallApp(AppName):
+	var AppButton = Taskbar.get_node("IconHolder/" + AppName + "Backdrop")
+	Taskbar.get_node("IconHolder").remove_child(AppButton)
+	Taskbar.get_node("IconArranger").add_child(AppButton)
+	
+	var NewAppPrefab = load("res://Apps/" + AppName.to_lower() + ".tscn")
+	var NewAppWindow = NewAppPrefab.instantiate()
+	add_child(NewAppWindow)
 
 func GeneratePopup(PopupCreatorName, Description, Type, PopupPosition):
 	var NewPopup = CustomPopup.instantiate()

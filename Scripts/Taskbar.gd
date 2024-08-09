@@ -41,6 +41,9 @@ func _ready():
 func _process(delta):
 	if(MainUI.ShuttingDown == true):
 		return
+	if(MainUI.SystemLoadingScreen.visible == false):
+		move_to_front()
+		
 	if(TaskActive == true):
 		Progress.show()
 		Progress.text = ProgressText % [TaskProgress, TaskQuota]
@@ -50,7 +53,7 @@ func _process(delta):
 	else:
 		Progress.add_theme_color_override("default_color", Color("ffffff"))
 	
-	#move_to_front()
+	
 	var TimeText = get_node("TimeText")
 	var DateText = get_node("DateText")
 	TimeText.text = ""

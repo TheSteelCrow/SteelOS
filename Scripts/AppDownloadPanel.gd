@@ -8,6 +8,8 @@ var Checkmark
 
 var NumberOfGigabyte
 
+@export var App : String
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	NumberOfGigabyte = get_meta("AppSize")
@@ -38,4 +40,5 @@ func _ready():
 		DownloadButton.icon = Checkmark
 		DownloadButton.show()
 		DownloadButton.disabled = true
+		get_tree().root.get_child(0).InstallApp(App)
 	)

@@ -1,0 +1,238 @@
+[gd_scene load_steps=20 format=3 uid="uid://cw2r2l42wrfs4"]
+
+[ext_resource type="Script" path="res://Scripts/ImagePainterApp.gd" id="1_dusyr"]
+[ext_resource type="Script" path="res://Scripts/image_painter.gd" id="2_edfxm"]
+[ext_resource type="Script" path="res://Scripts/AppVisualTransition.gd" id="3_cg6vh"]
+[ext_resource type="Script" path="res://Scripts/AppBase.gd" id="4_8pb7d"]
+[ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="5_rflqm"]
+[ext_resource type="Texture2D" uid="uid://cy466yisyc6ha" path="res://Images/line_horizontal.png" id="6_aoex1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5ywe"]
+bg_color = Color(0.191406, 0.207031, 0.320313, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20ygb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nqds3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3ldy"]
+bg_color = Color(0.71875, 0.25, 0.367188, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joegs"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxldo"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0e35"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4odpd"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av2mn"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xavgy"]
+bg_color = Color(0.180392, 0.686275, 0.521569, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxsw4"]
+bg_color = Color(0.211765, 0.811765, 0.619608, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_todwy"]
+bg_color = Color(0.0705882, 0.329412, 0.247059, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yv0d4"]
+bg_color = Color(0.180392, 0.686275, 0.521569, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[node name="PixelPainter" type="Panel"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v5ywe")
+script = ExtResource("1_dusyr")
+
+[node name="ImagePainter" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 1504.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_20ygb")
+script = ExtResource("2_edfxm")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="Background2" type="TextureRect" parent="SubViewport"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.59998, 0.600012)
+texture = SubResource("CompressedTexture2D_nqds3")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="."]
+script = ExtResource("3_cg6vh")
+
+[node name="AppBaseComponent" type="Node" parent="."]
+script = ExtResource("4_8pb7d")
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 2352.0
+offset_top = 504.0
+offset_right = 2250.0
+offset_bottom = 1072.0
+color = Color(0, 0, 0, 1)
+
+[node name="Tools" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1512.0
+offset_top = 800.0
+offset_right = 1912.0
+offset_bottom = 888.0
+
+[node name="Brush" type="Button" parent="Tools"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 39.0
+text = "Brush"
+
+[node name="Rectangle" type="Button" parent="Tools"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 168.0
+offset_bottom = 79.0
+text = "Rectangle"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1512.0
+offset_top = 896.0
+offset_right = 1912.0
+offset_bottom = 1032.0
+
+[node name="GridThickness" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 352.0
+offset_bottom = 32.0
+max_value = 2.0
+step = 0.1
+
+[node name="GridToggle" type="CheckButton" parent="Panel"]
+layout_mode = 0
+offset_left = 352.0
+offset_right = 400.0
+offset_bottom = 32.0
+
+[node name="TopPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3ldy")
+
+[node name="CloseButton" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_joegs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxldo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o0e35")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4odpd")
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("5_rflqm")
+
+[node name="MinimiseButton" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_joegs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_av2mn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o0e35")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4odpd")
+
+[node name="TextureRect" type="TextureRect" parent="TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("6_aoex1")
+
+[node name="Save" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xavgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxsw4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
+text = "Save"
+
+[node name="Open" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 8.0
+offset_right = 384.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xavgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxsw4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
+text = "Open"
+
+[node name="New" type="Button" parent="TopPanel"]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 8.0
+offset_right = 576.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_xavgy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fxsw4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_todwy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yv0d4")
+text = "New"
+
+[connection signal="value_changed" from="Panel/GridThickness" to="ImagePainter" method="_on_grid_thickness_value_changed" flags=18]
+[connection signal="toggled" from="Panel/GridToggle" to="ImagePainter" method="_on_grid_toggle_toggled" flags=18]
+[connection signal="button_up" from="TopPanel/Save" to="." method="_on_save_button_up"]
+[connection signal="button_up" from="TopPanel/Open" to="." method="_on_open_button_up"]
+[connection signal="button_up" from="TopPanel/New" to="." method="_on_new_button_up"]

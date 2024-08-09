@@ -41,8 +41,8 @@ func _ready():
 	
 	CloseButton = App.get_node("TopPanel").get_node("CloseButton")
 	MinimiseButton = App.get_node("TopPanel").get_node("MinimiseButton")
-	if(App.get_parent().get_node("Taskbar/" + AppName + "Backdrop")):
-		AppButton = App.get_parent().get_node("Taskbar/" + AppName + "Backdrop/" + AppName + "Button")
+	if(App.get_parent().get_node("Taskbar/IconArranger/" + AppName + "Backdrop")):
+		AppButton = App.get_parent().get_node("Taskbar/IconArranger/" + AppName + "Backdrop/" + AppName + "Button")
 	
 	CloseButton.button_up.connect(Close)
 	if(MinimiseButton != null):
