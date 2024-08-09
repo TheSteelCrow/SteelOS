@@ -1593,7 +1593,6 @@ theme_override_font_sizes/font_size = 80
 text = "NEXT"
 
 [node name="PhotosApp" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -2966,7 +2965,7 @@ offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjwdm")
 script = ExtResource("72_w58t1")
 App = "PainterPro"
-metadata/AppSize = 15
+metadata/AppSize = 1
 
 [node name="DownloadButton" type="Button" parent="CrowStore/GridContainer/PainterApp/AppDownloadPanel"]
 layout_mode = 0
@@ -3040,6 +3039,7 @@ scale = Vector2(0.31683, 0.318806)
 texture = ExtResource("79_gjclw")
 
 [node name="Notice" type="RichTextLabel" parent="CrowStore/GridContainer/PainterApp/AppDownloadPanel"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 44.0
 offset_right = 270.0
@@ -3135,6 +3135,7 @@ scale = Vector2(0.31683, 0.318806)
 texture = ExtResource("81_5h86j")
 
 [node name="Notice" type="RichTextLabel" parent="CrowStore/GridContainer/SteelGrapher/AppDownloadPanel"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 44.0
 offset_right = 270.0
@@ -3696,6 +3697,7 @@ layout_mode = 2
 [connection signal="button_up" from="Mail/EmailViewer/CancelTaskButton" to="Mail" method="_on_cancel_task_button_button_up"]
 [connection signal="button_up" from="Mail/EmailViewer/TopBar/CloseButton" to="Mail" method="_on_close_button_button_up"]
 [connection signal="cell_selected" from="FileExplorer/Folders" to="FileExplorer" method="_on_folders_cell_selected"]
+[connection signal="item_activated" from="FileExplorer/Files" to="FileExplorer" method="_on_files_item_activated"]
 [connection signal="button_up" from="FileExplorer/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
 [connection signal="button_up" from="FileExplorer/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
 [connection signal="button_up" from="TeamManager/NextButton" to="TeamManager" method="_on_next_button_button_up"]

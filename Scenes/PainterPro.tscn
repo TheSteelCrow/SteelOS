@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://rmqpw32tjwg7"]
 
-[ext_resource type="Script" path="res://Scripts/ImageTesting.gd" id="1_f0diq"]
-[ext_resource type="Script" path="res://Scripts/PaintAppGrid.gd" id="2_e15sq"]
-[ext_resource type="Script" path="res://Scripts/ArtAppButtons.gd" id="3_aiqxk"]
+[ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro_Functionality.gd" id="1_f0diq"]
+[ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro_Grid.gd" id="2_e15sq"]
+[ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro_Buttons.gd" id="3_aiqxk"]
 [ext_resource type="Texture2D" uid="uid://b7thb5ovhjmfl" path="res://Images/PaintAppIcons/drawing_brush.png" id="4_e2tjo"]
 [ext_resource type="Texture2D" uid="uid://b3rqc13ffwi85" path="res://Images/PaintAppIcons/drawing_bucket.png" id="5_fc2yo"]
 [ext_resource type="Texture2D" uid="uid://r81y0yqqvg3i" path="res://Images/PaintAppIcons/drawing_eraser.png" id="6_moja1"]

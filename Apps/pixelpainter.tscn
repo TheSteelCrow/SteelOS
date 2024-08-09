@@ -96,10 +96,10 @@ script = ExtResource("4_8pb7d")
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 layout_mode = 0
-offset_left = 2352.0
-offset_top = 504.0
-offset_right = 2250.0
-offset_bottom = 1072.0
+offset_left = 2360.0
+offset_top = 508.0
+offset_right = 2254.0
+offset_bottom = 1076.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tools" type="Panel" parent="."]

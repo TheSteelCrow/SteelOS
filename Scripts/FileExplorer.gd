@@ -1,11 +1,5 @@
 extends Panel
 
-var MouseButton1Down = false
-var MouseInZone = false
-var Dragging = false
-var offset = Vector2(0,0)
-var ScreenSize 
-
 var FileRoot
 var FolderRoot
 
@@ -31,9 +25,7 @@ func _ready():
 	hide()
 	
 	#print(Data)
-	print(DataHolder.Data["Downloads"][2][0])
-	
-	ScreenSize = get_viewport_rect().size / get_canvas_transform().get_scale()
+	#print(DataHolder.Data["Downloads"][2][0])
 	FoldersTree = get_node("Folders")
 	
 	FolderRoot = FoldersTree.create_item()
@@ -59,12 +51,19 @@ func OpenFolder(FolderToOpen):
 	FilesTree.clear()
 	FileRoot = FilesTree.create_item()
 	FileRoot.set_text(0, "OpenedFolder")
-	for File in DataHolder.Data[FolderToOpen]:
+	for File in DataHolder.Data[FolderToOpen].keys():
 		var NewFileVisual = FilesTree.create_item(FileRoot)
-		NewFileVisual.set_text(0, File[0])
+		NewFileVisual.set_text(0, File)
 
 func _on_folders_cell_selected():
 	var TempOpenedFolder = FoldersTree.get_selected().get_text(0)
 	if(TempOpenedFolder in DataHolder.Data):
 		OpenedFolder = TempOpenedFolder
 		OpenFolder(OpenedFolder)
+		
+
+func _on_files_item_activated():
+	var TempOpenedFile = FilesTree.get_selected().get_text(0)
+	var PhotosApp = get_parent().get_node("PhotosApp")
+	PhotosApp.OpenImage()
+	PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data["Photos"][TempOpenedFile])
