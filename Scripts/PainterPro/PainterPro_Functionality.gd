@@ -34,6 +34,8 @@ var BackgroundColour = "ffffff"
 @onready var Buttons = $Buttons
 @onready var SideWindow = $SideWindow
 
+var rng
+
 func Fill(Location, ReplacementColor):
 	if(FillCooldown != null):
 		if(FillCooldown.time_left > 0):
@@ -65,6 +67,7 @@ func CheckNeighbouringPixels(Location, ColorToFill, ReplacementColor):
 
 	#Delay to give a satisfying effect and to not crash XD
 	await get_tree().process_frame
+	#await get_tree().create_timer(rng.randf_range(-5,5) * 0.1).timeout Gives a bacteria effect
 	FillCooldown.start(1)
 	
 	#Check the neighbors
@@ -139,8 +142,8 @@ func PaintRectangle(StartLocation, EndLocation, PaintColor):
 				CurrentImage.set_pixel(x, y, PaintColor)
 	Render()
 
-#func _ready():
-#	SetupCanvas()
+func _ready():
+	rng = RandomNumberGenerator.new()
 
 func SetupCanvas():
 	ImageResolution = Vector2(ImageResolution.x/ScaleBy, ImageResolution.y/ScaleBy)

@@ -1,13 +1,56 @@
-[gd_scene load_steps=13 format=3 uid="uid://cg10ash7fn0j4"]
+[gd_scene load_steps=23 format=3 uid="uid://cg10ash7fn0j4"]
 
 [ext_resource type="Script" path="res://Scripts/groundzero.gd" id="1_nklc7"]
 [ext_resource type="Script" path="res://Scripts/AppVisualTransition.gd" id="1_ow0yd"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="2_i5eqh"]
 [ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="3_p2xty"]
 [ext_resource type="Texture2D" uid="uid://cy466yisyc6ha" path="res://Images/line_horizontal.png" id="4_8gf7t"]
+[ext_resource type="Texture2D" uid="uid://bgvn2abbt02g1" path="res://Images/sliderfinal.png" id="4_ywjqg"]
+[ext_resource type="FontFile" uid="uid://e1r807bn3v02" path="res://Fonts/Gontserrat-Light.ttf" id="5_r67va"]
+[ext_resource type="Texture2D" uid="uid://8ll1g5hsahdw" path="res://Images/sliderfinal red.png" id="6_4jpf7"]
+[ext_resource type="Texture2D" uid="uid://cs4wp8o6hmf67" path="res://Images/sliderfinal blue.png" id="7_l6w76"]
+[ext_resource type="Texture2D" uid="uid://dur5ptq270ex4" path="res://Images/Designer.png" id="7_r1w13"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohcfp"]
 bg_color = Color(0.658824, 0.658824, 0.658824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l56xq"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pu63i"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klnvk"]
+bg_color = Color(0.352941, 0, 0, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cac4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7bn1"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irwvl"]
 bg_color = Color(0.235294, 0.235294, 0.235294, 1)
@@ -47,6 +90,172 @@ script = ExtResource("1_ow0yd")
 
 [node name="AppBaseComponent" type="Node" parent="."]
 script = ExtResource("2_i5eqh")
+
+[node name="Game" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 88.0
+offset_top = 144.0
+offset_right = 664.0
+offset_bottom = 416.0
+
+[node name="VSlider" type="VSlider" parent="Game"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 96.0
+offset_right = 1056.0
+offset_bottom = 344.0
+theme_override_icons/grabber = ExtResource("4_ywjqg")
+theme_override_icons/grabber_highlight = ExtResource("4_ywjqg")
+theme_override_icons/grabber_disabled = ExtResource("4_ywjqg")
+theme_override_styles/slider = SubResource("StyleBoxFlat_l56xq")
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Button" type="Button" parent="Game"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 240.0
+offset_right = 840.0
+offset_bottom = 400.0
+theme_override_fonts/font = ExtResource("5_r67va")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_pu63i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pu63i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_klnvk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0cac4")
+text = "SCRAM"
+
+[node name="Vertical" type="VSlider" parent="Game"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 48.0
+offset_right = 276.0
+offset_bottom = 348.0
+theme_override_icons/grabber = ExtResource("6_4jpf7")
+theme_override_icons/grabber_highlight = ExtResource("6_4jpf7")
+theme_override_icons/grabber_disabled = ExtResource("6_4jpf7")
+theme_override_styles/slider = SubResource("StyleBoxFlat_l56xq")
+
+[node name="Vertical2" type="VSlider" parent="Game"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 48.0
+offset_right = 18.0
+offset_bottom = 348.0
+theme_override_icons/grabber = ExtResource("7_l6w76")
+theme_override_icons/grabber_highlight = ExtResource("7_l6w76")
+theme_override_icons/grabber_disabled = ExtResource("7_l6w76")
+theme_override_styles/slider = SubResource("StyleBoxFlat_l56xq")
+
+[node name="Horizontal" type="HSlider" parent="Game"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 40.0
+offset_right = 484.0
+offset_bottom = 340.0
+theme_override_icons/grabber = ExtResource("7_r1w13")
+theme_override_icons/grabber_highlight = ExtResource("7_r1w13")
+theme_override_icons/grabber_disabled = ExtResource("7_r1w13")
+theme_override_styles/slider = SubResource("StyleBoxFlat_f7bn1")
+
+[node name="Label" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = -40.0
+offset_right = 1219.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 50
+text = "REACTOR TEMPERATURE: 000°C"
+
+[node name="Label3" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 32.0
+offset_right = 1219.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 50
+text = "TURBINE TEMPERATURE: 000°C"
+
+[node name="Label4" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 104.0
+offset_right = 1219.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 50
+text = "REACTOR PRESSURE: 000°C"
+
+[node name="Label5" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 176.0
+offset_right = 1219.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 50
+text = "RADIATION: 000°C"
+
+[node name="Label6" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 248.0
+offset_right = 1219.0
+offset_bottom = 320.0
+theme_override_font_sizes/font_size = 50
+text = "POWER OUTPUT: 000°C"
+
+[node name="Label7" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 544.0
+offset_right = 1099.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 50
+text = "Waste Management System"
+
+[node name="Label10" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 488.0
+offset_right = 1371.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 50
+text = "Fix Faults"
+
+[node name="Label11" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 360.0
+offset_right = 1787.0
+offset_bottom = 432.0
+theme_override_font_sizes/font_size = 50
+text = "Get and Get rid of uranium"
+
+[node name="Label8" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 664.0
+offset_right = 1616.0
+offset_bottom = 736.0
+theme_override_font_sizes/font_size = 50
+text = "Pressure Control (too much pressure means more radiation)"
+
+[node name="Label9" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 744.0
+offset_right = 1624.0
+offset_bottom = 816.0
+theme_override_font_sizes/font_size = 50
+text = "coolant flow regulator"
+
+[node name="Label2" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 432.0
+offset_right = 1152.0
+offset_bottom = 504.0
+theme_override_font_sizes/font_size = 50
+text = "Control Rod Insertion"
 
 [node name="TopPanel" type="Panel" parent="."]
 layout_mode = 0

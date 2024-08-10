@@ -4,6 +4,7 @@ var IsFullscreen = true
 
 var Cutout
 var Main
+var Power = true
 
 func OnAppVisible():
 	pass
@@ -17,8 +18,10 @@ func Open():
 func _ready():
 	Main = get_tree().root.get_child(0)
 	Cutout = Main.get_node("LightsCutout")
-	Cutout.show()
 	Main.get_node("Taskbar").AlmostFront = true
+	
+	if(Power == false):
+		Cutout.show()
 
 func _process(delta):
 	if(Cutout != null):
