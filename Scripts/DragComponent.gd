@@ -13,6 +13,9 @@ func _ready():
 	App = get_parent()
 	TopPanel = get_parent().get_node("TopPanel")
 	ScreenSize = App.get_viewport_rect().size / App.get_canvas_transform().get_scale()
+	get_tree().get_root().size_changed.connect(func():
+		ScreenSize = App.get_viewport_rect().size / App.get_canvas_transform().get_scale()
+	)
 	
 	TopPanel.mouse_entered.connect(func():
 		MouseInZone = true

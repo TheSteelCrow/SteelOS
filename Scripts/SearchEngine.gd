@@ -102,6 +102,7 @@ func AlignTabs():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_tree().get_root().size_changed.connect(AlignTabs)
 	BrowserTabPrefab = preload("res://Prefabs/browser_tab.tscn")
 	ParcourirWebsitePrefab = preload("res://Websites/parcourir.tscn")
 	

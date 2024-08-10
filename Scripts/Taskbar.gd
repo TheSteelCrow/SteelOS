@@ -9,7 +9,7 @@ var TaskQuota = 10
 
 var ProgressText = "[center]%s/%s[/center]"
 
-@onready var Progress = $Progress
+var Progress
 
 var TaskActive = false
 var TaskName = "None"
@@ -35,6 +35,7 @@ func CompleteTask():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Progress = get_node("RightSideIcons/Progress")
 	MenuPanel = get_parent().get_node("Menu")
 	MenuPanel.hide()
 	MainUI = get_parent()
@@ -58,8 +59,8 @@ func _process(delta):
 		Progress.add_theme_color_override("default_color", Color("ffffff"))
 	
 	
-	var TimeText = get_node("TimeText")
-	var DateText = get_node("DateText")
+	var TimeText = get_node("RightSideIcons/TimeText")
+	var DateText = get_node("RightSideIcons/DateText")
 	TimeText.text = ""
 	var SystemTime = Time.get_time_dict_from_system()
 	var SystemDate = Time.get_date_dict_from_system()

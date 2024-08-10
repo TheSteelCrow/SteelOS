@@ -141,8 +141,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyra3"]
 bg_color = Color(0.482353, 0.482353, 0.482353, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu20e"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_38uqn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fllwo"]
 bg_color = Color(0.320313, 0.425781, 0.507813, 1)
@@ -377,6 +376,29 @@ gradient = SubResource("Gradient_istym")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrops"]
 texture = SubResource("GradientTexture2D_chb43")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmyb2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.14902, 0.439216, 0.486275, 0.6)
+shadow_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r36p2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvll1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kehs5"]
 bg_color = Color(0, 0, 0, 0)
 
@@ -405,29 +427,6 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmyb2"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0.14902, 0.439216, 0.486275, 0.6)
-shadow_size = 30
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r36p2"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvll1"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5lbq"]
 bg_color = Color(0.827451, 0.827451, 0.827451, 1)
@@ -755,9 +754,12 @@ script = ExtResource("1_u8qnd")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_pctbs")
 
 [node name="StickyNote" type="Panel" parent="."]
@@ -874,9 +876,11 @@ texture = ExtResource("6_lpvn1")
 
 [node name="SearchEngine" type="Panel" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1040.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.963
+offset_bottom = -0.0400391
 script = ExtResource("9_yyops")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="SearchEngine"]
@@ -887,14 +891,18 @@ script = ExtResource("16_16jal")
 
 [node name="TopPanel" type="Panel" parent="SearchEngine"]
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 56.0
+anchor_right = 1.0
+anchor_bottom = 0.0538462
 theme_override_styles/panel = SubResource("StyleBoxFlat_n65cn")
+metadata/_edit_use_anchors_ = true
 
 [node name="CloseButton" type="Button" parent="SearchEngine/TopPanel"]
-layout_mode = 0
-offset_left = 1840.0
-offset_right = 1912.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_right = -8.0
 offset_bottom = 48.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -905,16 +913,22 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_k1xru")
 
 [node name="TextureRect" type="TextureRect" parent="SearchEngine/TopPanel/CloseButton"]
 layout_mode = 0
-offset_left = 12.0
-offset_right = 79.0
-offset_bottom = 64.0
+anchor_left = 0.166667
+anchor_right = 0.831497
+anchor_bottom = 0.952593
+offset_right = 19.1322
+offset_bottom = 18.2755
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("9_hey6d")
+metadata/_edit_use_anchors_ = true
 
 [node name="MinimiseButton" type="Button" parent="SearchEngine/TopPanel"]
-layout_mode = 0
-offset_left = 1760.0
-offset_right = 1832.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_right = -88.0
 offset_bottom = 48.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -922,76 +936,99 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ad1j3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mw2dj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_cki1x")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_k1xru")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="SearchEngine/TopPanel/MinimiseButton"]
 layout_mode = 0
-offset_left = 11.0
-offset_right = 78.0
-offset_bottom = 64.0
+anchor_left = 0.152778
+anchor_right = 0.817609
+anchor_bottom = 0.952593
+offset_right = 19.1322
+offset_bottom = 18.2755
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
+metadata/_edit_use_anchors_ = true
 
 [node name="Tabs" type="Panel" parent="SearchEngine/TopPanel"]
-layout_mode = 0
-offset_top = 8.0
-offset_right = 1752.0
-offset_bottom = 56.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.142857
+anchor_right = 0.9125
+anchor_bottom = 1.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4fgdb")
+metadata/_edit_use_anchors_ = true
 
 [node name="LineTwo" type="Panel" parent="SearchEngine"]
 layout_mode = 0
-offset_top = 56.0
-offset_right = 1920.0
-offset_bottom = 112.0
+anchor_top = 0.0538462
+anchor_right = 1.0
+anchor_bottom = 0.107692
 theme_override_styles/panel = SubResource("StyleBoxFlat_nyra3")
+metadata/_edit_use_anchors_ = true
 
 [node name="GlobalUserSearchInput" type="LineEdit" parent="SearchEngine/LineTwo"]
 layout_mode = 0
-offset_left = 232.0
-offset_top = 8.0
-offset_right = 1912.0
-offset_bottom = 48.0
+anchor_left = 0.120833
+anchor_top = 0.142857
+anchor_right = 0.995833
+anchor_bottom = 0.857143
 placeholder_text = "Search Parcourir or type a URL"
+metadata/_edit_use_anchors_ = true
 
 [node name="SearchButtonOnBar" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
-offset_left = 1880.0
-offset_top = 12.0
-offset_right = 1980.0
-offset_bottom = 112.0
+anchor_left = 0.979167
+anchor_top = 0.214286
+anchor_right = 0.995848
+anchor_bottom = 0.786646
+offset_right = 67.9728
+offset_bottom = 67.9478
 scale = Vector2(0.320272, 0.320522)
 texture_normal = ExtResource("5_facrs")
+metadata/_edit_use_anchors_ = true
 
 [node name="RefreshButton" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
-offset_left = 112.0
-offset_right = 212.0
-offset_bottom = 100.0
+anchor_left = 0.0583333
+anchor_right = 0.087497
+anchor_bottom = 0.999896
+offset_right = 44.0058
+offset_bottom = 44.0058
 scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("5_jb3v0")
+metadata/_edit_use_anchors_ = true
 
 [node name="CopyURLButton" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
-offset_left = 56.0
-offset_right = 156.0
-offset_bottom = 100.0
+anchor_left = 0.0291667
+anchor_right = 0.0583303
+anchor_bottom = 0.999896
+offset_right = 44.0058
+offset_bottom = 44.0058
 scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("16_gccnm")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton2" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
-offset_left = 168.0
-offset_right = 268.0
-offset_bottom = 100.0
+anchor_left = 0.0875
+anchor_right = 0.116664
+anchor_bottom = 0.999896
+offset_right = 44.0058
+offset_bottom = 44.0058
 scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("9_0cc3w")
+metadata/_edit_use_anchors_ = true
 
 [node name="NewTabButton" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
+anchor_right = 0.0291636
+anchor_bottom = 0.999896
+offset_right = 44.0058
+offset_bottom = 44.0058
 scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("14_fu5sc")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton4" type="TextureButton" parent="SearchEngine/LineTwo"]
 visible = false
@@ -1003,11 +1040,14 @@ scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("11_csaug")
 
 [node name="WebsitesHolder" type="Panel" parent="SearchEngine"]
-layout_mode = 0
-offset_top = 112.0
-offset_right = 1920.0
-offset_bottom = 1040.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uu20e")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.108
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.32
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_38uqn")
 
 [node name="Mail" type="Panel" parent="."]
 visible = false
@@ -1692,98 +1732,24 @@ offset_bottom = 985.84
 stretch_mode = 5
 
 [node name="Taskbar" type="Panel" parent="."]
-layout_mode = 0
-offset_top = 1040.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.963
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0400391
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_qrops")
 script = ExtResource("2_0hvxi")
 
-[node name="Battery" type="Panel" parent="Taskbar"]
-layout_mode = 0
-offset_left = 1752.0
-offset_top = 2.0
-offset_right = 1852.0
-offset_bottom = 50.0
-scale = Vector2(0.75, 0.75)
-theme_override_styles/panel = SubResource("StyleBoxFlat_kehs5")
-script = ExtResource("14_q5ee8")
-metadata/_edit_group_ = true
-
-[node name="Cathode" type="Panel" parent="Taskbar/Battery"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 16.0
-offset_right = 100.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_onk7q")
-
-[node name="Outline" type="Panel" parent="Taskbar/Battery"]
-layout_mode = 0
-offset_right = 96.0
-offset_bottom = 48.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fp1k0")
-
-[node name="Inner" type="Panel" parent="Taskbar/Battery/Outline"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 94.0
-offset_bottom = 46.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jwhvl")
-
-[node name="Bar" type="Panel" parent="Taskbar/Battery/Outline/Inner"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 88.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_golrh")
-
-[node name="TimeText" type="RichTextLabel" parent="Taskbar"]
-layout_mode = 0
-offset_left = 1795.0
-offset_right = 1920.0
-offset_bottom = 20.0
-bbcode_enabled = true
-scroll_active = false
-
-[node name="DateText" type="RichTextLabel" parent="Taskbar"]
-layout_mode = 0
-offset_left = 1795.0
-offset_top = 20.0
-offset_right = 1920.0
-offset_bottom = 40.0
-bbcode_enabled = true
-scroll_active = false
-
-[node name="Progress" type="RichTextLabel" parent="Taskbar"]
-visible = false
-layout_mode = 0
-offset_left = 1609.0
-offset_top = 1.0
-offset_right = 1705.0
-offset_bottom = 37.0
-theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_font_sizes/normal_font_size = 25
-bbcode_enabled = true
-text = "[center]0/10[/center]"
-scroll_active = false
-
-[node name="TextureRect" type="TextureRect" parent="Taskbar"]
-layout_mode = 0
-offset_left = 1701.0
-offset_top = -5.0
-offset_right = 1801.0
-offset_bottom = 95.0
-scale = Vector2(0.4937, 0.4937)
-texture = ExtResource("51_a5lws")
-
 [node name="IconArranger" type="HBoxContainer" parent="Taskbar"]
-layout_mode = 0
-offset_left = 48.0
-offset_right = 1696.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.883
+anchor_bottom = 1.003
+offset_right = 0.640015
+offset_bottom = -0.120003
 theme_override_constants/separation = 55
 alignment = 1
 
@@ -2256,6 +2222,93 @@ offset_top = 36.0
 offset_right = 24.0
 offset_bottom = 44.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
+[node name="RightSideIcons" type="Control" parent="Taskbar"]
+layout_mode = 1
+anchor_left = 0.887
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.959961
+
+[node name="Battery" type="Panel" parent="Taskbar/RightSideIcons"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 2.0
+offset_right = 148.0
+offset_bottom = 50.0
+scale = Vector2(0.75, 0.75)
+theme_override_styles/panel = SubResource("StyleBoxFlat_kehs5")
+script = ExtResource("14_q5ee8")
+metadata/_edit_group_ = true
+
+[node name="Cathode" type="Panel" parent="Taskbar/RightSideIcons/Battery"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_onk7q")
+
+[node name="Outline" type="Panel" parent="Taskbar/RightSideIcons/Battery"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fp1k0")
+
+[node name="Inner" type="Panel" parent="Taskbar/RightSideIcons/Battery/Outline"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 94.0
+offset_bottom = 46.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jwhvl")
+
+[node name="Bar" type="Panel" parent="Taskbar/RightSideIcons/Battery/Outline/Inner"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_golrh")
+
+[node name="TimeText" type="RichTextLabel" parent="Taskbar/RightSideIcons"]
+layout_mode = 0
+offset_left = 91.0
+offset_right = 216.0
+offset_bottom = 20.0
+bbcode_enabled = true
+scroll_active = false
+
+[node name="DateText" type="RichTextLabel" parent="Taskbar/RightSideIcons"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 20.0
+offset_right = 216.0
+offset_bottom = 40.0
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Progress" type="RichTextLabel" parent="Taskbar/RightSideIcons"]
+visible = false
+layout_mode = 0
+offset_left = -95.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 37.0
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "[center]0/10[/center]"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="Taskbar/RightSideIcons"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 97.0
+offset_bottom = 95.0
+scale = Vector2(0.4937, 0.4937)
+texture = ExtResource("51_a5lws")
 
 [node name="Terminal" type="Panel" parent="."]
 visible = false
