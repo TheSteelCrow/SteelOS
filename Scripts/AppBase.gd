@@ -34,15 +34,16 @@ func Open():
 	App.OnAppVisible()
 	
 func SetTaskbarIcon(State):
-	if(State == "Open"):
-		AppIconOnTaskbar.get_node("IndicatorOpened").show()
-		AppIconOnTaskbar.get_node("IndicatorMinimised").hide()
-	elif(State == "Minimise"):
-		AppIconOnTaskbar.get_node("IndicatorOpened").hide()
-		AppIconOnTaskbar.get_node("IndicatorMinimised").show()
-	elif(State == "Close"):
-		AppIconOnTaskbar.get_node("IndicatorOpened").hide()
-		AppIconOnTaskbar.get_node("IndicatorMinimised").hide()
+	if(AppIconOnTaskbar != null):
+		if(State == "Open"):
+			AppIconOnTaskbar.get_node("IndicatorOpened").show()
+			AppIconOnTaskbar.get_node("IndicatorMinimised").hide()
+		elif(State == "Minimise"):
+			AppIconOnTaskbar.get_node("IndicatorOpened").hide()
+			AppIconOnTaskbar.get_node("IndicatorMinimised").show()
+		elif(State == "Close"):
+			AppIconOnTaskbar.get_node("IndicatorOpened").hide()
+			AppIconOnTaskbar.get_node("IndicatorMinimised").hide()
 
 func _ready():
 	print("Main Running")

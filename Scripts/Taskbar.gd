@@ -14,6 +14,8 @@ var ProgressText = "[center]%s/%s[/center]"
 var TaskActive = false
 var TaskName = "None"
 
+var AlmostFront = false
+
 func StartTask(TaskToStart):
 	TaskActive = true
 	TaskName = TaskToStart
@@ -43,6 +45,8 @@ func _process(delta):
 		return
 	if(MainUI.SystemLoadingScreen.visible == false):
 		move_to_front()
+		if(AlmostFront == true):
+			get_parent().move_child(self, 1)
 		
 	if(TaskActive == true):
 		Progress.show()

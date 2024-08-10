@@ -71,7 +71,7 @@ func _on_user_input_text_submitted(Command):
 			await get_tree().create_timer(0.3).timeout
 			Output.text += "\n..."
 			await get_tree().create_timer(0.3).timeout
-			Output.text += "\nPlease enter the URL of the target website."
+			Output.text += "\nPlease enter the URL of the website that you want to hack (Website on Parcourir)."
 			Mode = "Hack"
 			CanRecieveCommand = true
 		if(Commands.find(Command,0) == 2): # If command is /clear

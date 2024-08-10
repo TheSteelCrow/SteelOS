@@ -283,10 +283,10 @@ offset_bottom = 640.0
 
 [node name="ColorPicker" type="ColorPicker" parent="PainterPro/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 672.0
-offset_top = 340.0
-offset_right = 630.0
-offset_bottom = 908.0
+offset_left = 680.0
+offset_top = 344.0
+offset_right = 634.0
+offset_bottom = 912.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="PainterPro/SideWindow"]

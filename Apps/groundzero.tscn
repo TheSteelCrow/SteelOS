@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg10ash7fn0j4"]
+[gd_scene load_steps=13 format=3 uid="uid://cg10ash7fn0j4"]
 
+[ext_resource type="Script" path="res://Scripts/groundzero.gd" id="1_nklc7"]
 [ext_resource type="Script" path="res://Scripts/AppVisualTransition.gd" id="1_ow0yd"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="2_i5eqh"]
 [ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="3_p2xty"]
@@ -35,10 +36,11 @@ bg_color = Color(0.370364, 0.370364, 0.370364, 1)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Monde" type="Panel"]
+[node name="GroundZero" type="Panel"]
 offset_right = 1920.0
 offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ohcfp")
+script = ExtResource("1_nklc7")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="."]
 script = ExtResource("1_ow0yd")

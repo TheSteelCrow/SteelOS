@@ -1,4 +1,4 @@
-[gd_scene load_steps=211 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=215 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://dcx0fwofcg17w" path="res://Images/custom calculator.png" id="46_5jxic"]
 [ext_resource type="Script" path="res://Scripts/DragComponent.gd" id="49_a6mew"]
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="49_jeuf6"]
+[ext_resource type="Texture2D" uid="uid://copiejhyep32v" path="res://Images/custom nuclearpowerplant.png" id="50_kd5ur"]
 [ext_resource type="Script" path="res://Scripts/BootUpSequence.gd" id="50_v4o84"]
 [ext_resource type="Texture2D" uid="uid://cwvfb3wx5whs4" path="res://Images/signal3.png" id="51_a5lws"]
 [ext_resource type="Texture2D" uid="uid://dvnx54gwimq8b" path="res://Images/PasteIcon1.png" id="51_c3t5u"]
@@ -78,6 +79,7 @@
 [ext_resource type="Texture2D" uid="uid://dsl22bxjempq6" path="res://Images/pixel painter thumbnail.png" id="79_g0h38"]
 [ext_resource type="Texture2D" uid="uid://ls7io0o4r65n" path="res://Images/painter thumbnail.png" id="79_gjclw"]
 [ext_resource type="Texture2D" uid="uid://nt4jay7apk3r" path="res://Images/steelgrapher final.png" id="81_5h86j"]
+[ext_resource type="Texture2D" uid="uid://cdewx5eodeemd" path="res://Images/lightcutout.png" id="82_0musw"]
 [ext_resource type="Script" path="res://Scripts/Calculator.gd" id="82_rng58"]
 [ext_resource type="Texture2D" uid="uid://d0k3y21iutw78" path="res://Images/PaintAppIcons/drawing_pen.png" id="90_1pp0x"]
 
@@ -621,6 +623,13 @@ animations = [{
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_um7h3"]
+offsets = PackedFloat32Array(0, 0.479042, 1)
+colors = PackedColorArray(0.450457, 0.757041, 1, 1, 0.278526, 0.0178348, 0.976009, 1, 0.642799, 0.186448, 0.770255, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wkwft"]
+gradient = SubResource("Gradient_um7h3")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7gyp"]
 bg_color = Color(0.105882, 0.105882, 0.105882, 1)
@@ -1813,6 +1822,7 @@ texture_normal = ExtResource("4_6scnd")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1821,6 +1831,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1843,6 +1854,7 @@ texture_normal = ExtResource("46_5jxic")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1851,6 +1863,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1873,6 +1886,7 @@ texture_normal = ExtResource("45_30doi")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/CrowStoreBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1881,6 +1895,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CrowStoreBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1916,6 +1931,7 @@ scroll_active = false
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/TerminalBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1924,6 +1940,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TerminalBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1946,6 +1963,7 @@ texture_normal = ExtResource("5_facrs")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/SearchEngineBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1954,6 +1972,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/SearchEngineBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1977,6 +1996,7 @@ texture_normal = ExtResource("6_tu0vt")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/TrashBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -1985,6 +2005,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TrashBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2007,6 +2028,7 @@ texture_normal = ExtResource("40_0vkh3")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/MailBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2015,6 +2037,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/MailBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2037,6 +2060,7 @@ texture_normal = ExtResource("7_18scl")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/FileExplorerBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2045,6 +2069,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/FileExplorerBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2067,6 +2092,7 @@ texture_normal = ExtResource("27_ey8ij")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/TeamManagerBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2075,6 +2101,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TeamManagerBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2107,6 +2134,7 @@ texture_normal = ExtResource("45_cl6xc")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/SteelGrapherBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2115,6 +2143,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/SteelGrapherBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2140,6 +2169,7 @@ texture_normal = ExtResource("34_3ubu8")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/PainterProBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2148,6 +2178,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/PainterProBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2173,6 +2204,7 @@ texture_normal = ExtResource("90_1pp0x")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/PixelPainterBackdrop"]
 visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -2181,6 +2213,44 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/PixelPainterBackdrop"]
 visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
+[node name="GroundZeroBackdrop" type="ColorRect" parent="Taskbar/IconHolder"]
+layout_mode = 2
+offset_left = 1071.0
+offset_right = 1071.0
+offset_bottom = 40.0
+tooltip_text = "Team Manager"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="GroundZeroButton" type="TextureButton" parent="Taskbar/IconHolder/GroundZeroBackdrop"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "Team Manager"
+texture_normal = ExtResource("50_kd5ur")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/GroundZeroBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/GroundZeroBackdrop"]
+visible = false
+layout_mode = 0
 offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
@@ -3195,7 +3265,7 @@ offset_bottom = 1040.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 637
-theme_override_constants/v_separation = 264
+theme_override_constants/v_separation = 427
 columns = 3
 
 [node name="PainterApp" type="Control" parent="CrowStore/GridContainer"]
@@ -3497,6 +3567,114 @@ rotation = -0.261799
 theme_override_fonts/font = ExtResource("55_nf6wa")
 theme_override_font_sizes/font_size = 286
 text = "ABANDONED"
+
+[node name="GroundZero" type="Control" parent="CrowStore/GridContainer"]
+layout_mode = 2
+
+[node name="AppDownloadPanel" type="Panel" parent="CrowStore/GridContainer/GroundZero"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 424.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tjwdm")
+script = ExtResource("72_w58t1")
+App = "GroundZero"
+metadata/AppSize = 2
+
+[node name="DownloadButton" type="Button" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+layout_mode = 0
+offset_left = 552.0
+offset_right = 660.0
+offset_bottom = 108.0
+scale = Vector2(0.592554, 0.592554)
+theme_override_styles/normal = SubResource("StyleBoxFlat_n3o83")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8fgeu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8fgeu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n3o83")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8fgeu")
+icon = ExtResource("72_1is8g")
+
+[node name="ViewButton" type="Button" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+layout_mode = 0
+offset_left = 480.0
+offset_right = 552.0
+offset_bottom = 72.0
+scale = Vector2(0.889003, 0.889003)
+theme_override_styles/normal = SubResource("StyleBoxFlat_odoir")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8fgeu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8fgeu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8fgeu")
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("74_asw73")
+
+[node name="FileName" type="RichTextLabel" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 440.0
+offset_bottom = 144.0
+theme_override_fonts/normal_font = ExtResource("4_0ht5n")
+theme_override_font_sizes/normal_font_size = 40
+text = "Ground Zero"
+
+[node name="FileSize" type="RichTextLabel" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 16.0
+offset_right = 451.0
+offset_bottom = 44.0
+theme_override_fonts/normal_font = ExtResource("4_0ht5n")
+theme_override_font_sizes/normal_font_size = 20
+text = "0.0gb"
+
+[node name="Notice" type="RichTextLabel" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 44.0
+offset_right = 270.0
+offset_bottom = 70.0
+theme_override_fonts/normal_font = ExtResource("4_0ht5n")
+theme_override_font_sizes/normal_font_size = 20
+text = "EARLY ACCESS - GAME"
+scroll_active = false
+
+[node name="ProgressAnimation" type="AnimatedSprite2D" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+visible = false
+position = Vector2(584, 32)
+sprite_frames = SubResource("SpriteFrames_6e7mu")
+frame_progress = 0.585302
+
+[node name="AppDescription" type="RichTextLabel" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 616.0
+offset_bottom = 408.0
+theme_override_fonts/normal_font = ExtResource("4_0ht5n")
+theme_override_font_sizes/normal_font_size = 36
+text = "Play as the manager of a nuclear power plant! This game is in early access so don't expect a finished product!"
+
+[node name="Thumbnail" type="TextureRect" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
+self_modulate = Color(0.235294, 0.235294, 0.235294, 1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 1927.0
+offset_bottom = 1126.0
+scale = Vector2(0.31683, 0.318806)
+texture = SubResource("GradientTexture1D_wkwft")
+
+[node name="Label" type="Label" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel/Thumbnail"]
+layout_mode = 0
+offset_left = 50.5003
+offset_top = 15.6835
+offset_right = 1898.5
+offset_bottom = 1018.68
+theme_override_fonts/font = ExtResource("55_nf6wa")
+theme_override_font_sizes/font_size = 286
+text = "   Image
+Unavailable"
 
 [node name="Calculator" type="Panel" parent="."]
 visible = false
@@ -3930,6 +4108,58 @@ text = "-"
 
 [node name="Control30" type="Control" parent="Calculator/GridContainer"]
 layout_mode = 2
+
+[node name="LightsCutout" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="LightsCutout"]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 2
+texture = ExtResource("82_0musw")
+
+[node name="ColorRect" type="ColorRect" parent="LightsCutout"]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -1416.0
+offset_right = 256.0
+offset_bottom = -256.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="LightsCutout"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = -1480.0
+offset_right = 4248.0
+offset_bottom = 1472.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="LightsCutout"]
+layout_mode = 0
+offset_left = -2632.0
+offset_top = -1416.0
+offset_right = -256.0
+offset_bottom = 1456.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="LightsCutout"]
+layout_mode = 0
+offset_left = -256.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 1408.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
