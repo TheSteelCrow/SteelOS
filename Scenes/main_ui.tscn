@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=211 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -403,6 +403,22 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmyb2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.14902, 0.439216, 0.486275, 0.6)
+shadow_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r36p2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvll1"]
 bg_color = Color(1, 1, 1, 1)
@@ -1593,6 +1609,7 @@ theme_override_font_sizes/font_size = 80
 text = "NEXT"
 
 [node name="PhotosApp" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1663,6 +1680,7 @@ offset_left = -960.0
 offset_top = -0.16
 offset_right = 960.0
 offset_bottom = 985.84
+stretch_mode = 5
 
 [node name="Taskbar" type="Panel" parent="."]
 layout_mode = 0
@@ -1730,20 +1748,6 @@ offset_bottom = 40.0
 bbcode_enabled = true
 scroll_active = false
 
-[node name="Power" type="ColorRect" parent="Taskbar"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 0, 0, 1)
-
-[node name="MenuButton" type="TextureButton" parent="Taskbar/Power"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.401617, 0.401368)
-tooltip_text = "Power"
-texture_normal = ExtResource("3_ardfw")
-
 [node name="Progress" type="RichTextLabel" parent="Taskbar"]
 visible = false
 layout_mode = 0
@@ -1772,6 +1776,26 @@ offset_left = 48.0
 offset_right = 1696.0
 offset_bottom = 40.0
 theme_override_constants/separation = 55
+alignment = 1
+
+[node name="SystemMenuButton" type="Control" parent="Taskbar/IconArranger"]
+layout_mode = 2
+
+[node name="Power" type="ColorRect" parent="Taskbar/IconArranger/SystemMenuButton"]
+visible = false
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "Power"
+color = Color(0, 0, 0, 1)
+
+[node name="MenuButton" type="TextureButton" parent="Taskbar/IconArranger/SystemMenuButton/Power"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.374216, 0.373984)
+tooltip_text = "Power"
+texture_normal = ExtResource("3_ardfw")
 
 [node name="SettingsBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
@@ -1787,6 +1811,22 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Settings"
 texture_normal = ExtResource("4_6scnd")
 
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
 [node name="CalculatorBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
 tooltip_text = "Calculator"
@@ -1801,9 +1841,25 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Calculator"
 texture_normal = ExtResource("46_5jxic")
 
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
 [node name="CrowStoreBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
-tooltip_text = "Calculator"
+tooltip_text = "Crow App Store"
 color = Color(0.152941, 0.152941, 0.152941, 1)
 metadata/_edit_group_ = true
 
@@ -1812,8 +1868,24 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
-tooltip_text = "Calculator"
+tooltip_text = "Crow App Store"
 texture_normal = ExtResource("45_30doi")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/CrowStoreBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CrowStoreBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="TerminalBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
@@ -1842,6 +1914,22 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gvll1")
 text = ">_"
 scroll_active = false
 
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/TerminalBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TerminalBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
 [node name="SearchEngineBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
 tooltip_text = "Search Engine"
@@ -1855,6 +1943,22 @@ offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Search Engine"
 texture_normal = ExtResource("5_facrs")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/SearchEngineBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/SearchEngineBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="TrashBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 visible = false
@@ -1871,6 +1975,22 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Trash"
 texture_normal = ExtResource("6_tu0vt")
 
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/TrashBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TrashBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
 [node name="MailBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
 tooltip_text = "Email"
@@ -1884,6 +2004,22 @@ offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Mail"
 texture_normal = ExtResource("40_0vkh3")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/MailBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/MailBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="FileExplorerBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
@@ -1899,6 +2035,22 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "File Explorer"
 texture_normal = ExtResource("7_18scl")
 
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/FileExplorerBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/FileExplorerBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
 [node name="TeamManagerBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
 tooltip_text = "Team Manager"
@@ -1912,6 +2064,22 @@ offset_bottom = 40.0
 scale = Vector2(0.401586, 0.401254)
 tooltip_text = "Team Manager"
 texture_normal = ExtResource("27_ey8ij")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/TeamManagerBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TeamManagerBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="IconHolder" type="Control" parent="Taskbar"]
 visible = false
@@ -1937,12 +2105,28 @@ scale = Vector2(0.401586, 0.401254)
 tooltip_text = "SteelGrapher"
 texture_normal = ExtResource("45_cl6xc")
 
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/SteelGrapherBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/SteelGrapherBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
 [node name="PainterProBackdrop" type="ColorRect" parent="Taskbar/IconHolder"]
 layout_mode = 2
 offset_left = 605.0
 offset_right = 605.0
 offset_bottom = 40.0
-tooltip_text = "Painter"
+tooltip_text = "PainterPro"
 color = Color(0.152941, 0.152941, 0.152941, 1)
 metadata/_edit_group_ = true
 
@@ -1951,8 +2135,24 @@ layout_mode = 0
 offset_right = 66.0
 offset_bottom = 66.0
 scale = Vector2(0.606877, 0.606376)
-tooltip_text = "Painter"
+tooltip_text = "PainterPro"
 texture_normal = ExtResource("34_3ubu8")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/PainterProBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/PainterProBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="PixelPainterBackdrop" type="ColorRect" parent="Taskbar/IconHolder"]
 layout_mode = 2
@@ -1970,6 +2170,22 @@ offset_bottom = 66.0
 scale = Vector2(0.606877, 0.606376)
 tooltip_text = "Painter"
 texture_normal = ExtResource("90_1pp0x")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconHolder/PixelPainterBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconHolder/PixelPainterBackdrop"]
+visible = false
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="Terminal" type="Panel" parent="."]
 visible = false
@@ -2255,6 +2471,35 @@ theme_override_font_sizes/normal_font_size = 40
 text = "Show FPS"
 scroll_active = false
 
+[node name="ToggleCenterTaskbarLabel" type="Panel" parent="Settings/Visual"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 512.0
+offset_right = 512.0
+offset_bottom = 576.0
+
+[node name="ToggleCenterTaskbar" type="CheckButton" parent="Settings/Visual/ToggleCenterTaskbarLabel"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = -3.0
+offset_right = 420.0
+offset_bottom = 21.0
+scale = Vector2(3, 3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_5npgj")
+button_pressed = true
+
+[node name="Text" type="RichTextLabel" parent="Settings/Visual/ToggleCenterTaskbarLabel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 392.0
+offset_bottom = 69.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Center Taskbar"
+scroll_active = false
+
 [node name="HeadingVisual" type="Panel" parent="Settings/Visual"]
 layout_mode = 0
 offset_right = 520.0
@@ -2537,7 +2782,7 @@ texture_normal = ExtResource("5_jb3v0")
 
 [node name="Sound" type="Control" parent="Settings"]
 anchors_preset = 0
-offset_top = 568.0
+offset_top = 640.0
 offset_right = 1040.0
 offset_bottom = 1040.0
 
@@ -3701,12 +3946,13 @@ layout_mode = 2
 [connection signal="button_up" from="FileExplorer/TopPanel/CloseButton" to="SearchEngine" method="_on_close_button_button_up"]
 [connection signal="button_up" from="FileExplorer/TopPanel/MinimiseButton" to="SearchEngine" method="_on_minimise_button_button_up"]
 [connection signal="button_up" from="TeamManager/NextButton" to="TeamManager" method="_on_next_button_button_up"]
-[connection signal="button_up" from="Taskbar/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
+[connection signal="button_up" from="Taskbar/IconArranger/SystemMenuButton/Power/MenuButton" to="Taskbar" method="_on_menu_button_button_up"]
 [connection signal="text_submitted" from="Terminal/UserInput" to="Terminal" method="_on_user_input_text_submitted"]
 [connection signal="timeout" from="ErrorSpawner" to="." method="_on_error_spawner_timeout"]
 [connection signal="toggled" from="Settings/Visual/DisableAnimations/DisableAnimationsToggle" to="Settings" method="_on_disable_animations_toggle_toggled"]
 [connection signal="toggled" from="Settings/Visual/ToggleVsync/ToggleVsync" to="Settings" method="_on_toggle_vsync_toggled"]
 [connection signal="toggled" from="Settings/Visual/ToggleFPSLabel/ToggleFPSLabel" to="Settings" method="_on_toggle_fps_label_toggled"]
+[connection signal="toggled" from="Settings/Visual/ToggleCenterTaskbarLabel/ToggleCenterTaskbar" to="Settings" method="_on_toggle_center_taskbar_toggled"]
 [connection signal="button_up" from="Settings/Gameplay/RunFactoryReset" to="Settings" method="_on_run_factory_reset_button_up"]
 [connection signal="value_changed" from="Settings/Gameplay/Difficulty/HSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/Gameplay/TargetFPS/SpinBox" to="Settings" method="_on_spin_box_value_changed"]

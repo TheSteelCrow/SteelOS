@@ -45,3 +45,9 @@ func _on_run_factory_reset_button_up():
 
 func _on_toggle_fps_label_toggled(button_pressed):
 	get_parent().get_node("FPS").visible = button_pressed
+
+func _on_toggle_center_taskbar_toggled(button_pressed):
+	if(button_pressed):
+		get_parent().get_node("Taskbar/IconArranger").set_alignment(1)
+	else:
+		get_parent().get_node("Taskbar/IconArranger").set_alignment(0)

@@ -8,9 +8,10 @@ var MousePosition
 #var CompressionRate = 10
 var ScaleBy = 4 # 8 works
 #var ImageResolution = Vector2(1920, 1080)
-var ImageResolution = Vector2(1920/ScaleBy, 1080/ScaleBy)
+var ImageResolution = Vector2(1920, 1080)
 #var ImageSize = Vector2(500, 400)
 var ScreenSize
+var ImageFormat = Image.FORMAT_RGB8 #jpeg as default, no transparency
 
 var MoveCanvas = false
 var MouseOffsetFromCanvas
@@ -138,10 +139,13 @@ func PaintRectangle(StartLocation, EndLocation, PaintColor):
 				CurrentImage.set_pixel(x, y, PaintColor)
 	Render()
 
-func _ready():
-	#Input.use_accumulated_input = false
+#func _ready():
+#	SetupCanvas()
+
+func SetupCanvas():
+	ImageResolution = Vector2(ImageResolution.x/ScaleBy, ImageResolution.y/ScaleBy)
 	ScreenSize = get_viewport().size
-	CurrentImage = Image.new().create(ImageResolution.x,ImageResolution.y,false, Image.FORMAT_RGB8)
+	CurrentImage = Image.new().create(ImageResolution.x,ImageResolution.y,false, ImageFormat)
 	CurrentImage.fill("ffffff")
 	ArtCanvas.size = Vector2(ImageResolution.x*ScaleBy, ImageResolution.y*ScaleBy)
 	

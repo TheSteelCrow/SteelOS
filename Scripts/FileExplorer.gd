@@ -11,6 +11,8 @@ var IsFullscreen = false
 
 @onready var DataHolder = $FileExplorerData
 
+var TempOpenedFolder
+
 func Open():
 	pass
 
@@ -56,7 +58,7 @@ func OpenFolder(FolderToOpen):
 		NewFileVisual.set_text(0, File)
 
 func _on_folders_cell_selected():
-	var TempOpenedFolder = FoldersTree.get_selected().get_text(0)
+	TempOpenedFolder = FoldersTree.get_selected().get_text(0)
 	if(TempOpenedFolder in DataHolder.Data):
 		OpenedFolder = TempOpenedFolder
 		OpenFolder(OpenedFolder)
@@ -66,4 +68,9 @@ func _on_files_item_activated():
 	var TempOpenedFile = FilesTree.get_selected().get_text(0)
 	var PhotosApp = get_parent().get_node("PhotosApp")
 	PhotosApp.OpenImage()
-	PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data["Photos"][TempOpenedFile])
+	if(DataHolder.Data[TempOpenedFolder][TempOpenedFile][1] == true):
+		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_LINEAR
+	else:
+		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_NEAREST
+	
+	PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0])
