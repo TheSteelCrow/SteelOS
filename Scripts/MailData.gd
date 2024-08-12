@@ -1,6 +1,6 @@
 extends Node
 
-#	1 : ["Subject", "Content", "Sender", HasBeenRead, IsTask, [TaskName, IsTaskCompleted]],
+#	1 : ["Subject", "Content", "Sender", HasBeenRead, IsTask, [TaskName, IsTaskCompleted, Quota, IsTaskAvailable]],
 var LoadedEmails = {
 	
 	1 : [
@@ -27,14 +27,22 @@ var LoadedEmails = {
 	"Boss",
 	false,
 	true,
-	["Fire", false, "TeamManager", 5]
+	["Fire", false, "TeamManager", 5, true]
 	],
 	4 : [
-	"Task #4",
+	"Task #2",
+	"I need you to draw a new company mascot. We have found ourselves in a bit of hot water recently, with all the layoffs and all. A mascot is exactly what we need! I would recommend that you use PainterPro, this app can be found and installed via the Crow App Store on the taskbar. Once you have drawn the mascot, export the drawing and send me the file.",
+	"Boss",
+	false,
+	true,
+	["Draw", false, null, 1, false]
+	],
+	5 : [
+	"Task #3",
 	"It turns out, we ended up needing those ten employees that your fired earlier. So we will have to hire some replacements. Again, open the team manager app, beware of your battery, and get cracking!",
 	"Boss",
 	false,
 	true,
-	["Hire", false, "TeamManager", 5]
+	["Hire", false, "TeamManager", 5, false]
 	]
 }
