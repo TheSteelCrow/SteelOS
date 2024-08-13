@@ -312,10 +312,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ColorPicker" type="ColorPicker" parent="PainterPro/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 388.0
-offset_right = 678.0
-offset_bottom = 956.0
+offset_left = 776.0
+offset_top = 392.0
+offset_right = 682.0
+offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="PainterPro/SideWindow"]

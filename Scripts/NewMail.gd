@@ -70,7 +70,9 @@ func _ready():
 	CompleteTaskButton.button_up.connect(func():
 		Taskbar.CompleteTask()
 		MailData.LoadedEmails[OpenedEmailID][6][1] = true #Marks task as completed
-		MailData.LoadedEmails[OpenedEmailID+1][3] = true #Sets next task to available
+		if(MailData.LoadedEmails[OpenedEmailID+1] != null): #If next task exists
+			MailData.LoadedEmails[OpenedEmailID+1][3] = true #Sets next task to available
+		
 		ShowButton(null)
 		get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StopTask() # Stop task on associated app
 	)

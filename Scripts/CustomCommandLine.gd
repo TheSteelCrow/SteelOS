@@ -12,7 +12,8 @@ var HackableWebsites = {
 }
 
 var Commands = ["/help", "/hack", "/clear"]
-var DevCommands = ["/example"]
+var DevCommands = ["/unlockemail"]
+
 
 var HelpInfo = "\n----\n/help - Lists commands\n/hack - Initiates hacking mode\n/clear - Clears the output\n------"
 var Main
@@ -76,9 +77,10 @@ func _on_user_input_text_submitted(Command):
 			CanRecieveCommand = true
 		if(Commands.find(Command,0) == 2): # If command is /clear
 			Output.text = ""
-	elif(Command in DevCommands and OS.is_debug_build()): # If command is a dev command
-		Output.text += "\nUSER//: " + UserInput.text
-	elif(Command in DevCommands and not OS.is_debug_build()):
+	elif(Command.split(",")[0] in DevCommands and OS.is_debug_build()): # If command is a dev command and authorized
+		Output.text += "\nUSER//: " + Command
+		RunDevCommand(Command)
+	elif(Command in DevCommands and not OS.is_debug_build()): # If command is a dev command and not authorized
 		Output.text += "\nUSER//: " + UserInput.text
 		Output.text += "\nUnable to run DevCommand " + Command + " as you are not authorized."
 	else: #If command is not a command
@@ -93,3 +95,9 @@ func _on_user_input_text_submitted(Command):
 				Output.text += "\nUSER//: " + UserInput.text
 				Output.text += "\nThis website has been hacked recently and is temporarily offline."
 	RemoveAndSaveInput()
+
+func RunDevCommand(Command):
+	var CommandParts = Command.split(",")
+	if(CommandParts[0] == "/unlockemail"):
+		var TargetEmail = int(CommandParts[1])
+		get_parent().get_node("Mail/MailData").LoadedEmails[TargetEmail][3] = true
