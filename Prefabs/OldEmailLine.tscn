@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://k7372chl66bd"]
 
-[ext_resource type="Script" path="res://Scripts/InboxLine.gd" id="1_wq3ee"]
+[ext_resource type="Script" path="res://Scripts/EmailLine.gd" id="1_talgo"]
 [ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="2_yfaav"]
 [ext_resource type="Texture2D" uid="uid://ch147g7e5krli" path="res://Images/warning.png" id="3_ohssc"]
 [ext_resource type="Texture2D" uid="uid://2y3iiq1i8k8b" path="res://Images/information.png" id="4_3ifiv"]
@@ -9,12 +9,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljk6n"]
 bg_color = Color(0.605469, 0.6875, 0.738281, 1)
 
-[node name="InboxLine" type="Button"]
+[node name="EmailLine" type="Button"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 1848.0
 offset_bottom = 72.0
-script = ExtResource("1_wq3ee")
+script = ExtResource("1_talgo")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

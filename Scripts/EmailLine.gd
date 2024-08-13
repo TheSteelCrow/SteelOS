@@ -1,47 +1,36 @@
 extends Button
 
-#@onready var DeleteButton = $Delete
-#@onready var ScanButton = $Scan
-#@onready var InfoButton = $Info
-#@onready var MarkAsReadButton = $MarkAsRead
-
 @onready var ButtonsPanel = $ButtonsPanel
-@onready var Text = $RichTextLabel
+@onready var EmailLineText = $EmailLineText
 
 var ShouldShowButtons = false
 
 var Buttons
 
-var Code = "None"
+var EmailID = "None"
 var Subject = "No Subject"
 var Content = "None"
 var Sender = "Unknown"
+var Type = "Unknown"
 
 var Mail
 
 func _ready():
+	
 	Mail = get_parent().get_parent()
 	
-	Text.text = "[b] %s | %s |[/b] %s" % [Sender, Subject, Content]
+	EmailLineText.text = "%s | %s | %s |" % [Sender, Type, Subject]
 	
 	Buttons = ButtonsPanel.get_children()
 	
-	var new_style = StyleBoxFlat.new()
-	new_style.bg_color = Color("9cb1be")
-	add_theme_stylebox_override("normal", new_style)
-	add_theme_stylebox_override("hover", new_style)
-	add_theme_stylebox_override("pressed", new_style)
-	add_theme_stylebox_override("focus", new_style)
-	ButtonsPanel.add_theme_stylebox_override("panel", new_style)
-	
-	if(Mail.get_node("MailData").LoadedEmails[Code][3] == true):
-		new_style.bg_color = Color("495b65")
+	if(Mail.get_node("MailData").LoadedEmails[EmailID][5] == true): # If has been read
+		#Modulateself as darker
+		print()
 	
 	button_up.connect(func():
-		Mail.OpenEmail(Code)
-		new_style.bg_color = Color("495b65")
+		Mail.OpenEmail(EmailID)
 		ShouldShowButtons = false
-		Mail.get_node("MailData").LoadedEmails[Code][3] = true
+		Mail.get_node("MailData").LoadedEmails[Mail][5] = true # Set email to has bee read
 	)
 	
 	for ButtonNode in Buttons:

@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c3h0btq7rmcxq" path="res://Images/white only copy icon smaller.png" id="16_gccnm"]
 [ext_resource type="Script" path="res://Scripts/MailData.gd" id="17_it2np"]
 [ext_resource type="Script" path="res://Scripts/NewMail.gd" id="20_a3d7r"]
+[ext_resource type="PackedScene" uid="uid://do1p7gbc7n7fj" path="res://Prefabs/email_line.tscn" id="22_2mi12"]
 [ext_resource type="FontFile" uid="uid://ccqebcm1hpeja" path="res://Fonts/LTSuperior-Regular.otf" id="22_qrjik"]
 [ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
@@ -249,13 +250,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsgso"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy3i0"]
 bg_color = Color(0.609375, 0.691406, 0.742188, 1)
@@ -1277,7 +1271,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3beqs")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_pd5a5")
 text = "CLOSE"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Mail"]
+[node name="EmailLineContainer" type="VBoxContainer" parent="Mail"]
 layout_mode = 0
 offset_left = 328.0
 offset_top = 64.0
@@ -1285,23 +1279,8 @@ offset_right = 1912.0
 offset_bottom = 1032.0
 theme_override_constants/separation = 56
 
-[node name="Control" type="Control" parent="Mail/VBoxContainer"]
+[node name="EmailLine" parent="Mail/EmailLineContainer" instance=ExtResource("22_2mi12")]
 layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Mail/VBoxContainer/Control"]
-layout_mode = 0
-offset_right = 1584.0
-offset_bottom = 48.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bsgso")
-
-[node name="Control2" type="Control" parent="Mail/VBoxContainer"]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="Mail/VBoxContainer/Control2"]
-layout_mode = 0
-offset_right = 1584.0
-offset_bottom = 48.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bsgso")
 
 [node name="SideBar" type="Panel" parent="Mail"]
 layout_mode = 0
@@ -1330,9 +1309,9 @@ text = "Inbox"
 
 [node name="Button2" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
-offset_top = 501.0
+offset_top = 496.0
 offset_right = 312.0
-offset_bottom = 549.0
+offset_bottom = 544.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -1348,9 +1327,9 @@ text = "Tasks"
 
 [node name="Button5" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
-offset_top = 557.0
+offset_top = 552.0
 offset_right = 312.0
-offset_bottom = 605.0
+offset_bottom = 600.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -1366,24 +1345,6 @@ text = "Paychecks"
 
 [node name="Button4" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
-offset_top = 224.0
-offset_right = 312.0
-offset_bottom = 296.0
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("22_qrjik")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_6js21")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6js21")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2wnrx")
-toggle_mode = true
-keep_pressed_outside = true
-text = "Deleted"
-
-[node name="Button6" type="Button" parent="Mail/SideBar"]
-layout_mode = 0
 offset_top = 144.0
 offset_right = 312.0
 offset_bottom = 216.0
@@ -1398,13 +1359,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_6js21")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2wnrx")
 toggle_mode = true
 keep_pressed_outside = true
-text = "Sent"
+text = "Deleted"
 
 [node name="Label" type="Label" parent="Mail/SideBar"]
 layout_mode = 0
-offset_top = 437.0
+offset_top = 448.0
 offset_right = 320.0
-offset_bottom = 493.0
+offset_bottom = 488.0
 theme_override_fonts/font = ExtResource("22_qrjik")
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_sfigs")
