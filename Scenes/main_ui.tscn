@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=222 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://c3h0btq7rmcxq" path="res://Images/white only copy icon smaller.png" id="16_gccnm"]
 [ext_resource type="Script" path="res://Scripts/MailData.gd" id="17_it2np"]
 [ext_resource type="Script" path="res://Scripts/NewMail.gd" id="20_a3d7r"]
-[ext_resource type="PackedScene" uid="uid://do1p7gbc7n7fj" path="res://Prefabs/email_line.tscn" id="22_2mi12"]
 [ext_resource type="FontFile" uid="uid://ccqebcm1hpeja" path="res://Fonts/LTSuperior-Regular.otf" id="22_qrjik"]
 [ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
@@ -230,26 +229,9 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m7rj"]
 bg_color = Color(0.0941176, 0.160784, 0.337255, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu7af"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bn40"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u307s"]
-bg_color = Color(0.278431, 0.411765, 0.701961, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3beqs"]
-bg_color = Color(0.14902, 0.243137, 0.447059, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy3i0"]
 bg_color = Color(0.609375, 0.691406, 0.742188, 1)
@@ -1167,17 +1149,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4eh1n")
 [node name="EmailViewer" type="Panel" parent="Mail"]
 visible = false
 layout_mode = 0
-offset_left = 32.0
-offset_top = 88.0
-offset_right = 1888.0
-offset_bottom = 1008.0
+offset_left = 328.0
+offset_top = 64.0
+offset_right = 1912.0
+offset_bottom = 1032.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_np6of")
 
 [node name="Content" type="RichTextLabel" parent="Mail/EmailViewer"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 144.0
-offset_right = 1848.0
+offset_right = 1576.0
 offset_bottom = 896.0
 theme_override_font_sizes/normal_font_size = 30
 text = "CONTENT"
@@ -1185,10 +1167,10 @@ text = "CONTENT"
 [node name="StartTaskButton" type="Button" parent="Mail/EmailViewer"]
 visible = false
 layout_mode = 0
-offset_left = 1568.0
-offset_top = 848.0
-offset_right = 1848.0
-offset_bottom = 912.0
+offset_left = 1296.0
+offset_top = 896.0
+offset_right = 1576.0
+offset_bottom = 960.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
@@ -1201,10 +1183,10 @@ text = "START"
 [node name="CompleteTaskButton" type="Button" parent="Mail/EmailViewer"]
 visible = false
 layout_mode = 0
-offset_left = 1568.0
-offset_top = 848.0
-offset_right = 1848.0
-offset_bottom = 912.0
+offset_left = 1296.0
+offset_top = 896.0
+offset_right = 1576.0
+offset_bottom = 960.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
@@ -1216,10 +1198,10 @@ text = "COMPLETE"
 [node name="CancelTaskButton" type="Button" parent="Mail/EmailViewer"]
 visible = false
 layout_mode = 0
-offset_left = 1568.0
-offset_top = 848.0
-offset_right = 1848.0
-offset_bottom = 912.0
+offset_left = 1296.0
+offset_top = 896.0
+offset_right = 1576.0
+offset_bottom = 960.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
@@ -1231,45 +1213,41 @@ text = "CANCEL"
 
 [node name="TopBar" type="Panel" parent="Mail/EmailViewer"]
 layout_mode = 0
-offset_right = 1856.0
+offset_right = 1584.0
 offset_bottom = 136.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4m7rj")
 
-[node name="SubjectLine" type="RichTextLabel" parent="Mail/EmailViewer/TopBar"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 1848.0
-offset_bottom = 80.0
-theme_override_font_sizes/normal_font_size = 60
-text = "SUBJECT"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="SenderLine" type="RichTextLabel" parent="Mail/EmailViewer/TopBar"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 88.0
-offset_right = 1848.0
-offset_bottom = 128.0
-theme_override_font_sizes/normal_font_size = 30
-text = "From SENDER"
-scroll_active = false
-
 [node name="CloseButton" type="Button" parent="Mail/EmailViewer/TopBar"]
 layout_mode = 0
-offset_left = 1568.0
-offset_top = 8.0
-offset_right = 1848.0
-offset_bottom = 68.0
+offset_left = 1304.0
+offset_right = 1584.0
+offset_bottom = 64.0
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_uu7af")
-theme_override_styles/hover = SubResource("StyleBoxFlat_u307s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3beqs")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_pd5a5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2bn40")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2bn40")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2bn40")
 text = "CLOSE"
+
+[node name="SubjectLine" type="Label" parent="Mail/EmailViewer/TopBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 1296.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 60
+text = "SUBJECT"
+vertical_alignment = 1
+
+[node name="SenderLine" type="Label" parent="Mail/EmailViewer/TopBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 1296.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 30
+text = "From SENDER"
+vertical_alignment = 1
 
 [node name="EmailLineContainer" type="VBoxContainer" parent="Mail"]
 layout_mode = 0
@@ -1278,9 +1256,6 @@ offset_top = 64.0
 offset_right = 1912.0
 offset_bottom = 1032.0
 theme_override_constants/separation = 56
-
-[node name="EmailLine" parent="Mail/EmailLineContainer" instance=ExtResource("22_2mi12")]
-layout_mode = 2
 
 [node name="SideBar" type="Panel" parent="Mail"]
 layout_mode = 0

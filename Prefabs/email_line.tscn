@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://do1p7gbc7n7fj"]
 
-[ext_resource type="Script" path="res://Scripts/EmailLine.gd" id="1_op2su"]
+[ext_resource type="Script" path="res://Scripts/NewEmailLine.gd" id="1_ardfu"]
 [ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="2_feg7p"]
 [ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="3_26ucl"]
 [ext_resource type="Texture2D" uid="uid://ch147g7e5krli" path="res://Images/warning.png" id="4_d3rc0"]
@@ -15,22 +15,23 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2ppy"]
-bg_color = Color(0.909804, 0.909804, 0.909804, 1)
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
 [node name="EmailLine" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_ardfu")
 
 [node name="EmailLineButton" type="Button" parent="."]
 layout_mode = 0
 offset_right = 1584.0
 offset_bottom = 48.0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_bsgso")
 theme_override_styles/hover = SubResource("StyleBoxFlat_bsgso")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bsgso")
-script = ExtResource("1_op2su")
 
 [node name="EmailLineText" type="Label" parent="EmailLineButton"]
 layout_mode = 0
@@ -45,46 +46,46 @@ vertical_alignment = 1
 
 [node name="ButtonsPanel" type="Panel" parent="EmailLineButton"]
 layout_mode = 0
-offset_left = 1321.0
+offset_left = 1328.0
 offset_right = 1584.0
 offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g2ppy")
 
 [node name="Delete" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
 layout_mode = 0
-offset_left = 199.0
-offset_right = 299.0
+offset_left = 192.0
+offset_right = 325.0
 offset_bottom = 100.0
 scale = Vector2(0.48164, 0.48164)
 tooltip_text = "Delete"
 texture_normal = ExtResource("3_26ucl")
+stretch_mode = 3
 
 [node name="Scan" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
 layout_mode = 0
-offset_left = 135.0
-offset_right = 235.0
+offset_right = 133.0
 offset_bottom = 100.0
 scale = Vector2(0.483627, 0.483627)
 tooltip_text = "Scan"
 texture_normal = ExtResource("4_d3rc0")
+stretch_mode = 3
 
 [node name="Info" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
 layout_mode = 0
-offset_left = 71.0
-offset_right = 171.0
+offset_left = 64.0
+offset_right = 197.0
 offset_bottom = 100.0
 scale = Vector2(0.481971, 0.481971)
 tooltip_text = "Information"
 texture_normal = ExtResource("5_fivpp")
+stretch_mode = 3
 
 [node name="MarkAsRead" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
 layout_mode = 0
-offset_left = 7.0
-offset_right = 107.0
+offset_left = 128.0
+offset_right = 261.0
 offset_bottom = 100.0
 scale = Vector2(0.481196, 0.481196)
 tooltip_text = "Mark as Read"
 texture_normal = ExtResource("6_cvntq")
-
-[connection signal="mouse_entered" from="EmailLineButton" to="EmailLineButton" method="_on_mouse_entered" flags=18]
-[connection signal="mouse_exited" from="EmailLineButton" to="EmailLineButton" method="_on_mouse_exited" flags=18]
+stretch_mode = 3

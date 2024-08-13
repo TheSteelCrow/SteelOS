@@ -4,6 +4,7 @@ extends Control
 @onready var ButtonsPanel = $EmailLineButton/ButtonsPanel
 @onready var EmailLineText = $EmailLineButton/EmailLineText
 
+
 var ShouldShowButtons = false
 
 var Buttons
@@ -24,21 +25,17 @@ func _ready():
 	
 	Buttons = ButtonsPanel.get_children()
 	
-	if(Mail.get_node("MailData").LoadedEmails[EmailID][5] == true): # If has been read
-		#Modulateself as darker
-		print()
-	
 	EmailLineButton.button_up.connect(func():
 		Mail.OpenEmail(EmailID)
 		ShouldShowButtons = false
-		Mail.get_node("MailData").LoadedEmails[Mail][5] = true # Set email to has bee read
+		Mail.get_node("MailData").LoadedEmails[EmailID][5] = true # Set email to has been read
 	)
 	
-	EmailLineButton.mouse_entered.connnect(func():
+	EmailLineButton.mouse_entered.connect(func():
 		ShouldShowButtons = true
 	)
 	
-	EmailLineButton.mouse_exited.connnect(func():
+	EmailLineButton.mouse_exited.connect(func():
 		ShouldShowButtons = false
 	)
 	
@@ -58,3 +55,4 @@ func _process(delta):
 		ButtonsPanel.show()
 	elif(not ShouldShowButtons):
 		ButtonsPanel.hide()
+		
