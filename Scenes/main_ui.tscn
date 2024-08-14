@@ -106,8 +106,9 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aggrj"]
 bg_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cq8d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5vkn"]
 bg_color = Color(0.321569, 0.321569, 0.321569, 1)
+corner_radius_top_right = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n65cn"]
 bg_color = Color(0.290196, 0.290196, 0.290196, 1)
@@ -852,7 +853,7 @@ layout_mode = 0
 offset_top = 888.0
 offset_right = 256.0
 offset_bottom = 1040.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3cq8d")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5vkn")
 
 [node name="ShutDown" type="Button" parent="Menu"]
 layout_mode = 0
@@ -890,10 +891,12 @@ offset_left = 8.0
 offset_top = 104.0
 offset_right = 248.0
 offset_bottom = 144.0
+disabled = true
 text = "Sign Out
 "
 
 [node name="TextureRect" type="TextureRect" parent="Menu/SignOut"]
+self_modulate = Color(1, 1, 1, 0.298039)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1076,6 +1079,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_38uqn")
 
 [node name="Mail" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1912,12 +1916,11 @@ alignment = 1
 layout_mode = 2
 
 [node name="Power" type="ColorRect" parent="Taskbar/IconArranger/SystemMenuButton"]
-visible = false
 layout_mode = 2
 offset_right = 40.0
 offset_bottom = 40.0
 tooltip_text = "Power"
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="MenuButton" type="TextureButton" parent="Taskbar/IconArranger/SystemMenuButton/Power"]
 layout_mode = 0
@@ -1926,70 +1929,6 @@ offset_bottom = 100.0
 scale = Vector2(0.374216, 0.373984)
 tooltip_text = "Power"
 texture_normal = ExtResource("3_ardfw")
-
-[node name="SettingsBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
-layout_mode = 2
-tooltip_text = "Settings"
-color = Color(0.152941, 0.152941, 0.152941, 1)
-metadata/_edit_group_ = true
-
-[node name="SettingsButton" type="TextureButton" parent="Taskbar/IconArranger/SettingsBackdrop"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.401586, 0.401254)
-tooltip_text = "Settings"
-texture_normal = ExtResource("4_6scnd")
-
-[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 36.0
-offset_right = 24.0
-offset_bottom = 44.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
-
-[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 36.0
-offset_right = 24.0
-offset_bottom = 44.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
-
-[node name="CalculatorBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
-layout_mode = 2
-tooltip_text = "Calculator"
-color = Color(0.152941, 0.152941, 0.152941, 1)
-metadata/_edit_group_ = true
-
-[node name="CalculatorButton" type="TextureButton" parent="Taskbar/IconArranger/CalculatorBackdrop"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.401586, 0.401254)
-tooltip_text = "Calculator"
-texture_normal = ExtResource("46_5jxic")
-
-[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 36.0
-offset_right = 24.0
-offset_bottom = 44.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
-
-[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 36.0
-offset_right = 24.0
-offset_bottom = 44.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="CrowStoreBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
@@ -2221,6 +2160,70 @@ offset_bottom = 44.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/TeamManagerBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
+[node name="SettingsBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
+layout_mode = 2
+tooltip_text = "Settings"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="SettingsButton" type="TextureButton" parent="Taskbar/IconArranger/SettingsBackdrop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "Settings"
+texture_normal = ExtResource("4_6scnd")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/SettingsBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
+[node name="CalculatorBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
+layout_mode = 2
+tooltip_text = "Calculator"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="CalculatorButton" type="TextureButton" parent="Taskbar/IconArranger/CalculatorBackdrop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "Calculator"
+texture_normal = ExtResource("46_5jxic")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
 visible = false
 layout_mode = 0
 offset_left = 16.0

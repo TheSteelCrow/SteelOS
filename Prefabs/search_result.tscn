@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsdrs2rg6q18g"]
+[gd_scene load_steps=5 format=3 uid="uid://dsdrs2rg6q18g"]
 
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="1_uycra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wj54"]
+bg_color = Color(0.588235, 0.588235, 0.588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaji6"]
+bg_color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asyf3"]
+bg_color = Color(0.533333, 0.533333, 0.533333, 1)
 
 [node name="SearchResult" type="Panel"]
 
@@ -8,6 +17,10 @@
 layout_mode = 0
 offset_right = 1912.0
 offset_bottom = 160.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_7wj54")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vaji6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_asyf3")
 
 [node name="Name" type="RichTextLabel" parent="Button"]
 layout_mode = 0

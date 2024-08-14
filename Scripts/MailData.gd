@@ -1,6 +1,6 @@
 extends Node
 
-#	1 : [0-"Subject", 1-"Content", 2-"Sender", 3-IsEmailAvailable, 4-IsEmailDeleted, 5-HasBeenRead, 6-[0-TaskName, 1-IsTaskCompleted, 2-Quota, 3-AssociatedApp]],
+#	1 : [0-"Subject", 1-"Content", 2-"Sender", 3-IsEmailAvailable, 4-IsEmailDeleted, 5-HasBeenRead, 6-[0-TaskName, 1-IsTaskCompleted, 2-Quota, 3-AssociatedApp], 7-Type],
 var LoadedEmails = {
 	1 : [
 	"Welcome",
@@ -9,7 +9,8 @@ var LoadedEmails = {
 	true,
 	false,
 	false,
-	null
+	null,
+	"Message"
 	],
 	
 	2 : [
@@ -19,7 +20,8 @@ var LoadedEmails = {
 	true,
 	false,
 	false,
-	null
+	null,
+	"Message"
 	],
 	
 	3 : [
@@ -29,7 +31,8 @@ var LoadedEmails = {
 	true,
 	false,
 	false,
-	["Fire", false, 5, "TeamManager"]
+	["Fire", false, 5, "TeamManager"],
+	"Task"
 	],
 	4 : [
 	"Task #2",
@@ -38,7 +41,8 @@ var LoadedEmails = {
 	false,
 	false,
 	false,
-	["Draw", false, 1, null]
+	["Draw", false, 1, null],
+	"Task"
 	],
 	5 : [
 	"Task #3",
@@ -47,6 +51,17 @@ var LoadedEmails = {
 	false,
 	false,
 	false,
-	["Hire", false, 5, "TeamManager"]
+	["Hire", false, 5, "TeamManager"],
+	"Task",
+	],
+	6 : [
+	"The End?",
+	"Welp, you've reached the end of the game - for now. You have reached the end of coded tasks, but this doesn't have to be the end. From here on out, you can continue to use CrowOS, but as an open world game. So go out and explore the software!\n\nPS: Thank you very much for playing my game! (:\n-Daniel Lott",
+	"Developer",
+	false,
+	false,
+	false,
+	null,
+	"Message"
 	]
 }

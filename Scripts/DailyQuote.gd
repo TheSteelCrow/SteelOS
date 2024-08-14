@@ -11,9 +11,6 @@ var Quotes = [
 "If we don't succeed, we run the risk of failure.
 (J. Danforth Quayle)",
 
-"Republicans understand the importance of bondage between a mother and child.
-(Vice President Dan Quayle)",
-
 "Welcome to President Bush, Mrs. Bush, and my fellow astronauts.
 (Vice President Dan Quayle)",
 

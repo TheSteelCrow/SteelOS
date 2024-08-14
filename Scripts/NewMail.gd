@@ -97,6 +97,7 @@ func CreateEmailLine(EmailID):
 	NewEmailLine.Subject = MailData.LoadedEmails[EmailID][0]
 	NewEmailLine.Content = MailData.LoadedEmails[EmailID][1]
 	NewEmailLine.Sender = MailData.LoadedEmails[EmailID][2]
+	NewEmailLine.Type = MailData.LoadedEmails[EmailID][7]
 	EmailLineContainer.add_child(NewEmailLine)
 	if(MailData.LoadedEmails[EmailID][5] == true):
 		NewEmailLine.get_node("EmailLineButton").self_modulate = Color("c3def0")
