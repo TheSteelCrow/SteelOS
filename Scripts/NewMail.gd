@@ -12,6 +12,7 @@ var IsFullscreen = false
 @onready var MailData = $MailData
 @onready var EmailLineContainer = $EmailLineContainer
 @onready var EmailViewer = $EmailViewer
+@onready var EmailWriter = $EmailWriter
 var EmailLinePrefab
 
 var OpenedEmailID
@@ -19,7 +20,7 @@ var OpenedEmailID
 var StartTaskButton
 var CancelTaskButton
 var CompleteTaskButton
-
+@onready var NewEmailButton = $SideBar/NewEmailPanel/NewEmailButton
 var Taskbar
 
 var Main
@@ -55,10 +56,19 @@ func _ready():
 				SideBarButton.size.x = 288
 				OpenedCategory = SideBarButton.text
 				DisplayEmails()
+				get_node("EmailViewer").hide()
+				get_node("EmailWriter").hide()
+				get_node("EmailLineContainer").show()
 			)
 	EmailViewer.get_node("TopBar/CloseButton").button_up.connect(func():
 		DisplayEmails()
 		EmailViewer.hide()
+		EmailLineContainer.show()
+	)
+
+	EmailWriter.get_node("TopBar/CloseButton").button_up.connect(func():
+		DisplayEmails()
+		EmailWriter.hide()
 		EmailLineContainer.show()
 	)
 
@@ -86,6 +96,8 @@ func _ready():
 			await get_tree().create_timer(EMAIL_DELAY).timeout
 			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[OpenedEmailID+1][2], MailData.LoadedEmails[OpenedEmailID+1][7], OpenedEmailID+1) #Sends notification of new mail
 	)
+	
+	NewEmailButton.button_up.connect(StartDraft)
 
 func DisplayEmails():
 	for EmailLine in EmailLineContainer.get_children():
@@ -141,3 +153,8 @@ func OpenEmail(EmailID):
 	EmailViewer.get_node("TopBar").get_node("SenderLine").text = MailData.LoadedEmails[EmailID][2]
 	EmailViewer.show()
 	EmailLineContainer.hide()
+
+func StartDraft():
+	get_node("EmailWriter").show()
+	get_node("EmailViewer").hide()
+	get_node("EmailLineContainer").hide()
