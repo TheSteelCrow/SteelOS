@@ -1,4 +1,4 @@
-[gd_scene load_steps=234 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=235 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" path="res://Scripts/NewMail.gd" id="20_a3d7r"]
 [ext_resource type="FontFile" uid="uid://b8iftih7xife7" path="res://Fonts/VeraMono.ttf" id="22_aoxko"]
 [ext_resource type="FontFile" uid="uid://ccqebcm1hpeja" path="res://Fonts/LTSuperior-Regular.otf" id="22_qrjik"]
+[ext_resource type="Script" path="res://Scripts/EmailWriter.gd" id="22_s4xxe"]
 [ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
 [ext_resource type="Texture2D" uid="uid://cbgmhpecdkcr5" path="res://Images/Folder Art Png.png" id="26_1qffm"]
@@ -1183,6 +1184,18 @@ offset_bottom = 64.0
 scale = Vector2(0.714445, 0.714445)
 texture = ExtResource("10_slul8")
 
+[node name="RefreshButton" type="TextureButton" parent="Mail/TopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.870833
+anchor_right = 0.899997
+anchor_bottom = 0.999897
+offset_right = 44.0058
+offset_bottom = 44.0058
+scale = Vector2(0.559942, 0.559942)
+texture_normal = ExtResource("5_jb3v0")
+metadata/_edit_use_anchors_ = true
+
 [node name="Inbox" type="Panel" parent="Mail"]
 visible = false
 layout_mode = 0
@@ -1200,6 +1213,7 @@ offset_top = 64.0
 offset_right = 1912.0
 offset_bottom = 1032.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_np6of")
+script = ExtResource("22_s4xxe")
 
 [node name="SendButton" type="Button" parent="Mail/EmailWriter"]
 layout_mode = 0
@@ -1229,7 +1243,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_qpp8k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n3ta3")
 text = "ADD FILE"
 
-[node name="TextEdit" type="TextEdit" parent="Mail/EmailWriter"]
+[node name="Content" type="TextEdit" parent="Mail/EmailWriter"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 144.0
@@ -1295,6 +1309,7 @@ focus_mode = 1
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q0v7g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_87hbb")
+text = "boss@email.com"
 placeholder_text = "To ..."
 
 [node name="EmailViewer" type="Panel" parent="Mail"]
