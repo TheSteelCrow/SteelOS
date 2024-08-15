@@ -18,6 +18,7 @@ func SendMailNotification(Sender, Type, EmailID):
 	move_to_front()
 	var NewNotification = MailNotificationPrefab.instantiate()
 	add_child(NewNotification)
+	NewNotification.get_node("MailNotificationPanel/AnimationPlayer").play("SlideIn")
 	
 	NewNotification.get_node("MailNotificationPanel/Info").text = "FROM: " + Sender + "\nTYPE: " + Type
 	
