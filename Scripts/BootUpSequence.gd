@@ -42,6 +42,7 @@ func RunSequence():
 	FadeOutMusic.tween_property(StartUpSound, "volume_db", -80, FADE_OUT_TIME * Main.AnimationsMultiplier)
 	
 	await FadeOutBackground.finished
+	
 	hide()
 	get_parent().hide()
 	
@@ -49,11 +50,11 @@ func RunSequence():
 	StartUpSound.stop()
 	
 	StartUpSound.queue_free()
+	Main.StartGameEvents()
 	self.queue_free()
-
-
 
 func _on_skip_button_up():
 	get_parent().hide()
 	StartUpSound.queue_free()
+	Main.StartGameEvents()
 	self.queue_free()

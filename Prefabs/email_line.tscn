@@ -51,16 +51,6 @@ offset_right = 1584.0
 offset_bottom = 48.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g2ppy")
 
-[node name="Delete" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
-layout_mode = 0
-offset_left = 192.0
-offset_right = 325.0
-offset_bottom = 100.0
-scale = Vector2(0.48164, 0.48164)
-tooltip_text = "Delete"
-texture_normal = ExtResource("3_26ucl")
-stretch_mode = 3
-
 [node name="Scan" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
 layout_mode = 0
 offset_right = 133.0
@@ -88,4 +78,14 @@ offset_bottom = 100.0
 scale = Vector2(0.481196, 0.481196)
 tooltip_text = "Mark as Read"
 texture_normal = ExtResource("6_cvntq")
+stretch_mode = 3
+
+[node name="Delete" type="TextureButton" parent="EmailLineButton/ButtonsPanel"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 325.0
+offset_bottom = 100.0
+scale = Vector2(0.48164, 0.48164)
+tooltip_text = "Delete"
+texture_normal = ExtResource("3_26ucl")
 stretch_mode = 3

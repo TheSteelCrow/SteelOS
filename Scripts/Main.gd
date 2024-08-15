@@ -17,6 +17,9 @@ var AnimationsMultiplier = 1
 var ShuttingDown = false
 @onready var SystemLoadingScreen = $SystemLoadingScreen
 @onready var Taskbar = $Taskbar
+@onready var Mail = $Mail
+@onready var MailData = $Mail/MailData
+@onready var Notifications = $Notifications
 
 func InstallApp(AppName):
 	var AppButton = Taskbar.get_node("IconHolder/" + AppName + "Backdrop")
@@ -47,6 +50,15 @@ func _ready():
 	Menu = get_node("Menu")
 	SearchEngine = get_node("SearchEngine")
 	FileExplorer = get_node("FileExplorer")
+
+func StartGameEvents():
+	MailData.LoadedEmails[1][3] = true
+	Notifications.SendMailNotification(MailData.LoadedEmails[1][2], MailData.LoadedEmails[1][7], 1)
+	
+	await get_tree().create_timer(10).timeout
+	
+	MailData.LoadedEmails[2][3] = true
+	Notifications.SendMailNotification(MailData.LoadedEmails[2][2], MailData.LoadedEmails[2][7], 2)
 
 func _on_shut_down_button_up():
 	ShuttingDown = true

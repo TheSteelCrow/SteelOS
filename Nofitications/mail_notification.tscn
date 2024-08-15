@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://dblux6ftd6g0y"]
+
+[ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="1_1h283"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6je4"]
+bg_color = Color(0.584314, 0.780392, 0.858824, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.309804)
+shadow_size = 4
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u36r"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[node name="MailNotification" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MailNotificationPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -176.0
+offset_right = 288.0
+offset_bottom = -16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d6je4")
+
+[node name="Info" type="Label" parent="MailNotificationPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 272.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("1_1h283")
+theme_override_font_sizes/font_size = 20
+text = "FROM: SENDER
+TYPE: TYPE NAME"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="MailNotificationPanel"]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5u36r")
+
+[node name="Label" type="Label" parent="MailNotificationPanel/Panel"]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("1_1h283")
+theme_override_font_sizes/font_size = 26
+text = "YOU HAVE MAIL!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ignore" type="Button" parent="MailNotificationPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 96.0
+offset_bottom = 151.0
+text = "IGNORE"
+
+[node name="Open" type="Button" parent="MailNotificationPanel"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 120.0
+offset_right = 264.0
+offset_bottom = 151.0
+text = "OPEN"

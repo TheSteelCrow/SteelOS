@@ -1,5 +1,7 @@
 extends Panel
 
+var EMAIL_DELAY = 5
+
 @onready var SideBarPanel = $SideBar
 var SideBarButtons = []
 
@@ -20,6 +22,8 @@ var CompleteTaskButton
 
 var Taskbar
 
+var Main
+
 func OnAppVisible():
 	pass
 
@@ -27,7 +31,9 @@ func Reset():
 	pass
 
 func Open():
-	pass
+	DisplayEmails()
+	EmailViewer.hide()
+	EmailLineContainer.show()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +42,7 @@ func _ready():
 	CompleteTaskButton = get_node("EmailViewer/CompleteTaskButton")
 	Taskbar = get_parent().get_node("Taskbar")
 	EmailLinePrefab = preload("res://Prefabs/email_line.tscn")
+	Main = get_parent()
 	
 	for SideBarButton in SideBarPanel.get_children():
 		if(SideBarButton is Button):
@@ -65,16 +72,19 @@ func _ready():
 	CancelTaskButton.button_up.connect(func():
 		Taskbar.CancelTask()
 		ShowButton("Start")
-		get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StopTask() # Stop task on associated app
+		if(MailData.LoadedEmails[OpenedEmailID][6][3] != null): # If task has associated app
+			get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StopTask() # Stop task on associated app
 	)
 	CompleteTaskButton.button_up.connect(func():
 		Taskbar.CompleteTask()
 		MailData.LoadedEmails[OpenedEmailID][6][1] = true #Marks task as completed
-		if(MailData.LoadedEmails[OpenedEmailID+1] != null): #If next task exists
-			MailData.LoadedEmails[OpenedEmailID+1][3] = true #Sets next task to available
-		
 		ShowButton(null)
 		get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StopTask() # Stop task on associated app
+		
+		if(MailData.LoadedEmails[OpenedEmailID+1] != null): #If next task exists
+			MailData.LoadedEmails[OpenedEmailID+1][3] = true #Sets next task to available
+			await get_tree().create_timer(EMAIL_DELAY).timeout
+			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[OpenedEmailID+1][2], MailData.LoadedEmails[OpenedEmailID+1][7], OpenedEmailID+1) #Sends notification of new mail
 	)
 
 func DisplayEmails():
@@ -99,6 +109,7 @@ func CreateEmailLine(EmailID):
 	NewEmailLine.Sender = MailData.LoadedEmails[EmailID][2]
 	NewEmailLine.Type = MailData.LoadedEmails[EmailID][7]
 	EmailLineContainer.add_child(NewEmailLine)
+	EmailLineContainer.move_child(NewEmailLine, 0)
 	if(MailData.LoadedEmails[EmailID][5] == true):
 		NewEmailLine.get_node("EmailLineButton").self_modulate = Color("c3def0")
 
