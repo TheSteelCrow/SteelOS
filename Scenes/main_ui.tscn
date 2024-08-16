@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=242 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -85,6 +85,8 @@
 [ext_resource type="Texture2D" uid="uid://cdewx5eodeemd" path="res://Images/lightcutout.png" id="82_0musw"]
 [ext_resource type="Script" path="res://Scripts/Calculator.gd" id="82_rng58"]
 [ext_resource type="Script" path="res://Scripts/NotificationManager.gd" id="84_xy482"]
+[ext_resource type="Script" path="res://Scripts/FileSelector.gd" id="87_fv4e6"]
+[ext_resource type="FontFile" uid="uid://coed6j5rmmat" path="res://Fonts/VeraMoBd.ttf" id="88_fwqd8"]
 [ext_resource type="Texture2D" uid="uid://d0k3y21iutw78" path="res://Images/PaintAppIcons/drawing_pen.png" id="90_1pp0x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
@@ -814,6 +816,29 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qnrf"]
+bg_color = Color(0, 0, 0, 0.521569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2rkl"]
+bg_color = Color(0.760784, 0.760784, 0.760784, 1)
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b45er"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cf6l"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w21mb"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
 [node name="MainUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1123,6 +1148,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_38uqn")
 
 [node name="Mail" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -1583,7 +1609,7 @@ scroll_horizontal_enabled = false
 
 [node name="Files" type="Tree" parent="FileExplorer"]
 layout_mode = 0
-offset_left = 145.0
+offset_left = 144.0
 offset_top = 72.0
 offset_right = 576.0
 offset_bottom = 376.0
@@ -4546,6 +4572,102 @@ theme_override_constants/separation = 176
 alignment = 2
 script = ExtResource("84_xy482")
 
+[node name="FileSelector" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qnrf")
+script = ExtResource("87_fv4e6")
+
+[node name="FileSelectorMenu" type="Panel" parent="FileSelector"]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 352.0
+offset_right = 1248.0
+offset_bottom = 736.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7y176")
+
+[node name="Folders" type="Tree" parent="FileSelector/FileSelectorMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 336.0
+theme_override_font_sizes/font_size = 10
+allow_search = false
+scroll_horizontal_enabled = false
+
+[node name="Files" type="Tree" parent="FileSelector/FileSelectorMenu"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 40.0
+offset_right = 576.0
+offset_bottom = 336.0
+theme_override_font_sizes/font_size = 10
+allow_search = false
+hide_root = true
+scroll_horizontal_enabled = false
+
+[node name="TopPanel" type="Panel" parent="FileSelector/FileSelectorMenu"]
+layout_mode = 0
+offset_right = 584.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7rnaq")
+
+[node name="Label" type="Label" parent="FileSelector/FileSelectorMenu/TopPanel"]
+layout_mode = 0
+offset_right = 584.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("88_fwqd8")
+theme_override_font_sizes/font_size = 20
+text = "SELECT A FILE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomPanel" type="Panel" parent="FileSelector/FileSelectorMenu"]
+layout_mode = 0
+offset_top = 344.0
+offset_right = 584.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2rkl")
+
+[node name="Confirm" type="Button" parent="FileSelector/FileSelectorMenu/BottomPanel"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 8.0
+offset_right = 576.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("88_fwqd8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_b45er")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2cf6l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w21mb")
+text = "CONFIRM"
+
+[node name="Cancel" type="Button" parent="FileSelector/FileSelectorMenu/BottomPanel"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 8.0
+offset_right = 472.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("88_fwqd8")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_b45er")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2cf6l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w21mb")
+text = "CANCEL"
+
+[node name="FileNameDisplay" type="Label" parent="FileSelector/FileSelectorMenu/BottomPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 368.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("88_fwqd8")
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+text_overrun_behavior = 3
+
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]
 [connection signal="text_changed" from="SearchEngine/LineTwo/GlobalUserSearchInput" to="SearchEngine" method="_on_global_user_search_input_text_changed"]
@@ -4572,3 +4694,8 @@ script = ExtResource("84_xy482")
 [connection signal="value_changed" from="Settings/Gameplay/Difficulty/HSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/Gameplay/TargetFPS/SpinBox" to="Settings" method="_on_spin_box_value_changed"]
 [connection signal="button_up" from="SystemLoadingScreen/BootUpScreen/Skip" to="SystemLoadingScreen/BootUpScreen" method="_on_skip_button_up"]
+[connection signal="cell_selected" from="FileSelector/FileSelectorMenu/Folders" to="FileSelector" method="_on_folders_cell_selected"]
+[connection signal="item_activated" from="FileSelector/FileSelectorMenu/Files" to="FileSelector" method="_on_files_item_activated"]
+[connection signal="item_selected" from="FileSelector/FileSelectorMenu/Files" to="FileSelector" method="_on_files_item_selected"]
+[connection signal="button_up" from="FileSelector/FileSelectorMenu/BottomPanel/Confirm" to="FileSelector" method="_on_confirm_button_up"]
+[connection signal="button_up" from="FileSelector/FileSelectorMenu/BottomPanel/Cancel" to="FileSelector" method="_on_cancel_button_up"]

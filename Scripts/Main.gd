@@ -20,6 +20,7 @@ var ShuttingDown = false
 @onready var Mail = $Mail
 @onready var MailData = $Mail/MailData
 @onready var Notifications = $Notifications
+@onready var FileSelector = $FileSelector
 
 func InstallApp(AppName):
 	var AppButton = Taskbar.get_node("IconHolder/" + AppName + "Backdrop")

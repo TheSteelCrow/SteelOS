@@ -1,4 +1,24 @@
-[gd_scene format=3 uid="uid://46nlxvwe1kcc"]
+[gd_scene load_steps=5 format=3 uid="uid://46nlxvwe1kcc"]
+
+[ext_resource type="Script" path="res://Scripts/2D_WorldGen.gd" id="1_7f5rb"]
+
+[sub_resource type="Gradient" id="Gradient_q01jw"]
+offsets = PackedFloat32Array(0.129032, 0.277419, 0.490323, 0.516129, 0.535484, 0.593548, 0.780645)
+colors = PackedColorArray(0.208186, 0.294157, 0.118451, 1, 0.260144, 0.362711, 0.153248, 1, 0.335749, 0.461854, 0.204782, 1, 0.937445, 0.756273, 0.543142, 1, 0.308984, 0.490242, 0.857338, 1, 0.192576, 0.34842, 0.671712, 1, 0.19631, 0.361481, 0.705144, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o0ky7"]
+noise_type = 3
+frequency = 0.0031
+domain_warp_fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m872h"]
+width = 1080
+height = 1080
+generate_mipmaps = false
+seamless_blend_skirt = 1.0
+normalize = false
+color_ramp = SubResource("Gradient_q01jw")
+noise = SubResource("FastNoiseLite_o0ky7")
 
 [node name="Experimental" type="Control"]
 layout_mode = 3
@@ -7,3 +27,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7f5rb")
+
+[node name="WorldDisplay" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1080.0
+texture = SubResource("NoiseTexture2D_m872h")
+
+[node name="Generate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 8.0
+offset_right = 1912.0
+offset_bottom = 48.0
+text = "Generate World"
+
+[node name="SeedSetting" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 56.0
+offset_right = 1912.0
+offset_bottom = 96.0
+max_value = 1e+09
+alignment = 1
+suffix = "seed"
+
+[node name="TickInterval_Setting" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 1728.0
+offset_top = 104.0
+offset_right = 1912.0
+offset_bottom = 144.0
+min_value = 0.01
+max_value = 0.5
+step = 0.01
+value = 0.01
+alignment = 1
+suffix = "T/S"
+
+[node name="TargetColor" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 1024.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MouseInfo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 896.0
+offset_right = 1912.0
+offset_bottom = 1016.0
+theme_override_font_sizes/font_size = 31
+text = "Mouse Position = (x , y)
+Mouse World Position = (x , y)"
