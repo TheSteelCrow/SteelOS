@@ -34,6 +34,7 @@ func Reset():
 func Open():
 	DisplayEmails()
 	EmailViewer.hide()
+	EmailWriter.hide()
 	EmailLineContainer.show()
 
 # Called when the node enters the scene tree for the first time.
@@ -72,6 +73,7 @@ func _ready():
 		DisplayEmails()
 		EmailWriter.hide()
 		EmailLineContainer.show()
+		ShowButton(null)
 	)
 
 	StartTaskButton.button_up.connect(func():
@@ -88,15 +90,25 @@ func _ready():
 			get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StopTask() # Stop task on associated app
 	)
 	CompleteTaskButton.button_up.connect(func():
-		Taskbar.CompleteTask()
-		MailData.LoadedEmails[OpenedEmailID][6][1] = true #Marks task as completed
-		ShowButton(null)
-		get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StopTask() # Stop task on associated app
+		var TempOpenedEmailID = OpenedEmailID
 		
-		if(MailData.LoadedEmails[OpenedEmailID+1] != null): #If next task exists
-			MailData.LoadedEmails[OpenedEmailID+1][3] = true #Sets next task to available
+		Taskbar.CompleteTask()
+		MailData.LoadedEmails[TempOpenedEmailID][6][1] = true #Marks task as completed
+		ShowButton(null)
+		if(MailData.LoadedEmails[OpenedEmailID][6][3] != null): # If task has associated app
+			get_parent().get_node(MailData.LoadedEmails[TempOpenedEmailID][6][3]).StopTask() # Stop task on associated app
+		MailData.LoadedEmails[TempOpenedEmailID][6] = null # Deletes task info as it is completed, now it will act as a normal email.
+		
+		if(MailData.LoadedEmails[TempOpenedEmailID+1] != null): #If next email exists
 			await get_tree().create_timer(EMAIL_DELAY).timeout
-			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[OpenedEmailID+1][2], MailData.LoadedEmails[OpenedEmailID+1][7], OpenedEmailID+1) #Sends notification of new mail
+			MailData.LoadedEmails[TempOpenedEmailID+1][3] = true #Sets next email to available
+			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[TempOpenedEmailID+1][2], MailData.LoadedEmails[TempOpenedEmailID+1][7], TempOpenedEmailID+1) #Sends notification of new mail
+		
+		if(MailData.LoadedEmails[TempOpenedEmailID+2] != null): #If next next email exists
+			await get_tree().create_timer(EMAIL_DELAY).timeout
+			MailData.LoadedEmails[TempOpenedEmailID+2][3] = true #Sets next email to available
+			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[TempOpenedEmailID+2][2], MailData.LoadedEmails[TempOpenedEmailID+2][7], TempOpenedEmailID+2) #Sends notification of new mail
+		
 	)
 	
 	NewEmailButton.button_up.connect(StartDraft)
@@ -110,10 +122,11 @@ func DisplayEmails():
 		if(MailData.LoadedEmails[EmailID][3] == true): #If email is availabe
 			if(MailData.LoadedEmails[EmailID][4] == true and OpenedCategory == "Deleted"): #If email is deleted and category is deleted
 				CreateEmailLine(EmailID)
-				print("show an email that is deleted")
 			elif(MailData.LoadedEmails[EmailID][4] == false and OpenedCategory != "Deleted"): #If email is not deleted and category is not deleted
-				CreateEmailLine(EmailID)
-				print("show an email that is deleted")
+				if(OpenedCategory == "Inbox"):
+					CreateEmailLine(EmailID)
+				elif(OpenedCategory == MailData.LoadedEmails[EmailID][7] + "s"):
+					CreateEmailLine(EmailID)
 
 func CreateEmailLine(EmailID):
 	var NewEmailLine = EmailLinePrefab.instantiate()

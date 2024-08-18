@@ -12,7 +12,7 @@ var HackableWebsites = {
 }
 
 var Commands = ["/help", "/hack", "/clear"]
-var DevCommands = ["/unlockemail"]
+var DevCommands = ["/unlockemail", "/unlockallemails"]
 
 
 var HelpInfo = "\n----\n/help - Lists commands\n/hack - Initiates hacking mode\n/clear - Clears the output\n------"
@@ -101,3 +101,6 @@ func RunDevCommand(Command):
 	if(CommandParts[0] == "/unlockemail"):
 		var TargetEmail = int(CommandParts[1])
 		get_parent().get_node("Mail/MailData").LoadedEmails[TargetEmail][3] = true
+	elif(CommandParts[0] == "/unlockallemails"):
+		for EmailID in get_parent().get_node("Mail/MailData").LoadedEmails.keys():
+			get_parent().get_node("Mail/MailData").LoadedEmails[EmailID][3] = true

@@ -1,14 +1,16 @@
-[gd_scene load_steps=242 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=258 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
 [ext_resource type="Script" path="res://Scripts/Taskbar.gd" id="2_0hvxi"]
 [ext_resource type="Script" path="res://Scripts/StickyNote.gd" id="3_4xqhj"]
+[ext_resource type="Texture2D" uid="uid://dydc7k7ilb0gf" path="res://NewBackgrounds/bailey-zindel-NRQV-hBF10M-unsplash.jpg" id="3_5tf3x"]
 [ext_resource type="Texture2D" uid="uid://msxx0fhaq81p" path="res://Images/power.png" id="3_ardfw"]
 [ext_resource type="FontFile" uid="uid://e1r807bn3v02" path="res://Fonts/Gontserrat-Light.ttf" id="4_0ht5n"]
 [ext_resource type="Texture2D" uid="uid://gyrptjh26ekr" path="res://Images/gear.png" id="4_6scnd"]
 [ext_resource type="FontFile" uid="uid://br828ekc2gdat" path="res://Fonts/ConsolaMono-Book.ttf" id="5_1lsih"]
 [ext_resource type="Texture2D" uid="uid://dxkvswb0rk5ie" path="res://Images/zoom.png" id="5_facrs"]
+[ext_resource type="Texture2D" uid="uid://dbthiekp2ohdj" path="res://NewBackgrounds/pine-watt-2Hzmz15wGik-unsplash.jpg" id="5_i6gm2"]
 [ext_resource type="Texture2D" uid="uid://bwja64pffjomh" path="res://Images/return.png" id="5_jb3v0"]
 [ext_resource type="Texture2D" uid="uid://dkauuwd354mfn" path="res://Images/singleplayer.png" id="6_lpvn1"]
 [ext_resource type="Texture2D" uid="uid://wfo7pfqhn7qh" path="res://Images/trashcanOpen.png" id="6_tu0vt"]
@@ -33,6 +35,7 @@
 [ext_resource type="FontFile" uid="uid://ccqebcm1hpeja" path="res://Fonts/LTSuperior-Regular.otf" id="22_qrjik"]
 [ext_resource type="Script" path="res://Scripts/EmailWriter.gd" id="22_s4xxe"]
 [ext_resource type="FontFile" uid="uid://c73b37q043fw2" path="res://Fonts/Jackwrite.ttf" id="24_sfbee"]
+[ext_resource type="AudioStream" uid="uid://bau47eibtt2jw" path="res://Sounds/EmailSent.wav" id="25_6hhyg"]
 [ext_resource type="Script" path="res://Scripts/FPS.gd" id="25_ejut0"]
 [ext_resource type="Texture2D" uid="uid://cbgmhpecdkcr5" path="res://Images/Folder Art Png.png" id="26_1qffm"]
 [ext_resource type="Texture2D" uid="uid://c8yub5maxfog" path="res://Images/Buttons/stamp bottom.png" id="26_cng40"]
@@ -60,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://cwvfb3wx5whs4" path="res://Images/signal3.png" id="51_a5lws"]
 [ext_resource type="Texture2D" uid="uid://dvnx54gwimq8b" path="res://Images/PasteIcon1.png" id="51_c3t5u"]
 [ext_resource type="Texture2D" uid="uid://co7sw5f4earnb" path="res://Images/crow os text.png" id="51_luo0p"]
+[ext_resource type="Texture2D" uid="uid://cnirawxs1amhk" path="res://Images/writer icon.png" id="51_yaepc"]
 [ext_resource type="Texture2D" uid="uid://b2253rh40p47f" path="res://Images/DE Lott Productions Banner.png" id="52_q2h5l"]
 [ext_resource type="Texture2D" uid="uid://8gtal1ijuoy7" path="res://Images/audioOn.png" id="53_eev3g"]
 [ext_resource type="AudioStream" uid="uid://cp3cyv5odo4sy" path="res://Sounds/StartUp.wav" id="53_iyfxd"]
@@ -88,6 +92,9 @@
 [ext_resource type="Script" path="res://Scripts/FileSelector.gd" id="87_fv4e6"]
 [ext_resource type="FontFile" uid="uid://coed6j5rmmat" path="res://Fonts/VeraMoBd.ttf" id="88_fwqd8"]
 [ext_resource type="Texture2D" uid="uid://d0k3y21iutw78" path="res://Images/PaintAppIcons/drawing_pen.png" id="90_1pp0x"]
+[ext_resource type="Script" path="res://Scripts/Writer.gd" id="90_oneyh"]
+[ext_resource type="Script" path="res://Scripts/Writer_Functionality.gd" id="91_j1j4u"]
+[ext_resource type="AudioStream" uid="uid://baaj7fyctl40q" path="res://Sounds/Notification.wav" id="92_l7kdl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -839,6 +846,49 @@ bg_color = Color(0.141176, 0.141176, 0.141176, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne7sd"]
+bg_color = Color(0.972656, 0.980469, 0.988281, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytcp5"]
+bg_color = Color(0.996094, 0.996094, 0.996094, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.156863, 0.156863, 0.156863, 1)
+shadow_color = Color(0, 0, 0, 0.427451)
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1son"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h46r"]
+bg_color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulgdj"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unkal"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne2ng"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crbgs"]
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn762"]
+bg_color = Color(0.370364, 0.370364, 0.370364, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="MainUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -849,7 +899,18 @@ grow_vertical = 2
 script = ExtResource("1_u8qnd")
 metadata/_edit_horizontal_guides_ = []
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5tf3x")
+expand_mode = 1
+
+[node name="Background1" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -857,6 +918,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_pctbs")
+
+[node name="Background3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_i6gm2")
+expand_mode = 1
 
 [node name="StickyNote" type="Panel" parent="."]
 layout_mode = 0
@@ -1338,6 +1410,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_87hbb")
 text = "boss@email.com"
 placeholder_text = "To ..."
 
+[node name="AddedFilesHolder" type="HBoxContainer" parent="Mail/EmailWriter"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 896.0
+offset_right = 1000.0
+offset_bottom = 968.0
+theme_override_constants/separation = 334
+
 [node name="EmailViewer" type="Panel" parent="Mail"]
 visible = false
 layout_mode = 0
@@ -1457,7 +1537,7 @@ offset_right = 320.0
 offset_bottom = 1016.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jy3i0")
 
-[node name="Button" type="Button" parent="Mail/SideBar"]
+[node name="Inbox" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
 offset_top = 64.0
 offset_right = 312.0
@@ -1475,7 +1555,7 @@ toggle_mode = true
 keep_pressed_outside = true
 text = "Inbox"
 
-[node name="Button2" type="Button" parent="Mail/SideBar"]
+[node name="Tasks" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
 offset_top = 496.0
 offset_right = 312.0
@@ -1493,7 +1573,7 @@ toggle_mode = true
 keep_pressed_outside = true
 text = "Tasks"
 
-[node name="Button5" type="Button" parent="Mail/SideBar"]
+[node name="Paychecks" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
 offset_top = 552.0
 offset_right = 312.0
@@ -1511,7 +1591,25 @@ toggle_mode = true
 keep_pressed_outside = true
 text = "Paychecks"
 
-[node name="Button4" type="Button" parent="Mail/SideBar"]
+[node name="Messages" type="Button" parent="Mail/SideBar"]
+layout_mode = 0
+offset_top = 608.0
+offset_right = 312.0
+offset_bottom = 656.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_qrjik")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_6js21")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6js21")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2wnrx")
+toggle_mode = true
+keep_pressed_outside = true
+text = "Messages"
+
+[node name="Deleted" type="Button" parent="Mail/SideBar"]
 layout_mode = 0
 offset_top = 144.0
 offset_right = 312.0
@@ -1574,6 +1672,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_erko7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wyoo1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_n3xl6")
 text = "New Email"
+
+[node name="EmailSent" type="AudioStreamPlayer" parent="Mail"]
+stream = ExtResource("25_6hhyg")
 
 [node name="FileExplorer" type="Panel" parent="."]
 visible = false
@@ -1924,8 +2025,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_q3y2p")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_u6mkd")
 theme_override_styles/focus = SubResource("StyleBoxFlat_icflk")
 
-[node name="StampSFX" type="AudioStreamPlayer2D" parent="TeamManager/Stamp"]
+[node name="StampSFX" type="AudioStreamPlayer" parent="TeamManager/Stamp"]
 stream = ExtResource("29_kwy85")
+volume_db = 10.0
 
 [node name="Guide" type="Panel" parent="TeamManager"]
 layout_mode = 0
@@ -2077,6 +2179,7 @@ offset_left = -960.0
 offset_top = -0.16
 offset_right = 960.0
 offset_bottom = 985.84
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Taskbar" type="Panel" parent="."]
@@ -2096,7 +2199,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.883
 anchor_bottom = 1.003
-offset_right = 0.640015
+offset_right = 224.64
 offset_bottom = -0.120003
 theme_override_constants/separation = 55
 alignment = 1
@@ -2413,6 +2516,39 @@ offset_bottom = 44.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/CalculatorBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
+
+[node name="WriterBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
+layout_mode = 2
+tooltip_text = "Calculator"
+color = Color(0.152941, 0.152941, 0.152941, 1)
+metadata/_edit_group_ = true
+
+[node name="WriterButton" type="TextureButton" parent="Taskbar/IconArranger/WriterBackdrop"]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 101.0
+offset_bottom = 100.0
+scale = Vector2(0.401586, 0.401254)
+tooltip_text = "Calculator"
+texture_normal = ExtResource("51_yaepc")
+
+[node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/WriterBackdrop"]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 36.0
+offset_right = 24.0
+offset_bottom = 44.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
+
+[node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/WriterBackdrop"]
 visible = false
 layout_mode = 0
 offset_left = 16.0
@@ -3384,6 +3520,7 @@ autowrap_mode = 2
 
 [node name="StartUpSound" type="AudioStreamPlayer" parent="SystemLoadingScreen"]
 stream = ExtResource("53_iyfxd")
+volume_db = 20.0
 
 [node name="HackTask" type="Panel" parent="."]
 visible = false
@@ -4122,6 +4259,17 @@ offset_right = 432.0
 offset_bottom = 184.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6vmf6")
 
+[node name="Label" type="Label" parent="Calculator/Screen"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 416.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("22_qrjik")
+theme_override_font_sizes/font_size = 40
+text = "Under Construction"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GridContainer" type="GridContainer" parent="Calculator"]
 layout_mode = 0
 offset_left = 16.0
@@ -4667,6 +4815,122 @@ theme_override_fonts/font = ExtResource("88_fwqd8")
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 text_overrun_behavior = 3
+
+[node name="Writer" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1040.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ne7sd")
+script = ExtResource("90_oneyh")
+
+[node name="AppVisualTransitionComponent" type="Node" parent="Writer"]
+script = ExtResource("8_iymbk")
+
+[node name="AppBaseComponent" type="Node" parent="Writer"]
+script = ExtResource("16_16jal")
+
+[node name="Writer" type="Control" parent="Writer"]
+anchors_preset = 0
+offset_top = 56.0
+offset_right = 1920.0
+offset_bottom = 1040.0
+script = ExtResource("91_j1j4u")
+
+[node name="Page" type="Panel" parent="Writer/Writer"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 16.0
+offset_right = 1344.0
+offset_bottom = 968.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ytcp5")
+
+[node name="TextEdit" type="TextEdit" parent="Writer/Writer/Page"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 760.0
+offset_bottom = 944.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q1son")
+wrap_mode = 1
+
+[node name="TopPanel" type="Panel" parent="Writer"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7h46r")
+
+[node name="CloseButton" type="Button" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 1840.0
+offset_right = 1912.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ulgdj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_unkal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne2ng")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_crbgs")
+
+[node name="TextureRect" type="TextureRect" parent="Writer/TopPanel/CloseButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 79.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("9_hey6d")
+
+[node name="MinimiseButton" type="Button" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 1760.0
+offset_right = 1832.0
+offset_bottom = 48.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ulgdj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sn762")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne2ng")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_crbgs")
+
+[node name="TextureRect" type="TextureRect" parent="Writer/TopPanel/MinimiseButton"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 78.0
+offset_bottom = 64.0
+scale = Vector2(0.714445, 0.714445)
+texture = ExtResource("10_slul8")
+
+[node name="File" type="MenuButton" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 56.0
+text = "File"
+item_count = 3
+popup/item_0/text = "New"
+popup/item_0/id = 0
+popup/item_1/text = "Open"
+popup/item_1/id = 1
+popup/item_2/text = "Save As"
+popup/item_2/id = 2
+
+[node name="Insert" type="MenuButton" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 188.0
+offset_bottom = 56.0
+text = "Insert"
+item_count = 2
+popup/item_0/text = "Image"
+popup/item_0/id = 1
+popup/item_0/disabled = true
+popup/item_1/text = "Graph"
+popup/item_1/id = 1
+popup/item_1/disabled = true
+
+[node name="NotificationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("92_l7kdl")
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]

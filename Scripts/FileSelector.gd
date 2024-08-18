@@ -58,11 +58,13 @@ func _on_folders_cell_selected():
 		OpenFolder(OpenedFolder)
 
 func _on_confirm_button_up():
-	if(TempOpenedFolder != null):
+	if(TempOpenedFile != null):
 		SelectionMade.emit()
+		TempOpenedFile = null
 		hide()
 
 func _on_cancel_button_up():
+	TempOpenedFile = null
 	SelectionMade.emit()
 	hide()
 

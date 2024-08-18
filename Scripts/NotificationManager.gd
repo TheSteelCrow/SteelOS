@@ -15,6 +15,7 @@ func _ready():
 
 
 func SendMailNotification(Sender, Type, EmailID):
+	get_parent().get_node("NotificationSound").play()
 	move_to_front()
 	var NewNotification = MailNotificationPrefab.instantiate()
 	add_child(NewNotification)

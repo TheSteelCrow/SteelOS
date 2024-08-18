@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://br04u746s2ewp"]
+
+[ext_resource type="Texture2D" uid="uid://dkrbwqj75e6g2" path="res://Images/cross_small.png" id="1_s2hra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deju2"]
+bg_color = Color(0.168627, 0.168627, 0.168627, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[node name="AddedFile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_right = 325.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_deju2")
+
+[node name="FileName" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 30
+text = "filename.filetype"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="RemoveFileButton" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 5.0
+offset_right = 323.0
+offset_bottom = 69.0
+texture_normal = ExtResource("1_s2hra")

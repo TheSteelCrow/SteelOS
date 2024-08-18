@@ -14,3 +14,4 @@ func _process(delta):
 
 func _on_scram_button_up():
 	App.Cutout.show()
+	get_node("StuffyBackgroundNoise").play()

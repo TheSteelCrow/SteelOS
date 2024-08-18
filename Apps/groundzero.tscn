@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cg10ash7fn0j4"]
+[gd_scene load_steps=44 format=3 uid="uid://cg10ash7fn0j4"]
 
 [ext_resource type="Script" path="res://Scripts/groundzero.gd" id="1_nklc7"]
 [ext_resource type="Script" path="res://Scripts/AppVisualTransition.gd" id="1_ow0yd"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://blw2t6t1sxhey" path="res://Images/indicatorthing3.png" id="12_pe07y"]
 [ext_resource type="FontFile" uid="uid://coed6j5rmmat" path="res://Fonts/VeraMoBd.ttf" id="13_26nn5"]
 [ext_resource type="FontFile" uid="uid://blm0klhjk0587" path="res://Fonts/Bolshevik.otf" id="14_y3ahj"]
+[ext_resource type="AudioStream" uid="uid://cdm57eey6elfv" path="res://Sounds/StuffyBackgroundNoise.wav" id="15_twdh6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohcfp"]
 bg_color = Color(0.658824, 0.658824, 0.658824, 1)
@@ -728,6 +729,9 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("14_y3ahj")
 theme_override_font_sizes/font_size = 41
 text = "CLOSE"
+
+[node name="StuffyBackgroundNoise" type="AudioStreamPlayer" parent="Game"]
+stream = ExtResource("15_twdh6")
 
 [node name="Storage" type="Control" parent="."]
 visible = false
