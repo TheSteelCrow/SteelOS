@@ -46,7 +46,11 @@ func _ready():
 	EmailLinePrefab = preload("res://Prefabs/email_line.tscn")
 	Main = get_parent()
 	
-	get_node("TopPanel/RefreshButton").button_up.connect(DisplayEmails)
+	get_node("TopPanel/RefreshButton").button_up.connect(func():	
+		DisplayEmails()
+		if(OpenedEmailID != null):
+			OpenEmail(OpenedEmailID)
+	)
 	
 	for SideBarButton in SideBarPanel.get_children():
 		if(SideBarButton is Button):

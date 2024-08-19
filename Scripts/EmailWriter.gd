@@ -11,7 +11,7 @@ var AddedFilePrefab
 
 func ResetEmailWriter():
 	SubjectLine.text = ""
-	RecipientLine.text = ""
+	RecipientLine.text = "boss@email.com"
 	Content.text = ""
 	
 	for AddedFile in AddedFilesHolder.get_children():

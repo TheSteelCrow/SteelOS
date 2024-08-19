@@ -9,7 +9,7 @@ func _ready():
 	
 	TopPanel.get_node("File").get_popup().id_pressed.connect(func(ID):
 		if(ID == 0):
-			print("New")
+			get_node("Page/TextEdit").text = ""
 		if(ID == 1):
 			print("Open")
 		if(ID == 2):

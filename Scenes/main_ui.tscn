@@ -3817,7 +3817,7 @@ offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjwdm")
 script = ExtResource("72_w58t1")
 App = "PainterPro"
-metadata/AppSize = 1
+metadata/AppSize = 10
 
 [node name="DownloadButton" type="Button" parent="CrowStore/GridContainer/PainterApp/AppDownloadPanel"]
 layout_mode = 0
@@ -3913,7 +3913,7 @@ offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjwdm")
 script = ExtResource("72_w58t1")
 App = "SteelGrapher"
-metadata/AppSize = 10
+metadata/AppSize = 5
 
 [node name="DownloadButton" type="Button" parent="CrowStore/GridContainer/SteelGrapher/AppDownloadPanel"]
 layout_mode = 0
@@ -4009,7 +4009,7 @@ offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjwdm")
 script = ExtResource("72_w58t1")
 App = "PixelPainter"
-metadata/AppSize = 13
+metadata/AppSize = 15
 
 [node name="DownloadButton" type="Button" parent="CrowStore/GridContainer/PixelPainter/AppDownloadPanel"]
 layout_mode = 0
@@ -4117,7 +4117,7 @@ offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tjwdm")
 script = ExtResource("72_w58t1")
 App = "GroundZero"
-metadata/AppSize = 2
+metadata/AppSize = 5
 
 [node name="DownloadButton" type="Button" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
 layout_mode = 0
@@ -4912,8 +4912,10 @@ popup/item_0/text = "New"
 popup/item_0/id = 0
 popup/item_1/text = "Open"
 popup/item_1/id = 1
+popup/item_1/disabled = true
 popup/item_2/text = "Save As"
 popup/item_2/id = 2
+popup/item_2/disabled = true
 
 [node name="Insert" type="MenuButton" parent="Writer/TopPanel"]
 layout_mode = 0

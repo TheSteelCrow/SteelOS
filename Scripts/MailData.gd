@@ -26,7 +26,7 @@ var LoadedEmails = {
 	
 	3 : [
 	"Paycheck #1",
-	"You have recieved a payment of %s for completing a task!",
+	"You have recieved a payment of $20 for completing a task!",
 	"Boss",
 	false,
 	false,
@@ -48,7 +48,7 @@ var LoadedEmails = {
 	
 	5 : [
 	"Paycheck #2",
-	"You have recieved a payment of %s for completing a task!",
+	"You have recieved a payment of $30 for completing a task!",
 	"Boss",
 	false,
 	false,
@@ -70,7 +70,7 @@ var LoadedEmails = {
 	
 	7 : [
 	"Paycheck #3",
-	"You have recieved a payment of %s for completing a task!",
+	"You have recieved a payment of $40 for completing a task!",
 	"Boss",
 	false,
 	false,

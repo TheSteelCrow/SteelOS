@@ -17,6 +17,7 @@ func _ready():
 		"potato(e).jpeg" : load("res://PreloadedImages/potato(e).jpg").get_image(),
 		"somewhere.jpeg" : load("res://PreloadedImages/somewhere.jpg").get_image(),
 		"whataview.jpeg" : load("res://PreloadedImages/whataview.jpg").get_image(),
+		"jayden.jpeg" : load("res://PreloadedImages/jayden.jpg").get_image()
 	}
 	
 	for PreloadedImageName in PreloadedImages.keys():
