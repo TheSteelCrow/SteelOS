@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/2D_WorldGen.gd" id="1_7f5rb"]
 
 [sub_resource type="Gradient" id="Gradient_q01jw"]
-offsets = PackedFloat32Array(0.129032, 0.277419, 0.496774, 0.516129, 0.535484, 0.612903, 0.780645)
+offsets = PackedFloat32Array(0.129032, 0.277419, 0.503226, 0.516129, 0.535484, 0.612903, 0.780645)
 colors = PackedColorArray(0.208186, 0.294157, 0.118451, 1, 0.260144, 0.362711, 0.153248, 1, 0.335749, 0.461854, 0.204782, 1, 0.937445, 0.756273, 0.543142, 1, 0.308984, 0.490242, 0.857338, 1, 0.192576, 0.34842, 0.671712, 1, 0.19631, 0.361481, 0.705144, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o0ky7"]

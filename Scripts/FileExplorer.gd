@@ -73,4 +73,7 @@ func _on_files_item_activated():
 	else:
 		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_NEAREST
 	
-	PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0])
+	if(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0] != null): # If Image file exists
+		PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0])
+	elif(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0] == null): # Check preloaded images
+		PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.LoadImageToMemory(TempOpenedFile))

@@ -9,16 +9,19 @@ var Data = {
 	"Photos" : {}
 }
 
+func LoadImageToMemory(ImageToLoad):
+	return load("res://PreloadedImages/" + ImageToLoad).get_image()
+
 func _ready():
-	PreloadedImages = {
-		"adem.jpeg" : load("res://PreloadedImages/adem.jpg").get_image(),
-		"beehive.jpeg" : load("res://PreloadedImages/beehive.jpg").get_image(),
-		"isaac.jpeg" : load("res://PreloadedImages/isaac.jpg").get_image(),
-		"potato(e).jpeg" : load("res://PreloadedImages/potato(e).jpg").get_image(),
-		"somewhere.jpeg" : load("res://PreloadedImages/somewhere.jpg").get_image(),
-		"whataview.jpeg" : load("res://PreloadedImages/whataview.jpg").get_image(),
-		"jayden.jpeg" : load("res://PreloadedImages/jayden.jpg").get_image()
-	}
+	PreloadedImages = [
+		"adem.jpg",
+		"beehive.jpg",
+		"isaac.jpg",
+		"potato(e).jpg",
+		"somewhere.jpg",
+		"whataview.jpg",
+		"jayden.jpg"
+	]
 	
-	for PreloadedImageName in PreloadedImages.keys():
-		Data["Photos"][PreloadedImageName] = [PreloadedImages[PreloadedImageName], true]
+	for PreloadedImageName in PreloadedImages:
+		Data["Photos"][PreloadedImageName] = [null, true]

@@ -25,24 +25,24 @@ func _ready():
 			NewCanvasPopup()
 	)
 
-func NewCanvasPopup():
+func NewCanvasPopup(): # Opens new canvas popup
 	$NewCanvasPopup.show()
 
-func ExportPopup():
+func ExportPopup(): # Opens export canvas popup
 	$ExportPopup.show()
 
+# Exports an image and saves in memory
 func Export(SaveLocation, FileFormatAsString, FileName, RenderSmooth):
-	var ImageToExport = PPF.CurrentImage
-	var ImageExportFile = ImageToExport.get_region(ImageToExport.get_used_rect())
-	DataHolder.Data[SaveLocation][FileName + FileFormatAsString] = [ImageExportFile, RenderSmooth]
-	print(DataHolder.Data[SaveLocation])
+	var ImageToExport = PPF.CurrentImage # Gets canvas
+	var ImageExportFile = ImageToExport.get_region(ImageToExport.get_used_rect()) # Gets used area of canvas
+	DataHolder.Data[SaveLocation][FileName + FileFormatAsString] = [ImageExportFile, RenderSmooth] # Saves used area of canvas to data
 
-func OnAppVisible():
+func OnAppVisible(): # On app visible
 	pass
 
-func Reset():
+func Reset(): # On app reset
 	pass
 
-func Open():
+func Open(): # On app open
 	pass
 
