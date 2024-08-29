@@ -216,45 +216,52 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		if(event.is_pressed()):
-			if(event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
+			if(event.button_index == MOUSE_BUTTON_WHEEL_DOWN): # On scroll down
 				if(!ZoomByTopLeft):
+					# Move canvas to account for scaling (keeps it centered)
 					ArtCanvas.position.x += ((ArtCanvas.size.x * 1.1) - (ArtCanvas.size.x)) / 2
 					ArtCanvas.position.y += ((ArtCanvas.size.y * 1.1) - (ArtCanvas.size.y)) / 2
 				
+				# Make canvas smaller
 				ArtCanvas.size.x /= 1.1
 				ArtCanvas.size.y /= 1.1
-			elif(event.button_index == MOUSE_BUTTON_WHEEL_UP):
+			elif(event.button_index == MOUSE_BUTTON_WHEEL_UP): # On scroll up
 				if(!ZoomByTopLeft):
+					# Move canvas to account for scaling (keeps it centered)
 					ArtCanvas.position.x -= ((ArtCanvas.size.x * 1.1) - (ArtCanvas.size.x)) / 2
 					ArtCanvas.position.y -= ((ArtCanvas.size.y * 1.1) - (ArtCanvas.size.y)) / 2
 				
+				# Make canvas bigger
 				ArtCanvas.size.x *= 1.1
 				ArtCanvas.size.y *= 1.1
 				
-			elif(event.button_index == MOUSE_BUTTON_MIDDLE):
-				MoveCanvas = true
-			elif(event.button_index == MOUSE_BUTTON_LEFT):
+			elif(event.button_index == MOUSE_BUTTON_MIDDLE): # On middle mouse button
+				MoveCanvas = true # Make canvas move by mouse
+			elif(event.button_index == MOUSE_BUTTON_LEFT): # On main click
 				if(MouseOnCanvas and SelectedTool == "Fill"):
-					Fill(ConvertToCanvasSpace(), SelectedColor)
+					Fill(ConvertToCanvasSpace(), SelectedColor) # Fills a space using mouse position in canvas space and selected color
 				else:
-					StartPixel = ConvertToCanvasSpace()
+					StartPixel = ConvertToCanvasSpace() # Sets start location for other operations
 		elif(event.is_released()):
-			if(event.button_index == MOUSE_BUTTON_MIDDLE):
-				MoveCanvas = false
-			elif(event.button_index == MOUSE_BUTTON_LEFT):
+			if(event.button_index == MOUSE_BUTTON_MIDDLE): # On middle mouse button released
+				MoveCanvas = false # Canvas can no longer move by mouse
+			elif(event.button_index == MOUSE_BUTTON_LEFT): # On main mouse button released
+				# If mouse on canvas set end location to mouse position in canvas space
+				if(MouseOnCanvas):
+					EndPixel = ConvertToCanvasSpace()
+				
+				# Checks which tool is selected and runs coresponding operation
 				if(MouseOnCanvas and SelectedTool == "Rectangle"):
-					EndPixel = ConvertToCanvasSpace()
 					PaintRectangle(StartPixel, EndPixel, SelectedColor)
-				if(MouseOnCanvas and SelectedTool == "CircleFilled"):
-					EndPixel = ConvertToCanvasSpace()
+				elif(MouseOnCanvas and SelectedTool == "CircleFilled"):
 					PaintCircle(StartPixel, EndPixel, SelectedColor, true)
-				if(MouseOnCanvas and SelectedTool == "Circle"):
-					EndPixel = ConvertToCanvasSpace()
+				elif(MouseOnCanvas and SelectedTool == "Circle"):
 					PaintCircle(StartPixel, EndPixel, SelectedColor, false)
 				elif(MouseOnCanvas and SelectedTool == "Line"):
-					EndPixel = ConvertToCanvasSpace()
 					PaintLine(StartPixel, EndPixel, SelectedColor)
+					
 
+# Moves canvas within viewport
 func LocateCanvas():
 	ArtCanvas.size = Vector2(ImageResolution.x*ScaleBy, ImageResolution.y*ScaleBy)
 	ArtCanvas.position = Vector2.ZERO

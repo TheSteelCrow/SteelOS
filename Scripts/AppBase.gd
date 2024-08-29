@@ -1,9 +1,11 @@
 extends Node
 
+## This script acts as a base component for every CrowOS App. This makes the code reusable and allows for easy implimentation of new apps.
+
 var Main
 
-var AppRunning = false
-var AppVisible = false
+var AppRunning = false # App status
+var AppVisible = false # App visibility status
 
 var CloseButton
 var MinimiseButton
@@ -12,12 +14,11 @@ var AppIconOnTaskbar
 var AppName
 var App
 
-var AppVisualTransition
+var AppVisualTransition # Component
 
 var AppPreviousPosition
 
-# Called when the node enters the scene tree for the first time.
-
+# Close app
 func Close():
 	SetTaskbarIcon("Close")
 	AppRunning = false
@@ -25,19 +26,21 @@ func Close():
 	App.hide()
 	App.Reset()
 
-func Open():
+# Opens app
+func Open(): 
 	App.Open()
 	AppRunning = true
 	App.position = Vector2(0,0)
 	App.scale = Vector2(1,1)
 	App.show()
 	App.OnAppVisible()
-	
+
+# Sets app icon on taskbar to passed state
 func SetTaskbarIcon(State):
 	if(AppIconOnTaskbar != null):
 		if(State == "Open"):
-			AppIconOnTaskbar.get_node("IndicatorOpened").show()
-			AppIconOnTaskbar.get_node("IndicatorMinimised").hide()
+			AppIconOnTaskbar.get_node("IndicatorOpened").show() # Indicator opened is the glow
+			AppIconOnTaskbar.get_node("IndicatorMinimised").hide() # Indicator minimised is white dot
 		elif(State == "Minimise"):
 			AppIconOnTaskbar.get_node("IndicatorOpened").hide()
 			AppIconOnTaskbar.get_node("IndicatorMinimised").show()
@@ -46,8 +49,7 @@ func SetTaskbarIcon(State):
 			AppIconOnTaskbar.get_node("IndicatorMinimised").hide()
 
 func _ready():
-	print("Main Running")
-	Main = get_tree().root.get_child(0)
+	Main = get_tree().root.get_child(0) # Gets MainUI
 	
 	App = get_parent()
 	AppName = App.name
@@ -55,25 +57,28 @@ func _ready():
 	
 	CloseButton = App.get_node("TopPanel").get_node("CloseButton")
 	MinimiseButton = App.get_node("TopPanel").get_node("MinimiseButton")
-	if(App.get_parent().get_node("Taskbar/IconArranger/" + AppName + "Backdrop")):
-		AppIconOnTaskbar = App.get_parent().get_node("Taskbar/IconArranger/" + AppName + "Backdrop")
-		AppButton = AppIconOnTaskbar.get_node(AppName + "Button")
+	
+	if(App.get_parent().get_node("Taskbar/IconArranger/" + AppName + "Backdrop")): # If app has taskbar icon
+		AppIconOnTaskbar = App.get_parent().get_node("Taskbar/IconArranger/" + AppName + "Backdrop") # Get task bar icon
+		AppButton = AppIconOnTaskbar.get_node(AppName + "Button") # Get app button
 		
 	CloseButton.button_up.connect(Close)
-	if(MinimiseButton != null):
-		MinimiseButton.button_up.connect(func():
-			AppPreviousPosition = App.position
+	
+	if(MinimiseButton != null): # If app has minimise button
+		MinimiseButton.button_up.connect(func(): # On minimise button pressed
+			AppPreviousPosition = App.position # Sets starting position of app for animations
 			AppVisible = false
-			if(App.IsFullscreen == false):
+			if(App.IsFullscreen == false): # If app is a fullscreen app, minimise based on app starting position
 				AppVisualTransition.Minimise(AppPreviousPosition)
-			else:
+			else: # If app is not a fullscreen app, minimise app to 0,0 (See App Visual Transition component for more info)
 				AppVisualTransition.Minimise(null)
-			SetTaskbarIcon("Minimise")
+			SetTaskbarIcon("Minimise") # Sets taskbar icon to minimsed state
 		)
-	if(AppButton != null):
-		AppButton.button_up.connect(func():
+	
+	if(AppButton != null): # If app has taskbar button
+		AppButton.button_up.connect(func(): # ON app task bar button pressed
 			if(not AppVisible): # If app is not visible
-				SetTaskbarIcon("Open")
+				SetTaskbarIcon("Open") # Sets taskbar icon to opened state
 				AppVisible = true
 				App.move_to_front()
 				Main.OpenedApp = App
@@ -96,7 +101,7 @@ func _ready():
 					App.OnAppVisible()
 			elif(AppVisible): # If app is visible
 				SetTaskbarIcon("Minimise")
-				if(Main.OpenedApp == App): # If app is visible and recently opened
+				if(Main.OpenedApp == App): # If app is visible and recently opened then minimise
 					AppPreviousPosition = App.position
 					AppVisible = false
 					
@@ -104,7 +109,7 @@ func _ready():
 						AppVisualTransition.Minimise(AppPreviousPosition)
 					else:
 						AppVisualTransition.Minimise(null)
-				else: # If app is visible and is not recently opened
+				else: # If app is visible and is not recently opened then bring to front
 					App.move_to_front()
 					Main.OpenedApp = App
 		)
