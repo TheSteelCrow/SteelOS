@@ -1,4 +1,4 @@
-[gd_scene load_steps=258 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=261 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -92,9 +92,10 @@
 [ext_resource type="Script" path="res://Scripts/FileSelector.gd" id="87_fv4e6"]
 [ext_resource type="FontFile" uid="uid://coed6j5rmmat" path="res://Fonts/VeraMoBd.ttf" id="88_fwqd8"]
 [ext_resource type="Texture2D" uid="uid://d0k3y21iutw78" path="res://Images/PaintAppIcons/drawing_pen.png" id="90_1pp0x"]
-[ext_resource type="Script" path="res://Scripts/Writer.gd" id="90_oneyh"]
-[ext_resource type="Script" path="res://Scripts/Writer_Functionality.gd" id="91_j1j4u"]
 [ext_resource type="AudioStream" uid="uid://baaj7fyctl40q" path="res://Sounds/Notification.wav" id="92_l7kdl"]
+[ext_resource type="Script" path="res://Scripts/Writer/Writer.gd" id="93_xffpy"]
+[ext_resource type="Script" path="res://Scripts/Writer/Writer_Functionality.gd" id="94_qwu0a"]
+[ext_resource type="Script" path="res://Scripts/Writer/Writer_ExportPopup.gd" id="95_15s4b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdpsj"]
 bg_color = Color(0.831373, 0.462745, 0.635294, 1)
@@ -860,7 +861,9 @@ shadow_color = Color(0, 0, 0, 0.427451)
 shadow_size = 4
 shadow_offset = Vector2(4, 4)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1son"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmiq4"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h46r"]
 bg_color = Color(0.14902, 0.14902, 0.14902, 1)
@@ -888,6 +891,18 @@ corner_radius_bottom_left = 5
 bg_color = Color(0.370364, 0.370364, 0.370364, 1)
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eouwi"]
+bg_color = Color(0.195313, 0.195313, 0.195313, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbxnh"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -4822,7 +4837,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ne7sd")
-script = ExtResource("90_oneyh")
+script = ExtResource("93_xffpy")
 
 [node name="AppVisualTransitionComponent" type="Node" parent="Writer"]
 script = ExtResource("8_iymbk")
@@ -4835,7 +4850,7 @@ anchors_preset = 0
 offset_top = 56.0
 offset_right = 1920.0
 offset_bottom = 1040.0
-script = ExtResource("91_j1j4u")
+script = ExtResource("94_qwu0a")
 
 [node name="Page" type="Panel" parent="Writer/Writer"]
 layout_mode = 0
@@ -4853,7 +4868,7 @@ offset_right = 760.0
 offset_bottom = 944.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_q1son")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fmiq4")
 wrap_mode = 1
 
 [node name="TopPanel" type="Panel" parent="Writer"]
@@ -4915,7 +4930,6 @@ popup/item_1/id = 1
 popup/item_1/disabled = true
 popup/item_2/text = "Save As"
 popup/item_2/id = 2
-popup/item_2/disabled = true
 
 [node name="Insert" type="MenuButton" parent="Writer/TopPanel"]
 layout_mode = 0
@@ -4930,6 +4944,129 @@ popup/item_0/disabled = true
 popup/item_1/text = "Graph"
 popup/item_1/id = 1
 popup/item_1/disabled = true
+
+[node name="FontSize" type="SpinBox" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 188.0
+offset_right = 280.0
+offset_bottom = 56.0
+min_value = 1.0
+value = 30.0
+alignment = 1
+
+[node name="FontDropdown" type="OptionButton" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 512.0
+offset_bottom = 56.0
+item_count = 11
+selected = 0
+popup/item_0/text = "Default"
+popup/item_0/id = 0
+popup/item_1/text = "Bolshevik"
+popup/item_1/id = 1
+popup/item_2/text = "ConsolaMonoBold"
+popup/item_2/id = 2
+popup/item_3/text = "ConsolaMonoBook"
+popup/item_3/id = 3
+popup/item_4/text = "Digitalt"
+popup/item_4/id = 4
+popup/item_5/text = "GontserratLight"
+popup/item_5/id = 5
+popup/item_6/text = "Jackwrite"
+popup/item_6/id = 6
+popup/item_7/text = "LTSuperiorRegular"
+popup/item_7/id = 7
+popup/item_8/text = "UnispaceRg"
+popup/item_8/id = 8
+popup/item_9/text = "VeraMoBd"
+popup/item_9/id = 9
+popup/item_10/text = "VeraMono"
+popup/item_10/id = 10
+
+[node name="FontColor" type="ColorPickerButton" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 520.0
+offset_right = 576.0
+offset_bottom = 56.0
+focus_mode = 0
+
+[node name="PageColor" type="ColorPickerButton" parent="Writer/TopPanel"]
+layout_mode = 0
+offset_left = 584.0
+offset_right = 640.0
+offset_bottom = 56.0
+focus_mode = 0
+color = Color(1, 1, 1, 1)
+
+[node name="SavePopup" type="Panel" parent="Writer"]
+visible = false
+layout_mode = 0
+offset_left = 736.0
+offset_top = 384.0
+offset_right = 1192.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eouwi")
+script = ExtResource("95_15s4b")
+
+[node name="DragComponent" type="Node" parent="Writer/SavePopup"]
+script = ExtResource("49_a6mew")
+
+[node name="FileFormat" type="OptionButton" parent="Writer/SavePopup"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 88.0
+offset_right = 440.0
+offset_bottom = 128.0
+item_count = 1
+selected = 0
+popup/item_0/text = ".txt"
+popup/item_0/id = 0
+
+[node name="Location" type="OptionButton" parent="Writer/SavePopup"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 80.0
+item_count = 3
+selected = 0
+popup/item_0/text = "Photos"
+popup/item_0/id = 0
+popup/item_1/text = "Downloads"
+popup/item_1/id = 1
+popup/item_2/text = "Documents"
+popup/item_2/id = 2
+
+[node name="FileName" type="LineEdit" parent="Writer/SavePopup"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 336.0
+offset_bottom = 128.0
+placeholder_text = "File Name ..."
+
+[node name="Cancel" type="Button" parent="Writer/SavePopup"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 136.0
+offset_right = 440.0
+offset_bottom = 176.0
+text = "CANCEL"
+
+[node name="Save" type="Button" parent="Writer/SavePopup"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 136.0
+offset_right = 336.0
+offset_bottom = 176.0
+text = "SAVE"
+
+[node name="TopPanel" type="Panel" parent="Writer/SavePopup"]
+layout_mode = 0
+offset_right = 456.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbxnh")
 
 [node name="NotificationSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("92_l7kdl")

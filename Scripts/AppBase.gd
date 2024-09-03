@@ -28,6 +28,7 @@ func Close():
 
 # Opens app
 func Open(): 
+	App.move_to_front()
 	App.Open()
 	AppRunning = true
 	App.position = Vector2(0,0)
