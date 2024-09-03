@@ -66,14 +66,31 @@ func _on_folders_cell_selected():
 
 func _on_files_item_activated():
 	var TempOpenedFile = FilesTree.get_selected().get_text(0)
+	
+	var FileType = TempOpenedFile.split(".")[1]
+	
+	if(FileType == "txt"):
+		OpenTextFile(TempOpenedFile)
+	elif(FileType == "png"):
+		OpenImageFile(TempOpenedFile)
+	elif(FileType == "jpg"):
+		OpenImageFile(TempOpenedFile)
+	elif(FileType == "jpeg"):
+		OpenImageFile(TempOpenedFile)
+
+func OpenTextFile(File):
+	print("Opening Text File" + File)
+
+func OpenImageFile(File):
 	var PhotosApp = get_parent().get_node("PhotosApp")
 	PhotosApp.OpenImage()
-	if(DataHolder.Data[TempOpenedFolder][TempOpenedFile][1] == true):
-		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_LINEAR
-	else:
-		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_NEAREST
 	
-	if(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0] != null): # If Image file exists
-		PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0])
-	elif(DataHolder.Data[TempOpenedFolder][TempOpenedFile][0] == null): # Check preloaded images
-		PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.LoadImageToMemory(TempOpenedFile))
+	if(DataHolder.Data[TempOpenedFolder][File][1] == true): # If rendered smooth
+		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_LINEAR # Smooth
+	else:
+		PhotosApp.get_node("ImageRenderer").texture_filter = TEXTURE_FILTER_NEAREST # Pixelated
+	
+	if(DataHolder.Data[TempOpenedFolder][File][0] != null): # If Image file exists
+		PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.Data[TempOpenedFolder][File][0])
+	elif(DataHolder.Data[TempOpenedFolder][File][0] == null): # Else use preloaded images
+		PhotosApp.get_node("ImageRenderer").texture = ImageTexture.create_from_image(DataHolder.LoadImageToMemory(File))
