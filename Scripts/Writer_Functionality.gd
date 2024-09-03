@@ -23,3 +23,8 @@ func _ready():
 		if(ID == 2): # Save
 			print("Save")
 	)
+
+func OpenTextFile(TextFileData):
+	App.get_node("AppBaseComponent").Open()
+	get_node("Page/TextEdit").text = TextFileData[0]
+	get_node("Page/TextEdit").add_theme_font_size_override("font_size", TextFileData[1])

@@ -1,10 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://k5puod3va2sl"]
+[gd_scene load_steps=43 format=3 uid="uid://c6cg8gdkiboq0"]
 
 [ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro.gd" id="1_7ovk8"]
 [ext_resource type="Script" path="res://Scripts/AppVisualTransition.gd" id="2_mj3dp"]
 [ext_resource type="Script" path="res://Scripts/AppBase.gd" id="3_nj7e7"]
 [ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro_Functionality.gd" id="4_r13a0"]
-[ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro_Grid.gd" id="5_m7kve"]
 [ext_resource type="Script" path="res://Scripts/PainterPro/PainterPro_Buttons.gd" id="6_rroo2"]
 [ext_resource type="Texture2D" uid="uid://b7thb5ovhjmfl" path="res://Images/PaintAppIcons/drawing_brush.png" id="7_5qpyr"]
 [ext_resource type="Texture2D" uid="uid://b3rqc13ffwi85" path="res://Images/PaintAppIcons/drawing_bucket.png" id="8_xmlpm"]
@@ -127,15 +126,6 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
 expand_mode = 1
-
-[node name="Grid" type="TextureRect" parent="PainterPro"]
-visible = false
-texture_filter = 1
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-expand_mode = 1
-script = ExtResource("5_m7kve")
 
 [node name="Buttons" type="Panel" parent="PainterPro"]
 layout_mode = 1
@@ -312,10 +302,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ColorPicker" type="ColorPicker" parent="PainterPro/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 904.0
-offset_top = 456.0
-offset_right = 746.0
-offset_bottom = 1024.0
+offset_left = 912.0
+offset_top = 460.0
+offset_right = 750.0
+offset_bottom = 1028.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="PainterPro/SideWindow"]

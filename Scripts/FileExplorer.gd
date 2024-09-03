@@ -79,7 +79,8 @@ func _on_files_item_activated():
 		OpenImageFile(TempOpenedFile)
 
 func OpenTextFile(File):
-	print("Opening Text File" + File)
+	var WriterFunctionality = get_parent().get_node("Writer/Writer")
+	WriterFunctionality.OpenTextFile(DataHolder.Data[TempOpenedFolder][File])
 
 func OpenImageFile(File):
 	var PhotosApp = get_parent().get_node("PhotosApp")
