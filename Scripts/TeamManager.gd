@@ -1,5 +1,7 @@
 extends Panel
 
+var GUIDE_TEXT_STRING = "You must %s one person. To %s someone, drag the stamp onto their file."
+
 var IsFullscreen = true
 
 var NewCharacterRenderer
@@ -47,6 +49,9 @@ func SetupRound():
 		get_node("Stamp/Fire").hide()
 		get_node("Stamp/Hire").show()
 	
+	var TaskNameLowerCase = Taskbar.TaskName.to_lower()
+	get_node("Guide/GuideText").text = GUIDE_TEXT_STRING % [TaskNameLowerCase, TaskNameLowerCase]
+	
 	NewCharacterRenderer = preload("res://Prefabs/new_character_renderer.tscn")
 	
 	Character1 = NewCharacterRenderer.instantiate()
@@ -72,8 +77,11 @@ func SetupRound():
 func GenerateInfo(CharacterNumber):
 	var InfoOutput = get_node("Employee" + CharacterNumber).get_node("Info")
 	var InfoInput = get_node("Character" + CharacterNumber)
-	
-	var InfoUnformated = "%s is a%s %s employee who has worked at the company for %s %s year%s. %s is %s and %s %s child%s."
+	var InfoUnformated
+	if(Taskbar.TaskName == "Fire"):
+		InfoUnformated = "%s is a%s %s employee who has worked at the company for %s %s year%s. %s is %s and %s %s child%s."
+	elif(Taskbar.TaskName == "Hire"):
+		InfoUnformated = "%s is a%s %s employee who has %s %s year%s of experience. %s is %s and %s %s child%s."
 	
 	var Pronoun
 	var IncludeS = ""
@@ -109,6 +117,7 @@ func GenerateInfo(CharacterNumber):
 		IncludeN = "n"
 	
 	random.randomize()
+	# Generates the output using all prior generated parameters
 	InfoOutput.text = InfoUnformated % [InfoInput.CharacterName, IncludeN, RandomQualityWord, ApproximationWords[random.randi_range(0, ApproximationWords.size()-1)], str(InfoInput.YearsOfWork), IncludeS, Pronoun, str(InfoInput.Age), ParentalStatusText, NumberOfChildrenText, MakeChildrenPlural]
 
 	#generate something good and something bad about them, eg they steal office supplies
@@ -161,7 +170,7 @@ func RunSequence(EmployeeToFire):
 	tween.tween_property(StampMovingPart, "position", Vector2(StampMovingPart.position.x, StampMovingPart.position.y + 50), 0.1 * Main.AnimationsMultiplier)
 	await tween.finished
 	var StampImageInk = get_node(Taskbar.TaskName + "d")
-	
+
 	#During Stamping
 	if(EmployeeToFire == 1):
 		StampImageInk.position = Vector2(148,329)

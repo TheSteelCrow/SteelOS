@@ -1,4 +1,4 @@
-[gd_scene load_steps=261 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=260 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://Scripts/SearchEngine.gd" id="9_yyops"]
 [ext_resource type="Texture2D" uid="uid://ba5udg3fneq3w" path="res://Images/open.png" id="10_gw1hn"]
 [ext_resource type="Texture2D" uid="uid://cy466yisyc6ha" path="res://Images/line_horizontal.png" id="10_slul8"]
-[ext_resource type="Texture2D" uid="uid://e5l46epcpx87" path="res://Images/arrowRight.png" id="11_csaug"]
 [ext_resource type="Script" path="res://Scripts/FileExplorer.gd" id="11_m1ils"]
 [ext_resource type="Texture2D" uid="uid://cv16s0rkni660" path="res://Images/wrench.png" id="12_i6o7w"]
 [ext_resource type="Texture2D" uid="uid://ch147g7e5krli" path="res://Images/warning.png" id="13_rxkv3"]
@@ -480,8 +479,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kehs5"]
-bg_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2awwc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onk7q"]
 bg_color = Color(1, 1, 1, 1)
@@ -1194,7 +1192,7 @@ scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("16_gccnm")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureButton2" type="TextureButton" parent="SearchEngine/LineTwo"]
+[node name="HomeButton" type="TextureButton" parent="SearchEngine/LineTwo"]
 layout_mode = 0
 anchor_left = 0.0875
 anchor_right = 0.116664
@@ -1214,15 +1212,6 @@ offset_bottom = 44.0058
 scale = Vector2(0.559942, 0.559942)
 texture_normal = ExtResource("14_fu5sc")
 metadata/_edit_use_anchors_ = true
-
-[node name="TextureButton4" type="TextureButton" parent="SearchEngine/LineTwo"]
-visible = false
-layout_mode = 0
-offset_left = 56.0
-offset_right = 156.0
-offset_bottom = 100.0
-scale = Vector2(0.559942, 0.559942)
-texture_normal = ExtResource("11_csaug")
 
 [node name="WebsitesHolder" type="Panel" parent="SearchEngine"]
 layout_mode = 1
@@ -2051,14 +2040,13 @@ offset_top = 543.0
 offset_right = 1144.0
 offset_bottom = 736.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TeamManager/Guide"]
+[node name="GuideText" type="RichTextLabel" parent="TeamManager/Guide"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 4.0
 offset_right = 388.0
 offset_bottom = 193.0
 theme_override_font_sizes/normal_font_size = 31
-text = "You must fire one of the two employees. To fire an employee, drag the stamp onto their file."
 scroll_active = false
 
 [node name="Warning" type="Panel" parent="TeamManager"]
@@ -2735,7 +2723,7 @@ offset_top = 2.0
 offset_right = 148.0
 offset_bottom = 50.0
 scale = Vector2(0.75, 0.75)
-theme_override_styles/panel = SubResource("StyleBoxFlat_kehs5")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2awwc")
 script = ExtResource("14_q5ee8")
 metadata/_edit_group_ = true
 
@@ -2745,12 +2733,14 @@ offset_left = 88.0
 offset_top = 16.0
 offset_right = 100.0
 offset_bottom = 32.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_onk7q")
 
 [node name="Outline" type="Panel" parent="Taskbar/RightSideIcons/Battery"]
 layout_mode = 0
 offset_right = 96.0
 offset_bottom = 48.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_fp1k0")
 
 [node name="Inner" type="Panel" parent="Taskbar/RightSideIcons/Battery/Outline"]
@@ -2759,6 +2749,7 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 94.0
 offset_bottom = 46.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jwhvl")
 
 [node name="Bar" type="Panel" parent="Taskbar/RightSideIcons/Battery/Outline/Inner"]
@@ -2767,11 +2758,12 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 88.0
 offset_bottom = 40.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_golrh")
 
 [node name="TimeText" type="RichTextLabel" parent="Taskbar/RightSideIcons"]
 layout_mode = 0
-offset_left = 91.0
+offset_left = 128.0
 offset_right = 216.0
 offset_bottom = 20.0
 bbcode_enabled = true
@@ -2779,7 +2771,7 @@ scroll_active = false
 
 [node name="DateText" type="RichTextLabel" parent="Taskbar/RightSideIcons"]
 layout_mode = 0
-offset_left = 91.0
+offset_left = 128.0
 offset_top = 20.0
 offset_right = 216.0
 offset_bottom = 40.0
@@ -2908,7 +2900,6 @@ texture_normal = ExtResource("51_c3t5u")
 wait_time = 5.0
 
 [node name="Settings" type="Panel" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -2987,7 +2978,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
-text = "Reset Background"
+text = " Reset Background"
 alignment = 0
 
 [node name="ApplyBackground" type="Button" parent="Settings/Visual"]
@@ -3004,7 +2995,6 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
-text = "Apply Background"
 alignment = 0
 
 [node name="DisableAnimations" type="Panel" parent="Settings/Visual"]
@@ -3139,6 +3129,7 @@ text = "Visual"
 scroll_active = false
 
 [node name="Reset" type="TextureButton" parent="Settings/Visual/HeadingVisual"]
+visible = false
 layout_mode = 0
 offset_left = 448.0
 offset_right = 548.0
@@ -3167,7 +3158,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
-text = "Run Factory Reset"
+text = " Run Factory Reset"
 alignment = 0
 
 [node name="Difficulty" type="Panel" parent="Settings/Gameplay"]
@@ -3249,12 +3240,23 @@ text = "Gameplay"
 scroll_active = false
 
 [node name="Reset" type="TextureButton" parent="Settings/Gameplay/HeadingGameplay"]
+visible = false
 layout_mode = 0
 offset_left = 448.0
 offset_right = 548.0
 offset_bottom = 100.0
 scale = Vector2(0.720103, 0.720103)
 texture_normal = ExtResource("5_jb3v0")
+
+[node name="CustomSearchEngineHomePage" type="LineEdit" parent="Settings/Gameplay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 224.0
+offset_right = 512.0
+offset_bottom = 288.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = " HomePage (crowosmanual)"
 
 [node name="Keybinds" type="Control" parent="Settings"]
 anchors_preset = 0
@@ -3278,7 +3280,7 @@ offset_bottom = 64.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
 theme_override_font_sizes/normal_font_size = 30
-text = "Send Email"
+text = "ACTION"
 fit_content = true
 scroll_active = false
 
@@ -3288,7 +3290,7 @@ offset_left = 616.0
 offset_right = 872.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 20
-text = "Enter"
+text = "KEY"
 text_overrun_behavior = 1
 
 [node name="KB2" type="Panel" parent="Settings/Keybinds"]
@@ -3306,7 +3308,7 @@ offset_bottom = 64.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
 theme_override_font_sizes/normal_font_size = 30
-text = "Return"
+text = "ACTION"
 fit_content = true
 scroll_active = false
 
@@ -3316,7 +3318,7 @@ offset_left = 616.0
 offset_right = 872.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 20
-text = "Backspace"
+text = "KEY"
 text_overrun_behavior = 1
 
 [node name="KB3" type="Panel" parent="Settings/Keybinds"]
@@ -3334,7 +3336,7 @@ offset_bottom = 64.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
 theme_override_font_sizes/normal_font_size = 30
-text = "Close App"
+text = "ACTION"
 fit_content = true
 scroll_active = false
 
@@ -3344,7 +3346,7 @@ offset_left = 616.0
 offset_right = 872.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 20
-text = "Alt+F4"
+text = "KEY"
 text_overrun_behavior = 1
 
 [node name="KB4" type="Panel" parent="Settings/Keybinds"]
@@ -3362,7 +3364,7 @@ offset_bottom = 64.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_vm5iy")
 theme_override_font_sizes/normal_font_size = 30
-text = "Shut Down"
+text = "ACTION"
 fit_content = true
 scroll_active = false
 
@@ -3372,7 +3374,7 @@ offset_left = 616.0
 offset_right = 872.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 20
-text = "None"
+text = "KEY"
 text_overrun_behavior = 1
 
 [node name="HeadingKeybinds" type="Panel" parent="Settings/Keybinds"]
@@ -3393,6 +3395,7 @@ text = "Keybinds"
 scroll_active = false
 
 [node name="Reset" type="TextureButton" parent="Settings/Keybinds/HeadingKeybinds"]
+visible = false
 layout_mode = 0
 offset_left = 808.0
 offset_top = -1.0
@@ -3425,6 +3428,7 @@ text = "Sound"
 scroll_active = false
 
 [node name="Reset" type="TextureButton" parent="Settings/Sound/HeadingSound"]
+visible = false
 layout_mode = 0
 offset_left = 968.0
 offset_top = -3.05176e-05
@@ -3432,6 +3436,34 @@ offset_right = 1068.0
 offset_bottom = 100.0
 scale = Vector2(0.720103, 0.720103)
 texture_normal = ExtResource("5_jb3v0")
+
+[node name="MainSound" type="Panel" parent="Settings/Sound"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 1032.0
+offset_bottom = 144.0
+
+[node name="Text" type="RichTextLabel" parent="Settings/Sound/MainSound"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 135.0
+offset_bottom = 63.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "MAIN"
+scroll_active = false
+
+[node name="HSlider" type="HSlider" parent="Settings/Sound/MainSound"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 19.0
+offset_right = 1016.0
+offset_bottom = 43.0
+max_value = 2.0
+step = 0.1
+value = 1.0
 
 [node name="SystemLoadingScreen" type="Control" parent="."]
 visible = false
@@ -5096,6 +5128,7 @@ stream = ExtResource("92_l7kdl")
 [connection signal="button_up" from="Settings/Gameplay/RunFactoryReset" to="Settings" method="_on_run_factory_reset_button_up"]
 [connection signal="value_changed" from="Settings/Gameplay/Difficulty/HSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/Gameplay/TargetFPS/SpinBox" to="Settings" method="_on_spin_box_value_changed"]
+[connection signal="text_submitted" from="Settings/Gameplay/CustomSearchEngineHomePage" to="Settings" method="_on_custom_search_engine_home_page_text_submitted"]
 [connection signal="button_up" from="SystemLoadingScreen/BootUpScreen/Skip" to="SystemLoadingScreen/BootUpScreen" method="_on_skip_button_up"]
 [connection signal="cell_selected" from="FileSelector/FileSelectorMenu/Folders" to="FileSelector" method="_on_folders_cell_selected"]
 [connection signal="item_activated" from="FileSelector/FileSelectorMenu/Files" to="FileSelector" method="_on_files_item_activated"]

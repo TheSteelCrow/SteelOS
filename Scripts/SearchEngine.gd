@@ -4,38 +4,31 @@ var SearchEngineOpen = false
 
 var AppRunning = false
 var AppVisible = false
-
 var AppVisualTransition
-
 var IsFullscreen = false
 
 #Name : Link, FormalName, Description
 
 var WebDomains = {
-	
 	"parcourir" : ["www.parcourir.com", "Parcourir - Search Engine", "Parcourir is a search engine designed to search the web. Parcourir means browse or search.", "Parcourir_WebIcon.png"],
 	"government" : ["www.aloftia.govt", "Aloftia - Government Login", "Login terminal for the Aloftia Government", "AloftiaGovt_WebIcon.png"],
 	"turbonews" : ["www.turbonews.com", "Turbo News - News you can trust", "News website for information on game updates as well as current events in Aloftia.", "TurboNews_WebIcon.png"],
 	"crowosmanual" : ["www.crowosmanual.com", "CrowOS Manual - Trusty computer guide", "Need help using your computer? This is the guide for you!", "CrowOSManual_WebIcon.png"],
+	"dailyquote" : ["www.dailyquote.com", "Daily Quote - Your daily dose of quotes", "Daily quote is a website which gives you a random quote from Dan Quayle. Remember, don't forget the 'e' on potatoe!", "DailyQuote_WebIcon.png"],
 	"banc" : ["www.banc.com", "Banc - International banking", "Banc is the #1 Banking Website, keep your money safe with us!", "Banc_WebIcon.png"],
-	"tenir" : ["www.tenirinvesting.com", "Tenir Investing - Stock trading company", "Tenir is a stock trading company with many investment opportunites. Invest your money today, to have something for tomorrow.", "Tenir_WebIcon.png"],
-	"dailyquote" : ["www.dailyquote.com", "Daily Quote - Your daily dose of quotes", "Daily quote is a website which gives you a random quote from Dan Quayle. Remember, don't forget the 'e' on potatoe!", "DailyQuote_WebIcon.png"]
+	"tenir" : ["www.tenirinvesting.com", "Tenir Investing - Stock trading company", "Tenir is a stock trading company with many investment opportunites. Invest your money today, to have something for tomorrow.", "Tenir_WebIcon.png"]
 }
 
 var BrowserTabPrefab
 var ParcourirWebsitePrefab
-
 var TabsLine
-
 var OpenedTab
-
 var WebsiteIndex = 0
-
 @onready var WebsitesHolder = $WebsitesHolder
-
 var GlobalUserSearchInput
-
 var OpenedWebsite
+
+var HomePageDomain = "crowosmanual"
 
 func OnAppVisible():
 	pass
@@ -109,6 +102,8 @@ func _ready():
 	GlobalUserSearchInput = get_node("LineTwo/GlobalUserSearchInput")
 	get_node("LineTwo/NewTabButton").button_up.connect(InsertNewTab)
 	get_node("LineTwo/CopyURLButton").button_up.connect(func():DisplayServer.clipboard_set(GlobalUserSearchInput.text))
+	get_node("LineTwo/HomeButton").button_up.connect(func():ReplaceOpenedWebsite(HomePageDomain))
+	
 	TabsLine = get_node("TopPanel/Tabs")
 	AppVisualTransition = get_node("AppVisualTransitionComponent")
 	hide()

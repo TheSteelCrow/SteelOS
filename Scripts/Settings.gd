@@ -51,3 +51,10 @@ func _on_toggle_center_taskbar_toggled(button_pressed):
 		get_parent().get_node("Taskbar/IconArranger").set_alignment(1)
 	else:
 		get_parent().get_node("Taskbar/IconArranger").set_alignment(0)
+
+func _on_custom_search_engine_home_page_text_submitted(SubmittedDomain):
+	var SearchEngine = get_parent().get_node("SearchEngine")
+	if(SearchEngine.WebDomains.has(SubmittedDomain)):
+		SearchEngine.HomePageDomain = SubmittedDomain
+	else:
+		get_node("Gameplay/CustomSearchEngineHomePage").text = " INVALID DOMAIN"

@@ -22,5 +22,10 @@ func UpdatePercentage():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(Taskbar.TaskActive == true):
+		tooltip_text = "Battery: " + str(floor(PowerPercentage))
 		PowerPercentage -= 0.5 * delta
 		UpdatePercentage() # move out of process eventually
+	else:
+		if(PowerPercentage != 100):
+			PowerPercentage = 100
+			tooltip_text = "Battery: " + str(floor(PowerPercentage))

@@ -22,12 +22,11 @@ func Reset():
 func OnAppVisible():
 	pass
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 	
-	#print(Data)
-	#print(DataHolder.Data["Downloads"][2][0])
 	FoldersTree = get_node("Folders")
 	
 	FolderRoot = FoldersTree.create_item()
@@ -44,12 +43,23 @@ func _ready():
 	var PhotosFolder = FoldersTree.create_item(FolderRoot)
 	PhotosFolder.set_text(0, "Photos")
 	
-	#var subchild1 = FoldersTree.create_item(child1)
-	#subchild1.set_text(0, "Subchild1")
-	
 	FilesTree = get_node("Files")
+	
+	get_node("TopBar/DeleteButton").button_up.connect(func():
+		if(FilesTree.get_selected() != null):
+			DataHolder.Data[TempOpenedFolder].erase(FilesTree.get_selected().get_text(0))
+			OpenFolder(TempOpenedFolder)
+	)
+	
+	while true:
+		await get_tree().create_timer(1).timeout
+		if(TempOpenedFolder != null and get_node("AppBaseComponent").AppVisible == true and FilesTree.get_selected() == null):
+			OpenFolder(TempOpenedFolder)
 
 func OpenFolder(FolderToOpen):
+	if(FolderToOpen == "My PC"):
+		return
+	
 	FilesTree.clear()
 	FileRoot = FilesTree.create_item()
 	FileRoot.set_text(0, "OpenedFolder")
