@@ -26,7 +26,7 @@ var LoadedEmails = {
 	
 	3 : [
 	"Paycheck #1",
-	"You have recieved a payment of $20 for completing a task!",
+	"You have recieved a payment of $10 for completing a task!",
 	"Boss",
 	false,
 	false,
@@ -48,7 +48,7 @@ var LoadedEmails = {
 	
 	5 : [
 	"Paycheck #2",
-	"You have recieved a payment of $30 for completing a task!",
+	"You have recieved a payment of $20 for completing a task!",
 	"Boss",
 	false,
 	false,
@@ -70,7 +70,7 @@ var LoadedEmails = {
 	
 	7 : [
 	"Paycheck #3",
-	"You have recieved a payment of $40 for completing a task!",
+	"You have recieved a payment of $30 for completing a task!",
 	"Boss",
 	false,
 	false,
@@ -80,6 +80,28 @@ var LoadedEmails = {
 	],
 	
 	8 : [
+	"Task #4",
+	"I need you to hack TurboNews, they have recently released an article condeming the company's treatment of our employees. I need you to hack their website and steal their files, we must gain intel on their next article before it is released.",
+	"Boss",
+	false,
+	false,
+	false,
+	["Hack", false, 12, null],
+	"Task",
+	],
+	
+	9 : [
+	"Paycheck #4",
+	"You have recieved a payment of $50 for completing a task!",
+	"Boss",
+	false,
+	false,
+	false,
+	null,
+	"Paycheck"
+	],
+	
+	10 : [
 	"The End?",
 	"Welp, you've reached the end of the game - for now. You have reached the end of coded tasks, but this doesn't have to be the end. From here on out, you can continue to use CrowOS, but as an open world game. So go out and explore the software!\n\nPS: Thank you very much for playing my game! (:\n-Daniel Lott",
 	"Developer",
