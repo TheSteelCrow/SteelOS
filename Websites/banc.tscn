@@ -1,30 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://55n6u5cnyy4q"]
+[gd_scene load_steps=8 format=3 uid="uid://55n6u5cnyy4q"]
 
-[ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="1_f2d0q"]
-[ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="2_qdp7b"]
+[ext_resource type="Script" path="res://Scripts/banc.gd" id="1_k7khx"]
+[ext_resource type="FontFile" uid="uid://e1r807bn3v02" path="res://Fonts/Gontserrat-Light.ttf" id="1_nbquu"]
+[ext_resource type="FontFile" uid="uid://ccqebcm1hpeja" path="res://Fonts/LTSuperior-Regular.otf" id="2_cvbv2"]
+[ext_resource type="Texture2D" uid="uid://bwja64pffjomh" path="res://Images/return.png" id="4_ymb0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgeja"]
+bg_color = Color(0.333333, 0.494118, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h27h"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdg7g"]
+bg_color = Color(0.196078, 0.560784, 0.901961, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [node name="banc" type="Panel"]
 offset_right = 1920.0
 offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kgeja")
+script = ExtResource("1_k7khx")
 metadata/LinkedWebsite = 0
 metadata/UserSearchInput = "www.banc.com"
 metadata/Domain = "banc"
 
-[node name="Notice" type="RichTextLabel" parent="."]
+[node name="PersonalAcc" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 232.0
-offset_top = 472.0
-offset_right = 1768.0
-offset_bottom = 600.0
-theme_override_fonts/normal_font = ExtResource("1_f2d0q")
-theme_override_font_sizes/normal_font_size = 70
-text = "This website is under construction."
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 536.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6h27h")
 
-[node name="NoticeIcon" type="TextureRect" parent="."]
+[node name="Balance" type="Label" parent="PersonalAcc"]
 layout_mode = 0
-offset_left = 824.0
-offset_top = 304.0
-offset_right = 1336.0
-offset_bottom = 816.0
-scale = Vector2(0.478574, 0.364552)
-texture = ExtResource("2_qdp7b")
+offset_left = 24.0
+offset_top = 120.0
+offset_right = 472.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_nbquu")
+theme_override_font_sizes/font_size = 71
+text = "$0.00"
+
+[node name="AccountName" type="Label" parent="PersonalAcc"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 48.0
+offset_right = 599.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cvbv2")
+theme_override_font_sizes/font_size = 50
+text = "PERSONAL"
+
+[node name="Bulletpoint" type="Panel" parent="PersonalAcc"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 40.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qdg7g")
+
+[node name="Reset" type="TextureButton" parent="PersonalAcc"]
+offset_left = 416.0
+offset_top = 200.0
+offset_right = 516.0
+offset_bottom = 300.0
+scale = Vector2(0.480419, 0.480419)
+tooltip_text = "Refresh"
+texture_normal = ExtResource("4_ymb0p")
+
+[connection signal="button_up" from="PersonalAcc/Reset" to="." method="_on_reset_button_up"]

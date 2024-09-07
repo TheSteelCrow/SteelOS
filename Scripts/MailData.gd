@@ -1,6 +1,6 @@
 extends Node
 
-#	1 : [0-"Subject", 1-"Content", 2-"Sender", 3-IsEmailAvailable, 4-IsEmailDeleted, 5-HasBeenRead, 6-[0-TaskName, 1-IsTaskCompleted, 2-Quota, 3-AssociatedApp], 7-Type],
+#	1 : [0-"Subject", 1-"Content", 2-"Sender", 3-IsEmailAvailable, 4-IsEmailDeleted, 5-HasBeenRead, 6-[0-TaskName, 1-IsTaskCompleted, 2-Quota, 3-AssociatedApp, 4-TaskTime], 7-Type, 8-AttachedMoneyAmount],
 var LoadedEmails = {
 	1 : [
 	"Congratulations!",
@@ -10,7 +10,8 @@ var LoadedEmails = {
 	false,
 	false,
 	null,
-	"Message"
+	"Message",
+	null
 	],
 	
 	2 : [
@@ -20,8 +21,9 @@ var LoadedEmails = {
 	false,
 	false,
 	false,
-	["Fire", false, 5, "TeamManager"],
-	"Task"
+	["Fire", false, 5, "TeamManager", 50],
+	"Task",
+	null
 	],
 	
 	3 : [
@@ -32,7 +34,8 @@ var LoadedEmails = {
 	false,
 	false,
 	null,
-	"Paycheck"
+	"Paycheck",
+	10
 	],
 	
 	4 : [
@@ -42,8 +45,9 @@ var LoadedEmails = {
 	false,
 	false,
 	false,
-	["Draw", false, 1, null],
-	"Task"
+	["Draw", false, 1, null, 60*5],
+	"Task",
+	null
 	],
 	
 	5 : [
@@ -54,7 +58,8 @@ var LoadedEmails = {
 	false,
 	false,
 	null,
-	"Paycheck"
+	"Paycheck",
+	20
 	],
 	
 	6 : [
@@ -64,8 +69,9 @@ var LoadedEmails = {
 	false,
 	false,
 	false,
-	["Hire", false, 5, "TeamManager"],
+	["Hire", false, 5, "TeamManager", 50],
 	"Task",
+	null,
 	],
 	
 	7 : [
@@ -76,7 +82,8 @@ var LoadedEmails = {
 	false,
 	false,
 	null,
-	"Paycheck"
+	"Paycheck",
+	30
 	],
 	
 	8 : [
@@ -86,19 +93,21 @@ var LoadedEmails = {
 	false,
 	false,
 	false,
-	["Hack", false, 12, null],
+	["Hack", false, 12, null, 50],
 	"Task",
+	null
 	],
 	
 	9 : [
 	"Paycheck #4",
-	"You have recieved a payment of $50 for completing a task!",
+	"You have recieved a payment of $40 for completing a task!",
 	"Boss",
 	false,
 	false,
 	false,
 	null,
-	"Paycheck"
+	"Paycheck",
+	40
 	],
 	
 	10 : [
@@ -109,6 +118,7 @@ var LoadedEmails = {
 	false,
 	false,
 	null,
-	"Message"
+	"Message",
+	null
 	]
 }

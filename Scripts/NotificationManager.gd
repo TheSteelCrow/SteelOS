@@ -6,15 +6,17 @@ var MailNotificationPrefab
 
 var Mail
 
+var Main
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	Main = get_tree().root.get_child(0)
 	Mail = get_parent().get_node("Mail")
 	MailNotificationPrefab = preload("res://Nofitications/mail_notification.tscn")
 
-
 func SendMailNotification(Sender, Type, EmailID):
+	if(Main.ShuttingDown == true):
+		return
+	
 	get_parent().get_node("NotificationSound").play()
 	move_to_front()
 	var NewNotification = MailNotificationPrefab.instantiate()

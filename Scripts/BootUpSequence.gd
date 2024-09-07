@@ -10,6 +10,7 @@ var Main
 var StartUpSound
 
 func _ready():
+	show()
 	StartUpSound = get_parent().get_node("StartUpSound")
 	Main = get_tree().root.get_child(0)
 	Frames = get_children()

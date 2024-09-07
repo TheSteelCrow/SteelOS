@@ -16,6 +16,7 @@ var IsFullscreen = false
 var EmailLinePrefab
 
 var OpenedEmailID
+var CurrentTaskEmail
 
 var StartTaskButton
 var CancelTaskButton
@@ -46,7 +47,7 @@ func _ready():
 	EmailLinePrefab = preload("res://Prefabs/email_line.tscn")
 	Main = get_parent()
 	
-	get_node("TopPanel/RefreshButton").button_up.connect(func():	
+	get_node("TopPanel/RefreshButton").button_up.connect(func():
 		DisplayEmails()
 		if(OpenedEmailID != null):
 			OpenEmail(OpenedEmailID)
@@ -81,7 +82,8 @@ func _ready():
 	)
 
 	StartTaskButton.button_up.connect(func():
-		Taskbar.StartTask(MailData.LoadedEmails[OpenedEmailID][6][0]) # Start task on taskbar (show progress etc)
+		CurrentTaskEmail = OpenedEmailID
+		Taskbar.StartTask(MailData.LoadedEmails[OpenedEmailID][6][0], MailData.LoadedEmails[OpenedEmailID][6][4]) # Start task on taskbar (show progress etc)
 		ShowButton("Cancel")
 		if(MailData.LoadedEmails[OpenedEmailID][6][3] != null): # If task has associated app
 			get_parent().get_node(MailData.LoadedEmails[OpenedEmailID][6][3]).StartTask() # Start task on associated app
@@ -106,11 +108,13 @@ func _ready():
 		if(MailData.LoadedEmails[TempOpenedEmailID+1] != null): #If next email exists
 			await get_tree().create_timer(EMAIL_DELAY).timeout
 			MailData.LoadedEmails[TempOpenedEmailID+1][3] = true #Sets next email to available
+			if(MailData.LoadedEmails[TempOpenedEmailID+1][8] != null):
+				Main.AccountBalance += MailData.LoadedEmails[TempOpenedEmailID+1][8]
 			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[TempOpenedEmailID+1][2], MailData.LoadedEmails[TempOpenedEmailID+1][7], TempOpenedEmailID+1) #Sends notification of new mail
 		
 		if(MailData.LoadedEmails[TempOpenedEmailID+2] != null): #If next next email exists
 			await get_tree().create_timer(EMAIL_DELAY).timeout
-			MailData.LoadedEmails[TempOpenedEmailID+2][3] = true #Sets next email to available
+			MailData.LoadedEmails[TempOpenedEmailID+2][3] = true #Sets next next email to available
 			Main.get_node("Notifications").SendMailNotification(MailData.LoadedEmails[TempOpenedEmailID+2][2], MailData.LoadedEmails[TempOpenedEmailID+2][7], TempOpenedEmailID+2) #Sends notification of new mail
 		
 	)
@@ -155,7 +159,7 @@ func OpenEmail(EmailID):
 	OpenedEmailID = EmailID
 	
 	if(MailData.LoadedEmails[EmailID][6] != null):#If Email has task data
-		if(Taskbar.TaskActive == true and Taskbar.TaskName == MailData.LoadedEmails[EmailID][6][0]): #Sets taskname on taskbar to taskname
+		if(Taskbar.TaskActive == true and Taskbar.TaskName == MailData.LoadedEmails[EmailID][6][0]): # If active task matches task in opened email
 			if(Taskbar.TaskProgress == Taskbar.TaskQuota):
 				ShowButton("Complete")
 			else:

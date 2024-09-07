@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dytbcuji84p12"]
 
 [ext_resource type="FontFile" uid="uid://c1nqc26intugq" path="res://Fonts/ConsolaMono-Bold.ttf" id="1_wdlo8"]
-[ext_resource type="Texture2D" uid="uid://be8leatbrkbok" path="res://Images/warning custom.png" id="2_emgo6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4icj"]
 bg_color = Color(0.402344, 0.488281, 0.414063, 1)
@@ -31,6 +30,8 @@ corner_radius_bottom_right = 15
 bg_color = Color(0.6, 0.6, 0.6, 0)
 draw_center = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqiov"]
+
 [node name="crowosmanual" type="Panel"]
 offset_right = 1920.0
 offset_bottom = 928.0
@@ -50,14 +51,14 @@ bbcode_enabled = true
 text = "[center]Welcome to the official manual for CrowOS. 
 Use the links below to find specific information."
 
-[node name="Panel" type="Panel" parent="."]
+[node name="SidePanel" type="Panel" parent="."]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 256.0
 offset_bottom = 928.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wfh7f")
 
-[node name="General" type="Button" parent="Panel"]
+[node name="General" type="Button" parent="SidePanel"]
 layout_mode = 0
 offset_top = 8.0
 offset_right = 248.0
@@ -70,7 +71,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
 text = "General"
 
-[node name="Settings" type="Button" parent="Panel"]
+[node name="Settings" type="Button" parent="SidePanel"]
+visible = false
 layout_mode = 0
 offset_top = 80.0
 offset_right = 248.0
@@ -83,7 +85,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
 text = "Settings"
 
-[node name="Hacking" type="Button" parent="Panel"]
+[node name="Hacking" type="Button" parent="SidePanel"]
+visible = false
 layout_mode = 0
 offset_top = 152.0
 offset_right = 248.0
@@ -96,21 +99,19 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_exsb8")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ihlxa")
 text = "Hacking"
 
-[node name="Notice" type="RichTextLabel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 384.0
-offset_right = 1856.0
-offset_bottom = 512.0
-theme_override_fonts/normal_font = ExtResource("1_wdlo8")
-theme_override_font_sizes/normal_font_size = 70
-text = "This website is under construction."
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 1920.0
+offset_bottom = 928.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vqiov")
 
-[node name="NoticeIcon" type="TextureRect" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
-offset_left = 912.0
-offset_top = 216.0
-offset_right = 1424.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 1656.0
 offset_bottom = 728.0
-scale = Vector2(0.478574, 0.364552)
-texture = ExtResource("2_emgo6")
+theme_override_font_sizes/normal_font_size = 40
+text = "Information will be added when needed."

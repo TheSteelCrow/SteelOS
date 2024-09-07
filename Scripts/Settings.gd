@@ -5,11 +5,9 @@ var AppVisible = false
 var IsFullscreen = false
 
 var Difficulties = {
-	-2: "Creative",
 	-1: "Easy",
 	0: "Normal",
 	1: "Hard",
-	2: "Impossible"
 }
 
 func OnAppVisible():

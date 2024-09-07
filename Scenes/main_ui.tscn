@@ -1,4 +1,4 @@
-[gd_scene load_steps=260 format=3 uid="uid://cp44wmwlptbkc"]
+[gd_scene load_steps=263 format=3 uid="uid://cp44wmwlptbkc"]
 
 [ext_resource type="Texture2D" uid="uid://dvel6qnwf5250" path="res://Backgrounds/new-zealand-landscape-1.jpg" id="1_pctbs"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_u8qnd"]
@@ -73,6 +73,7 @@
 [ext_resource type="Texture2D" uid="uid://c3x8srm2wj7qq" path="res://Images/monitor.png" id="60_h1kqg"]
 [ext_resource type="Texture2D" uid="uid://b7kns6qbtwmic" path="res://Images/Custom server icon.png" id="61_ixdv1"]
 [ext_resource type="Script" path="res://Scripts/StealFiles.gd" id="63_41qlj"]
+[ext_resource type="Script" path="res://Scripts/DeathScreen.gd" id="63_r58ms"]
 [ext_resource type="Script" path="res://Scripts/CrowStoreApp.gd" id="71_nqyrp"]
 [ext_resource type="Texture2D" uid="uid://cbxtbhyxe5opr" path="res://Images/Progress/import.png" id="72_1is8g"]
 [ext_resource type="Script" path="res://Scripts/AppDownloadPanel.gd" id="72_w58t1"]
@@ -557,6 +558,18 @@ spacing_bottom = -10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3ky0"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tygt"]
+bg_color = Color(0, 0.686275, 0.941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ek7lj"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eck8a"]
 bg_color = Color(0.8, 0.8, 0.8, 1)
@@ -1469,7 +1482,7 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_22sm6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1r10n")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dsib1")
-text = "COMPLETE"
+text = "SUBMIT"
 
 [node name="CancelTaskButton" type="Button" parent="Mail/EmailViewer"]
 visible = false
@@ -2761,6 +2774,9 @@ offset_bottom = 40.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_golrh")
 
+[node name="TaskTimeCountdown" type="Timer" parent="Taskbar/RightSideIcons/Battery"]
+one_shot = true
+
 [node name="TimeText" type="RichTextLabel" parent="Taskbar/RightSideIcons"]
 layout_mode = 0
 offset_left = 128.0
@@ -2900,6 +2916,7 @@ texture_normal = ExtResource("51_c3t5u")
 wait_time = 5.0
 
 [node name="Settings" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1040.0
@@ -3129,7 +3146,6 @@ text = "Visual"
 scroll_active = false
 
 [node name="Reset" type="TextureButton" parent="Settings/Visual/HeadingVisual"]
-visible = false
 layout_mode = 0
 offset_left = 448.0
 offset_right = 548.0
@@ -3176,7 +3192,7 @@ offset_right = 296.0
 offset_bottom = 63.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 40
-text = "Easy"
+text = "Normal"
 scroll_active = false
 
 [node name="HSlider" type="HSlider" parent="Settings/Gameplay/Difficulty"]
@@ -3185,10 +3201,10 @@ offset_left = 304.0
 offset_top = 19.0
 offset_right = 496.0
 offset_bottom = 43.0
-min_value = -2.0
-max_value = 2.0
+min_value = -1.0
+max_value = 1.0
 rounded = true
-tick_count = 5
+tick_count = 3
 ticks_on_borders = true
 
 [node name="TargetFPS" type="Panel" parent="Settings/Gameplay"]
@@ -3488,7 +3504,131 @@ theme_override_font_sizes/normal_font_size = 106
 bbcode_enabled = true
 text = "[center]Shutting Down...[/center]"
 
+[node name="DeathScreen" type="Panel" parent="SystemLoadingScreen"]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4tygt")
+script = ExtResource("63_r58ms")
+
+[node name="Face" type="RichTextLabel" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 192.0
+offset_right = 295.0
+offset_bottom = 364.0
+theme_override_font_sizes/normal_font_size = 106
+bbcode_enabled = true
+text = ":("
+
+[node name="Notice" type="RichTextLabel" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 385.0
+offset_right = 1792.0
+offset_bottom = 560.0
+theme_override_fonts/normal_font = ExtResource("22_qrjik")
+theme_override_font_sizes/normal_font_size = 76
+bbcode_enabled = true
+text = "Welp something went wrong.
+We've tried nothing and we're all out of ideas."
+
+[node name="RestartInfo" type="RichTextLabel" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 576.0
+offset_right = 1771.0
+offset_bottom = 688.0
+theme_override_fonts/normal_font = ExtResource("22_qrjik")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Resets CrowOS to its factory state.
+(Restart the Game)"
+
+[node name="ContinueInfo" type="RichTextLabel" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 696.0
+offset_right = 1771.0
+offset_bottom = 808.0
+theme_override_fonts/normal_font = ExtResource("22_qrjik")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Restarts current task.
+(Continue the Game)"
+
+[node name="QuitInfo" type="RichTextLabel" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 815.0
+offset_right = 1771.0
+offset_bottom = 927.0
+theme_override_fonts/normal_font = ExtResource("22_qrjik")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "CrowOS closes.
+(Quits the Game)"
+
+[node name="Restart" type="Button" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 576.0
+offset_right = 790.0
+offset_bottom = 688.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_hover_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_focus_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_fonts/font = ExtResource("4_0ht5n")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_ek7lj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ek7lj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ek7lj")
+text = "RESTART"
+
+[node name="Continue" type="Button" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 696.0
+offset_right = 791.0
+offset_bottom = 808.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_hover_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_focus_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_fonts/font = ExtResource("4_0ht5n")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_ek7lj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ek7lj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ek7lj")
+text = "CONTINUE"
+
+[node name="Quit" type="Button" parent="SystemLoadingScreen/DeathScreen"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 816.0
+offset_right = 791.0
+offset_bottom = 928.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_hover_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_focus_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.683594, 0.9375, 1)
+theme_override_fonts/font = ExtResource("4_0ht5n")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_ek7lj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ek7lj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ek7lj")
+text = "QUIT"
+
 [node name="BootUpScreen" type="Panel" parent="SystemLoadingScreen"]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -5129,6 +5269,9 @@ stream = ExtResource("92_l7kdl")
 [connection signal="value_changed" from="Settings/Gameplay/Difficulty/HSlider" to="Settings" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Settings/Gameplay/TargetFPS/SpinBox" to="Settings" method="_on_spin_box_value_changed"]
 [connection signal="text_submitted" from="Settings/Gameplay/CustomSearchEngineHomePage" to="Settings" method="_on_custom_search_engine_home_page_text_submitted"]
+[connection signal="button_up" from="SystemLoadingScreen/DeathScreen/Restart" to="SystemLoadingScreen/DeathScreen" method="_on_restart_button_up"]
+[connection signal="button_up" from="SystemLoadingScreen/DeathScreen/Continue" to="SystemLoadingScreen/DeathScreen" method="_on_continue_button_up"]
+[connection signal="button_up" from="SystemLoadingScreen/DeathScreen/Quit" to="SystemLoadingScreen/DeathScreen" method="_on_quit_button_up"]
 [connection signal="button_up" from="SystemLoadingScreen/BootUpScreen/Skip" to="SystemLoadingScreen/BootUpScreen" method="_on_skip_button_up"]
 [connection signal="cell_selected" from="FileSelector/FileSelectorMenu/Folders" to="FileSelector" method="_on_folders_cell_selected"]
 [connection signal="item_activated" from="FileSelector/FileSelectorMenu/Files" to="FileSelector" method="_on_files_item_activated"]

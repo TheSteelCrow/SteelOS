@@ -14,7 +14,10 @@ var OpenedApp
 
 var AnimationsMultiplier = 1
 
+var AccountBalance = 10
+
 var ShuttingDown = false
+
 @onready var SystemLoadingScreen = $SystemLoadingScreen
 @onready var Taskbar = $Taskbar
 @onready var Mail = $Mail
@@ -88,3 +91,8 @@ func WindowSelected():
 	
 func WindowDeselected():
 	WindowInstanceSelected = false
+
+func Death():
+	SystemLoadingScreen.move_to_front()
+	SystemLoadingScreen.show()
+	SystemLoadingScreen.get_node("DeathScreen").show()

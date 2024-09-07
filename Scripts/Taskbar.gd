@@ -2,7 +2,7 @@ extends Panel
 
 var MenuPanel
 var MenuOpen = false
-var MainUI
+var Main
 
 var TaskProgress = 0
 var TaskQuota = 10
@@ -14,9 +14,15 @@ var Progress
 var TaskActive = false
 var TaskName = "None"
 
-var AlmostFront = false
+var AlmostFront = false # If true, taskbar will have a child value of 1 instead of 0 when moving to front
+var TaskReadyForCompletion = false
 
-func StartTask(TaskToStart):
+var Battery
+
+func StartTask(TaskToStart, TaskTimeSeconds):
+	Battery.TaskTimeSeconds = TaskTimeSeconds
+	Battery.TaskTimeCountdown.start(TaskTimeSeconds)
+
 	TaskActive = true
 	TaskName = TaskToStart
 	Progress.show()
@@ -33,31 +39,36 @@ func CompleteTask():
 	TaskName = "None"
 	TaskProgress = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Progress = get_node("RightSideIcons/Progress")
 	MenuPanel = get_parent().get_node("Menu")
 	MenuPanel.hide()
-	MainUI = get_parent()
+	Main = get_parent()
+	Battery = get_node("RightSideIcons/Battery")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(MainUI.ShuttingDown == true):
+	if(Main.ShuttingDown == true):
 		return
-	if(MainUI.SystemLoadingScreen.visible == false):
+	if(Main.SystemLoadingScreen.visible == false):
 		move_to_front()
 		if(AlmostFront == true):
 			get_parent().move_child(self, 1)
-		
+	
 	if(TaskActive == true):
 		Progress.show()
 		Progress.text = ProgressText % [TaskProgress, TaskQuota]
 	
-	if(TaskProgress == TaskQuota):
+	if(TaskProgress == TaskQuota && TaskReadyForCompletion == false):
+		TaskReadyForCompletion = true
 		Progress.add_theme_color_override("default_color", Color("00ff00"))
-	else:
+		var Mail = Main.get_node("Mail")
+		Mail.DisplayEmails()
+		if(Mail.OpenedEmailID != null):
+			Mail.OpenEmail(Mail.OpenedEmailID)
+		#Mail.OpenEmail(Mail.CurrentTaskEmail)
+	elif(TaskProgress != TaskQuota):
+		TaskReadyForCompletion = false
 		Progress.add_theme_color_override("default_color", Color("ffffff"))
-	
 	
 	var TimeText = get_node("RightSideIcons/TimeText")
 	var DateText = get_node("RightSideIcons/DateText")
