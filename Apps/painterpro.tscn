@@ -151,6 +151,7 @@ layout_mode = 0
 anchor_top = 0.580357
 anchor_right = 0.943892
 anchor_bottom = 0.642857
+tooltip_text = "Change Brush Size"
 min_value = 1.0
 value = 1.0
 rounded = true
@@ -192,10 +193,11 @@ texture_normal = ExtResource("10_tfhdy")
 metadata/_edit_use_anchors_ = true
 
 [node name="VeryBigBrush" type="TextureButton" parent="PainterPro/Buttons"]
-layout_mode = 0
-anchor_top = 0.285714
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
 anchor_right = 0.727273
-anchor_bottom = 0.357143
+anchor_bottom = 0.571429
 texture_normal = ExtResource("11_6socj")
 metadata/_edit_use_anchors_ = true
 
@@ -208,19 +210,21 @@ texture_normal = ExtResource("12_jaskc")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton7" type="TextureButton" parent="PainterPro/Buttons"]
-layout_mode = 0
-anchor_top = 0.427455
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.428572
 anchor_right = 0.727273
-anchor_bottom = 0.498884
+anchor_bottom = 0.500001
 disabled = true
 texture_normal = ExtResource("13_qsrsf")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureButton8" type="TextureButton" parent="PainterPro/Buttons"]
-layout_mode = 0
-anchor_top = 0.5
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.285715
 anchor_right = 0.727273
-anchor_bottom = 0.571429
+anchor_bottom = 0.357144
 disabled = true
 texture_normal = ExtResource("14_xxp6e")
 metadata/_edit_use_anchors_ = true
@@ -302,10 +306,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ColorPicker" type="ColorPicker" parent="PainterPro/SideWindow/Colour"]
 layout_mode = 0
-offset_left = 936.0
-offset_top = 472.0
-offset_right = 762.0
-offset_bottom = 1040.0
+offset_left = 960.0
+offset_top = 484.0
+offset_right = 774.0
+offset_bottom = 1052.0
 color = Color(0, 0, 0, 1)
 
 [node name="Tool" type="Control" parent="PainterPro/SideWindow"]

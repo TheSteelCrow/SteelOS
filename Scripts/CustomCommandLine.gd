@@ -21,7 +21,7 @@ var Mode = "Default"
 
 var CanRecieveCommand = true
 
-var MinutesBetweenHacks = 5
+var MinutesBetweenHacks = 1
 var SecondsBetweenHacks = MinutesBetweenHacks * 60
 
 var PreviousInputs = []

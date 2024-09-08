@@ -21,8 +21,12 @@ func SendEmail():
 	ResetEmailWriter()
 	get_parent().Open()
 	get_parent().get_node("EmailSent").play()
-	if(Main.get_node("Taskbar").TaskName == "Draw" and RecipientLine.text == "boss@email.com"):
-		Main.get_node("Taskbar").TaskProgress += 1
+	
+	if(RecipientLine.text == "boss@email.com" and AddedFilesHolder.get_children().size() > 0):
+		if(Main.get_node("Taskbar").TaskName == "Draw"):
+			Main.get_node("Taskbar").TaskProgress += 1
+		elif(Main.get_node("Taskbar").TaskName == "Write"):
+			Main.get_node("Taskbar").TaskProgress += 1
 
 func AddFile():
 	if(get_node("AddedFilesHolder").get_children().size() == 3):

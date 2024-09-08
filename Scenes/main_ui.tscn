@@ -2044,7 +2044,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_icflk")
 
 [node name="StampSFX" type="AudioStreamPlayer" parent="TeamManager/Stamp"]
 stream = ExtResource("29_kwy85")
-volume_db = 10.0
 
 [node name="Guide" type="Panel" parent="TeamManager"]
 layout_mode = 0
@@ -2542,7 +2541,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="WriterBackdrop" type="ColorRect" parent="Taskbar/IconArranger"]
 layout_mode = 2
-tooltip_text = "Calculator"
+tooltip_text = "Writer"
 color = Color(0.152941, 0.152941, 0.152941, 1)
 metadata/_edit_group_ = true
 
@@ -2552,7 +2551,7 @@ offset_left = 1.0
 offset_right = 101.0
 offset_bottom = 100.0
 scale = Vector2(0.401586, 0.401254)
-tooltip_text = "Calculator"
+tooltip_text = "Writer"
 texture_normal = ExtResource("51_yaepc")
 
 [node name="IndicatorOpened" type="Panel" parent="Taskbar/IconArranger/WriterBackdrop"]
@@ -2562,6 +2561,7 @@ offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
 offset_bottom = 44.0
+tooltip_text = "Writer"
 theme_override_styles/panel = SubResource("StyleBoxFlat_fmyb2")
 
 [node name="IndicatorMinimised" type="Panel" parent="Taskbar/IconArranger/WriterBackdrop"]
@@ -2571,6 +2571,7 @@ offset_left = 16.0
 offset_top = 36.0
 offset_right = 24.0
 offset_bottom = 44.0
+tooltip_text = "Writer"
 theme_override_styles/panel = SubResource("StyleBoxFlat_r36p2")
 
 [node name="IconHolder" type="Control" parent="Taskbar"]
@@ -3516,11 +3517,11 @@ script = ExtResource("63_r58ms")
 layout_mode = 0
 offset_left = 127.0
 offset_top = 192.0
-offset_right = 295.0
+offset_right = 1792.0
 offset_bottom = 364.0
 theme_override_font_sizes/normal_font_size = 106
 bbcode_enabled = true
-text = ":("
+text = "Your battery died ):"
 
 [node name="Notice" type="RichTextLabel" parent="SystemLoadingScreen/DeathScreen"]
 layout_mode = 0
@@ -3707,7 +3708,7 @@ autowrap_mode = 2
 
 [node name="StartUpSound" type="AudioStreamPlayer" parent="SystemLoadingScreen"]
 stream = ExtResource("53_iyfxd")
-volume_db = 20.0
+volume_db = 5.0
 
 [node name="HackTask" type="Panel" parent="."]
 visible = false
@@ -5242,6 +5243,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dbxnh")
 
 [node name="NotificationSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("92_l7kdl")
+volume_db = -5.0
 
 [connection signal="button_up" from="Menu/ShutDown" to="." method="_on_shut_down_button_up"]
 [connection signal="button_up" from="Menu/Restart" to="." method="_on_restart_button_up"]

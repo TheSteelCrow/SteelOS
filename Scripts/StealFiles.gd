@@ -16,7 +16,10 @@ var Checkmark
 
 var gbPS = 1
 
+var Main
+
 func Start():
+	Main = get_tree().root.get_child(0)
 	show()
 	if(get_children() != null):
 		for Child in get_children():
@@ -52,6 +55,8 @@ func Start():
 				DownloadButton.icon = Checkmark
 				DownloadButton.show()
 				DownloadButton.disabled = true
+				if(Main.Taskbar.TaskName == "Hack"):
+					Main.Taskbar.TaskProgress += 1
 			)
 			
 			ProgressAnimation.speed_scale = ((ProgressAnimation.speed_scale / NumberOfGigabyte) * 10)
