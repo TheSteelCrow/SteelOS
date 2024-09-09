@@ -14,7 +14,7 @@ func LoadImageToMemory(ImageToLoad):
 	return load("res://PreloadedImages/" + ImageToLoad).get_image()
 
 func _ready():
-	Data["Documents"]["test.txt"] = ["Adam likes apples !", 50, 3, "ffffff", "000000"]
+	Data["Documents"]["test.txt"] = ["Eve likes apples!", 50, 3, "ffffff", "000000"]
 	
 	PreloadedImages = [
 		"adem.jpg",

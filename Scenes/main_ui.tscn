@@ -936,7 +936,6 @@ texture = ExtResource("3_5tf3x")
 expand_mode = 1
 
 [node name="Background1" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -4361,7 +4360,7 @@ offset_right = 270.0
 offset_bottom = 70.0
 theme_override_fonts/normal_font = ExtResource("4_0ht5n")
 theme_override_font_sizes/normal_font_size = 20
-text = "EARLY ACCESS - GAME"
+text = "EARLY ACCESS - BROKEN"
 scroll_active = false
 
 [node name="ProgressAnimation" type="AnimatedSprite2D" parent="CrowStore/GridContainer/GroundZero/AppDownloadPanel"]
